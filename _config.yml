@@ -1,2 +1,3 @@
 name: Sandor Dargo
 markdown: kramdown
+permalink: /blog/:year/:month/:day/:title
