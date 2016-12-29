@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Let's rock!"
-date: 2014-04-30
+date: 2016-12-29
 ---
 
 I used to use another host to have a blog. As it tends to be down more than up, I was really happy when I read about [Jekyll](http://jekyllrb.com) and [GitHubPages](https://pages.github.com). Thank you [Yegor](http://www.yegor256.com/)!
