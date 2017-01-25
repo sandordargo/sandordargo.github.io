@@ -2,10 +2,9 @@
 layout: post
 title: "The Hashtag Square"
 date: 2017-1-6
+header: "My brother is learning programming in high school and from time to time I give him some exercises. Due to various reasons often we don't use video calls to discuss, but I rather write down my explanations.
+"
 ---
-
-
-My brother is learning programming in high school and from time to time I give him some exercises. Due to various reasons often we don't use video calls to discuss, but I rather write down my explanations.
 
 So did I recently this week when I wanted to explain to him and his classmate how to implement the below exercise. So why not to publish it in English on my new blog?!
 

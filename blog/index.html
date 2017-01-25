@@ -6,6 +6,11 @@ title: Sandor Dargo's Blog
 	<ul class="posts">
 
 	  {% for post in site.posts %}
-	    <li><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+	    <li>
+	    	<a  href="{{ post.url }}" title="{{ post.title }}" class="blogtitle">{{ post.title }}</a><br>
+	    	<span class="blogdate">{{ post.date | date_to_string }}</span>
+    	</li>
+	    <p class="blogheader">{{ post.header }}
+	    <hr>
 	  {% endfor %}
 	</ul>

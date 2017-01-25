@@ -2,9 +2,9 @@
 layout: post
 title: "Ruby is the first one coming"
 date: 2017-1-2
+header: "I decided to read Bruce Tate's Seven Languages in Seven Weeks and I just finished with the first one: Ruby!"
 ---
 
-I decided to read Bruce Tate's Seven Languages in Seven Weeks and I just finished with the first one: Ruby!
 
 Why I wanted to read the book? At work I use mostly 3 languages: C++, Java and Python, depending on my actual project/task. I tend to read a lot of technical books and articles, so I hear often about other languages, other paradigms which are quite unfimilar to me. I have been thinking more and more about learning something completely new (to me) such as functional programming.
 
