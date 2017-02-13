@@ -42,6 +42,10 @@ ul.posts li {
     list-style: none;
 }
 
+ul {
+    font-size: 1.2em;
+}
+
 .blogtitle {
     font-size: 1.7em
 }
