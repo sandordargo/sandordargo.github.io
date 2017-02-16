@@ -6,7 +6,7 @@ header: "During this week's coding dojo we had the exercise of refactoring Knuth
 ---
 
 
-If not, imagine some nasty long main function with wonderful variable names like `CC`, `RR, `j` and `jPrime` for example. I hope you don't like these names. [Here](https://github.com/sandordargo/KnuthPrimeGenerator/tree/original_code) is the starting code in Java and [here in C++](https://github.com/sandordargo/KnuthPrimeGeneratorCpp). 
+If not, imagine some nasty long main function with wonderful variable names like `CC`, `RR`, `j` and `jPrime` for example. I hope you don't like these names. [Here](https://github.com/sandordargo/KnuthPrimeGenerator/tree/original_code) is the starting code in Java and [here in C++](https://github.com/sandordargo/KnuthPrimeGeneratorCpp). 
 
 Just for the record, I took the Java code from Uncle Bob's video and quickly translated it to C++ for those who prefer that language during dojos.
 
