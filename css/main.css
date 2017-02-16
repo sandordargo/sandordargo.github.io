@@ -1,6 +1,10 @@
+/*img.avatar { margin-bottom: 30px; }
+.img-circle {
+  border-radius: 50%;
+}*/
 body {
     margin: 60px auto;
-    width: 70%;
+    width: 80%;
 }
 nav ul, footer ul {
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
@@ -22,6 +26,7 @@ a:hover {
 h1 {
     font-size: 3em;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
+    font-weight: bold;
 }
 p {
     font-size: 1.5em;
@@ -43,7 +48,7 @@ ul.posts li {
 }
 
 ul {
-    font-size: 1.2em;
+    font-size: 1.5em;
 }
 
 .blogtitle {
@@ -66,4 +71,12 @@ ul {
     font-size: 1em;
     line-height: 1.4em;
     color: #333;   
+}
+
+.container {
+    width:100%;
+}
+
+.img-circle {
+    margin: 10px auto;
 }
