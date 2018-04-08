@@ -1,55 +1,54 @@
 # SITE CONFIGURATION
-baseurl: "/Type-on-Strap"
-url: "https://sylhare.github.io"
-title: Type on Strap # site's title
-description: "A website with blog posts and pages" # used by search engines
-
+baseurl: ""
+url: "http://sandordargo.com"
+title: Sandor Dargo's Blog # site's title
+description: "A blog about the everydays of a software developer who tries to practice craftsmanhip and follow the stoic philoshophy" # used by search engines
+plugins: [jekyll-paginate, jekyll-seo-tag, jekyll-redirect-from]
 
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
   # Meta
-  title: Type on Strap # blog's title
-  avatar: assets/img/triangle.svg
-  favicon: assets/favicon.ico
+  title: Sandor Dargo's Blog # blog's title
+  avatar: assets/img/SANDOR_DARGO_ROUND.JPG
+  favicon: assets/favicon.ico #color: #0f64c4
   gravatar: # Email MD5 hash
 
   # Header and footer text
   header_text: > #two or three lines to describe your site
-     <p>Change header text in <code>_config.yml</code> <br> to update this feature.</p>
-  header_text_feature_image: assets/img/pexels/triangular.jpeg
-  footer_text: >
-   Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
+     <p>Keep reading, keep learning, that's the only answer!</p>
+  header_text_feature_image: assets/img/home-image-tokyo.jpg
+  footer_text: ""
 
   # Icons
   rss: true  # Make sure you created a feed.xml with feed.xml layout
-  email_address: # Full email address, e.g. "sam@example.com"
+  email_address: sandor.dargo@gmail.com # Full email address, e.g. "sam@example.com"
   behance:
   bitbucket:
   dribbble:
-  facebook:
+  facebook: "sandor.dargo"
   flickr:
   gitlab:
-  github: "sylhare"
+  github: "sandordargo"
   google_plus:
-  instagram:
+  instagram: "sandor.dargo"
   keybase:
-  linkedin:  # Full URL
+  linkedin:  "https://www.linkedin.com/in/sandor-dargo/"
   pinterest:
   reddit:
   soundcloud:
   stack_exchange:  # Full URL
   steam:
   tumblr:
-  twitter: # "twitter username"
+  twitter: "SandorDargo"
   vimeo:
   wordpress:
   youtube:
 
   # Scripts / Features 
-  google_analytics: # Tracking ID, e.g. "UA-000000-01"
-  disqus_shortname:
+  google_analytics: UA-89625019-1 # Tracking ID, e.g. "UA-000000-01"
+  disqus_shortname: sandordargo-github-io
   katex: true # Enable if using math markup
-  portfolio: true
+  portfolio: false
   search: true
   tags: true
   
@@ -73,7 +72,7 @@ theme_settings:
   
 
 # PAGINATION
-paginate: 5
+paginate: 10
 paginate_path: "blog/page:num"
 
 
@@ -90,6 +89,6 @@ highlighter: rouge
 sass:
   sass_dir: _sass
   style: :compressed
-plugins: [jekyll-paginate, jekyll-seo-tag]
+plugins_dir: [jekyll-paginate, jekyll-seo-tag, jekyll-redirect-from]
 #theme: type-on-strap # Uncomment if using the theme as a jekyll theme gem
 exclude: ["Gemfile", "Gemfile.lock", "type-on-strap.gemspec", "*.gem", "LICENSE", "README.md", "screenshot.png"]

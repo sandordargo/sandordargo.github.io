@@ -9,7 +9,13 @@ layout: default
     {% if page.author %} - {{ page.author }}{% endif %}
     </p>
   </header>
-  <section class="post-content">{{ content }}</section>
+  <section class="post-content">
+    {% if page.header %}
+      <p>{{ page.header }}
+    {% endif %}
+    {{ content }}
+    {% include share_bar.html %}
+  </section>
    
    <!-- Tag list -->
   {% capture tag_list %}{{ page.tags | join: "|"}}{% endcapture %}
