@@ -48,7 +48,7 @@ theme_settings:
   google_analytics: UA-89625019-1 # Tracking ID, e.g. "UA-000000-01"
   disqus_shortname: sandordargo-github-io
   katex: true # Enable if using math markup
-  portfolio: false
+  portfolio: true
   search: true
   tags: true
   
