@@ -4,7 +4,7 @@ title: "The only one way to educate efficiently"
 date: 2018-5-15
 category: stoic
 tags: [philosophy, stoic]
-header: "The best way to spread any philosophy, methodology, best practices is perfectly captured in Steven Pressfield's marvelour novel, <a href=\"https://amzn.to/2qIlTHB\">The Tides of War</a>"
+header: "The best way to spread any philosophy, methodology, best practices is perfectly captured in Steven Pressfield's marvellous novel, <a href=\"https://amzn.to/2qIlTHB\">The Tides of War</a>"
 ---
 > _"How does one lead free men?_
 > _By being better than they... By being better and thus commanding their emulation."_
