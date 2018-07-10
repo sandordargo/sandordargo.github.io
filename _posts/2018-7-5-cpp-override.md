@@ -61,6 +61,7 @@ class Derived : Base
 
 We should also keep in mind that when we override a method - with or without the `override` specifier - _no conversions are possible_:
 
+```
 class Base
 {
   public:
