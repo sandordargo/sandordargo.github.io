@@ -33,11 +33,11 @@ Let's add another file (_newfile.txt_) and stage it immediately. Our prompt chan
 
 Now let's stage _somefile.txt_ as well, so we have only staged files. As we expect, the `*` disappears we are left only with the `+`.
 
-![Having only staged files]({{ site.baseurl }}/assets/img/gitprompt-no-repo.png "Having only staged files")
+![Having only staged files]({{ site.baseurl }}/assets/img/gitprompt-staged.png "Having only staged files")
 
 In order to finish our cycle and to have a clean repo again, we have to commit. Our working area is clean again. There are no unstaged or staged files.
 
-![In a clean branch again]({{ site.baseurl }}/assets/img/gitprompt-clean.png "In a clean branch again")
+![In a clean branch again]({{ site.baseurl }}/assets/img/gitprompt-clean-again.png "In a clean branch again")
 
 ## Key Takeaways
 
