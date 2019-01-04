@@ -1,0 +1,7 @@
+It would be this Sunday that in the year 1813, General William Henry Harrison sent three volumes of an ancient book to his 15 year old son, John. The book was Plutarch's Lives, long a favorite of successful men and women throughout history. Indeed, the General would inscribe the first volume of the leatherbound set accordingly,
+
+"Willm H. Harrison send this set of Plutarch's to his beloved son J.C. Symmes Harrison in the hope that he will diligently study the lives of great men contained in it & that if he is unable to rival their splendid achievements in their country, service he will at least imitate their private victories. Head Qtr. Seneca Town. 9th Sept. 1813."
+
+The Stoics talk over and over again about studying the lives of the “greats.” Why? To learn what to do and what not to do. To be inspired by their splendid achievements for the common good, to be horrified by their selfishness and greed, and to direct this understanding of both towards private victories.
+
+Find yourself a Cato, find yourself an Alexander (both are profiled in Plutarch), or whomever to use as an example of who to be and who not to be. Diligently study them—today and tomorrow and forever—and then, when you find yourself in the position to do so down the road, pass the lessons down to the next generation.

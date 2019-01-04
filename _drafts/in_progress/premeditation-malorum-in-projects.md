@@ -1,0 +1,2 @@
+
+Even in project management and in agile, this is a well-known, but not necessarily practiced exercise. But some start a project with thinking about everything that could go wrong. You think hard, you list them and you start preparing to defend against them.

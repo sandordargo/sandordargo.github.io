@@ -25,3 +25,17 @@ Lately he had some problems. Not significant enough to worry about them, but pro
 safety own his crew is very important. his family is also very important. why not to leave well. does it hurt anyone?
 
 
+
+
+Bemutatni Michaelt
+  Michael visszagondol
+Uj CEO
+Eszebe jut, amikor mar poziban volt es bemoszeroltak. Konnyelmu volt.
+Azota sokat valtozott. Felnott a csaladja. Megkemenyedett maga is. Talan tulsagaosan is.
+Uj CEO elbeszelget vele
+Csinalja tovabb a dolgat
+Betamadja B
+Mennek tovab a dolgok, betamadja C
+Mennek tovabb a dolgok betamadja B,C,D , de nem mukodnek egyutt
+a CEOnak mas elkepzelesei vannak. idelista, fiatal, stb. de nem tud megbizni a tamadokban. hazugok, nem kinalnak valojaban semmi jot
+

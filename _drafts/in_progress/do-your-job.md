@@ -1,4 +1,0 @@
-As sportscaster Adam Lefkoe would tell us in our interview about one of football’s most renowned coaches,
-
-“I find Belichick’s mantra “Do Your Job” to be a three-word embodiment of Stoicism. He is defined by his intense focus and dispassionate nature. He lives for process. He prepares for any possible situation or outcome. He works harder than any other coach in the NFL and doesn’t have time to worry about losses…he’s “on to Cincinnati.”
-Marcus Aurelius says to approach each task as if it were your last, because it very well could be. And even if it isn’t, botching what’s right in front of you doesn’t help anything. Find clarity in the simplicity of doing your job today.
