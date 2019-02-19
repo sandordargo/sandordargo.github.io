@@ -11,7 +11,7 @@ Have you, Sandor, really read [that book](https://amzn.to/2FclW78)? - you might 
 What it is about?
 <!--more-->
 
-It's a map helping you navigate at the different positions on the way up to the top of the software teams management. So this book is not just about any type of managers, it is dedicated to managers working in software development. It covers position starting from the tech leads, through mid-management up to the position of CTO or VP of Engineering.
+It is a map helping you navigate at the different positions on the way up to the top of the software teams management. So this book is not just about any type of managers, it is dedicated to managers working in software development. It covers position starting from the tech leads, through mid-management up to the position of CTO or VP of Engineering.
 
 I'm not changing my mind. Even though I code so little nowadays at my job that maybe it would be more beneficial to convert into a manager and make more money while I'd have more authority on improving our engineering practices and developer environment that I'm most concerned about. 
 
