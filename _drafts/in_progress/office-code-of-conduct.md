@@ -26,3 +26,4 @@ This is not just a tale or a nightmare. It's actually true and in different ways
 While I respect that people might have different opinions, interruptions are bad for productivity, [that's a fact](). So I went to the next meeting with a small presentation about it is so, what are possible ways to handle interruptions and asked for the team's opinion about it.
 
 
+
