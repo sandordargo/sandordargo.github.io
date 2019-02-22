@@ -76,7 +76,7 @@ For inexperienced eyes (like mine are), the standard seems quite cryptic, but yo
 
 The bottom line is that you should avoid writing ambiguous code because you might end up with unwelcome surprises.
 
-How to write uunambiguous code? Use [brace initalization](http://www.modernescpp.com/index.php/initialization) if you are at least on C++11!
+How to write unambiguous code? Use [brace initalization](http://www.modernescpp.com/index.php/initialization) if you are at least on C++11!
 
 What is that? It's simple, instead of parentheses, use braces to call the constructor!
 

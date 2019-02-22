@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The Curiously Recurring Template Pattern (CRTP)"
-date: 2018-11-25
+date: 2019-3-13
 category: dev
 tags: [c++, tutorial, crtp]
 excerpt_separator: <!--more-->
@@ -14,7 +14,7 @@ In this article, we are going to discover the pattern that is called the Curious
 
 Have you ever wondered about a derived class whose base has access to the derived class' members? Did it seem like something impossible? Impossible? Really? But in this world, nothing is impossible. Not even accessing the members of a derived class. From the base. All you need is some curiosity.
 
-Some curiosity in the form of the Curiously Recurring Template Pattern. The CRTP is an idiom in C++ in which a class let's call it X derives from a class template instantiation using X itself as template argument](https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern). 
+Some curiosity in the form of the Curiously Recurring Template Pattern. The CRTP is an idiom in C++ in which [a class let's call it X derives from a class template instantiation using X itself as template argument](https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern). 
 
 ```
 // The Curiously Recurring Template Pattern (CRTP)
@@ -32,7 +32,7 @@ class Derived : public Base<Derived>
 
 Like so many things in history, the CRTP was discovered around the same time at multiple places in the world.
 
-The technique itself was formalized earlier, but in C++ it was Jim Coplien (author on many books about advanced C++ and programming in general) in 1995 who came up with the name and observed it some early C++ template codes.
+The technique itself was formalized earlier, but in C++ it was Jim Coplien (author on many [books about advanced C++](https://amzn.to/2BMKr8x) and programming in general) in 1995 who came up with the name and observed it some early C++ template codes.
 
 The other thread leads us to Microsoft, where it was also discovered in the same year and became part of the Active Template Library. Funny enough, one of the first code reviewers thought that such code would not even compile. As we might know from programming history it didn't just compile, but both the ATL and Windows Template Library heavily used this technique.
 
@@ -65,9 +65,9 @@ class Base {
 };
 ```
 
-In practice, this brings us the possibility of enriching our Derived class' interface through some base classes. In practice, you'd use this technique to add some general functionalities to a class such as some mathematical functions to a sensor class (such as explained by John Baccara). Although these functionalities can be implemented as non-member function or non-member template functions, those are hard to know about when you check the interface of a class. Whereas the public methods of a CRTP's base class are part of the interface.
+In practice, this brings us the possibility of enriching our Derived class' interface through some base classes. In practice, you'd use this technique to add some general functionalities to a class such as some mathematical functions to a sensor class (such as explained by [Johnathan Baccara](https://www.fluentcpp.com/2017/05/16/what-the-crtp-brings-to-code/)). Although these functionalities can be implemented as non-member function or non-member template functions, those are hard to know about when you check the interface of a class. Whereas the public methods of a CRTP's base class are part of the interface.
 
-#### Adding numerical functions to a class
+#### Adding numerical functions to a class (by Johnathan Baccara)
 
 Here is the full example:
 
@@ -208,8 +208,8 @@ The Curiously Recurring Template Pattern is an interesting technique at least to
 * adding functionality to a derived class through the base
 * implementing polymorphism without the cost of virtual tables
 
-If you want to get a deeper knowledge, I'd recommend you to read the following pages and articles:
+If you want to get deeper knowledge, I'd recommend you to read the following pages and articles:
 
-* https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern
-* https://www.fluentcpp.com/2017/05/12/curiously-recurring-template-pattern/
-* https://stackoverflow.com/questions/4173254/what-is-the-curiously-recurring-template-pattern-crtp
+* [https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern](https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern)
+* [https://www.fluentcpp.com/2017/05/12/curiously-recurring-template-pattern/](https://www.fluentcpp.com/2017/05/12/curiously-recurring-template-pattern/)
+* [https://stackoverflow.com/questions/4173254/what-is-the-curiously-recurring-template-pattern-crtp](https://stackoverflow.com/questions/4173254/what-is-the-curiously-recurring-template-pattern-crtp)
