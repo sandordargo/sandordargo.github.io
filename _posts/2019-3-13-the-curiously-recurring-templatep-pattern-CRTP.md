@@ -7,7 +7,6 @@ tags: [c++, tutorial, crtp]
 excerpt_separator: <!--more-->
 ---
 In this article, we are going to discover the pattern that is called the Curiously Recurring Template Pattern. Are you curious? Read on!
-
 <!--more-->
 
 ## Introduction

@@ -2,7 +2,7 @@
 baseurl: ""
 url: "http://sandordargo.com"
 title: Sandor Dargo's Blog # site's title
-description: "A blog about the everydays of a software developer who tries to practice craftsmanhip and follow the stoic philoshophy" # used by search engines
+description: "A blog about the everydays of a software developer who tries to practice craftsmanhip and follow the stoic philoshophy" # by search engines
 permalink: /blog/:year/:month/:day/:title
 plugins: [jekyll-paginate, jekyll-seo-tag, jekyll-redirect-from]
 future: false
