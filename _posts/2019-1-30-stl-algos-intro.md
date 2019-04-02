@@ -30,4 +30,8 @@ According to [cplusplus.com](http://www.cplusplus.com/reference/algorithm/), we 
 
 Some groups I'll show you in one post, like min/max, but some other groups which are way bigger, like _Non-modifying sequence operations_ I'll break down into smaller chunks.
 
+Already published articles of this series:
+* [all_of, any_of, none_of](/blog/2019/02/20/stl-algorithm-tutorial-part-1-any-all-none)
+* [for_each](/blog/2019/04/03/stl-algorithm-tutorial-part-2-for_each)
+
 Stay tuned!
