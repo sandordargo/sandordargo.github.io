@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Forty and still a dev?"
-date: 2019-XX-XX
+date: 2019-5-22
 category: dev
-tags: [ageism, career]
+tags: [ageism, career, discuss, inclusion]
 excerpt_separator: <!--more-->
 ---
 I'm a regular attendee of the [Riviera Software Craftsmanship Meetup](https://www.meetup.com/Riviera-SCC/). It's so good to listen to fresh ideas. And of course, to have a good craft beer ;)

@@ -27,4 +27,4 @@ Any of these can be a burning question and the answers can show where you will e
 
 The first part will help you give the right answers and the next two will give you the means to follow on the uncovered path and the strength to start it over if in any case, the path happens to be a dead end.
 
-[The Obstacle Is The Way](https://amzn.to/2tqsDf1) is a great read for those who look for a practical life guide, for those who want to learn about stoicism, but in a practical, not too [lengthy way](romes last citizen). I think I'll reread it more than once.
+[The Obstacle Is The Way](https://amzn.to/2tqsDf1) is a great read for those who look for a practical life guide, for those who want to learn about stoicism, but in a practical, not too [lengthy way](http://sandordargo.com/blog/2019/05/08/romes-last-citizen). I think I'll reread it more than once.
