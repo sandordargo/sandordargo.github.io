@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The Obstacle Is The Way by Ryan Holiday"
-date: 2019-X-X
+date: 2019-5-30
 category: books
 tags: [books, stoic, philosophy, life guide]
 excerpt_separator: <!--more-->
@@ -21,7 +21,7 @@ The book is organized around three pillars: perception, action and will. Althoug
 
 _Perception._
 
-"There is no good or bad to the practising Stoic. There is only perception." That is something in your control. It depends on your emotional reactions how you perceive things. Are you devastated or do you see an opportunity? Are you outraged or you just let it go? Is it up to you or you have nothing to do with it?
+"There is no good or bad to the practising Stoic. There is only perception." That is something in your control. It depends on your emotional reactions about how you perceive things. Are you devastated or do you see an opportunity? Are you outraged or you just let it go? Is it up to you or you have nothing to do with it?
 
 Any of these can be a burning question and the answers can show where you will end up in your life. If you can control your perception and emotions, you did more than half of the job. The road will appear and even if it's bumpy, you just have to push through it.
 
