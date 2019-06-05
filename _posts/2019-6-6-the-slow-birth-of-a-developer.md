@@ -1,19 +1,18 @@
 ---
 layout: post
 title: "The Slow Birth of a Developer"
-date: 2018-XX-XX
+date: 2019-6-6
 category: dev
 tags: [philosophy, stoic, career]
 excerpt_separator: <!--more-->
 ---
 "Nothing is slower than the true birth of a man." - said Hadrian to his selected successor, the young Marcus Aurelius. At least in the novel called [Memoirs of Hadrian](https://amzn.to/2W1Fgua) by [Marguerite Yourcenar](https://en.wikipedia.org/wiki/Marguerite_Yourcenar).
 <!--more-->
+What the author meant by this idea is that none of us is born with wisdom, neither we get it in one specific moment. As [Ben Hardy](https://medium.com/@benjaminhardy) said in one of his articles, big changes will always be gradual. We get some ideas from here and there, we think about them consciously, we digest them even after unconsciously, and those ideas get organized even during while we sleep. And little by little, through our thoughts we change.
 
-What the author meant by this idea is that none of us is born with wisdom, neither we get it in one specific moment. As [Ben Hardy](https://medium.com/@benjaminhardy) said in one of his articles, big changes will always be gradual. We get some ideas from here and there, we think about them consciuosly, we digest them even after unconsciuosly, and those ideas get organized even during while we sleep. And little by little, through our thoughts we change.
+We, developers, are humans even if certain people question that sometimes.
 
-We, developers, are humans even if certain question that sometimes.
-
-None of us is born with the knowledge of a __rock star__ developer. Not even with the knowledge of how to assemble a simple hello world application. It is really an important point to remember espacially when we are doing code reviews for developers with less experience. You were there, I was there, maybe we are still right there. We are never invited to a [code review](https://dev.to/sandordargo/sane-office-environment-with-code-review-guidelines-3k0h) to judge, but to help.
+None of us is born with the knowledge of a __rock star__ developer. Not even with the knowledge of how to assemble a simple hello world application. It is really an important point to remember especially when we are doing code reviews for developers with less experience. You were there, I was there, maybe we are still right there. We are never invited to a [code review](https://dev.to/sandordargo/sane-office-environment-with-code-review-guidelines-3k0h) to judge, but to help.
 
 Can you remember the day when you became a developer?
 
@@ -25,7 +24,7 @@ It was more gradual, it was a long process.
 
 Reading your first programming book, following through the first tutorial. Figuring out the first compiler issues. Solving production bugs. Crashing prod. Falling it back. Getting a big bunch of negative comments in a code review. Having rejected pull requests. Having merged pull requests. These might be all part of becoming a developer.
 
-Along the way you became a developer. But it's not a specific point where you can ever arrive. It's an everlasting journey. Maybe there will be periods when you will not feel wether you're moving back or forward. There will be other moments when you'll feel like move backwards. 
+Along the way, you became a developer. But it's not a specific point where you can ever arrive. It's an everlasting journey. Maybe there will be periods when you will not feel whether you're moving back or forward. There will be other moments when you'll feel like moving backwards.
 
 Remember one thing. If you care about it, you never move backwards. If you care about it, you'll look for ways to get forward.
 
