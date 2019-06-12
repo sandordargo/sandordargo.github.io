@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Take the lead!"
-date: 2019-XX-XX
+date: 2019-6-12
 category: dev
-tags: [career]
+tags: [career, management]
 excerpt_separator: <!--more-->
 ---
 In the middle of February, one of my colleagues, Bob told me on chat that he hadn't had yet his yearly performance review. It was due by the end of January. He was rather surprised, that I actually completed it. That is because I'm really pushy on my one-2-ones and reviews. I made sure that my manager scheduled it before I left on long vacations. When it had to be rescheduled I took care of it.
@@ -17,7 +17,7 @@ Not at all!
 
 My theory is that most managers will not be offended as long as you don't blame them or you don't bring up that you had to do something instead of them.
 
-Managers work a lot. Maybe in some cases their added value is questionable and they could be (_konmarid_)[https://twitter.com/iamdevloper/status/1094919960030208000?lang=en], but they at least spend a lot of time keeping themselves busy.
+Managers work a lot. Maybe in some cases their added value is questionable and they could be [_konmarid_](https://twitter.com/iamdevloper/status/1094919960030208000?lang=en), but they at least spend a lot of time keeping themselves busy.
 
 Your priorities and theirs will be almost all the time different. Period.
 
@@ -39,7 +39,7 @@ That was the first time, but not the last that I had to write my own recommendat
 
 It is actually very good because you know why you need that letter, you know what you'd like to have in it. You are in control, you drive!
 
-If you can do the same for your training plan, your performance review, don't consider it as [an obstacle. It is the way to go!]() You might get a better review later on, you might attend better trainings if you can make the proposal.
+If you can do the same for your training plan, your performance review, don't consider it as [an obstacle. It is the way to go!](http://sandordargo.com/blog/2019/05/30/the-obstacle-is-the-way) You might get a better review later on, you might attend better trainings if you can make the proposal.
 
 Write your evaluation, write your plans, prepare whatever you can! And don't forget to share it when you send the invitation! Your manager will be even more happy, that she has to prepare less. Of course, don't expect to have everything accepted as is, but you set the tone, you set the baseline.
 
@@ -49,7 +49,7 @@ If there are some topics that you can settle on without having a meeting try to 
 
 ## Conclusion
 
-Be proactive with your manager. Most of them will like it. They will understand that you are not an extra burden, on the contrary, you take some pain off their backs. Of course, you know your manager and you should be able to understand quickly if she is not like that and just don't force it. What to in those cases is a story for another day.
+Be proactive with your manager. Most of them will like it. They will understand that you are not an extra burden, on the contrary, you take some pain off their backs. Of course, you know your manager and you should be able to understand quickly if she is not like that and just don't force it. What to do in those cases is a story for another day.
 
 If your manager likes that you act proactively, make good use of it! Prepare your training plan, the topics for your one-2-ones, the material for your performance reviews. You have a much better chance to get what you look for if you set the baseline compared to if you let your manager do that.
 
