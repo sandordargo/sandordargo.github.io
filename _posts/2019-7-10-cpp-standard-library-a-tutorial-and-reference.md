@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "The C++ Standard Library: A Tutorial and Reference"
-date: 2019-X-XX
+title: "The C++ Standard Library: A Tutorial and Reference by Nicolai Josuttis"
+date: 2019-7-10
 category: dev
 tags: [c++, stl, books, review]
 excerpt_separator: <!--more-->
 ---
 For each quarter, I define three goals for myself as described in [Setting yourself up to success](http://sandordargo.com/blog/2018/02/28/setting-yourself-up-to-succeed). In the previous quarters, I had personal goals related to the [C++ Standard Library](http://www.cplusplus.com/reference/).
-
+<!--more-->
 As I was already recommended to read it, I started to consume the monstre 1100 pages long book [The C++ Standard Library: A Tutorial and Reference (2nd Edition)](https://amzn.to/2HXyku9) by [Nicolai Josuttis](http://www.josuttis.com/).
 
 I had the solid intention of reading from cover to cover, but I have to admit I failed this. It's a fascinating book, uncovering a lot of not-so-well-known features and characteristics of the Standard Library, but as the end of its title suggests it should be handled as a reference. You know more or less what is inside and if you need to check something, you can go an open it on the good page.
@@ -20,4 +20,4 @@ It can also serve as a source of inspiration for developers who want to go to th
 
 Probably this latter has been the most important use of this book for me. I found a lot of small parts of the STL, I want to master. Just to mention a couple of alike topics: piecewise construction or template constructors.
 
-I can't recommend [this book](https://amzn.to/2HXyku9) to read from cover to cover as I didn't do it, but I definitely to suggest to skim it through and spend more time on the topics you find interesting, first to read the corresponding chapters and then to find ways to practice what you read.
+I can't recommend [this book](https://amzn.to/2HXyku9) to read from cover to cover as I didn't do it, but I definitely suggest to skim it through and spend more time on the topics you find interesting, first to read the corresponding chapters and then to find ways to practice what you read.
