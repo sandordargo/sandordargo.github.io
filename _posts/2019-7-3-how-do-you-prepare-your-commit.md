@@ -61,7 +61,7 @@ I'm not a shell guru and _I like to copy and paste from Stackoverflow_, so I was
 ```
 [alias]
     da = "! addprev() { while true; do \
-          read -p \"Do you wish to add this file? ([Y]es, [N]o, [P]atch)\" yn ; \
+          read -p "Do you wish to add this file? ([Y]es, [N]o, [P]atch)" yn ; \
           case $yn in \
           [Yy]* ) git add $1; break;; \
           [Pp]* ) git add -p $1; break;; \
@@ -103,12 +103,10 @@ Like this, it's straightforward why my solution didn't work.
 Now I understood that I only have to change directories if I'm not in the root. I wrote a small function to make that happen:
 
 ```
-if [ -n \"${GIT_PREFIX}\" ]; then \
+if [ -n "${GIT_PREFIX}" ]; then \
   cd ${GIT_PREFIX} ; \
 fi \
 } ; \
-echo \"$1\" ; \
-
 ```
 
 This is working fine and I'm using it both for side projects and for work. Here is my complete solution:
@@ -116,7 +114,7 @@ This is working fine and I'm using it both for side projects and for work. Here 
 ```
 [alias]
     da = "! addprev() { while true; do \
-          read -p \"Do you wish to add this file? ([Y]es, [N]o, [P]atch)\" yn ; \
+          read -p "Do you wish to add this file? ([Y]es, [N]o, [P]atch)" yn ; \
           case $yn in \
           [Yy]* ) git add $1; break;; \
           [Pp]* ) git add -p $1; break;; \
@@ -125,11 +123,10 @@ This is working fine and I'm using it both for side projects and for work. Here 
           esac \
         done } ; \
         gotoUsedDirectory() { \
-        if [ -n \"${GIT_PREFIX}\" ]; then \
+        if [ -n "${GIT_PREFIX}" ]; then \
           cd ${GIT_PREFIX} ; \
         fi \
         } ; \
-        echo \"$1\" ; \
         gotoUsedDirectory && git diff $1 && addprev $1"
 ```
 
@@ -141,4 +138,4 @@ The most important takeaway is that you can access shell any time which from git
 
 ## Call to action
 
-If you like the idea and you think it would enhance your workflow, feel free to take [this small gist](https://gist.github.com/sandordargo/ce3a55be6bd794be1826391ebe95718b) and start using it. If you'd like to be notified of my new posts, follow me on [Twitter](https://twitter.com/SandorDargo).
+If you like the idea and you think it would enhance your workflow, feel free to take [this small gist](https://gist.github.com/sandordargo/ce3a55be6bd794be1826391ebe95718b) and start using it - copy pasting from this page might now work due to character escape issues. If you'd like to be notified of my new posts, follow me on [Twitter](https://twitter.com/SandorDargo).
