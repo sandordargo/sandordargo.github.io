@@ -18,7 +18,7 @@ In this next part of [the big STL algorithm tutorial](http://sandordargo.com/blo
 
 There is no big surprise about the goal of `std::copy`. It takes the elements of the input range and copies them to the output. Let here be an example:
 
-```
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -43,7 +43,7 @@ So we have two options to choose from.
 
 1) We can make sure that the output vector has a big enough size for example by declaring it with the size of the input like this:
 
-```
+```cpp
 auto copiedNumbers = std::vector<int>(inputNumbers.size());
 ```
 
@@ -54,7 +54,7 @@ This approach has multiple disadvantages.
 
 2) Instead, you can use an _inserter_ which is an inserter __iterator__ and as its name suggests it will help you to add new elements to the output vector. You can use it like this:
 
-```
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -77,7 +77,7 @@ A particular problem you might think off is that our output container is empty i
 
 If you want to help with that, you might use `std::vector::reserve`, which will reserve a big enough memory area for the vector so that it can grow without new allocations. And if the reserved size is not enough, there won't be a segmentation fault or any other issue, just a new allocation.
 
-```
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -101,13 +101,13 @@ What we could observe is that `copy` doesn't insert new elements on its own, but
 
 `copy` took its inputs by a pair of iterators. One marked the beginning of the input range and one the end. But what if you want to copy let's say 5 elements. Easy-peasy, you can still use copy:
 
-```
+```cpp
 std::copy(inputNumbers.begin(), inputNumbers.begin()+5, std::back_inserter(copiedNumbers));
 ```
 
 Pointer arithmetics work well on iterators, so you are free to do this. But you have a more elegant way, you can use `copy_n` and then you need only the first iterator:
 
-```
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -131,7 +131,7 @@ Otherwise `copy_n` has the same characteristics as `copy`.
 
 Let's say you only want to copy certain elements of a list. For example only the even numbers? What can you do? You can simply call `copy_if` and pass your condition in the form of a unary predicator. What can it be? It can be a function object, a function pointer or simply a [lambda expression](http://sandordargo.com/blog/2018/12/19/c++-lambda-expressions). Due to its simplicity, I stick to lambdas:
 
-```
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -160,14 +160,14 @@ Think about the following case.
 
 You have an input range of `{1, 2, 3, 4, 5, 6, 7}` and you want to copy the part `{1, 2, 3}` over `{2, 3, 4}`. To make it more visual:
 
-```
+```cpp
 {1, 2, 3, 4, 5, 6, 7} => {1, 1, 2, 3, 5, 6, 7}
 ```
 So we try to use `copy` and the output container is the same as the input.
 
 You might try this code:
 
-```
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -185,7 +185,7 @@ int main () {
 ```
 The output might be different compared to what you expected - it depends on your expectation and compiler:
 
-```
+```cpp
 1
 1
 1
