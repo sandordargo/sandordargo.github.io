@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Never split the difference: Negotiating As If Your Life Depended On It by Christopher Voss"
-date: 2019-8-20
+date: 2019-8-21
 category: books
 tags: [books, negotiation]
 excerpt_separator: <!--more-->
