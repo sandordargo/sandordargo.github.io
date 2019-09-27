@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The big STL Algorithms tutorial: modifying sequence operations - copy et al."
+title: "The big STL Algorithms tutorial: modifying sequence operations - move and swap"
 date: 2019-9-25
 category: dev
 tags: [cpp, tutorial, stl, algorithms]
