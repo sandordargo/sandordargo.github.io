@@ -112,7 +112,7 @@ Write `[upperBound]` and our lambda will have the value of it.
 ```
 auto upperBound = 42;
 [upperBound](int value) {
-  return 0 < value && value < upperBound; // doesn't compile, WTF is upperBound?
+  return 0 < value && value < upperBound;
 }
 ```
 
@@ -123,7 +123,7 @@ With the [well-known ampersand]() you can capture the variable by its reference,
 ```
 auto upperBound = 42;
 [&upperBound](int value) {
-  return 0 < value && value < upperBound; // doesn't compile, WTF is upperBound?
+  return 0 < value && value < upperBound;
 }
 ```
 This implies - at least - two important things:
@@ -147,7 +147,7 @@ How to fix this? There are two simple ways. One is that you make a local copy an
 m_upperBound = 42;
 auto upperBound = m_upperBound;
 [=](int value) {
-  return 0 < value && value < upperBound; // doesn't compile, m_upperBound is not a non-static local
+  return 0 < value && value < upperBound;
 }
 ```
 
@@ -171,7 +171,7 @@ As we previously said, an only non-static local variable can be saved with the c
 ```
 
 [this](int value) {
-  return 0 < value && value < this->m_upperBound; // doesn't compile, m_upperBound is not a non-static local
+  return 0 < value && value < this->m_upperBound;
 }
 ```
 
