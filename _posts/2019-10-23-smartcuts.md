@@ -27,7 +27,7 @@ But simplicity is not only about individual decisions. It's also about product d
 
 Last but not least, Snow writes about 10x thinking. Thinking big has a big tradition in motivational literature and its importance can be explained in multiple ways.
 
-One is that if you aim high, like 10x you have to approach things from a different perspective and even if you don't manage to reach the 10x goal you have in front of your eyes, only let's say 2x or 3x. You already won big compared to the others.
+One is that if you aim high, like 10x you have to approach things from a different perspective and even if you don't manage to reach the 10x goal you have in front of your eyes, only let's say twice or three times. You already won big compared to the others.
 
 The other approach is what Snow took in his book is that while people are willing to support small dreams, they do it only with kind words. On the other hand, they are more happy to support huge dreams by investing their money and even their lives in it.
 
