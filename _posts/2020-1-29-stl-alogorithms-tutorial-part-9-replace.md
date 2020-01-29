@@ -176,4 +176,4 @@ Today, we had a peek into the algorithms replacing elements of a container. We s
 
 We also saw that the `replace*` algorithms can only replace all the items matching the condition, in order to replace a given number of items, other algorithms have to be used - a topic for another blog post.
 
-Next time we’ll start learning about the transform algorithm. Stay tuned!
+Next time we’ll learn about the fill and generate algorithms. Stay tuned!
