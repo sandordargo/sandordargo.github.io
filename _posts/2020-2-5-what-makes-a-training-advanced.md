@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "What makes a training advanced?"
-date: 2020-xx-xx
+date: 2020-2-5
 category: dev
-tags: [training, course, python, discussion]
+tags: [training, watercooler, python, discuss]
 excerpt_separator: <!--more-->
 ---
 I've recently had the chance to attend an advanced Python course. I was really waiting for those three days. By the end of it, my enthusiasm waned. Why? Was the teacher not knowledgeable enough? Was he just not a good presenter?
@@ -28,6 +28,6 @@ Have you ever been in a similar situation? Please share your experience both as 
 
 How do you accept trainees? Should you reject some even if they would bring money?
 
-For the Pythonistas, what makes a Python training advanced after all? List comprehensions is already an advanced concept and I am too harsh?
+For the Pythonistas, what makes a Python training advanced after all? List comprehension is already an advanced concept and I am too harsh?
 
 Thanks for your thoughts!
