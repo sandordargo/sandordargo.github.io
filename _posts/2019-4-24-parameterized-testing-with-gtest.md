@@ -19,7 +19,7 @@ The first question I might have to answer is what parameterized tests are?!
 
 Imagine that you have a couple of quite similar tests, like these:
 
-```
+```cpp
 #include <gtest/gtest.h>
 
 #include <LeapYearCalendar.h>
@@ -57,7 +57,7 @@ You might start off in different directions.
 
 One possible way to make the code DRYer is to create a fixture and get rid off the initialization of `Foo`.
 
-```
+```cpp
 
 #include <gtest/gtest.h>
 
@@ -91,7 +91,7 @@ This is nice, we might decide to stay here, but still, the code seems quite repe
 
 Another option is to create a list of years within the test case and iterate over it.
 
-```
+```cpp
 #include <gtest/gtest.h>
 
 #include <LeapYearCalendar.h>
@@ -107,7 +107,7 @@ TEST(LeapYearIterationTest, OddYearsAreNotLeapYears) {
 ```
 In terms of repetitiveness, in my opinion, this code is better, it's denser, yet it is very readable. But it has a big flaw! A good unittest should have only one logical assertion - some exceptions as always apply. On the other hand, in this case, we have multiple different assertions that should not be combined into one.
 
-We might say this is a theoretical problem, but it has a practical issue too. Let's say that four our 2nd iteration the test fails. What happens then? Our tests are stopped and all the other values will not be tested. We miss the feedback for the other 4 values.
+We might say this is a theoretical problem, but it has a practical issue too. Let's say that for our 2nd iteration the test fails. What happens then? Our tests are stopped and all the other values will not be tested. We miss the feedback for the other 4 values.
 
 Maybe our code would fail with all the other values, but we will have to discover these failures one by one. What a pity!
 
@@ -127,7 +127,7 @@ In the coming example, I'm going to assume that we are building tests for the [l
 
 First, we need to create our parameterized test class. Let's call it `LeapYearParametrizedTests` and it will inherit from  `::testing::TestWithParam<T>`. `T` is a template parameter and it is going to be the type of the parameter or parameters we want to pass in. Let's start with a simple example, where the parameters will be of the type integer.
 
-```
+```cpp
 class LeapYearParameterizedTestFixture :public ::testing::TestWithParam<int> {
 protected:
     LeapYearCalendar leapYearCalendar;
@@ -136,7 +136,7 @@ protected:
 
 Next, we need a test case with an assertion in it.
 
-```
+```cpp
 TEST_P(LeapYearParameterizedTestFixture, OddYearsAreNotLeapYears) {
     int year = GetParam();
     ASSERT_FALSE(leapYearCalendar.isLeap(year));
@@ -148,7 +148,7 @@ As the first parameter, we have to pass the name the test class and as the secon
 
 So far, so good! Now we don't need anything else, but to call our use-case with - preferably - multiple inputs.
 
-```
+```cpp
 INSTANTIATE_TEST_CASE_P(
         LeapYearTests,
         LeapYearParameterizedTestFixture,
@@ -162,7 +162,7 @@ Here we call the `INSTANTIATE_TEST_CASE_P` macro with first with a random name, 
 Et voila, it's as easy as that! Here is the full example. I included a leap year implementation so you can run it easily if you have GTest available. You can also refer to my repo for the code and instructions for compiling and running it.
 
 
-```
+```cpp
 #include <gtest/gtest.h>
 
 #include <LeapYearCalendar.h>
@@ -195,7 +195,7 @@ _Also note that about GTest v1.8.1 you should use `INSTANTIATE_TEST_SUITE_P` ins
 
 It might happen that you have already a test fixture available, like this one:
 
-```
+```cpp
 class LeapYearTestFixtureToBeParameterized : public ::testing::Test
 {
 protected:
@@ -205,7 +205,7 @@ protected:
 
 In this case, it is very simple, the fixture itself just helps to avoid declaring a leap year object in each different test case. Thus we can keep them really compact:
 
-```
+```cpp
 TEST_F(LeapYearTestFixtureToBeParameterized, 1996_IsDivisibleBy4_ShouldBeALeapYear) {
   ASSERT_TRUE(leapYearCalendar.isLeap(1996));
 }
@@ -229,7 +229,7 @@ Put aside ugly global variables, what else can we do?
 
 We can inherit from `::testing::WithParamInterface<T>` instead of `::testing::TestWithParam<T>`!
 
-```
+```cpp
 class LeapYearTestFixtureToBeParameterized : public ::testing::Test
 {
 protected:
@@ -253,7 +253,7 @@ Well, you cannot pass more than one template arguments to the demonstrated class
 
 Here is a full example:
 
-```
+```cpp
 #include <tuple>
 
 #include <gtest/gtest.h>
