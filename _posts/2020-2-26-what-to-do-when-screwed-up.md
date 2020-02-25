@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "What to do when you screwed up?"
-date: 2020-XX-XX
+date: 2020-2-26
 category: stoic
 tags: [watercooler, stoic, philosophy]
 excerpt_separator: <!--more-->
@@ -11,7 +11,7 @@ Have you ever done something silly in your job?
 Obviously, you have. Just like me. Or better to say, all of us.
 <!--more-->
 
-You might ask what kind of silliness I just meant. It doesn't matter. It can be an offence against moral, ethics, company processes or it can be severe technical mistakes.
+You might ask what kind of silliness I just meant. It doesn't matter. It can be an offense against morals, ethics, company processes or it can be severe technical mistakes.
 
 These wrongdoings can come from considered or not considered negligence or simple laziness. Even from ignorance. It doesn't matter.
 
@@ -33,7 +33,7 @@ He deliberately went against the company rules so that he could control his musi
 
 Even though this was quite a few years ago, application scanners were already running and his software was identified.
 
-Leslie's boss talked to him and he said, of course, he would never do the same thing again.
+Leslie's boss talked to him and Leslie confirmed, of course, he would never do the same thing again.
 
 His software was removed. And he didn't do the same thing again.
 
@@ -41,11 +41,11 @@ Well. Not exactly the same thing. He thought he could outsmart the scanner. He c
 
 Isn't that a smart move?!
 
-Unluckily, the scanner tool was too smart.
+Unluckily, the scanner was too smart.
 
-Next, it was not his boss coming alone, but together with the security and a nice little cardboard box.
+Next, it was not his boss coming alone, but together with a security guard and a nice little cardboard box.
 
-The boss had no choice, in fact, his hands were tied by the company processes.
+The boss had no choice, in fact, his hands were tied by the company policies.
 
 Leslie had to go.
 
