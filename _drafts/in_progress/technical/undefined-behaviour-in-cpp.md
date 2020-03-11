@@ -69,3 +69,62 @@ https://www.nayuki.io/page/undefined-behavior-in-c-and-cplusplus-programs
 https://en.cppreference.com/w/cpp/language/ub
 https://en.cppreference.com/w/cpp/language/definition
 https://www.geeksforgeeks.org/undefined-behavior-c-cpp/
+
+
+
+# C++OnSea
+
+
+## Define Undefined Behaviour
+
+## Show Undefined Behaviour in running code
+
+When you access an element outside a container of the STL, the result is not so promising. You effect may be an error or undefined behaviour. Undefined behaviour means all bets are open
+
+https://www.modernescpp.com/index.php/c-core-guidelines-avoid-bound-errors
+
+
+## List undefined behaviours in the STL (containers at vs operator[], general UBs in algorithms through invalid parameters, transform, copy_n, swap, is_permutation)
+
+## Rational behind UBs: shorter API, simpler implementation, performance optimization
+
+## Why undefined behaviour is allowed in the STL
+
+STL almost never checks for logical errors => no exceptions due to logical pobs
+only `at()`! (vectors and deques)
+
+late standardization of exceptions
+performance matters
+
+no perf leak + no container invariants (???) violation
+*****
+CONTNIUE HERE
+******
+
+https://books.google.fr/books?id=n9VEG2Gp5pkC&pg=PA139&lpg=PA139&dq=stl+undefined+behaviour&source=bl&ots=Rgm2rj9aQS&sig=ACfU3U36MSxzbwEvaRUxy_HfotBd3g4ePw&hl=en&sa=X&ved=2ahUKEwj90ce66LfnAhXBz4UKHXfzB5MQ6AEwA3oECAYQAQ#v=onepage&q=stl%20undefined%20behaviour&f=false
+
+
+----
+When undefined behaviour is allowed, it's usually for reasons of efficiency.
+
+If the standard specified what has to happen when you access an array out of bounds, it would force the implementation to check whether the index is in bounds. Same goes for a vector, which is just a wrapper for a dynamic array.
+
+In other cases the behaviour is allowed to be undefined in order to allow freedom in the implementation. But that, too, is really about efficiency (as some possible implementation strategies could be more efficient on some machines than on others, and C++ leaves it up to the implementer to pick the most efficient strategy, if they so desire.)
+https://stackoverflow.com/questions/22059258/why-is-undefined-behavior-allowed-in-the-stl
+
+
+According to Herb Sutter one marked reason is efficiency. He states that the standard does not impose any requirements on operator[]'s exception specification or whether or not it requires bound checking. This is up to the implementation.
+http://www.gotw.ca/gotw/074.htm
+
+### Performance for vector
+https://stackoverflow.com/questions/3269809/why-is-stdvectoroperator-5-to-10-times-faster-than-stdvectorat
+https://stackoverflow.com/questions/9376049/vectorat-vs-vectoroperator
+
+### check what happens for vector::operator[]() with different implementations
+Always checking bounds would cause a (possibly slight) performance overhead on all programs, even ones that never violate bounds. The spirit of C++ includes the dictum that, by and large, you shouldn't have to pay for what you don't use, and so bounds checking isn't required for operator[]()
+
+## Go through the UBs one by one (which ones will depend on the length on the slot given)
+
+## How to protect ourselves through learning, documentation, assertions, custom checks and constructs
+
+## Conclusion
