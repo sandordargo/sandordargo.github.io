@@ -11,7 +11,9 @@ Maybe you have been there, maybe you'll get into a similar situation soon. Maybe
 
 Some bosses could ironically say oh, you haven’t coded in 3 weeks, 2 days and 6 hours, Mr. Senior Developer? What a pity! You have more important things to do than being so geeky! By the way, have you already sent those TPS reports?
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Fy3rjQGc6lA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="video-container">
+<iframe src="https://www.youtube-nocookie.com/embed/Fy3rjQGc6lA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 You can reach this point in different ways.
 
