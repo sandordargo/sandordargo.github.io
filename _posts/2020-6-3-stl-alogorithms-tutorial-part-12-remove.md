@@ -171,8 +171,6 @@ int main() {
 
 ## Conclusion
 
-Today, we learned about 4 algorithms filling up values in a container. `fill` and `fill_n` put static values in a container, while `generate` and `generate_n` dynamically creates the values populating the target.
+Today, we learned about 4 algorithms removing values from a container. `remove` and `remove_if` will perform in-place modifications, while `remove_copy` and `remove_copy_if` will not touch the input, but instead will create a new output range without the values that we wanted to remove.
 
-Their usage should depend on your use-case, whether you need a fixed number of generated values or a containerful of items.
-
-Next time we’ll learn about the `remove` algorithms. Stay tuned!
+Next time we’ll learn about the `reverse` algorithms. Stay tuned!
