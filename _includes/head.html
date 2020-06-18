@@ -2,6 +2,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="monetization" content="$ilp.uphold.com/LMm94GYj6J9a">
+
+    <!-- seo tags -->
+    {% seo %}
     
     <!-- JQuery (used for bootstrap and jekyll search) -->
     <script src="{{ site.baseurl }}/assets/js/jquery-3.2.1.min.js" ></script>
@@ -59,12 +62,5 @@
 
     </script>
     {% endif %}
-    
-    <!-- seo tags -->
-    {% seo %}
-    <!-- Manual seo tags -->
-    <!--
-    <title>{% if page.title %}{{ page.title }} |{% endif %} {{ site.theme_settings.title }}</title>
-    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.theme_settings.description }}{% endif %}">
-    -->
+
 </head>
