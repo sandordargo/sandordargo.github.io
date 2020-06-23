@@ -3,7 +3,7 @@ layout: post
 title: "Production code as a playground?"
 date: 2019-3-20
 category: dev
-tags: [ dojo, self-learning]
+tags: [dojo, self-learning]
 excerpt_separator: <!--more-->
 ---
 With one of my colleagues, we've been working a lot to create and foster a culture of learning, an environment where constant self-improvement and knowledge sharing is highly valued. Let's say that we are part-time developer advocates. We've achieved some of our goals, but there is still a long way ahead of us. The _"us"_ applies both to the developers and the management.

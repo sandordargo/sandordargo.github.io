@@ -3,7 +3,7 @@ layout: post
 title: "The big STL Algorithms tutorial: Introduction"
 date: 2019-1-30
 category: dev
-tags: [c++, tutorial, stl, algorithms]
+tags: [cpp, tutorial, stl, algorithms]
 excerpt_separator: <!--more-->
 ---
 I've already written quite a few articles about features introduced by C++ 11 and how much it changed how I look at the language. The feature I liked the most is probably the one of lambda expressions. I don't like them for their sheer existence, it's not _l'art pour l'art_, but it really helps using the different STL algorithms. If you want to get a quick introduction to all the 105, have a look at [this video](https://www.youtube.com/watch?v=2olsGf6JIkU ) by the owner of [fluentcpp.com](https://www.fluentcpp.com/).

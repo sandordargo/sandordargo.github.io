@@ -3,7 +3,7 @@ layout: post
 title: "Class initialization and nasty cores"
 date: 2018-4-11
 category: dev
-tags: [c++, code, debugging]
+tags: [cpp, code, debugging]
 header: "Are you the type of person who doesn't pay attention to details? Start using C++. It will give the missing discipline if there is any chance. If you don't pay attention to details, C++ will teach you to do it, or you will leave this language pretty soon. It simply does not tolerate ignorance and laziness. It will hit back when you expect it the least with bloating memory leaks and dramatic core dumps."
 ---
 I've started to work on an old and big application recently so that I can practice what I read in [Michael Feathers'](https://michaelfeathers.silvrback.com/) must-read book on [Working with legacy code](https://amzn.to/2Jf4EWC).

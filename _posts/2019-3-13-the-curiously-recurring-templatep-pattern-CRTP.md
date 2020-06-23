@@ -3,7 +3,7 @@ layout: post
 title: "The Curiously Recurring Template Pattern (CRTP)"
 date: 2019-3-13
 category: dev
-tags: [c++, tutorial, crtp]
+tags: [cpp, tutorial, crtp]
 excerpt_separator: <!--more-->
 ---
 In this article, we are going to discover the pattern that is called the Curiously Recurring Template Pattern. Are you curious? Read on!

@@ -3,7 +3,7 @@ layout: post
 title: "TDD as if you meant it"
 date: 2017-6-7
 category: dev
-tags: [tdd, kata, dojo, c++, learning]
+tags: [tdd, kata, dojo, cpp, learning]
 header: "Recently I had the chance to participate at a coding dojo which was super inspirational.
 "
 ---

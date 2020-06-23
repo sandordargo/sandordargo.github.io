@@ -3,7 +3,7 @@ layout: post
 title: "The C++ Standard Library: A Tutorial and Reference by Nicolai Josuttis"
 date: 2019-7-10
 category: dev
-tags: [c++, stl, books, review]
+tags: [cpp, stl, books, review]
 excerpt_separator: <!--more-->
 ---
 For each quarter, I define three goals for myself as described in [Setting yourself up to success](http://sandordargo.com/blog/2018/02/28/setting-yourself-up-to-succeed). In the previous quarters, I had personal goals related to the [C++ Standard Library](http://www.cplusplus.com/reference/).

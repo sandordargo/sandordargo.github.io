@@ -3,7 +3,7 @@ layout: post
 title: "The big STL Algorithms tutorial: for_each"
 date: 2019-4-3
 category: dev
-tags: [c++, tutorial, stl, algorithms]
+tags: [cpp, tutorial, stl, algorithms]
 excerpt_separator: <!--more-->
 ---
 In this next part of [the big STL algorithm tutorial](/blog/2019/01/30/stl-algos-intro), I'll explain only one function. The `for_each` algorithm.

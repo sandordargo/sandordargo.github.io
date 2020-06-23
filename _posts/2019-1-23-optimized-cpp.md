@@ -3,7 +3,7 @@ layout: post
 title: "Optimized C++ by Kurt Gunteroth"
 date: 2019-1-23
 category: books
-tags: [books, c++, optimization]
+tags: [books, cpp, optimization]
 excerpt_separator: <!--more-->
 ---
 After I attended a training on the subject of optimizing C++, I felt I'd be interested in going a bit deeper. At least to read a bit more about this topic. So I asked the trainer for some books he'd recommend about optimization. One was [Kurt Guntheroth's Optimized C++](https://amzn.to/2vGyHRT). As soon as I finished reading [Essential Skills for the Agile Developer](/blog/2018/06/27/essential-skills-for-the-agile-developer), I started to read this one.

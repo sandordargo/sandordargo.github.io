@@ -3,7 +3,7 @@ layout: post
 title: "Default Member Initializers in C++"
 date: 2020-1-8
 category: dev
-tags: [c++, tutorial, oop]
+tags: [cpp, tutorial, oop]
 excerpt_separator: <!--more-->
 ---
 This topic came up recently during a coding dojo in our department, while we were working on the [ugly trivia](https://kata-log.rocks/ugly-trivia-kata) kata. We wanted to extract a struct, containing the player data. Later we wanted to turn it into a real class with logic in it. Only later, as I prefer doing small steps at a time. Hence we started with a pure data container class, a.k.a. a struct in C++.

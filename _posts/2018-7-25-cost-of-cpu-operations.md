@@ -3,7 +3,7 @@ layout: post
 title: "The cost of CPU operations"
 date: 2018-7-25
 category: dev
-tags: [c++, performance]
+tags: [cpp, performance]
 excerpt_separator: <!--more-->
 ---
 What are the most important things to understand before performing source code optimization? Or even better, what factors to consider when you intend to write performant code?

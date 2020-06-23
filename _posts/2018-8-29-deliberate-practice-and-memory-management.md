@@ -3,7 +3,7 @@ layout: post
 title: "Deliberate practice and memory management"
 date: 2018-8-29
 category: dev
-tags: [c++, dojo, gilded rose, branch by abstraction]
+tags: [cpp, dojo, gilded rose, branch by abstraction]
 excerpt_separator: <!--more-->
 ---
 I have recently read the eye-opening book of [Cal Newport, So Good They Can't Ignore You](/blog/2018/08/22/so-good-they-cant-ignore-you). He emphasizes a lot on the importance of deliberate practice. I also decided to take a bit more seriously my practice sessions and I reorganized [how I spend my personal pomodoros](/blog/2018/02/28/setting-yourself-up-to-succeed) in the morning and at lunchtime to have more deliberate practice. I want to strech my limits. In C++, it's not so difficult.

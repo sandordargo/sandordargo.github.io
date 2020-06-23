@@ -3,7 +3,7 @@ layout: post
 title: "Gilded Rose kata revisited"
 date: 2018-8-8
 category: dev
-tags: [c++, dojo, gilded rose, branch by abstraction]
+tags: [cpp, dojo, gilded rose, branch by abstraction]
 excerpt_separator: <!--more-->
 ---
 If you are into coding dojos and solving katas, you might have already tried the [Gilded Rose kata](https://github.com/emilybache/GildedRose-Refactoring-Kata) by [Emily Bache](https://twitter.com/emilybache?lang=en). 

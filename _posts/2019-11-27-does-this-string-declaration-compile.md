@@ -3,7 +3,7 @@ layout: post
 title: "Does this string declaration compile?"
 date: 2019-11-27
 category: dev
-tags: [c++, puzzle, tricky]
+tags: [cpp, puzzle, tricky]
 excerpt_separator: <!--more-->
 ---
 Fellow C++ developers out there! 

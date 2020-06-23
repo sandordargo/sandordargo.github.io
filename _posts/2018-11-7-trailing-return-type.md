@@ -3,7 +3,7 @@ layout: post
 title: "How do you declare a function in C++?"
 date: 2018-11-7
 category: dev
-tags: [c++, tutorial, clean code]
+tags: [cpp, tutorial, clean code]
 excerpt_separator: <!--more-->
 ---
 Beginning of this year I came back to a C++ developer position and we are making or final steps towards complete a migration to (among others) C++11 and I decided to level up my knowledge. It's almost like discovering a new language which is, by the way, a lot more pleasant than C++98.

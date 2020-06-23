@@ -3,7 +3,7 @@ layout: post
 title: "I went to DevOps D-Day #5"
 date: 2020-1-15
 category: dev
-tags: [conference...]
+tags: [conference, devops, speaker]
 excerpt_separator: <!--more-->
 ---
 I had the chance to go to Marseille this November for the [5th Devops D-Day](https://devopsdday2019.sched.com/) conference.

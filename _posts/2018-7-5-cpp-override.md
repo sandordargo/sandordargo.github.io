@@ -3,7 +3,7 @@ layout: post
 title: "Why to use the 'override' specifier in C++ 11?"
 date: 2018-7-5
 category: dev
-tags: [c++, tutorial, clean code]
+tags: [cpp, tutorial, clean code]
 excerpt_separator: <!--more-->
 ---
 If you know Java this might be completely straightforward to you as you are already used to Java's `@Override annotation`. If you've been always coding in C/C++, this might be new. You might ask yourself the question, why should one put there an extra specifier when it's not necessary. Your code will just work the very same way.

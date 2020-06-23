@@ -3,7 +3,7 @@ layout: post
 title: "The big STL Algorithms tutorial: all_of, any_of, none_of"
 date: 2019-2-20
 category: dev
-tags: [c++, tutorial, stl, algorithms]
+tags: [cpp, tutorial, stl, algorithms]
 excerpt_separator: <!--more-->
 ---
 In this first part of [the big STL algorithm tutorial](http://sandordargo.com/blog/2019/01/30/stl-algos-intro), I'll start with the first chunk of the non-modifying sequence operations.
