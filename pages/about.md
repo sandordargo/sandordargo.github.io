@@ -1,13 +1,14 @@
 ---
 layout: page
-title: About
+title: Hi...
 permalink: /about/
 feature-img: "assets/img/about-me.jpg"
 tags: [About]
 ---
-I am a software craftsman whose biggest passion is continuous learning. After working as a database administrator for one of the most process-oriented corporations, I changed jobs and countries to become a software developer. The more time I've spent on coding, the more I realized how much fun it is and how much I love high-quality code.
+... my name is Sandor. I work as a C++ developer, but I'm also enthusiastic about Python. Before I became a software developer, I was on the dark side. No, I have never been a manager, I meant operations.
 
-A few years ago I joined the craftsmanship community in Amadeus which was the best thing that could happen to me. It's an endless source of new experiences and learning. It's also a place to meet great people from who I can learn or sometimes who I can teach. It helps me to pursue my goal of delivering clean code.
+I was a DBA in one of the most process-oriented corporations (according to NY Times), but I wanted more freedom and creativity. The more time I've spent on coding, the more I realized how much fun it is and how much I love high-quality code - and how far I am from it!
 
-This page serves as a tool to share some of my experiences mostly about IT.
- 
+When I'm not on the road with my family, or not baking something in the kitchen, I read and write. I write mostly about the books I read, the importance of Stoic philosophy, and of course, C++.
+
+Thanks for visiting my blog and if you like it, sign up for [my newsletter](http://eepurl.com/gvcv1j)!
