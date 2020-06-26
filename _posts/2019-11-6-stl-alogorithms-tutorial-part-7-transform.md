@@ -39,7 +39,7 @@ return 0;
 What happens if you run this? You'll get a very nice core dump due to a segmentation fault!
 What does this mean in practice?
 
-If you remember, we hit this problem already in the episode about `[std::copy](http://sandordargo.com/blog/2019/08/14/stl-alogorithms-tutorial-part-5-copy-operations)`. `doubleValues` has been initialized to zero members, and there is simply not enough space in it to insert new elements.
+If you remember, we hit this problem already in the episode about [`std::copy`](http://sandordargo.com/blog/2019/08/14/stl-alogorithms-tutorial-part-5-copy-operations). `doubleValues` has been initialized to zero members, and there is simply not enough space in it to insert new elements.
 
 There are two ways to resolve this. One is to reserve enough space for the vector in the memory by zero initializing enough elements. This is totally acceptable if you know how many elements you'd need and when zero initialization is cheap.
 
