@@ -17,7 +17,7 @@ It tells the reader that "this is a virtual method, that is overriding a virtual
 
 Use it correctly and you see no effect:
 
-```
+```cpp
 class Base
 {
     virtual void foo();
@@ -31,7 +31,7 @@ class Derived : Base
 
 But it will help you _revealing problems with constness_:
 
-```
+```cpp
 class Base
 {
     virtual void foo();
@@ -47,7 +47,7 @@ class Derived : Base
 
 Let's not forget that in C++, methods are non-virtual by default. If we use `override`, we might find that there is nothing to override. Without the `override` specifier we would just simply create a brand new method. _No more base methods forgotten to be declared as virtual._
 
-```
+```cpp
 class Base
 {
     void foo();
@@ -61,7 +61,7 @@ class Derived : Base
 
 We should also keep in mind that when we override a method - with or without the `override` specifier - _no conversions are possible_:
 
-```
+```cpp
 class Base
 {
   public:
@@ -79,3 +79,5 @@ class Derived: public Base
 ``` 
 
 In my opinion, using the override specifier from C++11 is part of clean coding principles. It reveals the author's intentions, it makes the code more readable and helps to identify bugs at build time. Use it without moderation!
+
+_If you are looking for more modern C++ tricks, I'd recommend you to check out [Scott Meyers](https://www.aristeia.com/)'s [Effective Modern C++](https://amzn.to/2VZrLec)!_
