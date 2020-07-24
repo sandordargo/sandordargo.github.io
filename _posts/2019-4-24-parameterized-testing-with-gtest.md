@@ -11,7 +11,7 @@ For one of the latest dojos in our department, we chose a relatively simple one 
 We also applied some extra constraints, such as if after every three minutes our tests were not green (except for the red phase when we had to write a failing test), we had to wipe out our changes (`git reset --hard`).
 <!--more-->
 
-Even with - some non-mentioned - extra constraints this kata doesn't take up one and half hours to implement, so we had some time to try something new. As you could have already guessed based on the title, we were experimenting with parameterized tests in GTest.
+Even with - some non-mentioned - extra constraints this kata doesn't take up one and half hours to implement, so we had some time to try something new. As you could have already guessed based on the title, we were experimenting with [parameterized tests in GTest](https://github.com/sandordargo/parameterizedTestExamplesCpp).
 
 ## How to make our tests less repetitive?
 
@@ -45,7 +45,7 @@ TEST(LeapYearTests, 2013IsOdd_IsNotLeapYear) {
 }
 ```
 
-As you can observe the only things that change are the inputs and the expected results. Wouldn't it be great to reduce the code repetition?
+As you can observe the only things that change are the inputs and the expected results. Wouldn't it be great to [refactor a bit](https://amzn.to/2EhV5s8) and reduce the code repetition?
 
 No doubt, it would be just awesome!
 
@@ -285,11 +285,10 @@ INSTANTIATE_TEST_CASE_P(
 
 It's worth to note two things.
 * As values you pass tuples, as I already suggested.
-* You have to wrap `GetParam()` with std::get<POSITION>() in order to get the desired parameter in a TestCase. As usual, in programming, we start counting from zero.
+* You have to wrap `GetParam()` with `std::get<POSITION>()` in order to get the desired parameter in a TestCase. As usual, in programming, we start counting from zero.
 
 ## Takeaway
 
 In this article, you could learn about how to write parameterized tests with the GTest library. GTest is not the only library you can use to implement such tests in a simple way, [boost::unit_test](https://www.boost.org/doc/libs/1_64_0/libs/test/doc/html/boost_test/tests_organization/test_cases/param_test.html) and [Catch2](https://github.com/catchorg/Catch2/tree/master/docs) also have this nice feature. In later articles, I might show them.
 
 You can download and experiment with the above examples from this [this GitHub repository](https://github.com/sandordargo/parameterizedTestExamplesCpp).
-
