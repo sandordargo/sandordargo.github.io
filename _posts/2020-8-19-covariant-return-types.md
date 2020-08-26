@@ -125,7 +125,7 @@ Car* car = sf.produce();
 
 ## Conclusion
 
-What we have seen in `SUVFactoryLine` is that in C++, in a derived class, in an overriden function you don't have to return the same type than in the base class, but you must return a covariant return type. In other words, you can replace the original type with a "narrower" one, in other words with a more specified data type.
+What we have seen in `SUVFactoryLine` is that in C++, in a derived class, in an overriden function you don't have to return the same type as in the base class, but you must return a covariant type. In other words, you can replace the original type with a "narrower" one, i.e. with a more specified data type.
 
 As you could see, this helps a lot. There is no need for casting at all. But you must not forget to use [override specifier](http://sandordargo.com/blog/2018/07/05/cpp-override) because if you don't use it, it's easy to overlook and you might think that `SUV* SUVFactoryLine::produce()` doesn't override `Car* CarFactoryLine::produce()` while actually it does.
 
