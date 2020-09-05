@@ -2,10 +2,21 @@
 baseurl: ""
 url: "https://www.sandordargo.com/"
 title: Sandor Dargo's Blog # site's title
+tagline: Sandor Dargo's Blog on C++, software development and books
 description: "A blog about C++ software development, books and stoic philosophy applied to software craftsmanship" # by search engines
 permalink: /blog/:year/:month/:day/:title
 plugins: [jekyll-paginate, jekyll-seo-tag, jekyll-redirect-from]
 future: false
+twitter:
+  username: SandorDargo
+  card: summary
+
+social:
+  name: Sandor Dargo
+  links:
+    - https://twitter.com/SandorDargo
+    - https://www.linkedin.com/in/sandor-dargo/
+    - https://github.com/sandordargo/
 
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
