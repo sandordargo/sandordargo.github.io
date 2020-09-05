@@ -11,4 +11,6 @@ I was a DBA in one of the most process-oriented corporations (according to NY Ti
 
 When I'm not on the road with my family, or not baking something in the kitchen, I read and write. I write mostly about the books I read, the importance of Stoic philosophy, and of course, C++.
 
+Speaking about C++, if you think you'll ever have a C++ interview, visit [Daily C++ Interview](https://www.dailycppinterview.com/) and sign up for the free daily content!
+
 Thanks for visiting my blog and if you like it, sign up for [my newsletter](http://eepurl.com/gvcv1j)!

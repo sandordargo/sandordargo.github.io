@@ -1,6 +1,6 @@
 # SITE CONFIGURATION
 baseurl: ""
-url: "http://sandordargo.com"
+url: "https://www.sandordargo.com/"
 title: Sandor Dargo's Blog # site's title
 description: "A blog about C++ software development, books and stoic philosophy applied to software craftsmanship" # by search engines
 permalink: /blog/:year/:month/:day/:title
@@ -50,7 +50,7 @@ theme_settings:
   google_analytics: UA-89625019-1 # Tracking ID, e.g. "UA-000000-01"
   disqus_shortname: sandordargo-github-io
   katex: true # Enable if using math markup
-  portfolio: true
+  portfolio: false
   search: true
   tags: true
   
