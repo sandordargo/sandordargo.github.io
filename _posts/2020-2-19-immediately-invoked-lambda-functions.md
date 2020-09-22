@@ -3,7 +3,7 @@ layout: post
 title: "Immediately invoked lambda functions"
 date: 2020-2-19
 category: dev
-tags: [cpp, lambda, cleancode, performance]
+tags: [cpp, lambda, iilf, performance]
 excerpt_separator: <!--more-->
 ---
 Helping is important in life. You help the weak to get stronger, you help the hungry to learn fishing, you help someone to achieve her goals. Why not help your compiler to perform some optimization? As always, help benefits both the one that helps and the one that received a hand.
