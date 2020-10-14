@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "DevReads to fill up your reading list"
-date: 2020-10-X
+date: 2020-10-7
 category: dev
 tags: [learning, books, showdev, selfimprovement]
 excerpt_separator: <!--more-->
