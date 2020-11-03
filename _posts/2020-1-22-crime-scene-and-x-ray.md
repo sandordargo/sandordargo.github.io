@@ -8,7 +8,7 @@ excerpt_separator: <!--more-->
 ---
 Usually, I write about one single book in a given article, but this is a peculiar occasion. Last months I read both books written by [Adam Tornhill](https://twitter.com/adamtornhill?lang=en): [Your Code as a Crime Scene (_YCCS_)](https://amzn.to/2QKIlhD) and [Software Design X-Rays (_SDXR_)](https://amzn.to/30e2S18).
 <!--more-->
-Despite that three years passed between publishing the two books (_YCCS_ in 2015 and _SDXR+ in 2018), I read them one after the other, which was probably not the wisest decision, even though I enjoyed both.
+Despite that three years passed between publishing the two books (_YCCS_ in 2015 and _SDXR_ in 2018), I read them one after the other, which was probably not the wisest decision, even though I enjoyed both.
 
 I have heard a lot about _Your Code as a Crime Scene_ in the craftsmanship community, but mostly from people who also heard about it. You know it's like _I have a friend whose friend heard about someone having read it._ Finally, it ended up on the top of my reading backlog and I really enjoyed studying the book and experimenting along the way.
 

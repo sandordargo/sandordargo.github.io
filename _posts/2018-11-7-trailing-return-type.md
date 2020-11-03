@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How do you declare a function in C++?"
-date: 2018-11-7
+date: "2018-11-7"
 category: dev
 tags: [cpp, tutorial, clean code]
 excerpt_separator: <!--more-->
