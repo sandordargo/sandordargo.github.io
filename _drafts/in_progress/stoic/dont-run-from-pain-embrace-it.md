@@ -1,1 +1,0 @@
-Don’t Run From Pain, Embrace It

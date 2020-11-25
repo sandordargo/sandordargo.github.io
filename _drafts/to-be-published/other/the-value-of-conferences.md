@@ -9,14 +9,14 @@ excerpt_separator: <!--more-->
 Conferences are fascinating and they are a great way to boost your career.
 
 Yes, most of the content is usually available online. In case of a bit more important conference, not only the slides but even the video recordings. Many say that the true value is in socializing. Tell that to an introvert!
-
+<!--more-->
 I'm not even in danger for the coronavirus, let alone socializing with complete strangers at a conference!
 
-PIC
+![Programmers are safe]({{ site.baseurl }}/assets/img/coronavirus-programmer-meme.jpeg)
 
 Do you get sugar overdose and tons of stickers if you go on youtube? No, but you can still eat your own cookies in great quantities if diabetes and some extra weight are what you are looking for!
 
-While I would be interested in many video recordings, I barely watch them, they are so overwhelming. On the other hand, if I go to a conference, obviously, I'll do my best to pay attention to.
+While I would be interested in many video recordings, I barely watch them, they are so overwhelming. On the other hand, if I go to a conference, obviously, I'll do my best to pay attention to it.
 
 Of course, going on youtube costs you "only" your personal data. You don't have to pay up to thousands out of your pocket. Going to a local conference might require you to take some days off, not to mention prime conferences where you might have to travel to, book some accommodation and pay a decent entry fee.
 
@@ -42,7 +42,7 @@ There is something much better.
 
 Slowly, but much faster than otherwise, you will become an expert.
 
-Let's say you got accepted to a conference where you'll speak about a professional topic. I emphasize the professional topic, because I, for example, have talked about [sourdough baking]() and [my family travels]() at IT conferences. These presentations were more about sharing passion, practice public speaking and building up credibility so that later I can speak about professional topics. The former requires different efforts than the latter.
+Let's say you got accepted to a conference where you'll speak about a professional topic. I emphasize the professional topic, because I, for example, have talked about [sourdough baking](https://www.slideshare.net/SandorDargo/be-your-own-baker) and [my family travels](https://www.slideshare.net/SandorDargo/riviera-dev-work-hard-travel-hard) at IT conferences. These presentations were more about sharing passion, practice public speaking, and building up credibility so that later I can speak about professional topics. The former requires different efforts than the latter.
 
 So you did your fair research and you submitted such a good proposal that you got accepted to a conference even without being a notable expert of your industry. What's the first thing that you'll do?
 

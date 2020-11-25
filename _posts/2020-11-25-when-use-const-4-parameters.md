@@ -12,11 +12,12 @@ This is a piece of advice, many _senior_ developers tend to repeat to juniors, w
 <!--more-->
 
 In this series of articles, we'll discuss about:
-- [`const` functions]()
-- [`const` local variables]()
-- [`const` member variables]()
-- [`const` return types]()
-- `const` parameters
+In this series of articles, we discuss about:
+- [`const` functions](https://www.sandordargo.com/blog/2020/11/04/when-use-const-1-functions-local-variables)
+- [`const` local variables](https://www.sandordargo.com/blog/2020/11/04/when-use-const-1-functions-local-variables)
+- [`const` member variables](https://www.sandordargo.com/blog/2020/11/11/when-use-const-2-member-variables)
+- [`const` return types](https://www.sandordargo.com/blog/2020/11/18/when-use-const-3-return-types)
+- [`const` parameters](https://www.sandordargo.com/blog/2020/11/25/when-use-const-4-parameters)
 
 We already covered the last but one topic. Today we finish by stating when we should use const parameters. Let's differentiate between plain old data types and classes.
 
