@@ -43,6 +43,8 @@ In order to find that niche, they had to answer 3 questions and find the sweet s
 - What you can be the best in the world at?
 - What drives your economic engine?
 
+![Hedghehog Concept from publicism.info]({{site.baseurl}}/assets/img/hedgehog-concept.png)
+
 The second question is probably the most interesting one. Good to great companies' transformations usually didn't happen revolving around their core business. They didn't answer the question on _what they were the best at_. They had to understand _what they can become the best at in the world_. Often, it meant to turn the business completely around.
 
 To form such a hedgehog vision, companies needed a lot of time. They didn't simply try to answer these questions. There were a lot of debates involved while trying to understand what and how they were doing.
