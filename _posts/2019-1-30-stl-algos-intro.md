@@ -31,7 +31,22 @@ According to [cplusplus.com](http://www.cplusplus.com/reference/algorithm/), we 
 Some groups I'll show you in one post, like min/max, but some other groups which are way bigger, like _Non-modifying sequence operations_ I'll break down into smaller chunks.
 
 Already published articles of this series:
-* [all_of, any_of, none_of](/blog/2019/02/20/stl-algorithm-tutorial-part-1-any-all-none)
-* [for_each](/blog/2019/04/03/stl-algorithm-tutorial-part-2-for_each)
+- [all_of, any_of, none_of](/blog/2019/02/20/stl-algorithm-tutorial-part-1-any-all-none)
+- [for_each](/blog/2019/04/03/stl-algorithm-tutorial-part-2-for_each)
+- [find et al.](/blog/2019/05/15/stl-algorithm-tutorial-part-3-find)
+- [the rest of non-modifying sequence operations](/blog/2019/07/24/.stl-algorithm-tutorial-part-4-rest-of-non-modifying)
+- [modifying sequence operations - copy et al.](/blog/2019/08/14/stl-alogorithms-tutorial-part-5-copy-operations)
+- [modifying sequence operations - move and swap](/blog/2019/09/25/stl-alogorithms-tutorial-part-6-move-swap-operations)
+- [transform](/blog/2019/11/06/stl-alogorithms-tutorial-part-7-transform)
+- [transform's undefined behaviour](/blog/2019/12/18/stl-alogorithms-tutorial-part-8-transform-non-matching-sizes)
+- [modifying sequence operations - replace_*](/blog/2020/01/29/stl-alogorithms-tutorial-part-9-replace)
+- [modifying sequence operations - fill and generate](/blog/2020/03/11/stl-alogorithms-tutorial-part-10-generate)
+- [replace N elements](/blog/2020/04/22/stl-alogorithms-tutorial-part-11-replace-n)
+- [modifying sequence operations - remove calls](/blog/2020/06/03/stl-alogorithms-tutorial-part-12-remove)
+- [modifying sequence operations - turn things around](https://www.sandordargo.com/blog/2020/07/15/stl-alogorithms-tutorial-part-13-reverse_copy)
+- [modifying sequence operations - rotate functions](/blog/2020/08/12/stl-alogorithms-tutorial-part-14-rotate)
+- [modifying sequence operations - how to get distinct elements](/blog/2020/09/08/stl-alogorithms-tutorial-part-15-unique_copy)
+- [modifying sequence operations - rotate functions](/blog/2020/12/09/stl-alogorithms-tutorial-part-15-shuffle)
+- [partitioning operations](/blog/2021/01/20/stl-alogorithms-tutorial-part-18-partitioning)
 
 Stay tuned!
