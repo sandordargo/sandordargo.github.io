@@ -1,0 +1,2 @@
+
+Today, we learned about sorting algorithms. Some are pretty straightforward (such as `sort`, `partial_sort` or `is_sorted`), while `nth_element` made us - at least me - think and `partial_sort_copy` gave us some surprises and inconsistencies. I hope you enjoyed today's discoveries, next time we'll move from sorting algorithms to binary searches.
