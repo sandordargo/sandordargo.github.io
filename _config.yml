@@ -1,6 +1,6 @@
 # SITE CONFIGURATION
 baseurl: ""
-url: "https://www.sandordargo.com/"
+url: "https://www.sandordargo.com"
 title: Sandor Dargo's Blog # site's title
 tagline: Sandor Dargo's Blog on C++, software development and books
 description: "A blog about C++ software development, books and stoic philosophy applied to software craftsmanship" # by search engines
