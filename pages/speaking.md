@@ -16,6 +16,19 @@ I’m a enthusiastic speaker who can loves sharing knowledge with a pinch of ent
 
 In this talk, I briefly spoke about what undefined behaviour is and what dangers it can bring to our software - to our products. Then I demonstrated that the undefined behaviour is there even in the standard library, in containers, in algorithms. Afterwards, I explained that such behaviour was introduced with care and purpose. We went through some more interesting cases and we will also see how we can protect ourselves.
 
+## Agile Tour Sophia 2020: Refocus on the agile developer
+
+<div class="video-container">
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/m3EiWCgYCiRnyq" width="75%" height="75%" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> </div> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/SandorDargo/refocus-on-the-agile-developer" title="Refocus on the agile developer" target="_blank">Refocus on the agile developer</a> </strong> de <strong><a href="https://www.slideshare.net/SandorDargo" target="_blank">Sandor Dargo</a></strong> </div>
+
+In this talk, I spoke about the importance of not forgetting about the developer in the midst of the agile transformation.
+
+After a brief recap on the history of agile, I enumerate the different agile practices and in particular the dev practices.
+
+I make the point that though agile was made by the developers for the developers, we too often forget about the origins and we demote agile into some project management techniques.
+
+In the second half of the presentation, I speak about some of the most important agile dev practices.
+
 ## DevOps D-Day #5: Zuckerberg's gray T-Shirt and coding guidelines
 <div class="video-container">
 <iframe width="75%" height="75%" src="https://www.youtube.com/embed/CNDejB6Hg5A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
