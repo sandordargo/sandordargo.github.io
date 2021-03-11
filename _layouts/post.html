@@ -16,7 +16,11 @@ layout: default
     {{ content }}
     {% include share_bar.html %}
   </section>
-   
+
+   <a href="https://www.patreon.com/sandordargo" style="float: left; padding-left: 0;"><img src="https://c5.patreon.com/external/logo/become_a_patron_button.png" style="float: left; padding-left: 0;"></a>
+   <div>
+ </div>
+
    <!-- Tag list -->
   {% capture tag_list %}{{ page.tags | join: "|"}}{% endcapture %}
   {% include tags_list.html tags=tag_list %}
