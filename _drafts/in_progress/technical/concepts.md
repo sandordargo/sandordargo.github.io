@@ -958,10 +958,26 @@ A std::vector20 has an inner member value_type (line 14) and the class template 
 instantiated with std::vector<int> (line 13).
 
 
+#### Nested requirements
 
-Mixing these together - compound
-nested -< anonymous
-https://en.cppreference.com/w/cpp/language/constraints
+```
+requires constraint-expression;
+```
+It can be used to specify additional constraints in terms of local parameters.
+Usually it can be replaces with another Integral. It depends on what is more readable...
+As an example we can use from Rainer Grumm's example.
+
+
+## Conclusion
+In this series we discussed a lot about one of the most important new features of C++: Concepts.
+
+We saw that it's motivated by...
+We saw the four different way we can express our requirements...
+We had a sneak-peak on what predefined concepts exist
+We saw how to write our own concepts which was quite a long story
+
+
+concepts with classes?
 
 
 
@@ -1099,3 +1115,30 @@ define some concepts
 what other concepts
 
 WTF to do with template <typename T, typename Ts ...>
+
+Concepts are an extension to the templates feature, they are predicates that you use to express a
+generic algorithm’s expectations on its template arguments.
+Concepts allow you to formally document constraints on templates and have the compiler enforce
+them. As a bonus, you can also take advantage of that enforcement to improve the compile time of
+your program via concept-based overloading.
+The main uses of concepts are:
+Introducing type-checking to template programming
+Simplified compiler diagnostics for failed template instantiations
+Selecting function template overloads and class template specializations based on type properties
+Constraining automatic type deduction
+
+
+
+
+What are the advantages of concepts?
+Requirements for templates are part of the interface.
+The overloading of functions or specialisation of class templates can be based on concepts.
+We get improved error message because the compiler compares the requirements of the template
+parameter with the actual template arguments
+You can use predefined concepts or define your own.
+The usage of auto and concepts is unified. Instead of auto, you can use a concept.
+If a function declaration uses a concept, it automatically becomes a function template. Writing
+function templates is, therefore, as easy as writing a function.
+
+
+

@@ -4,12 +4,14 @@ It's about the last days of the Roman Republic and the early days of the rising 
 
 So what's the in it for that made it interesting?
 
-- history
+- history, know our past
 
-- double faces
+- double faces, people are not black and white, even nero
 
 - something that seems an emerge from the maps, it's all struggles
 
 - ego, pride
 
 - hanyatlo tarsadalom
+
+- people were always brutal

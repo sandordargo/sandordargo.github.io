@@ -6,7 +6,6 @@ category: books
 tags: [books, watercooler, career]
 excerpt_separator: <!--more-->
 ---
-
 This is the second edition of the book and it was promised to include some important updates. As I liked the first edition of the book and I could it get from [Amazon for less than 10 Euros](https://amzn.to/3q2z7Mj), I gave it a try.
 <!--more-->
 In general, I can say that most of the changes all well-marked. This might seem a bit odd and breaks the reading flow, but on the other hand, it also shows how the view of the author on certain things changed and often this comes with some explanations.
