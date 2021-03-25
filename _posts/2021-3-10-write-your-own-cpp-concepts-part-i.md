@@ -6,7 +6,7 @@ category: dev
 tags: [cpp, concepts]
 excerpt_separator: <!--more-->
 ---
-During the previous weeks, we discussed the motivations behind C++ concepts and how to use them with functions and with classes. But we have hardly written any. We defined a functionally incomplete concept called `Number` for the sake of example, but that's it. Now are going into details on what kind of constraints we can express in a concept.
+During the previous weeks, we discussed [the motivations behind C++ concepts](https://www.sandordargo.com/blog/2021/02/10/cpp-concepts-motivations) and [how to use them with functions](https://www.sandordargo.com/blog/2021/02/17/cpp-concepts-4-ways-to-use-them) and [with classes](https://www.sandordargo.com/blog/2021/02/24/cpp-concepts-with-classes). But we have hardly written any. We defined a functionally incomplete concept called `Number` for the sake of example, but that's it. Now are going into details on what kind of constraints we can express in a concept.
 <!--more-->
 
 This article would be too long if I included the different kinds of constraints all at once. In this one, we are going start from the simples concepts combining existing ones then we are going to finish with required operations and in general requirements on a class' API.
@@ -229,7 +229,7 @@ Do we miss something? Yes! We can't use `IntWithPower` as an exponent. We want t
 
 Let's go one by one.
 
-By explicitly specifying the `type_trait` `std::is_integral` for `IntWithPower`, we can make `IntWithPower` an integral type. Of course, if we plan to do so in real life, it's better to make sure that our type has all the characteristics of an integral type, but that's beyond our scope here.
+By explicitly specifying the `type_trait` `std::is_integral` for `IntWithPower`, we can make `IntWithPower` an integral type. Of course, if we plan to do so in real life, it's better to make sure that our type has all the characteristics of an integral type, but that's beyond our scope here. (*Update: specializing most of the type traits results in Undefined Behaviour, so don't do this in production code*)
 
 ```cpp
 template<>
@@ -312,6 +312,6 @@ In this example, we can observe how to write a concept that expects the presence
 
 Today we started to discover how to write our own concepts. First, we combined already existing concepts into more complex ones, then we continued with making requirements on the validity of operations on the constrained types then we finished by writing requirements for any function call with or without a parameter list.
 
-Next time we'll continue with constraining the return types, making type and then nested requirements.
+[Next time we'll continue with constraining the return types, making type and then nested requirements.](https://www.sandordargo.com/blog/2021/03/17/write-your-own-cpp-concepts-part-ii)
 
 Stay tuned!

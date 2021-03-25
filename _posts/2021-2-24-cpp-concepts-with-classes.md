@@ -6,7 +6,7 @@ category: dev
 tags: [cpp, concepts]
 excerpt_separator: <!--more-->
 ---
-Last time we discussed how to use concepts with functions and this time we are going to see how to use concepts with classes. I know it's not what I promised at the end of the previous article, but I realized that I simply forgot about this episode.
+Last time we discussed [how to use concepts with functions](https://www.sandordargo.com/blog/2021/02/17/cpp-concepts-4-ways-to-use-them) and this time we are going to see how to use concepts with classes. I know it's not what I promised at the end of the previous article, but I realized that I simply forgot about this episode.
 <!--more-->
 
 [We saw last week](https://www.sandordargo.com/blog/2021/02/17/cpp-concepts-4-ways-to-use-them) that there are four ways to use concepts with functions:
@@ -174,6 +174,6 @@ Today we discovered the two ways to use concepts with classes. Both with *the `r
 
 With the former, we can even define some complex requirements without having to extract them into separate concepts, while with the latter we can only use one concept per template parameter, but on the contrary, it's very terse. Up to you to choose based on your needs.
 
-Next time, we are really going to discuss what kind of concepts we get from the standard library before we'd actually start writing our own concepts. No other surprises before!
+Next time, we are really going to discuss [what kind of concepts we get from the standard library](https://www.sandordargo.com/blog/2021/03/03/cpp-concepts-in-standard-library) before we'd actually start writing our own concepts. No other surprises before!
 
 Stay tuned!

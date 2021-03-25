@@ -6,7 +6,7 @@ category: dev
 tags: [cpp, concepts, cpp20]
 excerpt_separator: <!--more-->
 ---
-During the last month or so, we examined the ins and outs of C++ concepts. We checked their main motivations, we saw how we can use them and what kind of concepts are shipped with the standard library. Then during the last two weeks, we discovered how to write our own ones.
+During the last month or so, we examined the ins and outs of C++ concepts. We checked their [main motivations](https://www.sandordargo.com/blog/2021/02/10/cpp-concepts-motivations), we saw [how we can use them with functions](https://www.sandordargo.com/blog/2021/02/17/cpp-concepts-4-ways-to-use-them), [with classes](https://www.sandordargo.com/blog/2021/02/24/cpp-concepts-with-classes) and [what kind of concepts are shipped with the standard library](https://www.sandordargo.com/blog/2021/03/03/cpp-concepts-in-standard-library). Then during the last two weeks, we discovered how to write our own ones ([part I](https://www.sandordargo.com/blog/2021/03/10/write-your-own-cpp-concepts-part-i), [part II](https://www.sandordargo.com/blog/2021/03/17/write-your-own-cpp-concepts-part-ii)).
 <!--more-->
 To conclude this series, let's see two real-world examples of useful concepts.
 

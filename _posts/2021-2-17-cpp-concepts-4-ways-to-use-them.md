@@ -232,6 +232,8 @@ Let's also remember that we talk about templates. For whatever combination, a ne
 
 Today, we have seen how to use concepts with function parameters. We detailed 4 different ways and saw that the more verbose ones give us more flexibility on the constraints, while the tersest one (*abbreviated function template*) gives extreme flexibility with the types we can call the function with.
 
-Next time, we are going to discuss what kind of concepts we get from the standard library before we'd actually start writing our own concepts.
+~~Next time, we are going to discuss what kind of concepts we get from the standard library before we'd actually start writing our own concepts.~~
+
+The next article is about [how to use concepts with classes](https://www.sandordargo.com/blog/2021/02/24/cpp-concepts-with-classes)!
 
 Stay tuned!
