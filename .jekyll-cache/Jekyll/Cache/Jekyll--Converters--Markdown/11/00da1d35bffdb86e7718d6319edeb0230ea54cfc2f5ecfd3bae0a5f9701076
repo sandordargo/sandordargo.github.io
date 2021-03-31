@@ -1,2 +1,0 @@
-I"�<p>In one of my previous articles, I wrote about Scott Meyer’s <a href="https://amzn.to/2Rbh5pI">Effective Modern C++</a> and that with its focus on C++11/14 it’s like discovering a completely new language. I already wrote about <a href="/blog/2018/11/07/trailing-return-type">trailing return type declaration</a>. Now it’s time to review what usages you might have in C++ for ampersands (<code class="language-plaintext highlighter-rouge">&amp;</code>).</p>
-:ET

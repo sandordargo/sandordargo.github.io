@@ -1,8 +1,0 @@
-I"¡<p>In this post, we will discover the three different ways you could use the <code class="language-plaintext highlighter-rouge">delete</code> specifier in C++. We are going to see how</p>
-<ul>
-  <li>you can disallow an object from being copied</li>
-  <li>you can limit what kind of implicit conversions you allow for a function call</li>
-  <li>you can limit what kind of template instantiations you allow</li>
-</ul>
-
-:ET

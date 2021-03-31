@@ -1,2 +1,0 @@
-I"<p>In the last article on the series on the STL algorithms, we discussed <code class="language-plaintext highlighter-rouge">std::transform</code>. For not the first time, we saw an interface where the user has to pass in two ranges with the help of three parameters.</p>
-:ET

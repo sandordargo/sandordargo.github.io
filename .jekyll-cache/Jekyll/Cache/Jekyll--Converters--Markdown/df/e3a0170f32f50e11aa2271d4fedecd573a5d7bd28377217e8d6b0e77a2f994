@@ -1,2 +1,0 @@
-I"+<p>When we start coding in an object-oriented programming language we often think that it’s about building nice inheritance hierarchies. So we do. A bit later we learn that we should rather use composition over inheritance. So we do. But we still need inheritance, and from time to time we run into problems where it seems to be the only way. At those times, we might learn about some more specialized forms of inheritance. In C++, this might mean <a href="">private inheritance</a> or <em>virtual inheritance</em>. Today we speak about the latter.</p>
-:ET

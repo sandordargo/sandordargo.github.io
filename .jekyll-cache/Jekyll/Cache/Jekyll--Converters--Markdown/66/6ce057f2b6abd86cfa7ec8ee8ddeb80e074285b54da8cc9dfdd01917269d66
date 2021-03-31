@@ -1,4 +1,0 @@
-I"<p>Recently in my series on C++ <code class="language-plaintext highlighter-rouge">algorithms</code>, <a href="http://sandordargo.com/blog/2020/01/29/stl-alogorithms-tutorial-part-9-replace">I presented the different <code class="language-plaintext highlighter-rouge">replace</code> functions</a> and said that they will replace all the matching elements. If you want to replace only one element or <code class="language-plaintext highlighter-rouge">n</code> elements, you have to find another way.</p>
-
-<p>But what’s that other way?</p>
-:ET

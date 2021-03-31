@@ -1,4 +1,0 @@
-I"A<p>For one of the latest dojos in our department, we chose a relatively simple one to help new people get on board. We were working on the <a href="http://codingdojo.org/kata/LeapYears/">leap year kata</a> in Randori style meaning that we were using only one computer - there were 9 of us.</p>
-
-<p>We also applied some extra constraints, such as if after every three minutes our tests were not green (except for the red phase when we had to write a failing test), we had to wipe out our changes (<code class="language-plaintext highlighter-rouge">git reset --hard</code>).</p>
-:ET

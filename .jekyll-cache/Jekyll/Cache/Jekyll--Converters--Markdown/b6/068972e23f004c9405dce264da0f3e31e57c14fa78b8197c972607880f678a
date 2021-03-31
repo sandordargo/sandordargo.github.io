@@ -1,2 +1,0 @@
-I"e<p>Let’s suppose we have a data model where we store all the winners of wine competitions. I mean virtually. There are nodes with the type of <code class="language-plaintext highlighter-rouge">:COMPETITION</code> and for each competition, we store the winning <code class="language-plaintext highlighter-rouge">:WINE</code>s in a linked list as such:</p>
-:ET

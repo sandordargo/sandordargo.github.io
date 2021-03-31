@@ -1,2 +1,0 @@
-I"å<p>Yesterday we started to sketch up a hello world REST application. Its hello service doesnâ€™t even have to return anything in its response it just has to print <em>hello, world!</em> to the logs. But how do you test that?</p>
-:ET

@@ -1,2 +1,0 @@
-I")<p>The goal of mutation testing or mutation analysis is to evaluate the quality of your existing software tests. In this kind of white-box testing your production code gets modified in tiny ways. A modified piece of code is called a mutant and if it makes a test fail, the mutant gets killed.</p>
-:ET
