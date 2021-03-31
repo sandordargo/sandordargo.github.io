@@ -2,7 +2,7 @@
 layout: page
 title: Speaking
 icon: fas fa-microphone
-order: 5
+order: 4
 permalink: /speaking/
 image:
   src: assets/img/about-me.jpg
