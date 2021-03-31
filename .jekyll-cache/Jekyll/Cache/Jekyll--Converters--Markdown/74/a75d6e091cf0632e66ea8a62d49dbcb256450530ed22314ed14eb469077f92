@@ -1,0 +1,2 @@
+I"b<p>My IntelliJ stopped working properly. When I clicked on run tests, it only compiled the code but never ran anything. I spent some time investigating the issue, I tried to fix this erroneous state, but nothing helped. Reboot (haha), reindexing, other JDK, new run configuration, removing all the settings. Nothing. No clue on stackoverflow either.</p>
+:ET

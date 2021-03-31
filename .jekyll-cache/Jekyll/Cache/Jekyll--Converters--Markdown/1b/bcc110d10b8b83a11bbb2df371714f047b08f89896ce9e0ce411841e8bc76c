@@ -1,0 +1,110 @@
+I"�&<p>First, let’s make it clear what success means in the actual context. Let’s say that success is about how much you are inline with your internal goals. An internal goal is something that you set for yourself and not your manager for example. If the goals articulated by you and your manager are the same, you are either very lucky or you have no will, no vision at all.</p>
+
+<p>In order to achieve your goals, you have to work smart and don’t get deceived by people promising overnight success, you have to work hard as well. For that you need time. I think you already see what direction I am going to if you have ever read any of the modern motivational authors.</p>
+
+<p><strong>In order to succeed you have to spend your time on what really matters to you</strong>, what makes you progress. One would call it <em>time management</em>, others argue and call it <em>priority management</em>. In the end, what matters is what you work on.</p>
+
+<p>I think I’ve understood this for quite some time. I’ve been using schedules, agendas and task lists for long years. I was more or less following them, but more or less is usually not enough. I knew I could do better, but I didn’t know how.</p>
+
+<p>I read a few times about the <a href="https://lifehacker.com/productivity-101-a-primer-to-the-pomodoro-technique-1598992730">pomodoro technique</a>, but never really felt the urge to try it. Then I came across <a href="http://amzn.to/2CmrCXb">Soft Skills: The software developer’s life manual</a> by John Sonmez and <a href="https://simpleprogrammer.com">simpleprogrammer.com</a>. I don’t remember exactly where he mentioned this, but he said that he tried pomodoro once, but didn’t really like it. Then a friend of his convinced him to give it a try once more, but this time strictly following the rules. John resisted for some time, but then he gave in. He tried it and guess what?! The pomodoro technique combined with some tools totally changed the way he worked. This resistance, this fear of new things was so human that it really resonated with me. I said I also give it a try.</p>
+
+<p>So about half a year ago I started to deploy a systematic approach for designing my workdays and weeks. In the explanation, I’m going to follow a bottom-up approach.</p>
+
+<h2 id="those-sweet-tomatoes">Those sweet tomatoes</h2>
+
+<p>I work in pomodori, so in units of 25 minutes. After each pomodoro, I take a 5 minutes break that sometimes lasts a little bit longer. After four pomodori I take a break of 15 minutes.</p>
+
+<p>What do I do in those breaks?</p>
+
+<p>In the short ones, I might walk a bit, or read a short article, or just answer a few chats, go the printer if I need to, etc.</p>
+
+<p>In the long breaks, I can answer some emails, read some medium-sized articles, complete some quick tasks, whatever. But usually, my first big break starts when our daily standup meeting starts.</p>
+
+<p>What do I use a pomodoro for? So just to emphasize, a pomodoro in our context means 25 minutes of uninterrupted activity. The same activity. Unless it’s my wake-up or go-to-bed reading, I read in pomodori. I write blog posts timeframed. I work on <a href="https://wine-disco.herokuapp.com">wine-disco</a> in pomodori, I do my day-to-day job based on pomodori. I do everything based on those tomato units that have any chance to last for at least 25 minutes.</p>
+
+<p>It keeps me focused on the given task, don’t let my mind wander that much and I always know what to take as a next task.</p>
+
+<h2 id="kanban">Kanban</h2>
+
+<p>But how do I know that to next you might ask? I have a sort of kanban board in order to list, to schedule my tasks. I use the free scheme of <a href="https://kanbanflow.com">KanbanFlow</a>. I have a column for each day of the week (well, I only do it for the workdays) and one column named next week and one for done tasks.</p>
+
+<p>Each end of the week/beginning of the week I take tasks from the <em>Next week</em> column and I move them for a given day.</p>
+
+<p>On a given day when I complete a pomodoro, I have to choose among three options.</p>
+<ul>
+  <li>I move the task to <em>Done</em></li>
+  <li>I keep the task because I want to work more on it the same day</li>
+  <li>I move it to another day or the <em>Next week</em> column, for future work</li>
+</ul>
+
+<p>If you want more details, you can watch a video from John Sonmez <a href="https://www.youtube.com/watch?v=W9k0OhJkjQ0">here</a>.</p>
+
+<p>I don’t only add tasks that I work on in pomodori, but smaller ones that serve more as a reminder. For example that I shouldn’t forget to print a reservation confirmation.</p>
+
+<p>So that’s how I organize my work.</p>
+
+<p>There are a lot of tasks that are recurring. For example almost every day I write for 25 minutes. I’m writing a longer article about how we bought our apartment, but I’m also preparing a book about how I became a software developer. It’s more a bio of my first twenty-something years.</p>
+
+<p>Each Monday I dedicate one pomodoro during my lunchtime to review my goals. Not just the weekly ones, but the ones for longer terms too.</p>
+
+<h2 id="setting-my-goals">Setting my goals</h2>
+
+<p>I have a few spreadsheets filled with my goals, approach from different aspects. Let me go into some details.</p>
+
+<h3 id="a-bucket-list-of-100">A bucket list of 100</h3>
+
+<p>In one I name 100 goals. It’s like a bucket list about what I want to achieve, to try, to see in my life. I read them every week so that I keep them in focus. If I can achieve just 5 per year, in 20 years I will have completed them and I will be still only 51 (I started it about a year ago). I took this technique from <a href="https://medium.com/hi-my-name-is-jon/how-to-invest-in-yourself-a98dfd33e81a">Jon Westenberg</a>.</p>
+
+<h3 id="design-my-growth">Design my growth</h3>
+
+<p>I create a few small lists that I update regularly.</p>
+
+<p>On a yearly basis:</p>
+
+<ul>
+  <li>I write down my motivations</li>
+  <li>I note my most important values</li>
+  <li>I check what are my top strengths and weaknesses</li>
+</ul>
+
+<p>On a quarterly basis:</p>
+
+<ul>
+  <li>I set three objectives and also the measures so that I can check if I achieved them</li>
+</ul>
+
+<p>I review my objectives every week to see if I made some progress, if not how I should adjust. For example, for this quarter I have an objective about learning JS and to publish my article about how we bought or flat.</p>
+
+<h3 id="a-b-c-technique">A-B-C technique</h3>
+
+<p>This technique I took from <a href="https://journal.thriveglobal.com/how-to-make-the-best-possible-use-of-your-time-335f15ecbefd">Ben Hardy</a> and I try to include it in my weekly goal setting pomodoro every once in a while.</p>
+
+<p>I created three columns:</p>
+
+<ul>
+  <li>In column A I wrote down activities irritating me. Like <a href="/blog/2017/07/20/time-waster-meetings">time-waster meetings</a>, commuting.</li>
+  <li>Into column B I put things that sort of okay, like washing the dishes or cutting fruits for the next days. You might be surprised, but washing the dishes after a day of coding can be refreshing.</li>
+  <li>Into the last column (C), I save the things that are great, like spending time with my family, coding, writing, hiking, cooking…</li>
+</ul>
+
+<p>The point is that most people spend too much time on activities coming from the first two columns whereas we all should spend much more time on activities that we find uplifting. So given your three columns, the big task is to eliminate everything or at least most of them from column A and preferably from B too.</p>
+
+<p>There is a very interesting exercise related to this technique. You take one of your items from column C and you ask yourself why do you like that. Let’s say you have there that you like coding. Then you ask yourself why do you like coding. The answer might be because you like to solve problems. Then you ask the question again. Why? Why do you like solving problems. Repeat these steps until you dig down for at least five levels. Keep doing this with several items and you will learn a lot about yourself and your strongest whys.</p>
+
+<h2 id="summing-it-up">Summing it up</h2>
+
+<p>As you can see I try to live my life in a planned, scheduled way so that I can the distractions minimal. I use the <a href="https://lifehacker.com/productivity-101-a-primer-to-the-pomodoro-technique-1598992730">pomodoro technique</a> in order to limit the interruptions on the low level and I organise the tomatoes with the help on <a href="https://kanbanflow.com">Kanbanflow</a> so that I know what task comes after the other.</p>
+
+<p>In order that my tasks make sense I dedicate one pomodoro each week to reflect on my goals and to see what should come next. It helps to remove distractions from my long-term perspectives and to keep up my motivation by slicing big goals into smaller ones. And actually like that by the time you achieve a goal, you have the next one right in front of your eyes, so you limit the chance of an <a href="https://simpleprogrammer.com/programmer-dont-wanna-do-this/">“after success depression and a burnout”</a>.</p>
+
+<h2 id="call-for-action">Call for action</h2>
+
+<p>In order to boost your productivity, explore the <a href="https://lifehacker.com/productivity-101-a-primer-to-the-pomodoro-technique-1598992730">pomodor techinque</a> and start using it immediately.
+Once you start enjoying and valuing uninterrupted chunks of work, think about what you want to achieve with the extra time you have. Try the tools and techniques I described:</p>
+<ul>
+  <li><a href="https://kanbanflow.com">Kanbanflow</a> to organize your tasks</li>
+  <li>Build a bucket list to know what you want in your life</li>
+  <li>Design your growth to have mid-term objectives supporting your long-term goals</li>
+  <li>Use the A-B-C technique to identify and get rid of time waters and to understand your deepest whys.</li>
+</ul>
+:ET

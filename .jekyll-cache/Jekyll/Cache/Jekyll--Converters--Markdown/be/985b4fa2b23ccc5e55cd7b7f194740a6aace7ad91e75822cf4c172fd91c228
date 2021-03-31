@@ -1,0 +1,188 @@
+I"`9<p><em>Just make everything <code class="language-plaintext highlighter-rouge">const</code> that you can! That’s the bare minimum you could do for your compiler!</em></p>
+
+<p>This is a piece of advice, many <em>senior</em> developers tend to repeat to juniors, while so often even the preaching ones - we - fail to follow this rule.
+<!--more--></p>
+
+<p>In this series of articles, we discuss about:</p>
+<ul>
+  <li><a href="https://www.sandordargo.com/blog/2020/11/04/when-use-const-1-functions-local-variables"><code class="language-plaintext highlighter-rouge">const</code> functions</a></li>
+  <li><a href="https://www.sandordargo.com/blog/2020/11/04/when-use-const-1-functions-local-variables"><code class="language-plaintext highlighter-rouge">const</code> local variables</a></li>
+  <li><a href="https://www.sandordargo.com/blog/2020/11/11/when-use-const-2-member-variables"><code class="language-plaintext highlighter-rouge">const</code> member variables</a></li>
+  <li><a href="https://www.sandordargo.com/blog/2020/11/18/when-use-const-3-return-types"><code class="language-plaintext highlighter-rouge">const</code> return types</a></li>
+  <li><a href="https://www.sandordargo.com/blog/2020/11/25/when-use-const-4-parameters"><code class="language-plaintext highlighter-rouge">const</code> parameters</a></li>
+</ul>
+
+<p>In the first episode, we covered <code class="language-plaintext highlighter-rouge">const</code> functions and <code class="language-plaintext highlighter-rouge">const</code> local variables. Today we’ll speak about the members.</p>
+
+<p>Originally, I didn’t plan this post. I simply wanted to speak about <code class="language-plaintext highlighter-rouge">const</code> variables regardless if they have a local scope or if they are members of an object.</p>
+
+<p>Then I saw <a href="https://twitter.com/_Yulivee_/status/1310812389743435776">this tweet from Tina Ulbrich</a> who I met at <a href="https://www.youtube.com/watch?v=y2OGpAqD-f8">C++OnSea2020</a> and I was horrified. Yet another thing in C++, I had no idea about and something I’ve been doing considering that it’s a good practice.</p>
+
+<p>Truth to be told, I didn’t do anything harmful, but that’s only by chance.</p>
+
+<p>Ok, let’s get to it.</p>
+
+<p>Why would you have <code class="language-plaintext highlighter-rouge">const</code> members at the first place?</p>
+
+<p>Because you might want to signal that they are immutable, that their values should never change. Some would claim that you have private members for that purpose and you simply should not expose a setter for such members, then there is no need to explicitly make them <code class="language-plaintext highlighter-rouge">const</code>.</p>
+
+<p>I get you, you’re right. In an ideal world.</p>
+
+<p>But even if you are a strong believer of the <a href="">Single Responsibility Principle</a> and small classes, there is a fair chance that others later will change your code, your class will grow, and someone might accidentally change the value inside, plus you haven’t given the compiler a hint for optimization due to immutability.</p>
+
+<p>To me, these are good reasons to make a member const. At least to show the intention.</p>
+
+<p>But unfortunately, there are some implications.</p>
+
+<p>The first is that classes a const member are not assignable:</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td> --><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">MyClassWithConstMember</span> <span class="p">{</span>
+<span class="nl">public:</span>
+<span class="err"> </span> <span class="n">MyClassWithConstMember</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span> <span class="o">:</span> <span class="n">m_a</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">{}</span>
+<span class="nl">private:</span>
+<span class="err"> </span> <span class="k">const</span> <span class="kt">int</span> <span class="n">m_a</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="err"> </span> <span class="n">MyClassWithConstMember</span> <span class="n">o1</span><span class="p">{</span><span class="mi">666</span><span class="p">};</span>
+<span class="err"> </span> <span class="n">MyClassWithConstMember</span> <span class="n">o2</span><span class="p">{</span><span class="mi">42</span><span class="p">};</span>
+<span class="err"> </span> <span class="n">o1</span> <span class="o">=</span> <span class="n">o2</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cm">/*main.cpp: In function 'int main()':
+main.cpp:11:8: error: use of deleted function 'MyClassWithConstMember&amp; MyClassWithConstMember::operator=(const MyClassWithConstMember&amp;)'
+   11 |   o1 = o2;
+      |        ^~
+main.cpp:1:7: note: 'MyClassWithConstMember&amp; MyClassWithConstMember::operator=(const MyClassWithConstMember&amp;)' is implicitly deleted because the default definition would be ill-formed:
+    1 | class MyClassWithConstMember {
+      |       ^~~~~~~~~~~~~~~~~~~~~~
+main.cpp:1:7: error: non-static const member 'const int MyClassWithConstMember::m_a', cannot use default assignment operator
+*/</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>If you think about it, it makes perfect sense. A <code class="language-plaintext highlighter-rouge">variable</code> is something you cannot change after initialization. And when you want to assign a new value to an object, thus to its members, it’s not possible anymore.</p>
+
+<p>As such it also makes it impossible to use move semantics, for the same reason.</p>
+
+<p>From the error messages, you can see that the corresponding special functions, such as the assignment operator or the move assignment operator were deleted.</p>
+
+<p>Let’s implement the assignment operator. It will compile, but what the heck would you do?</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td> --><td class="rouge-code"><pre><span class="n">MyClassWithConstMember</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">MyClassWithConstMember</span><span class="o">&amp;</span><span class="p">)</span> <span class="p">{</span>
+<span class="err"> </span> <span class="c1">// ???</span>
+<span class="err"> </span> <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Do you skip assigning to the const members? Not so great, either you depend on that value somewhere, or you should not store the value.</p>
+
+<p>And you cannot assign to a const variable, can you? For a matter of fact, you can…</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td> --><td class="rouge-code"><pre><span class="cp">#include &lt;utility&gt;
+#include &lt;iostream&gt;
+</span>
+<span class="k">class</span> <span class="nc">MyClassWithConstMember</span> <span class="p">{</span>
+<span class="nl">public:</span>
+<span class="err"> </span> <span class="n">MyClassWithConstMember</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span> <span class="o">:</span> <span class="n">m_a</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">{}</span>
+<span class="err"> </span> <span class="n">MyClassWithConstMember</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">MyClassWithConstMember</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">)</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="kt">int</span><span class="o">*</span> <span class="n">tmp</span> <span class="o">=</span> <span class="k">const_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">*&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">m_a</span><span class="p">);</span>
+<span class="err"> </span> <span class="err"> </span> <span class="o">*</span><span class="n">tmp</span> <span class="o">=</span> <span class="n">other</span><span class="p">.</span><span class="n">m_a</span><span class="p">;</span> 
+<span class="err"> </span> <span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"copy assignment </span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+<span class="err"> </span> <span class="p">}</span>
+<span class="err"> </span> 
+<span class="kt">int</span> <span class="n">getA</span><span class="p">()</span> <span class="p">{</span><span class="k">return</span> <span class="n">m_a</span><span class="p">;}</span>
+<span class="err"> </span> 
+<span class="nl">private:</span>
+<span class="err"> </span> <span class="k">const</span> <span class="kt">int</span> <span class="n">m_a</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="err"> </span> <span class="n">MyClassWithConstMember</span> <span class="n">o1</span><span class="p">{</span><span class="mi">666</span><span class="p">};</span>
+<span class="err"> </span> <span class="n">MyClassWithConstMember</span> <span class="n">o2</span><span class="p">{</span><span class="mi">42</span><span class="p">};</span>
+<span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"o1.a: "</span> <span class="o">&lt;&lt;</span> <span class="n">o1</span><span class="p">.</span><span class="n">getA</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"o2.a: "</span> <span class="o">&lt;&lt;</span> <span class="n">o2</span><span class="p">.</span><span class="n">getA</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="err"> </span> <span class="n">o1</span> <span class="o">=</span> <span class="n">o2</span><span class="p">;</span>
+<span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"o1.a: "</span> <span class="o">&lt;&lt;</span> <span class="n">o1</span><span class="p">.</span><span class="n">getA</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>As you cannot cast the constness away from value, you have to turn the member value into a temporary non-const pointer and then you free to rampage.</p>
+
+<p>Is this worth it?</p>
+
+<p>You have your const member, fine. You have the assignment working, fine. Then if anyone comes later and wants to do the same “magic” outside of the special functions, for sure, it would be a red flag in a code review.</p>
+
+<p>Speaking of special functions. Would move semantics work? Well, replace the assignment with this:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td> --><td class="rouge-code"><pre><span class="n">o1</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">o2</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>You’ll see that it’s still a copy assignment taking place as the <a href="https://www.fluentcpp.com/2019/04/19/compiler-generated-functions-rule-of-three-and-rule-of-five/">the rule of 5</a> applies. If you implement one special function, you have to implement all of them. The rest is not generated.</p>
+
+<p>In fact, what we have seen is rather dangerous. You think, you have a move and you’re efficient due to having a const member as using move semantics, but in fact, you are using the old copy assignment.</p>
+
+<p>Yet, performance-wise, it seems hard to make a verdict. I ran a couple of tests in <a href="https://quick-bench.com/q/58tnSzx0Hjm6t3KyIX9OcSHe9WE">QuickBench</a> and there is no significant difference between the above version and the one with non-const member and generated special assignment operator. On low optimization levels (None-O1) it depends on the compiler and its version. With higher optimization levels set there seems to be no difference.</p>
+
+<h2 id="conclusions">Conclusions</h2>
+
+<p>Having const local variables is good. Having const members… It’s not so obvious. We lose the copy assignment and the move semantics as const members cannot be changed anymore.</p>
+
+<p>With “clever” code, we can run a circle around the problem, but then we have to implement all the special functions. For what?</p>
+
+<p>No performance gain. Less readability in the special functions and for slightly higher confidence that nobody will change the value of that member.</p>
+
+<p>Do you think it’s worth it?</p>
+
+<p>Stay tuned, next time we’ll discuss <code class="language-plaintext highlighter-rouge">const</code> return types.</p>
+:ET

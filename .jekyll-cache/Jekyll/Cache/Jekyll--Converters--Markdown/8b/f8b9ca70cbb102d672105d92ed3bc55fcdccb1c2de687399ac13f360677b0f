@@ -1,0 +1,296 @@
+I"U^<p>In the last article on the series on the STL algorithms, we discussed <code class="language-plaintext highlighter-rouge">std::transform</code>. For not the first time, we saw an interface where the user has to pass in two ranges with the help of three parameters.
+<!--more-->
+The first range is defined by its beginning and the end, while the second only by its beginning.</p>
+
+<p>Why so? To have a more compact signature, I think.</p>
+
+<p>On the flip side, the second range must contain at least as many elements as the first one. It is the user’s full responsibility to respect this requirement. The algorithm(s) won’t do any checks!</p>
+
+<p>So what happens if the user is a naughty little fellow - and sends in a smaller second range?</p>
+
+<p>Let’s see it through an example!</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="cp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">()</span> <span class="p">{</span> 
+
+<span class="k">auto</span> <span class="n">values</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">};</span>
+<span class="k">auto</span> <span class="n">otherValues</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">};</span>
+<span class="k">auto</span> <span class="n">results</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">{};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">values</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">values</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">otherValues</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">std</span><span class="o">::</span><span class="n">back_inserter</span><span class="p">(</span><span class="n">results</span><span class="p">),</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">number</span><span class="p">,</span> <span class="kt">int</span> <span class="n">otherNumber</span><span class="p">)</span> <span class="p">{</span><span class="k">return</span> <span class="n">number</span><span class="o">+</span><span class="n">otherNumber</span><span class="p">;});</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">for_each</span><span class="p">(</span><span class="n">results</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">results</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">number</span><span class="p">){</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">number</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;});</span>
+<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Here are the results:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>11
+22
+33
+4
+5
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>So the elements are automatically zero-initialized or… To me, this looked strange, to say the least, so I wrapped my integers and scattered the standard output with a bunch of messages.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+</pre></td><td class="rouge-code"><pre><span class="cp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+</span>
+<span class="k">class</span> <span class="nc">T</span><span class="p">{</span>
+<span class="nl">public:</span>
+  <span class="n">T</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Empty constructor "</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">T</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Copy constructor with _number: "</span> <span class="o">&lt;&lt;</span> <span class="n">other</span><span class="p">.</span><span class="n">getNumber</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">T</span><span class="p">(</span><span class="kt">int</span> <span class="n">number</span><span class="p">)</span> <span class="o">:</span> <span class="n">_number</span><span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Default constructor with number: "</span> <span class="o">&lt;&lt;</span> <span class="n">number</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="o">~</span><span class="n">T</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Destructor "</span> <span class="o">&lt;&lt;</span> <span class="n">_number</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kt">int</span> <span class="n">getNumber</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_number</span><span class="p">;</span> <span class="p">}</span>
+<span class="nl">private:</span>
+  <span class="kt">int</span> <span class="n">_number</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">()</span> <span class="p">{</span> 
+
+  <span class="k">auto</span> <span class="n">values</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">{</span><span class="n">T</span><span class="p">{</span><span class="mi">1</span><span class="p">},</span><span class="n">T</span><span class="p">{</span><span class="mi">2</span><span class="p">},</span><span class="n">T</span><span class="p">{</span><span class="mi">3</span><span class="p">},</span><span class="n">T</span><span class="p">{</span><span class="mi">4</span><span class="p">},</span><span class="n">T</span><span class="p">{</span><span class="mi">5</span><span class="p">}};</span>
+  <span class="k">auto</span> <span class="n">otherValues</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">{</span><span class="n">T</span><span class="p">{</span><span class="mi">10</span><span class="p">},</span><span class="n">T</span><span class="p">{</span><span class="mi">20</span><span class="p">},</span><span class="n">T</span><span class="p">{</span><span class="mi">30</span><span class="p">}};</span>
+  <span class="k">auto</span> <span class="n">resutls</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">{};</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">values</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">values</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">otherValues</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> 
+  <span class="n">std</span><span class="o">::</span><span class="n">back_inserter</span><span class="p">(</span><span class="n">resutls</span><span class="p">),</span> <span class="p">[](</span><span class="n">T</span> <span class="n">number</span><span class="p">,</span> <span class="n">T</span> <span class="n">otherNumber</span><span class="p">)</span> <span class="p">{</span><span class="k">return</span> 
+  <span class="n">number</span><span class="p">.</span><span class="n">getNumber</span><span class="p">()</span> <span class="o">+</span> <span class="n">otherNumber</span><span class="p">.</span><span class="n">getNumber</span><span class="p">();});</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">for_each</span><span class="p">(</span><span class="n">resutls</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">resutls</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">number</span><span class="p">){</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">number</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;});</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>I don’t copy here the output as it is long, you can run everything <a href="http://coliru.stacked-crooked.com/a/d4ae736a454083b0">here</a>.</p>
+
+<p>The results are different, all number 6 everywhere in terms of results. While that is interesting, I was more motivated to find the root cause.</p>
+
+<p>There is such a section:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>Default constructor with number: 10
+Default constructor with number: 20
+Default constructor with number: 30
+Copy constructor with _number: 10
+Copy constructor with _number: 20
+Copy constructor with _number: 30
+Destructor 30
+Destructor 20
+Destructor 10
+Copy constructor with _number: 0
+Copy constructor with _number: 0
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>This is the first time in the logs that we see some instances with <code class="language-plaintext highlighter-rouge">0</code> in them. How have they appeared?</p>
+
+<p>I mean in order to copy some object where there are zeros inside, we must have created those objects they were copied from. But we don’t have any such logs even though we logged everything. I double-checked.</p>
+
+<p>For curiosity, I even marked the default constructor deleted. (<code class="language-plaintext highlighter-rouge">T() = delete;</code>) Still, the behaviour has not changed at all.</p>
+
+<p>Then I asked for a second pair of eyes and with some changes to the code, it became more understandable. There are two ways to proceed.</p>
+
+<p>We either create the first container <strong>much</strong> bigger or we store the variable on the heap instead of the stack (so we store pointers).</p>
+
+<p>As the output of the second one is smaller, let’s do that!</p>
+
+<p>So <a href="http://coliru.stacked-crooked.com/a/436ae3e23b81156f">here</a> is the new code:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+</pre></td><td class="rouge-code"><pre><span class="cp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+</span>
+<span class="k">class</span> <span class="nc">T</span><span class="p">{</span>
+<span class="nl">public:</span>
+  <span class="n">T</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Empty constructor "</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">T</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Copy constructor with _number: "</span> <span class="o">&lt;&lt;</span> <span class="n">other</span><span class="p">.</span><span class="n">getNumber</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">T</span><span class="p">(</span><span class="kt">int</span> <span class="n">number</span><span class="p">)</span> <span class="o">:</span> <span class="n">_number</span><span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Default constructor with number: "</span> <span class="o">&lt;&lt;</span> <span class="n">number</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="o">~</span><span class="n">T</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Destructor "</span> <span class="o">&lt;&lt;</span> <span class="n">_number</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kt">int</span> <span class="n">getNumber</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_number</span><span class="p">;</span> <span class="p">}</span>
+<span class="nl">private:</span>
+  <span class="kt">int</span> <span class="n">_number</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">()</span> <span class="p">{</span> 
+
+  <span class="k">auto</span> <span class="n">values</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">*&gt;</span><span class="p">{</span><span class="k">new</span> <span class="n">T</span><span class="p">{</span><span class="mi">1</span><span class="p">},</span><span class="k">new</span> <span class="n">T</span><span class="p">{</span><span class="mi">2</span><span class="p">},</span><span class="k">new</span> <span class="n">T</span><span class="p">{</span><span class="mi">3</span><span class="p">},</span><span class="k">new</span> <span class="n">T</span><span class="p">{</span><span class="mi">4</span><span class="p">},</span><span class="k">new</span> <span class="n">T</span><span class="p">{</span><span class="mi">5</span><span class="p">}};</span>
+  <span class="k">auto</span> <span class="n">otherValues</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">*&gt;</span><span class="p">{</span><span class="k">new</span> <span class="n">T</span><span class="p">{</span><span class="mi">10</span><span class="p">},</span><span class="k">new</span> <span class="n">T</span><span class="p">{</span><span class="mi">20</span><span class="p">},</span><span class="k">new</span> <span class="n">T</span><span class="p">{</span><span class="mi">30</span><span class="p">}};</span>
+  <span class="k">auto</span> <span class="n">resutls</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">{};</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">values</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">values</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">otherValues</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> 
+  <span class="n">std</span><span class="o">::</span><span class="n">back_inserter</span><span class="p">(</span><span class="n">resutls</span><span class="p">),</span> <span class="p">[](</span><span class="n">T</span><span class="o">*</span> <span class="n">number</span><span class="p">,</span> <span class="n">T</span><span class="o">*</span> <span class="n">otherNumber</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"number: "</span> <span class="o">&lt;&lt;</span> <span class="n">number</span><span class="o">-&gt;</span><span class="n">getNumber</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">", another number: "</span> <span class="o">&lt;&lt;</span> <span class="n">otherNumber</span><span class="o">-&gt;</span><span class="n">getNumber</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">number</span><span class="o">-&gt;</span><span class="n">getNumber</span><span class="p">()</span> <span class="o">+</span> <span class="n">otherNumber</span><span class="o">-&gt;</span><span class="n">getNumber</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">for_each</span><span class="p">(</span><span class="n">resutls</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">resutls</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">number</span><span class="p">){</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">number</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;});</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Now we don’t have those zeros anymore, we have something much better a segmentation fault, yes!</p>
+
+<p>So why did we have zeros before?</p>
+
+<p>When we create a vector, it automatically reserves enough size for the items we put into it at creation time, plus some. How much is that <em>“some”</em>? Well, it depends on the compiler implementation.</p>
+
+<p>That memory is empty and cleaned up.</p>
+
+<p>So when in our previous example we went beyond the size of the second container it was just reading zeros.</p>
+
+<p>When we store things on the heap, we don’t have anymore a continuous memory area, but we use random places in the memory. And at random places, we have random things and we can easily end up in a segmentation fault.</p>
+
+<p>I said there are two ways to show this root cause.</p>
+
+<p>If we had a much longer first container, that container would have been allocated to a bigger memory area as the second one. When we have 5 vs 3 values, like in our <a href="http://coliru.stacked-crooked.com/a/d4ae736a454083b0">original example</a>, most likely the two vectors occupy the same space in memory.</p>
+
+<p>This means that after a certain point during the transformation, for the second container we’ll touch memory that was never allocated to the second vector and will have random values just like in the case of storing pointers.</p>
+
+<p><a href="http://coliru.stacked-crooked.com/">Here</a> you can find such an example with way more interesting numbers than 0, such as <code class="language-plaintext highlighter-rouge">29764816</code> or <code class="language-plaintext highlighter-rouge">455072427</code>.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>In this article, we have seen what dangers hide behind the way we pass two containers to <code class="language-plaintext highlighter-rouge">std::transform</code> (and to other containers). The second container is defined only by its start point without the endpoint and besides, there are no runtime checks to verify if it’s at least as long as the first one.</p>
+
+<p>In some simple situations, we might get away with this without being severely punished, but it would be still only by accident.</p>
+
+<p>Through using pointers and vectors that hugely differ in size we saw how and why this undefined behaviour manifests.</p>
+
+<p>The takeaway is that when you read the documentation and you read some warnings, like the second container should be always at least as large as the first one, take them seriously and do your homework.</p>
+
+<p>Next time we continue with the replace algorithms. Stay tuned!</p>
+:ET

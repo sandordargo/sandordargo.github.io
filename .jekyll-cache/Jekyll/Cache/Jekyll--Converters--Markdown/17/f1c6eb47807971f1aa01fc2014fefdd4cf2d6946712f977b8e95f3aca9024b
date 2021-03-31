@@ -1,0 +1,19 @@
+I"o<p>I’ve got some great news to share with you. Based on my series on <a href="https://www.sandordargo.com/blog/2020/11/04/when-use-const-1-functions-local-variables">when to use <code class="language-plaintext highlighter-rouge">const</code> in C++</a>, I wrote a book on the same topic and I released it on <a href="https://leanpub.com/cppconst/">LeanPub</a>!
+<!--more--></p>
+
+<p><img src="/assets/img/cpp-const-cover.jpg" alt="How to use const in C++ cover" height="66%" width="66%" /></p>
+
+<p>In the book, I discuss the idea of constness which is so important that in certain languages entities are <code class="language-plaintext highlighter-rouge">const</code>, in other words, immutable by default. If you want to become a seasoned C++ developer, you must understand how you can use <code class="language-plaintext highlighter-rouge">const</code> correctly. In this book, you’ll learn when and how to use it in the different contexts it might appear:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">const</code> functions</li>
+  <li><code class="language-plaintext highlighter-rouge">const</code> local variables</li>
+  <li><code class="language-plaintext highlighter-rouge">const</code> member variables</li>
+  <li><code class="language-plaintext highlighter-rouge">const</code> return types</li>
+  <li><code class="language-plaintext highlighter-rouge">const</code> parameters</li>
+</ul>
+
+<p>Compared to the series of articles, the book contains extra code examples, more explanations and also the differences between <em><code class="language-plaintext highlighter-rouge">const</code> west</em> and <em>east <code class="language-plaintext highlighter-rouge">const</code></em> - without starting a holy war on different coding styles.</p>
+
+<p>If you are interested, check it out <a href="https://leanpub.com/cppconst/"><em>How to use const in C++</em> on LeanPub</a></p>
+:ET

@@ -1,0 +1,49 @@
+I";<p>I’ve already written quite a few articles about features introduced by C++ 11 and how much it changed how I look at the language. The feature I liked the most is probably the one of lambda expressions. I don’t like them for their sheer existence, it’s not <em>l’art pour l’art</em>, but it really helps using the different STL algorithms. If you want to get a quick introduction to all the 105, have a look at <a href="https://www.youtube.com/watch?v=2olsGf6JIkU">this video</a> by the owner of <a href="https://www.fluentcpp.com/">fluentcpp.com</a>.
+<!--more--></p>
+
+<p>How I write C++ code changed a lot due to the combination of lambdas and STL algorithms. Yet I know that I don’t a lot and I want to improve my knowledge on the STL. What’s the best way to learn? Either by doing it or by teaching it. I’m already doing it, so is why hereby I’m starting to write a series on the STL algorithms.</p>
+
+<p>I don’t know yet, how frequently I’ll write about them and how many I’ll cover in one article, but every second technical article I’ll write will be about the STL algorithms - the order of publication is another question.</p>
+
+<p>Let’s get started!</p>
+
+<p>The algorithms we are going to discuss are basically a set of functions that we can use well together with STL containers and another common point is that they all can be found in the <algorithm> header.</algorithm></p>
+
+<p>According to <a href="http://www.cplusplus.com/reference/algorithm/">cplusplus.com</a>, we can categorize them into 8 groups plus others:</p>
+<ul>
+  <li>Non-modifying sequence operations (e.g. all_if, any_of, find)</li>
+  <li>Modifying sequence operations (e.g. copy, copy_if, transform)</li>
+  <li>Partitions (e.g. partition, is_partition)</li>
+  <li>Sorting (e.g.sort, is_sorted)</li>
+  <li>Binary search (e.g. binary_search, lower_bound, upper_bound)</li>
+  <li>Merge (e.g. merge, set_union)</li>
+  <li>Heap (e.g. push_heap, pop_heap)</li>
+  <li>Min/max (e.g.min, max…)</li>
+  <li>Others</li>
+</ul>
+
+<p>Some groups I’ll show you in one post, like min/max, but some other groups which are way bigger, like <em>Non-modifying sequence operations</em> I’ll break down into smaller chunks.</p>
+
+<p>Already published articles of this series:</p>
+<ul>
+  <li><a href="/blog/2019/02/20/stl-algorithm-tutorial-part-1-any-all-none">all_of, any_of, none_of</a></li>
+  <li><a href="/blog/2019/04/03/stl-algorithm-tutorial-part-2-for_each">for_each</a></li>
+  <li><a href="/blog/2019/05/15/stl-algorithm-tutorial-part-3-find">find et al.</a></li>
+  <li><a href="/blog/2019/07/24/.stl-algorithm-tutorial-part-4-rest-of-non-modifying">the rest of non-modifying sequence operations</a></li>
+  <li><a href="/blog/2019/08/14/stl-alogorithms-tutorial-part-5-copy-operations">modifying sequence operations - copy et al.</a></li>
+  <li><a href="/blog/2019/09/25/stl-alogorithms-tutorial-part-6-move-swap-operations">modifying sequence operations - move and swap</a></li>
+  <li><a href="/blog/2019/11/06/stl-alogorithms-tutorial-part-7-transform">transform</a></li>
+  <li><a href="/blog/2019/12/18/stl-alogorithms-tutorial-part-8-transform-non-matching-sizes">transform’s undefined behaviour</a></li>
+  <li><a href="/blog/2020/01/29/stl-alogorithms-tutorial-part-9-replace">modifying sequence operations - replace_*</a></li>
+  <li><a href="/blog/2020/03/11/stl-alogorithms-tutorial-part-10-generate">modifying sequence operations - fill and generate</a></li>
+  <li><a href="/blog/2020/04/22/stl-alogorithms-tutorial-part-11-replace-n">replace N elements</a></li>
+  <li><a href="/blog/2020/06/03/stl-alogorithms-tutorial-part-12-remove">modifying sequence operations - remove calls</a></li>
+  <li><a href="https://www.sandordargo.com/blog/2020/07/15/stl-alogorithms-tutorial-part-13-reverse_copy">modifying sequence operations - turn things around</a></li>
+  <li><a href="/blog/2020/08/12/stl-alogorithms-tutorial-part-14-rotate">modifying sequence operations - rotate functions</a></li>
+  <li><a href="/blog/2020/09/08/stl-alogorithms-tutorial-part-15-unique_copy">modifying sequence operations - how to get distinct elements</a></li>
+  <li><a href="/blog/2020/12/09/stl-alogorithms-tutorial-part-15-shuffle">modifying sequence operations - rotate functions</a></li>
+  <li><a href="/blog/2021/01/20/stl-alogorithms-tutorial-part-18-partitioning">partitioning operations</a></li>
+</ul>
+
+<p>Stay tuned!</p>
+:ET

@@ -1,0 +1,14 @@
+I"�<p>​I admit the dojo did not go well. Among the prerequisites communicated to the participants, there were only two things: Java 8 and maven. Still, almost none of the participants showed up with such an environment.</p>
+
+<p>​I had been thinking about creating a docker image, but it seemed to be an overkill. I still think it would have been. In addition, you still need docker on your machine which I think is rarer than Java and maven.</p>
+
+<p>​Probably I should have asked for the e-mail addresses of the registered participants of the dojo and contact them directly asking them to make sure that their environment is fine. And at this point, I should have communicated the GitHub address so that they might compile the <a href="https://github.com/sandordargo/neo-wine-services">code</a> and run the tests before they come.</p>
+
+<p>I could have also ported the code to Python to have even fewer requirements. I will do that for sure!</p>
+
+<p>But this event was not only about the dojo, I also made a presentation about the basic ideas of graph databases. I mostly covered the topics of <a href="/blog/2017/09/06/intro-to-graph-databases">this</a> and <a href="/blog/2017/10/04/cypher-introduction">this</a> articles. Actually, this part went well. I think that my audience appreciated the presentation. Only one person was aware of graph databases before and they liked the concepts I introduced.</p>
+
+<p>That’s already a success, they had ideas to take away. On my side, I also learnt a lot and still gained some confidence!</p>
+
+<p>If you’d like to do the kata yourself, go to this <a href="https://github.com/sandordargo/neo-wine-services">GitHub repository</a> and get started!</p>
+:ET

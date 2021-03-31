@@ -1,0 +1,167 @@
+I"�B<p>When we start coding in an object-oriented programming language we often think that it’s about building nice inheritance hierarchies. So we do. A bit later we learn that we should rather use composition over inheritance. So we do. But we still need inheritance, and from time to time we run into problems where it seems to be the only way. At those times, we might learn about some more specialized forms of inheritance. In C++, this might mean <a href="">private inheritance</a> or <em>virtual inheritance</em>. Today we speak about the latter.
+<!--more--></p>
+
+<h2 id="what-is-virtual-inheritance">What is virtual inheritance?</h2>
+
+<h3 id="the-diamond-problem">The diamond problem</h3>
+
+<p><em>Virtual inheritance</em> is a C++ technique that ensures that only one copy of a base class’s member variables are inherited by second-level derivatives (a.k.a. grandchild derived classes). Without virtual inheritance, if two classes B and C inherit from class A, and class D inherits from both B and C, then D will contain two copies of A’s member variables: one via B, and one via C. These will be accessible independently, using scope resolution.</p>
+
+<p>Instead, if classes B and C inherit virtually from class A, then objects of class D will contain only one set of the member variables from class A.</p>
+
+<p>As you probably guessed, this technique is useful when you have to deal with multiple inheritance and it’s a way to solve the infamous diamond inheritance.</p>
+
+<p><img src="/assets/img/diamon-inheritance.png" alt="The Diamond Inheritance Problem" /></p>
+
+<h3 id="multiple-base-class-instances">Multiple base class instances</h3>
+
+<p>In practice, virtual base classes are most suitable when the classes that derive from the virtual base, and especially the virtual base itself, are pure abstract classes. This means the classes above the “join class” (the one in the bottom) have very little if any data.</p>
+
+<p>Consider the following class hierarchy to represent the diamond problem, though not with pure abstracts.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td> --><td class="rouge-code"><pre><span class="k">struct</span> <span class="nc">Person</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="k">virtual</span> <span class="o">~</span><span class="n">Person</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="k">virtual</span> <span class="kt">void</span> <span class="n">speak</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="nc">Student</span><span class="o">:</span> <span class="n">Person</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="k">virtual</span> <span class="kt">void</span> <span class="n">learn</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="nc">Worker</span><span class="o">:</span> <span class="n">Person</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="k">virtual</span> <span class="kt">void</span> <span class="n">work</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="c1">// A teaching assistant is both a worker and a student</span>
+<span class="k">struct</span> <span class="nc">TeachingAssistant</span><span class="o">:</span> <span class="n">Student</span><span class="p">,</span> <span class="n">Worker</span> <span class="p">{};</span>
+
+<span class="n">TeachingAssistant</span> <span class="n">ta</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>As we said above, a call to <code class="language-plaintext highlighter-rouge">aTeachingAssistant.speak()</code> is ambiguous because there are two <code class="language-plaintext highlighter-rouge">Person</code> (indirect) base classes in <code class="language-plaintext highlighter-rouge">TeachingAssistant</code>, so any <code class="language-plaintext highlighter-rouge">TeachingAssistant</code> object has two different <code class="language-plaintext highlighter-rouge">Person</code> base class subobjects.</p>
+
+<p>An attempt to directly bind a reference to the <code class="language-plaintext highlighter-rouge">Person</code> subobject of a <code class="language-plaintext highlighter-rouge">TeachingAssistant</code> object would fail, since the binding is inherently ambiguous:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td> --><td class="rouge-code"><pre><span class="n">TeachingAssistant</span> <span class="n">ta</span><span class="p">;</span>
+<span class="n">Person</span><span class="o">&amp;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">ta</span><span class="p">;</span> <span class="err"> </span><span class="c1">// error: which Person subobject should a TeachingAssistant cast into, </span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="c1">// a Student::Person or a Worker::Person?</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>To disambiguate, we would need to explicitly convert <code class="language-plaintext highlighter-rouge">ta</code> to any of the two base class subobjects:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td> --><td class="rouge-code"><pre><span class="n">TeachingAssistant</span> <span class="n">ta</span><span class="p">;</span>
+<span class="n">Person</span><span class="o">&amp;</span> <span class="n">student</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&amp;&gt;</span><span class="p">(</span><span class="n">ta</span><span class="p">);</span> 
+<span class="n">Person</span><span class="o">&amp;</span> <span class="n">worker</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">Worker</span><span class="o">&amp;&gt;</span><span class="p">(</span><span class="n">ta</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>In order to call <code class="language-plaintext highlighter-rouge">speak()</code>, the same disambiguation, or explicit qualification is needed: <code class="language-plaintext highlighter-rouge">static_cast&lt;Student&amp;&gt;(ta).speak()</code> or <code class="language-plaintext highlighter-rouge">static_cast&lt;Worker&amp;&gt;(ta).speak()</code> or alternatively <code class="language-plaintext highlighter-rouge">ta.Student::speak()</code> and <code class="language-plaintext highlighter-rouge">ta.Worker::speak()</code>. Explicit qualification not only uses an easier, uniform syntax for both pointers and objects but also allows for static dispatch, so it would arguably be the preferable way to do it.</p>
+
+<p>In this case, the double inheritance of <code class="language-plaintext highlighter-rouge">Person</code> is probably unwanted, as we want to model that the relation between <code class="language-plaintext highlighter-rouge">TeachingAssistant</code> and a <code class="language-plaintext highlighter-rouge">Person</code> exists only once. The fact that a <code class="language-plaintext highlighter-rouge">TeachingAssistant</code> is a <code class="language-plaintext highlighter-rouge">Student</code> and is a <code class="language-plaintext highlighter-rouge">Worker</code> at the same time does not imply that a <code class="language-plaintext highlighter-rouge">TeachingAssistant</code> is a <code class="language-plaintext highlighter-rouge">Person</code> twice (unless the <code class="language-plaintext highlighter-rouge">TA</code> suffers from schizophrenia): a <code class="language-plaintext highlighter-rouge">Person</code> base class corresponds to a contract that <code class="language-plaintext highlighter-rouge">TeachingAssistant</code> implements (the “is a” relationship above really means “implements the requirements of”), and a <code class="language-plaintext highlighter-rouge">TeachingAssistant</code> only implements the <code class="language-plaintext highlighter-rouge">Person</code> contract once.</p>
+
+<h3 id="there-should-be-only-one-behaviour">There should be only one behaviour</h3>
+
+<p>The real-world meaning of “exists only once” is that a <code class="language-plaintext highlighter-rouge">TeachingAssistant</code> should have only one way of implementing <code class="language-plaintext highlighter-rouge">speak</code>, not two different ways.</p>
+
+<p>In our degenerate case, <code class="language-plaintext highlighter-rouge">Person::speak()</code> is not overridden in either <code class="language-plaintext highlighter-rouge">Student</code> or <code class="language-plaintext highlighter-rouge">Worker</code>, but that could be different and then we would <code class="language-plaintext highlighter-rouge">TeachingAssistant</code> would have multiple implementations of the <code class="language-plaintext highlighter-rouge">speak()</code> method.</p>
+
+<p>If we introduce <code class="language-plaintext highlighter-rouge">virtual</code> to our inheritance in the following way, our problems disappear:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td> --><td class="rouge-code"><pre><span class="k">struct</span> <span class="nc">Person</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="k">virtual</span> <span class="o">~</span><span class="n">Person</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="k">virtual</span> <span class="kt">void</span> <span class="n">speak</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="c1">// Two classes virtually inheriting Person:</span>
+<span class="k">struct</span> <span class="nc">Student</span><span class="o">:</span> <span class="k">virtual</span> <span class="n">Person</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="k">virtual</span> <span class="kt">void</span> <span class="n">learn</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="nc">Worker</span><span class="o">:</span> <span class="k">virtual</span> <span class="n">Person</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="k">virtual</span> <span class="kt">void</span> <span class="n">work</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="c1">// A teaching assistant is still a student and the worker</span>
+<span class="k">struct</span> <span class="nc">TeachingAssistant</span><span class="o">:</span> <span class="n">Student</span><span class="p">,</span> <span class="n">Worker</span> <span class="p">{};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Now we can easily call <code class="language-plaintext highlighter-rouge">speak()</code>.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">Person</code> portion of <code class="language-plaintext highlighter-rouge">TeachingAssistant::Worker</code> is now the same <code class="language-plaintext highlighter-rouge">Person</code> instance as the one used by <code class="language-plaintext highlighter-rouge">TeachingAssistant::Student</code>, which is to say that a <code class="language-plaintext highlighter-rouge">TeachingAssistant</code> has only one - shared - <code class="language-plaintext highlighter-rouge">Person</code> instance in its representation and so a call to <code class="language-plaintext highlighter-rouge">TeachingAssistant::speak</code> is unambiguous. Additionally, a direct cast from <code class="language-plaintext highlighter-rouge">TeachingAssistant</code> to <code class="language-plaintext highlighter-rouge">Person</code> is also unambiguous, now that there exists only one <code class="language-plaintext highlighter-rouge">Person</code> instance which <code class="language-plaintext highlighter-rouge">TeachingAssistant</code> could be converted to.</p>
+
+<p>This can be done through <code class="language-plaintext highlighter-rouge">vtable</code> pointers. Without going into details, the object size increases by two pointers, but there is only one <code class="language-plaintext highlighter-rouge">Person</code> object behind and no ambiguity.</p>
+
+<p>You must use the <code class="language-plaintext highlighter-rouge">virtual</code> keyword in the middle level of the diamond. Using it in the bottom doesn’t help.</p>
+
+<p>You can find more detail at the <a href="https://isocpp.org/wiki/faq/multiple-inheritance">Core Guidelines</a> and <a href="https://en.wikipedia.org/wiki/Virtual_inheritance">here</a>.</p>
+
+<h2 id="should-we-always-use-virtual-inheritance-if-yes-why-if-not-why-not">Should we always use virtual inheritance? If yes, why? If not, why not?</h2>
+
+<p>The answer is definitely no. The base of an idiomatic answer can be the most fundamental idea of C++: <strong>you only pay for what you use</strong>. And if you don’t need virtual inheritance, you should rather not pay for it.</p>
+
+<p>Virtual inheritance is almost never needed. It addresses the diamond inheritance problem that we saw at the beginning of the article. It can only happen if you have multiple inheritance, otherwise, you cannot have this issue.</p>
+
+<p>At the same time, it has some drawbacks.</p>
+
+<h3 id="more-complex-dependencies">More complex dependencies</h3>
+
+<p>Virtual inheritance causes troubles with object initialization and copying. Since it is the “most derived” class that is responsible for these operations, it has to be familiar with all the intimate details of the structure of base classes.</p>
+
+<p>Due to this, a more complex dependency appears between the classes, which complicates the project structure and forces you to make some additional revisions in all those classes during refactoring. All this leads to new bugs and makes the code less readable and thus less maintainable.</p>
+
+<h3 id="expensive-type-conversions">Expensive type conversions</h3>
+
+<p><a href="https://isocpp.org/wiki/faq/multiple-inheritance#virtual-inheritance-casts">ISO C++ guidelines</a> also suggests that C-style downcasts cannot be used to cast a base class pointer to a derived one.</p>
+
+<p>The problems can be solved by <code class="language-plaintext highlighter-rouge">dynamic_cast</code>, but it has its performance implications. Using too much <code class="language-plaintext highlighter-rouge">dynamic_cast</code> in your code can make a big hit, and it also means that your project’s architecture is probably very poor.</p>
+
+<p>You can always implement what you need without multiple inheritance. There is no surprise in that. After all, the feature of virtual inheritance is not present in many other major languages, yet they are used for large and complex projects.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Today, we discussed the diamond inheritance problem. We understood that when there are multiple paths between a base and a derived class, there are multiple base objects instantiated which is almost never desirable. C++ proposes virtual inheritance to solve this problem and letting such structures to live with only one instance of a base class.</p>
+
+<p>Yet, as you should only pay for what you use, virtual inheritance should not be your default choice. Most projects can be implemented without such a language feature and if you can design your software without multiple inheritance, you don’t need to deal with its downsides.</p>
+
+<p>Have you ever used multiple inheritance in your production code? If yes, what was the use-case?</p>
+
+<h2 id="connect-deeper">Connect deeper</h2>
+
+<p>If you found interesting this article, please <a href="http://eepurl.com/gvcv1j">subscribe to my newsletter</a> and let’s connect on <a href="https://twitter.com/SandorDargo">Twitter</a>!</p>
+:ET

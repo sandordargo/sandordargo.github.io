@@ -1,0 +1,189 @@
+I"k@<p>Luckily on a basic level both <code class="language-plaintext highlighter-rouge">CREATE</code> and <code class="language-plaintext highlighter-rouge">MATCH</code> are quite self-explanatory. So with <code class="language-plaintext highlighter-rouge">MATCH</code> you’ll be able to look for certain elements in your database. In short, you can match patterns. Often you will you use <code class="language-plaintext highlighter-rouge">MATCH</code> together with <code class="language-plaintext highlighter-rouge">WHERE</code>, but not necessarily as I will show you.</p>
+
+<p>Let’s see quickly what are the corresponding keywords in SQL. As usual there is no exact match, but you can think about <code class="language-plaintext highlighter-rouge">FROM</code> and <code class="language-plaintext highlighter-rouge">WHERE</code> if you think SQL. But while in SQL you heavily rely on <code class="language-plaintext highlighter-rouge">WHERE</code>, in Cypher only <code class="language-plaintext highlighter-rouge">MATCH</code> can do the work for you in a lot of cases.</p>
+
+<p>When we want to explore the usage of <code class="language-plaintext highlighter-rouge">MATCH</code>, we also have to understand another two keywords: <code class="language-plaintext highlighter-rouge">WHERE</code> and <code class="language-plaintext highlighter-rouge">RETURN</code>. Later I will dedicate an own post for each of them, now let’s just quickly skim them through.</p>
+
+<h4 id="where"><strong><code class="language-plaintext highlighter-rouge">WHERE</code></strong></h4>
+
+<p>This keyword cannot stand on its own. It goes with any of the following clauses: <code class="language-plaintext highlighter-rouge">MATCH</code>, <code class="language-plaintext highlighter-rouge">OPTIONAL MATCH</code>, <code class="language-plaintext highlighter-rouge">START</code> or <code class="language-plaintext highlighter-rouge">WITH</code>. This also means that it can be used in different ways. Now I’m just going to focus on its basic usage with <code class="language-plaintext highlighter-rouge">MATCH</code> and then in another article we’ll cover the rest.</p>
+
+<p><code class="language-plaintext highlighter-rouge">WHERE</code> is to add constraints to your patterns defined in <code class="language-plaintext highlighter-rouge">MATCH</code>. It these terms it works pretty similar to SQL. You can use use the usual boolean operators (<code class="language-plaintext highlighter-rouge">AND</code>, <code class="language-plaintext highlighter-rouge">OR</code>, <code class="language-plaintext highlighter-rouge">XOR</code> and <code class="language-plaintext highlighter-rouge">NOT</code>), you can use it for string matching, quantified comparisons, existence checks, etc. Here is a short (and really non-exhaustive) list of  examples:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td> --><td class="rouge-code"><pre>WHERE region.name = 'Pannon' AND (grape.name = 'Merlot' OR grape.name = 'Cabernet franc')
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td> --><td class="rouge-code"><pre>WHERE subregion.size &gt; 500
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td> --><td class="rouge-code"><pre>WHERE grape.name STARTS WITH 'Cabernet'
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td> --><td class="rouge-code"><pre>WHERE grape.name IN ['Muscat ottonel', 'Cabernet sauvignon']
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>These are only the simplest expressions, more advanced examples will be part of the post dedicated to the <code class="language-plaintext highlighter-rouge">WHERE</code> clause.</p>
+
+<h4 id="return"><strong><code class="language-plaintext highlighter-rouge">RETURN</code></strong></h4>
+
+<p>It is like <code class="language-plaintext highlighter-rouge">SELECT</code> in SQL. But while in SQL you start with <code class="language-plaintext highlighter-rouge">SELECT</code>, in Cypher you end with <code class="language-plaintext highlighter-rouge">RETURN</code>. You define what you want to return from your query. In its simplest form, you can return everything: <code class="language-plaintext highlighter-rouge">RETURN *</code>. Most of the times, you will return nodes and/or relationships:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td> --><td class="rouge-code"><pre>MATCH (wineRegion:WineRegion)
+RETURN wineRegion
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td> --><td class="rouge-code"><pre>MATCH ()-[relationship:GROWS_AT]-&gt;()
+RETURN relationship
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td> --><td class="rouge-code"><pre>MATCH (grape:Grape)-[relationship:GROWS_AT]-&gt;(subregion:SubRegion)
+RETURN grape, relationship, subregion
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>As you can see if you want to return multiple elements, it’s really easy, you can just list the elements separated by commas.</p>
+
+<p>If you don’t want to return the whole node, just a single property, it’s also really easy, you specify the name of the property after the node/relationship name separated by a dot:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td> --><td class="rouge-code"><pre>MATCH (wineRegion:WineRegion)
+RETURN wineRegion.name
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>That’s enough for now. Let’s talk about the <code class="language-plaintext highlighter-rouge">MATCH</code> keyword.</p>
+
+<h4 id="get-all-nodes">Get all nodes</h4>
+
+<p>Let’s start it easy. Let’s return all nodes.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td> --><td class="rouge-code"><pre>MATCH (n)
+RETURN n
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p><img src="/assets/img/match_n.png" alt="Match N" /></p>
+
+<p>It is that simple. Just match every node. You might expect to get a bunch of lonely nodes on your console, but in that case, you’re mistaken. All the relationships are retrieved too. I have to be more precise with this latter statement. When you retrieve nodes all the direct relationships will be retrieved which are between those nodes.</p>
+
+<p>You’ll see quickly what I mean. But first, have a look at a sub-graph that we will heavily use today. You can see all the wine subregions contained in a region called <em>Eger</em> and all the grapes which grow in these subregions.</p>
+
+<p><img src="/assets/img/eger-sub-graph.png" alt="Eger sub-graph" /></p>
+
+<h4 id="get-nodes-by-name">Get nodes by name</h4>
+
+<p>Let’s assume that there are differently labeled nodes with the same name. Still, for some reason it wouldn’t make sense the tag the same node with two different labels. There is such a case in our example graph related to wine regions.</p>
+
+<p><em><a href="https://en.wikipedia.org/wiki/Eger">Eger</a></em> which is a Hungarian city is also a name of a wine region and a wine subregion. If you want to get all the nodes with the same name without declaring the labels you are interested in, you must use the <code class="language-plaintext highlighter-rouge">WHERE</code> clause as you can see below. Putting it differently, you cannot write something like this: <code class="language-plaintext highlighter-rouge">MATCH (n:{name: 'Eger'})</code>. If you specify an attribute in the <code class="language-plaintext highlighter-rouge">MATCH</code> clause you must specify the label too.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td> --><td class="rouge-code"><pre>MATCH (n)
+ WHERE n.name = "Eger"
+ RETURN n
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="get-nodes-by-label-and-name">Get nodes by label and name</h4>
+
+<p>You can can get the same result by executing this query:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td> --><td class="rouge-code"><pre>MATCH (region:WineRegion{name:'Eger'}), (subregion:WineSubRegion{name:'Eger'})
+RETURN region, subregion
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>In both cases, you could see that when you return these nodes, which are in a direct relationship with each other, the relationships are also shown on the graph returned on the Neo4j console. However, if you check other views, you can see that they are not returned, just shown as a sign of courtesy.</p>
+
+<p>Now if you query two nodes which are in an indirect relationship with each other, like a grape and the region (there is a subregion in between), even on the graph view you won’t see any relationship between them, you’ll only see two lonely nodes.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td> --><td class="rouge-code"><pre>MATCH (grape:Grape {name:"Cabernet franc"}), (region:WineRegion {name:"Eger"})
+RETURN grape, region
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="relationships-with-undefined-directions">Relationships with undefined directions</h4>
+
+<p>If you want to retrieve any direct relationship between some nodes, you can do it this way. You can see that there is no arrow pointing at any direction. Not even the relationship type is defined. We just named it as <code class="language-plaintext highlighter-rouge">rel</code> and returned it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td> --><td class="rouge-code"><pre>MATCH (region:WineRegion{name:'Eger'})-[rel]-(subregion:WineSubRegion)
+RETURN region, subregion, rel
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="relationships-with-defined-directions">Relationships with defined directions</h4>
+
+<p>Now we write our query with the relationship pointing at the wine region. Executing the query one can see that there are no nodes or relationships retrieved.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td> --><td class="rouge-code"><pre>MATCH (region:WineRegion{name:'Eger'})&lt;-[rel]-(subregion:WineSubRegion)
+RETURN region, subregion, rel
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Let’s turn the direction of that relationship! Now you can see that we’re getting the same results as before with the undirected relationships. In fact, the relationships in your graph are always directed, but the Cypher engine will look for both directions.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td> --><td class="rouge-code"><pre>MATCH (region:WineRegion{name:'Eger'})-[rel]-&gt;(subregion:WineSubRegion)
+RETURN region, subregion, rel
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>You can even specify the type of the relationship if you want to be more specific:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td> --><td class="rouge-code"><pre>MATCH (region:WineRegion{name:'Eger'})-[rel:CONTAINS]-&gt;(subregion:WineSubRegion)
+RETURN region, subregion, rel
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Or you can even specify multiple relationship types to match:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td> --><td class="rouge-code"><pre>MATCH (region:WineRegion{name:'Eger'})-[rel:CONTAINS|GROWS_AT]-&gt;(subregion:WineSubRegion)
+RETURN region, subregion, rel
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="getting-the-type-of-the-relationship">Getting the type of the relationship</h4>
+
+<p>Let’s say you don’t know exactly how some nodes are connected. As we saw in your query you don’t have to indicate the relationship type. You can just get every relationship irrespective of their type or direction. You can retrieve their type instead of the relationships themselves. Or both! Just use the <code class="language-plaintext highlighter-rouge">type()</code> function.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td> --><td class="rouge-code"><pre>MATCH (region:WineRegion{name:'Eger'})-[rel:CONTAINS]-&gt;(subregion:WineSubRegion)
+RETURN region, subregion, rel, type(rel)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>You can only use <code class="language-plaintext highlighter-rouge">type()</code> with relationships.</p>
+
+<h4 id="get-nodes-or-relationships-by-id">Get nodes or relationships by id</h4>
+
+<p>If you are building and executing your queries from an application, it’s quite probable that you would identify your nodes and/or relationships with their technical IDs. No problem, you can easily retrieve them as such, using their id by using the <code class="language-plaintext highlighter-rouge">id()</code> function. You can easily match one single or a list of ids. It’s very intuitive as you can see.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td> --><td class="rouge-code"><pre>MATCH (n)
+WHERE id(n) IN [0, 3, 5]
+RETURN n
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td> --><td class="rouge-code"><pre>MATCH ()-[r]-&gt;()
+WHERE id(r)= 0
+RETURN r
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>We are far from finishing exploring the complete list of possibilities that <code class="language-plaintext highlighter-rouge">MATCH</code> provides, but that’s it for today. I keep some topics about paths to an advanced article. Stay tuned!</p>
+:ET

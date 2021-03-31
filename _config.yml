@@ -1,107 +1,174 @@
-# SITE CONFIGURATION
-baseurl: ""
-url: "https://www.sandordargo.com"
-title: Sandor Dargo's Blog # site's title
-tagline: Sandor Dargo's Blog on C++, software development and books
-description: "A blog about C++ software development, books and stoic philosophy applied to software craftsmanship" # by search engines
-permalink: /blog/:year/:month/:day/:title
-plugins: [jekyll-paginate, jekyll-seo-tag, jekyll-redirect-from]
-future: false
+# The Site Configuration
+
+# Import the theme
+theme: jekyll-theme-chirpy
+
+# Only if your site type is GitHub Project sites and doesn't have a custom domain,
+# change below value to '/projectname'.
+baseurl: ''
+
+# the HTML language tag › https://www.w3.org/International/questions/qa-choosing-language-tags
+lang: en-US
+
+# Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
+timezone: Europe/Paris
+
+# jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
+# --------------------------
+title: Sandor Dargo's Blog # the main title
+
+tagline: On C++, software development and books   # it will display as the sub-title
+
+description: "Sandor Dargo writes about about C++, software development, books and stoic philosophy applied to software craftsmanship"       # used by seo meta and the atom feed
+
+# fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
+url: 'https://www.sandordargo.com'
+
+github:
+  username: sandordargo             # change to your github username
+
 twitter:
-  username: SandorDargo
-  card: summary
+  username: SandorDargo            # change to your twitter username
 
 social:
+  # Change to your full name.
+  # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: Sandor Dargo
+  email: sandor.dargo@gmail.com             # change to your email address
   links:
-    - https://twitter.com/SandorDargo
-    - https://www.linkedin.com/in/sandor-dargo/
+    # The first element serves as the copyright owner's link
+    - https://twitter.com/SandorDargo      # change to your twitter homepage
     - https://github.com/sandordargo/
+    - https://www.linkedin.com/in/sandor-dargo/
 
-# THEME-SPECIFIC CONFIGURATION
-theme_settings:
-  # Meta
-  title: Sandor Dargo's Blog # blog's title
-  avatar: assets/img/SANDOR_DARGO_ROUND.JPG
-  favicon: assets/favicon.ico #color: #0f64c4
-  gravatar: # Email MD5 hash
+    # Uncomment below to add more social links
+    # - https://www.facebook.com/username
+    # - https://www.linkedin.com/in/username
 
-  # Header and footer text
-  header_text: > #two or three lines to describe your site
-     <p>Keep reading, keep learning, that's the only answer!</p>
-  header_text_feature_image: assets/img/home-image-tokyo.jpg
-  footer_text: ""
+google_site_verification: google_meta_tag_verification # change to your verification string
+# --------------------------
 
-  # Icons
-  rss: true  # Make sure you created a feed.xml with feed.xml layout
-  email_address: sandor.dargo@gmail.com # Full email address, e.g. "sam@example.com"
-  behance:
-  bitbucket:
-  dribbble:
-  facebook: "sandor.dargo"
-  flickr:
-  gitlab:
-  github: "sandordargo"
-  google_plus:
-  instagram: "sandor.dargo"
-  keybase:
-  linkedin:  "https://www.linkedin.com/in/sandor-dargo/"
-  pinterest:
-  reddit:
-  soundcloud:
-  stack_exchange:  # Full URL
-  steam:
-  tumblr:
-  twitter: "SandorDargo"
-  vimeo:
-  wordpress:
-  youtube:
+google_analytics:
+  id: 'UA-89625019-1'          # Fill with your Google Analytics ID
+  pv:
+    # The Google Analytics pageviews switch.
+    # DO NOT enable it unless you know how to deploy the Google Analytics superProxy.
+    enabled: false
+    # the next options only valid when `google_analytics.pv` is enabled.
+    proxy_url: ''
+    proxy_endpoint: ''
+    cache: false  # pv data local cache, good for the users from GFW area.
 
-  # Scripts / Features 
-  google_analytics: UA-89625019-1 # Tracking ID, e.g. "UA-000000-01"
-  disqus_shortname: sandordargo-github-io
-  katex: true # Enable if using math markup
-  portfolio: false
-  search: true
-  tags: true
-  
-  # Localization strings
-  str_follow_on: "Follow on"
-  str_rss_follow: "Follow RSS feed"
-  str_email: "Email"
-  str_next_post: "Next post"
-  str_previous_post: "Previous post"
-  str_next_page: "Next"
-  str_previous_page: "Prev"
-  str_continue_reading: "Continue reading"
-  str_javascript_required_disqus: "Please enable JavaScript to view comments."
+# Prefer color scheme setting.
+#
+# Note: Keep empty will follow the system prefer color by default,
+# and there will be a toggle to switch the theme between dark and light
+# on the bottom left of the sidebar.
+#
+# Available options:
+#
+#     light  - Use the light color scheme
+#     dark   - Use the dark color scheme
+#
+theme_mode:   # [light|dark]
 
-  # Colours, typography and padding
-  # Open the "_sass > base" folder, and open "_variables.scss"
-  google_fonts: "Source+Sans+Pro:400,700,700italic,400italic"
+# The CDN endpoint for images.
+# Notice that once it is assigned, the CDN url
+# will be added to all image (site avatar & posts' images) paths starting with '/'
+#
+# e.g. 'https://cdn.com'
+img_cdn: ''
 
-  # Post navigation
-  post_navigation: true
-  
+# the avatar on sidebar, support local or CORS resources
+avatar: assets/img/SANDOR_DARGO_ROUND.JPG
 
-# PAGINATION
+# boolean type, the global switch for ToC in posts.
+toc: true
+
+disqus:
+  comments: true  # boolean type, the global switch for posts comments.
+  shortname: 'sandordargo-github-io'    # Fill with your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+
 paginate: 10
-paginate_path: "blog/page:num"
 
+# ------------ The following options are not recommended to be modified ------------------
 
-# PORTFOLIO
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:   # Rouge Options › https://github.com/jneen/rouge#full-options
+    css_class: highlight
+    # default_lang: console
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
+
+# DO NOT change this unless you're a Pro user on Jekyll and Web development,
+# Or you think you're smart enough to change other relevant URLs within this template.
+permalink: /blog/:year/:month/:day/:title
+
 collections:
-  portfolio:
+  tabs:
     output: true
-    permalink: /:collection/:name
+    sort_by: order
 
 
-# BUILD SETTINGS
-markdown: kramdown
-highlighter: rouge
+defaults:
+  -
+    scope:
+      path: ''          # An empty string here means all files in the project
+      type: posts
+    values:
+      layout: post
+      comments: true    # Enable comments in posts.
+      toc: true         # Display TOC column in posts.
+  -
+    scope:
+      path: _drafts
+    values:
+      comments: false
+  -
+    scope:
+      path: ''
+      type: tabs             # see `site.collections`
+    values:
+      layout: page
+      permalink: /:title/
+      dynamic_title: true    # Hide title in mobile screens.
+
 sass:
-  sass_dir: _sass
-  style: :compressed
-plugins_dir: [jekyll-paginate, jekyll-seo-tag, jekyll-redirect-from]
-#theme: type-on-strap # Uncomment if using the theme as a jekyll theme gem
-exclude: ["Gemfile", "Gemfile.lock", "type-on-strap.gemspec", "*.gem", "LICENSE", "README.md", "screenshot.png"]
+  style: compressed
+
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  profile: false
+  blanklines: false
+  ignore:
+    envs: [development]
+
+exclude:
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - '*.gem'
+  - '*.gemspec'
+  - tools
+  - docs
+  - README.md
+  - LICENSE
+  - gulpfile.js
+  - node_modules
+  - package.json
+  - package-lock.json
+
+jekyll-archives:
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    tag: /tags/:name/
+    category: /categories/:name/

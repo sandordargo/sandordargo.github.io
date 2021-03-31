@@ -1,0 +1,79 @@
+I".<p>I have learned, <a href="http://sandordargo.com/tags/#stl">written</a> and <a href="https://www.youtube.com/watch?v=BEmAo6Fdg-Q">spoken</a> a lot about the Standard Template Library during the course of the last years. My sources have been mostly websites such as <a href="https://en.cppreference.com/w/">cppreference.com</a>, <a href="http://cplusplus.com/">cplusplus.com</a>, blogs, youtube videos, but not so many books.
+<!--more--></p>
+
+<p>Last year I read <a href="http://sandordargo.com/blog/2019/07/10/cpp-standard-library-a-tutorial-and-reference">The C++ Standard Library: A Tutorial and Reference by Nicolai Josuttis</a> - who by the way gave <a href="https://www.youtube.com/watch?v=elFil2VhlH8">a very interesting keynote about std::jthread at C++ On Sea</a>.</p>
+
+<p>Recently, I decided to pick up another promising book, <a href="https://amzn.to/32c62Ub">The Effective STL</a> by the great <a href="https://www.aristeia.com/">Scott Meyers</a>.</p>
+
+<p>Did the book meet my expectation?</p>
+
+<p>It did!</p>
+
+<h2 id="who-should-read-it">Who should read it?</h2>
+
+<p>I recommend you to read <a href="https://amzn.to/32c62Ub">The Effective STL</a> if you are not totally new to the Standard Template Library. Why don’t I recommend it to complete beginners?</p>
+
+<p>Not because you need some prior knowledge. You need to understand C++ on a basic level of course, but that’s not my concern.</p>
+
+<p>In the preface of <a href="https://amzn.to/2YlY21N">My Early Life</a>, Winston Churchill wrote that society, politics, war, youth, values have changed since the events of the book happened and the points of view he wrote down were appropriate to his age and the era even if they are not gerenally accepted anymore.</p>
+
+<p>While the majority of this book is still valid, some pieces of advice bacome obsolete by the almost 20 years that passed by since the release of <a href="https://amzn.to/32c62Ub">The Effective STL</a> in 2001. Accept the rest as representing the state of the art of the pre C++11 era.</p>
+
+<p>Anyway, if you are a complete beginner and you decide to pick up this book, you’ll improve a lot, the only thing is that your code will not be very modern and in some cases, you lose some of the efficiency and expressive power that C++ and the STL gained with its modern versions (starting from C++11).</p>
+
+<h2 id="how-is-it-organized">How is it organized?</h2>
+
+<p>The 50 items of the book are organized around 7 chapters: Containers, Iterators, Algorithms, Functors. No surprise, after all, they are the key elements of the STL.</p>
+
+<p>Wait, this is only 4! The last one is “Programing with the STL” and there are two more, right after the <em>Containers</em>: chapter 2 is about vectors and strings and chapter 3 is about associative containers.</p>
+
+<p>To me, this organization is a little bit odd, though I understand that the author wanted to avoid having some huge chapters and decided to break down some.</p>
+
+<h2 id="what-will-you-learn">What will you learn?</h2>
+
+<p>There are some real “tricks” like using the so-called swap trick to remove excess capacity from a vector (Item 17), there are items that I also talked about at <a href="https://www.youtube.com/watch?v=BEmAo6Fdg-Q">C++ On Sea</a>, such as algorithms that are expecting sorted containers (Item 34), but there are at least 2 items that can have a much bigger impact on how you write.</p>
+
+<h3 id="item-43-prefer-algorithm-calls-to-hand-written-loops">Item 43: Prefer algorithm calls to hand-written loops</h3>
+
+<p>This is something that went viral since then. <a href="https://channel9.msdn.com/Events/GoingNative/2013/Cpp-Seasoning">In his famous talk, Sean Parent advocated for it</a>, it was recently a topic in the Italian C++ Conference disguised as the <a href="https://www.youtube.com/watch?v=CjHgL5EQdcY">Initialize Then Modify anti-pattern</a> presented by Conor Hoekstra, and I also <a href="http://www.sandordargo.com/blog/2020/05/13/loops-vs-algorithms">wrote about it</a> earlier this year.</p>
+
+<p>I’d suggest you to check out any of these resources, probably in the order I listed them.</p>
+
+<p>Still, let me summarized the main reasons.
+Algorithms are:</p>
+<ul>
+  <li>more expressive than handwritten loops</li>
+  <li>well tested, so less error-prone than raw loops</li>
+  <li>and for most us - mortal human beings -, algorithms will be more performant</li>
+</ul>
+
+<h3 id="item-47-avoid-producing-write-only-code">Item 47: Avoid producing write-only code</h3>
+
+<p>When I read the term write-only, I didn’t understand what it is. Of course, you shouldn’t use variables that are never read, you shouldn’t have unused variables, but they generate compiler warnings anyway. And hopefully, we all handle warnings as errors in our projects.</p>
+
+<p>But this item is not about unused variables. It’s about code that you write once and then nobody dears to touch it. That’s what Meyers meant by write-only code.</p>
+
+<p>We all know this type of code. A four thousand long shell script where you have functions of several hundreds of lines long and each time your team has to extend it, you fight not to be the next unlucky one who must take it this time, but time is never given to actually understand it and make it more readable.</p>
+
+<p>We all have something like that and item 47 is not about that kind of write-only code!</p>
+
+<p>What else can be?</p>
+
+<p>Have you read the <a href="https://amzn.to/2QdYzOT">Software Craftsman by Sandro Mancuso</a>? There is a story about his younger self who managed to got into his dream team at his workplace and he wanted to impress his new boss with some brilliant code.</p>
+
+<p>His boss walked by and deleted all of it.</p>
+
+<p>Remember, you don’t write code to impress people. You write code to deliver solutions, solutions that can be maintained. Keep it stupid simple. Don’t use techniques that no one else will understand. Don’t use obscure libraries.</p>
+
+<p>Write easy to understand, easy to maintain, yet correct code. That’s your job.</p>
+
+<p>And what is easy to understand will depend of course on your team. It won’t be the same in some niche company mostly with really experienced profile devs and in a huge corporation with a high turn over rate and a big bunch of <a href="https://daedtech.com/how-developers-stop-learning-rise-of-the-expert-beginner/">expert beginners</a>.</p>
+
+<p>You have to assess, you have to find the balance keeping the one goal in mind.</p>
+
+<h2 id="conlusion">Conlusion</h2>
+
+<p>Despite its age, I still recommend reading <a href="https://amzn.to/32c62Ub">The Effective STL</a> if you want to boost (no pun intended) your knowledge on the Standard Template Library. You will understand what is going on under the hood when you use certain techniques you knew about, you’ll learn new tricks and in general, you’ll understand better how the STL is designed, how each element should work together.</p>
+
+<p>Happy reading!</p>
+:ET

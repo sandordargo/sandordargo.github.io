@@ -1,0 +1,28 @@
+I"+<p>I discovered <code class="language-plaintext highlighter-rouge">OPTIONAL MATCH</code> when I was preparing <a href="https://github.com/sandordargo/neo-wine-services">the code kata of Test Driven Development with Neo4j</a>.</p>
+
+<p>First, let’s have a look at how the test data look like.</p>
+
+<p><img src="/assets/img/test-data-neo-wine-services.png" alt="Test Data new wine services" /></p>
+
+<p>You can see that there is one <code class="language-plaintext highlighter-rouge">WineRegion</code>, 3 <code class="language-plaintext highlighter-rouge">WineSubregions</code> connecting to the same <code class="language-plaintext highlighter-rouge">WineRegion</code> and there are <code class="language-plaintext highlighter-rouge">Grapes</code> as well. But not every <code class="language-plaintext highlighter-rouge">WineSubregion</code> has related <code class="language-plaintext highlighter-rouge">Grapes</code> - in our test database.</p>
+
+<p>When I was developing the function to return a given WineSubregion with its parent region and with the grapes which are grown at that subregion, first I wrote something like this (instead of a variable I use a real subregion name here)</p>
+
+<p><code class="language-plaintext highlighter-rouge">MATCH (wr:WineRegion)-[:CONTAINS]-&gt;(wsr:WineSubRegion {name:"Mátra"})&lt;-[:GROWS_AT]-(grape:Grape) RETURN wr, wsr, grape</code></p>
+
+<p>This query only worked if the subregion I was looking for had grapes associated with it. After I thought about it I realized that it must be about that missing relationship. So as a next step I added that I was looking for 0 or 1 instance of that relationship - that’s what I thought at least.</p>
+
+<p><code class="language-plaintext highlighter-rouge">MATCH (wr:WineRegion)-[:CONTAINS]-&gt;(wsr:WineSubRegion {name:"Mátra"})&lt;-[:GROWS_AT*0..1]-(grape:Grape) RETURN wr, wsr, grape</code></p>
+
+<p>Still no result for subregions without grapes grown there. Now I was truly surprised. I expected that if I look for potentially zero relationships then I should have results for any subregions.</p>
+
+<p>In fact, it is so obvious this didn’t work. If you put a number or a range after a relationship type, you don’t define how many relationships there can be between the two nodes - why would you even do that - but you define a relationship length. I’ll cover it in another article, but to give you an idea, you can define how many relationships of a certain type you have to hop through in order to reach another node. With a <code class="language-plaintext highlighter-rouge">:FRIEND</code> relationship in a social graph, it makes perfect sense. In my data model, it doesn’t.</p>
+
+<p>Then I found the <code class="language-plaintext highlighter-rouge">OPTIONAL MATCH</code> clause. Its name is really descriptive.</p>
+
+<p>After the <code class="language-plaintext highlighter-rouge">MATCH</code> clause you describe all the nodes and relationships you are looking for and must be present. Then after the <code class="language-plaintext highlighter-rouge">OPTIONAL MATCH</code> you describe anything that is okay not to be there in the database. If the optional elements are not there, they will be represented as null in the results.</p>
+
+<p><code class="language-plaintext highlighter-rouge">MATCH (wr:WineRegion)-[:CONTAINS]-&gt;(wsr:WineSubRegion {name:"Mátra"}) OPTIONAL MATCH (wsr)&lt;-[:GROWS_AT]-(grape:Grape) RETURN wr, wsr, grape</code></p>
+
+<p>Now you know how you can look for optional elements in a graph, next time we will talk about the <code class="language-plaintext highlighter-rouge">MERGE</code> keyword.</p>
+:ET

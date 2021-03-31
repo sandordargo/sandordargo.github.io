@@ -1,0 +1,4 @@
+I"M<p>If you are into coding dojos and solving katas, you might have already tried the <a href="https://github.com/emilybache/GildedRose-Refactoring-Kata">Gilded Rose kata</a> by <a href="https://twitter.com/emilybache?lang=en">Emily Bache</a>.</p>
+
+<p>In this kata, you are given some existing code that handles the quality and the number of days before expiration properties of the products in a store. The code handles almost everything in one single huge function. Unsurprisingly, the goal of the kata is to refactor the code. Besides, there is also a new functionality to implement.</p>
+:ET

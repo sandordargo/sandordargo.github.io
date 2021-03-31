@@ -1,0 +1,300 @@
+I"hj<p>In this next part of <a href="http://sandordargo.com/blog/2019/01/30/stl-algos-intro">the big STL algorithm tutorial</a>, we will discover all the modifying sequence operations whose name start with copy:
+<!--more--></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">copy</code></li>
+  <li><code class="language-plaintext highlighter-rouge">copy_n</code></li>
+  <li><code class="language-plaintext highlighter-rouge">copy_if</code></li>
+  <li><code class="language-plaintext highlighter-rouge">copy_backward</code></li>
+</ul>
+
+<h2 id="copy"><code class="language-plaintext highlighter-rouge">copy</code></h2>
+
+<p>There is no big surprise about the goal of <code class="language-plaintext highlighter-rouge">std::copy</code>. It takes the elements of the input range and copies them to the output. Let here be an example:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="cp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">auto</span> <span class="n">inputNumbers</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">};</span>
+  <span class="k">auto</span> <span class="n">copiedNumbers</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">{};</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">copy</span><span class="p">(</span><span class="n">inputNumbers</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">inputNumbers</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">copiedNumbers</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">number</span> <span class="o">:</span> <span class="n">copiedNumbers</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">number</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+  <span class="p">}</span>
+  
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>So what do you think? Will our copy operation be successful?</p>
+
+<p>No, it won’t be! Instead, we are facing a core dump caused by a segmentation fault. The reason is that there is simply not enough space in <code class="language-plaintext highlighter-rouge">copiedVectors</code>. Its size is zero and there is no automatic expansion of the vector unless you use the corresponding API (like <a href="http://www.cplusplus.com/reference/vector/vector/push_back/">push_back()</a>).</p>
+
+<p>So we have two options to choose from.</p>
+
+<p>1) We can make sure that the output vector has a big enough size for example by declaring it with the size of the input like this:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="k">auto</span> <span class="n">copiedNumbers</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">inputNumbers</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>This approach has multiple disadvantages.</p>
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">copiedNumbers</code> will be populated with the default constructed objects. Okay, in our example we use integers, but imagine if we use a big vector of custom objects that are more costly to build.</p>
+  </li>
+  <li>
+    <p>There is another issue. What if the size of the input changes between you create copiedNumbers and you actually call the copy algorithm? Still the same segmentation fault.</p>
+  </li>
+</ul>
+
+<p>2) Instead, you can use an <em>inserter</em> which is an inserter <strong>iterator</strong> and as its name suggests it will help you to add new elements to the output vector. You can use it like this:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="cp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">auto</span> <span class="n">inputNumbers</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">};</span>
+  <span class="k">auto</span> <span class="n">copiedNumbers</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">{};</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">copy</span><span class="p">(</span><span class="n">inputNumbers</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">inputNumbers</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">std</span><span class="o">::</span><span class="n">back_inserter</span><span class="p">(</span><span class="n">copiedNumbers</span><span class="p">));</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">number</span> <span class="o">:</span> <span class="n">copiedNumbers</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">number</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+  <span class="p">}</span>
+  
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Please note that we used <code class="language-plaintext highlighter-rouge">std::back_inserter</code> in our example that always inserts new elements at the end of its target. Just like <code class="language-plaintext highlighter-rouge">push_back</code>, but that’s someone you cannot use in algorithms as it is related to a specific container, it’s not an inserter iterator.</p>
+
+<p>A particular problem you might think off is that our output container is empty in the beginning and it grows and grows. In how many steps? We can’t really know in advance that’s an implementation detail of the compiler you are using. But if your input container is big enough, you can assume that the output operator will grow in multiple steps. Resizing your vector might be expensive, it needs memory allocation, finding continuous free areas, whatever.</p>
+
+<p>If you want to help with that, you might use <code class="language-plaintext highlighter-rouge">std::vector::reserve</code>, which will reserve a big enough memory area for the vector so that it can grow without new allocations. And if the reserved size is not enough, there won’t be a segmentation fault or any other issue, just a new allocation.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="cp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">auto</span> <span class="n">inputNumbers</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">};</span>
+  <span class="k">auto</span> <span class="n">copiedNumbers</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">{};</span>
+  <span class="n">copiedNumbers</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="n">inputNumbers</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">copy</span><span class="p">(</span><span class="n">inputNumbers</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">inputNumbers</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">std</span><span class="o">::</span><span class="n">back_inserter</span><span class="p">(</span><span class="n">copiedNumbers</span><span class="p">));</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">number</span> <span class="o">:</span> <span class="n">copiedNumbers</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">number</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+  <span class="p">}</span>
+  
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>What we could observe is that <code class="language-plaintext highlighter-rouge">copy</code> doesn’t insert new elements on its own, but it overwrites existing elements in the output container. It can only insert if an inserter iterator is used.</p>
+
+<h2 id="copy_n"><code class="language-plaintext highlighter-rouge">copy_n</code></h2>
+
+<p><code class="language-plaintext highlighter-rouge">copy</code> took its inputs by a pair of iterators. One marked the beginning of the input range and one the end. But what if you want to copy let’s say 5 elements. Easy-peasy, you can still use copy:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">std</span><span class="o">::</span><span class="n">copy</span><span class="p">(</span><span class="n">inputNumbers</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">inputNumbers</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span><span class="o">+</span><span class="mi">5</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">back_inserter</span><span class="p">(</span><span class="n">copiedNumbers</span><span class="p">));</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Pointer arithmetics work well on iterators, so you are free to do this. But you have a more elegant way, you can use <code class="language-plaintext highlighter-rouge">copy_n</code> and then you need only the first iterator:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="cp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">auto</span> <span class="n">inputNumbers</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">};</span>
+  <span class="k">auto</span> <span class="n">copiedNumbers</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">();</span>
+  <span class="n">copiedNumbers</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="n">inputNumbers</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">copy_n</span><span class="p">(</span><span class="n">inputNumbers</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="mi">5</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">back_inserter</span><span class="p">(</span><span class="n">copiedNumbers</span><span class="p">));</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">number</span> <span class="o">:</span> <span class="n">copiedNumbers</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">number</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+  <span class="p">}</span>
+  
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Otherwise <code class="language-plaintext highlighter-rouge">copy_n</code> has the same characteristics as <code class="language-plaintext highlighter-rouge">copy</code>.</p>
+
+<h2 id="copy_if"><code class="language-plaintext highlighter-rouge">copy_if</code></h2>
+
+<p>Let’s say you only want to copy certain elements of a list. For example only the even numbers? What can you do? You can simply call <code class="language-plaintext highlighter-rouge">copy_if</code> and pass your condition in the form of a unary predicator. What can it be? It can be a function object, a function pointer or simply a <a href="http://sandordargo.com/blog/2018/12/19/c++-lambda-expressions">lambda expression</a>. Due to its simplicity, I stick to lambdas:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="cp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">auto</span> <span class="n">inputNumbers</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">};</span>
+  <span class="k">auto</span> <span class="n">copiedNumbers</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">();</span>
+  <span class="n">copiedNumbers</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="n">inputNumbers</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">copy_if</span><span class="p">(</span><span class="n">inputNumbers</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">inputNumbers</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">std</span><span class="o">::</span><span class="n">back_inserter</span><span class="p">(</span><span class="n">copiedNumbers</span><span class="p">),</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span> <span class="p">});</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">number</span> <span class="o">:</span> <span class="n">copiedNumbers</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">number</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+  <span class="p">}</span>
+  
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="copy_backward"><code class="language-plaintext highlighter-rouge">copy_backward</code></h2>
+
+<p>The last algorithm for today is <code class="language-plaintext highlighter-rouge">copy_backward</code>. This algorithm copies elements from the input range but starting from the back going towards the beginning.</p>
+
+<p>Does it produce a reversed order compared to the input? No, it doesn’t. It keeps order. So why does this <code class="language-plaintext highlighter-rouge">copy_backward</code> exists? What is its use?</p>
+
+<p>Think about the following case.</p>
+
+<p>You have an input range of <code class="language-plaintext highlighter-rouge">{1, 2, 3, 4, 5, 6, 7}</code> and you want to copy the part <code class="language-plaintext highlighter-rouge">{1, 2, 3}</code> over <code class="language-plaintext highlighter-rouge">{2, 3, 4}</code>. To make it more visual:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">}</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>So we try to use <code class="language-plaintext highlighter-rouge">copy</code> and the output container is the same as the input.</p>
+
+<p>You might try this code:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="cp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">auto</span> <span class="n">inputNumbers</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">};</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">copy</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="n">inputNumbers</span><span class="p">),</span> <span class="n">std</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="n">inputNumbers</span><span class="p">)</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="n">inputNumbers</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">number</span> <span class="o">:</span> <span class="n">inputNumbers</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">number</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+  <span class="p">}</span>
+  
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>The output might be different compared to what you expected - it depends on your expectation and compiler:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="mi">1</span>
+<span class="mi">1</span>
+<span class="mi">1</span>
+<span class="mi">1</span>
+<span class="mi">5</span>
+<span class="mi">6</span>
+<span class="mi">7</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>So what happened?</p>
+
+<p>First, the first number (<code class="language-plaintext highlighter-rouge">inputNumbers.begin()</code>) is copied over the second one (inputNumbers.begin()+1). So 2 is overwritten by 1. Then the second number (<code class="language-plaintext highlighter-rouge">inputNumbers.begin()+1</code>) is getting copied to the third (<code class="language-plaintext highlighter-rouge">inputNumbers.begin()+2</code>) position. But by this time, the second number is 1, so that’s what will be copied to the third. And so on.</p>
+
+<p><em>(It is possible that you’re using a compiler that is smart enough to overcome this issue)</em></p>
+
+<p><code class="language-plaintext highlighter-rouge">std::copy_backward</code> will help you to not to have this issue. First, it will copy the last element of your input range and then it will one by one towards the first element, keeping the relative order in the output. Use <code class="language-plaintext highlighter-rouge">copy_backward</code> when you copy to the right and the input range is overlapping with the output one.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Today, we had a peek into the algorithms that start with the copy prefix. They are not all the copy algorithms, but the rest (like <code class="language-plaintext highlighter-rouge">reverse_copy</code>, <code class="language-plaintext highlighter-rouge">unique_copy</code>) I decided to fit in other parts.</p>
+
+<p>Maybe the most important thing to remember that if you don’t want to rely on your compiler smartness’ and your input and output containers are the same, you have to think wise whether you should use <code class="language-plaintext highlighter-rouge">copy</code> or <code class="language-plaintext highlighter-rouge">copy_backward</code>.</p>
+
+<p>Next time we’ll start learning about the move and swap and their friends. Stay tuned!</p>
+:ET

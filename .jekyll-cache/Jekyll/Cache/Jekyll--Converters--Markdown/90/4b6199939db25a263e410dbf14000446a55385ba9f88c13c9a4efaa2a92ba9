@@ -1,0 +1,198 @@
+I"~<<p><em>Just make everything <code class="language-plaintext highlighter-rouge">const</code> that you can! That’s the bare minimum you could do for your compiler!</em></p>
+
+<p>This is a piece of advice, many <em>senior</em> developers tend to repeat to juniors, while so often even the preaching ones - we - fail to follow this rule.
+<!--more--></p>
+
+<p>In this series of articles, we discuss about:</p>
+<ul>
+  <li><a href="https://www.sandordargo.com/blog/2020/11/04/when-use-const-1-functions-local-variables"><code class="language-plaintext highlighter-rouge">const</code> functions</a></li>
+  <li><a href="https://www.sandordargo.com/blog/2020/11/04/when-use-const-1-functions-local-variables"><code class="language-plaintext highlighter-rouge">const</code> local variables</a></li>
+  <li><a href="https://www.sandordargo.com/blog/2020/11/11/when-use-const-2-member-variables"><code class="language-plaintext highlighter-rouge">const</code> member variables</a></li>
+  <li><a href="https://www.sandordargo.com/blog/2020/11/18/when-use-const-3-return-types"><code class="language-plaintext highlighter-rouge">const</code> return types</a></li>
+  <li><a href="https://www.sandordargo.com/blog/2020/11/25/when-use-const-4-parameters"><code class="language-plaintext highlighter-rouge">const</code> parameters</a></li>
+</ul>
+
+<p>In the last episodes, we covered the first three topics, <code class="language-plaintext highlighter-rouge">const</code> functions and <code class="language-plaintext highlighter-rouge">const</code> local variables, then <code class="language-plaintext highlighter-rouge">const</code> member variables and today we are covering return types.</p>
+
+<p>What kind of variables can a function return? It can return values, references and pointers. And all of these can be const. Let’s have a look at each of them.</p>
+
+<h2 id="returning-const-objects-by-value">Returning const objects by value</h2>
+
+<p>If you’re really enthusiastic about turning everything into const and that’s your first time to do so, you might start converting signatures like <code class="language-plaintext highlighter-rouge">std::string getName() const</code> into <code class="language-plaintext highlighter-rouge">const std::string getName() const</code>. The only problem is that most probably it won’t make so much sense.</p>
+
+<p>Why is that?</p>
+
+<p>Putting <code class="language-plaintext highlighter-rouge">const</code> somewhere shows the reader (and the compiler of course) that something should <strong>not</strong> be modified. When we return something by value it means that a copy will be made for the caller. Okay, you might have heard about <a href="https://en.cppreference.com/w/cpp/language/copy_elision">copy elision</a> and its special form, return value optimization (RVO), but essentially we are still on the same page. The caller gets his own copy.</p>
+
+<p>Does it make sense to make that own copy <code class="language-plaintext highlighter-rouge">const</code>?</p>
+
+<p>Imagine that you buy a house but you cannot modify it? While there can be special cases, in general, you want your house to be your castle. Similarly, you want your copy to really be your object and you want to be able to do with it just whatever as an owner of it.</p>
+
+<p>It doesn’t make sense and it’s misleading to return by value a const object.</p>
+
+<p>Not just misleading, but probably even hurting you.</p>
+
+<p>Even hurting? How can it be?</p>
+
+<p>Let’s say you have this code:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">SgWithMove</span><span class="p">{</span><span class="cm">/**/</span><span class="p">};</span>
+
+<span class="n">SgWithMove</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span><span class="cm">/**/</span><span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="n">SgWithMove</span> <span class="n">o</span><span class="p">;</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">foo</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>By using a debugger or by adding some logging to your special functions, you can see that RVO was perfectly applied and there was a move operation taking place when <code class="language-plaintext highlighter-rouge">foo()</code>s return value was assigned to <code class="language-plaintext highlighter-rouge">o</code>.</p>
+
+<p>Now let’s add that infamous <code class="language-plaintext highlighter-rouge">const</code> to the return type.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">SgWithMove</span><span class="p">{</span><span class="cm">/**/</span><span class="p">};</span>
+
+<span class="n">SgWithMove</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span><span class="cm">/**/</span><span class="p">}</span>
+<span class="k">const</span> <span class="n">SgWithMove</span> <span class="nf">bar</span><span class="p">()</span> <span class="p">{</span><span class="cm">/**/</span><span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="n">SgWithMove</span> <span class="n">o</span><span class="p">;</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">bar</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Following up with the debugger we can see that we didn’t benefit from a move, but actually, we made a copy.</p>
+
+<p>We are returning a <code class="language-plaintext highlighter-rouge">const SgWithMove</code> and that is something we cannot pass as <code class="language-plaintext highlighter-rouge">SgWithMove&amp;&amp;</code> as it would discard the const qualifier. (A move would alter the object being moved) Instead, the copy assignment (<code class="language-plaintext highlighter-rouge">const SgWithMove&amp;</code>) is called and we just made another copy.</p>
+
+<p><em>Please note that there are important books advocating for returning user-defined types by const value. They were right in their own age, but since then C++ went through a lot of changes and this piece of advice became obsolete.</em></p>
+
+<h2 id="returning-const-references">Returning const references</h2>
+
+<p>What about returning const references? Sometimes we can see this from very enthusiastic, but - hopefully - not so experienced developers that they return const references, just to be symmetric with the well-known rule of taking const reference arguments for objects.</p>
+
+<p>So what is the problem?</p>
+
+<p>Maybe nothing, maybe you’ll have a <a href="https://en.wikipedia.org/wiki/Dangling_pointer">dangling reference</a>. The problem is with returning const references is that the returned object has to outlive the caller. Or at least it has to live as long.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">f</span><span class="p">()</span> <span class="p">{</span>
+<span class="err"> </span> <span class="n">MyObject</span> <span class="n">o</span><span class="p">;</span>
+<span class="err"> </span> <span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="n">aRef</span> <span class="o">=</span> <span class="n">o</span><span class="p">.</span><span class="n">getSomethingConstRef</span><span class="p">();</span>
+<span class="err"> </span> <span class="n">aRef</span><span class="p">.</span><span class="n">doSomething</span><span class="p">();</span> <span class="c1">// will this work?</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Will that call work? It depends. If <code class="language-plaintext highlighter-rouge">MyObject::getSomethingConstRef()</code> returns a const reference of a local variable it will not work. It is because that local variable gets destroyed immediately once we get out of the scope of the function.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">MyObject</span><span class="o">::</span><span class="n">getSomethingConstRef</span><span class="p">()</span> <span class="p">{</span>
+<span class="err"> </span> <span class="n">T</span> <span class="n">ret</span><span class="p">;</span>
+<span class="err"> </span> <span class="c1">// ...</span>
+<span class="err"> </span> <span class="k">return</span> <span class="n">ret</span><span class="p">;</span> <span class="c1">// ret gets destroyed right after, the returned reference points at its ashes</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>This is what is called a dangling reference.</p>
+
+<p>On the other hand, if we return a reference to a member of <code class="language-plaintext highlighter-rouge">MyObject</code>, there is no problem in our above example.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">MyObject</span> 
+<span class="p">{</span> 
+<span class="nl">public:</span>
+<span class="err"> </span> <span class="c1">// ...</span>
+<span class="err"> </span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">getSomethingConstRef</span><span class="p">()</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="k">return</span> <span class="n">m_t</span><span class="p">;</span> <span class="c1">// m_t lives as long as our MyObject instance is alive</span>
+<span class="err"> </span> <span class="p">}</span>
+<span class="nl">private:</span>
+<span class="err"> </span> <span class="n">T</span> <span class="n">m_t</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>It’s worth to note that outside of <code class="language-plaintext highlighter-rouge">f()</code> we wouldn’t be able to use <code class="language-plaintext highlighter-rouge">aRef</code> as the instance of <code class="language-plaintext highlighter-rouge">MyObject</code> gets destroyed at the end of the function <code class="language-plaintext highlighter-rouge">f()</code>.</p>
+
+<p>So shall we return const references?</p>
+
+<p>As so often the answer is <em>it depends</em>. So definitely not automatically and by habit. We should return constant references only when are sure that the referenced object will be still available by the time we want to reference it.</p>
+
+<p>At the same time:</p>
+
+<p><strong>Never return locally initialized variables by reference!</strong></p>
+
+<h2 id="return-const-pointers">Return const pointers</h2>
+
+<p>Pointers are similar to references in a sense that the pointed object must be alive at least as long as the caller wants to use it. You can return the address of a member variable if you know that the object will not get destroyed as long as the caller wants the returned address. What is important to emphasize once again is that we can never return a pointer to a locally initialized variable.</p>
+
+<p>But even that is not so self-evident. Let’s step back a little bit.</p>
+
+<p>What do we return when we return a pointer?</p>
+
+<p>We return a memory address. The address can be of anything. Technically it can be a random place, it can be a null pointer or it can be the address of an object. (OK, a random place can be the address of a valid object, but it can be simply garbage. After all, it’s random.)</p>
+
+<p>Even if we talk about an object that was declared in the scope of the enclosing function, that object could have been declared either on the stack or on the heap.</p>
+
+<p>If it was declared on the stack (no <code class="language-plaintext highlighter-rouge">new</code>), it means that it will be automatically destroyed when we leave the enclosing function.</p>
+
+<p>If the object was created on the heap (with <code class="language-plaintext highlighter-rouge">new</code>), that’s not a problem anymore, the object will be alive, but you have to manage its lifetime. Except if you return a smart pointer, but that’s beyond the scope of this article.</p>
+
+<p>So we have to make sure that we don’t return a dangling pointer, but after that, does it make sense to return a const pointer?</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">int * const func () const</code></li>
+</ul>
+
+<p>The function is constant, and the returned pointer is constant but the data we point at can be modified. However, I see no point in returning a const pointer because the ultimate function call will be an rvalue, and rvalues of non-class type cannot be const, meaning that const will be ignored anyway</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">const int* func () const</code></li>
+</ul>
+
+<p>This is a useful thing. The pointed data cannot be modified.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">const int * const func() const</code></li>
+</ul>
+
+<p>Semantically this is almost the same as the previous option. The data we point at cannot be modified. On the other hand, the constness of the pointer itself will be ignored.</p>
+
+<p>So does it make sense to return a <code class="language-plaintext highlighter-rouge">const</code> pointer? It depends on what is <code class="language-plaintext highlighter-rouge">const</code>. If the constness refers to the pointed object, yes it does. If you try to make the pointer <code class="language-plaintext highlighter-rouge">itself</code> const, it doesn’t make sense as it will be ignored.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Today, we learned about <code class="language-plaintext highlighter-rouge">const</code> return types. We saw that simply returning <code class="language-plaintext highlighter-rouge">const</code> values don’t make much sense and - counterintuitively - it might hurt the performance. Returning a <code class="language-plaintext highlighter-rouge">const</code> reference is even dangerous and might lead to segmentation faults.</p>
+
+<p>Const pointers are bit more varied topics, you don’t face many dangers but constness there can be ignored.</p>
+
+<p>Stay tuned, next time we’ll learn about <code class="language-plaintext highlighter-rouge">const</code> parameters.</p>
+:ET

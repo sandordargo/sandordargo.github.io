@@ -1,0 +1,251 @@
+I"�'<p>I have recently read the eye-opening book of <a href="/blog/2018/08/22/so-good-they-cant-ignore-you">Cal Newport, So Good They Can’t Ignore You</a>. He emphasizes a lot on the importance of deliberate practice. I also decided to take a bit more seriously my practice sessions and I reorganized <a href="/blog/2018/02/28/setting-yourself-up-to-succeed">how I spend my personal pomodoros</a> in the morning and at lunchtime to have more deliberate practice. I want to strech my limits. In C++, it’s not so difficult.
+<!--more--></p>
+
+<p>In <a href="/blog/2018/08/08/gilded-rose-revisited">one of my articles</a>, I’ve already written about a new approach I used while implementing the <a href="https://github.com/emilybache/GildedRose-Refactoring-Kata">Gilded Rose kata</a>.</p>
+
+<p>Now, I want to go into details regarding one part of the refactoring, the part I struggled the most with.</p>
+
+<p>At that point, I’ve already created and implemented an <code class="language-plaintext highlighter-rouge">Updater</code> interface, to manage the <code class="language-plaintext highlighter-rouge">sellIn</code> and <code class="language-plaintext highlighter-rouge">quality</code> properties of an <code class="language-plaintext highlighter-rouge">Item</code>. But I didn’t like the solution, as it didn’t update directly the corresponding properties of the <code class="language-plaintext highlighter-rouge">Item</code>, instead just those of the <code class="language-plaintext highlighter-rouge">Updater</code>. Right after, it copied back the values of the <code class="language-plaintext highlighter-rouge">Updater</code> to the <code class="language-plaintext highlighter-rouge">Item</code> class.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+</pre></td><td class="rouge-code"><pre>class Updater {
+ public:
+  Updater(int sellIn, int quality) : _quality(quality), _sellIn(sellIn) {}
+  virtual ~Updater() {};
+
+  virtual void updateQuality() = 0;
+  virtual void updateSellIn() = 0;
+
+// later these became protected
+  int _quality;
+  int _sellIn;
+ };
+
+// There were several updaters implementing this abstract class
+// ...
+
+};
+
+class Item {     
+public:
+    string name;
+    int sellIn;
+    int quality;
+    Updater* updater;
+
+    Item(string name, int sellIn, int quality) : name(name), sellIn(sellIn), quality(quality)//, updater()
+    {
+      if (name == "Sulfuras, Hand of Ragnaros") {
+        updater = new SulfurasUpdater(this-&gt;sellIn, this-&gt;quality);
+      } 
+      // else if ...
+
+    }
+
+    void updateSellIn() {
+      updater-&gt;updateSellIn();
+      this-&gt;sellIn = updater-&gt;sellIn; // This is so ugly!
+    }
+
+    void updateQuality() {
+      updater-&gt;updateQuality();
+      this-&gt;quality = updater-&gt;quality;
+    }
+};
+
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>What did I want to achieve instead and what were my constraints?</p>
+
+<p>I wanted to update the attributes of the <code class="language-plaintext highlighter-rouge">Item</code> class from the <code class="language-plaintext highlighter-rouge">Updater</code>. My self-imposed constraint was that I didn’t want to change even the tiniest way how we have to interact with an Item in the tests. Not because I’m lazy, but the way we interact with our object in our tests is the same way our users would interact with the objects. If it changes for me in the tests, obviously it would change for our users. As such changes can be costly for our imagined clients, we might lose them when we introduce some API changes. Such changes are not welcome.</p>
+
+<p>My idea was that in the constructor of the <code class="language-plaintext highlighter-rouge">Item</code> I’d pass the address of the <code class="language-plaintext highlighter-rouge">sellIn</code> and <code class="language-plaintext highlighter-rouge">quality</code> variables to the <code class="language-plaintext highlighter-rouge">Updater</code> instead of their values. Then in the <code class="language-plaintext highlighter-rouge">Updater</code>, instead of the values, I’d store references, i.e. non-null pointers.</p>
+
+<p>Sounds good?</p>
+
+<p>It definitely did sound better to me than the existing solution, until I implemented it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre></td><td class="rouge-code"><pre>class Updater {
+ public:
+  Updater(int&amp; sellIn, int&amp; quality) : _quality(quality), _sellIn(sellIn) {}
+  virtual ~Updater() {};
+
+  virtual void updateQuality() = 0;
+  virtual void updateSellIn() = 0;
+
+// later these became protected
+  int&amp; _quality;
+  int&amp; _sellIn;
+ };
+
+//...
+
+class Item {
+  //...
+
+  void updateSellIn() {
+    updater-&gt;updateSellIn();
+    // this-&gt;sellIn = updater-&gt;sellIn; // This line is removed now!
+  }
+
+  void updateQuality() {
+    updater-&gt;updateQuality();
+    // this-&gt;quality = updater-&gt;quality; // Just like this! Yay!
+  }
+};
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>It didn’t work. The <code class="language-plaintext highlighter-rouge">quality</code> and <code class="language-plaintext highlighter-rouge">sellIn</code> attributes of the <code class="language-plaintext highlighter-rouge">Item</code> class were not updated. Okaaay… Well, not okay, not at all! I must have missed something, I thought. I read the code. It seemed fine. I read it again. And again. And again. Looking for that missing ampersand or something similarly trivial. I couldn’t find it.</p>
+
+<p>It was quite late in the evening. I said I leave it like that for that night, I’d have a look into it later. Then I went to the bathroom, but I kept the laptop still turned on. Just in case the solution will hit me right in the head. And guess what, while I was standing there I realized that the problem must not be that <code class="language-plaintext highlighter-rouge">Item.quality</code> and <code class="language-plaintext highlighter-rouge">Item.sellIn</code> gets copied, but most probably the whole <code class="language-plaintext highlighter-rouge">Item</code> class gets copied somewhere and in the test I try to assert the properties of the original instance, while I update something else. I wanted to run back right then, but I had to wait a bit.</p>
+
+<p>When I had a look at my test and I knew I got it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>//GildedRoseTextTests.cc
+int main()
+{
+  vector&lt;Item&gt; items;
+  items.push_back(Item("+5 Dexterity Vest", 10, 20));
+  items.push_back(Item("Aged Brie", 2, 0));
+  // ...
+  GildedRose app(items);
+  // ...
+  app.processItems();
+}
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>I added some logs to make it sure and yes.</p>
+
+<p>The address of an <code class="language-plaintext highlighter-rouge">Item</code> was different in the constructor and in when <code class="language-plaintext highlighter-rouge">updateQuality</code> or <code class="language-plaintext highlighter-rouge">updateSellIn</code> were called. I created an Item and when it was pushed back to items vector, it got copied. That’s fine. But it got copied in a bad way, including the member references.</p>
+
+<p>If not implemented (or not explicitly deleted starting from C++ 11), C++ will automatically implement the copy constructor and the assignment operator for you. Is that a good thing? It doesn’t matter. What matters is that it will happen and sometimes that implementation will not work the way you would expect it. Like it happened in this case.</p>
+
+<p>What happened, in fact, is that a new copy of Item was created, a copy of the <code class="language-plaintext highlighter-rouge">sellIn</code> and the <code class="language-plaintext highlighter-rouge">updater</code> was created (at new addresses), but the reference to <code class="language-plaintext highlighter-rouge">sellIn</code> in the <code class="language-plaintext highlighter-rouge">updater</code> still pointed to the “old” sellIn of the copied object. So in fact <code class="language-plaintext highlighter-rouge">sellIn</code> was updated, but not the one we wanted.</p>
+
+<p>The fix was easy, I just had to implement the copy constructor and the assignment operator:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>Item&amp; Item::operator=(const Item&amp; i){
+  this-&gt;name = i.name;
+  this-&gt;quality = i.quality;
+  this-&gt;sellIn = i.sellIn;
+  this-&gt;updater = i.updater;
+  return *this;
+}
+
+
+Item::Item(string name, int sellIn, int quality) : name(name), sellIn(sellIn), quality(quality)//, updater()
+{
+  updater = Updater::CreateUpdater(name, this-&gt;sellIn, this-&gt;quality);
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>I was more than happy to see the implementation I wanted to achieve finally working. After the copy, the <code class="language-plaintext highlighter-rouge">updater</code>’s reference also pointed to the new <code class="language-plaintext highlighter-rouge">sellIn</code>.</p>
+
+<p>I also found two important takeaways:</p>
+
+<ol>
+  <li>Never forget about the copy constructor and the assignment operator.</li>
+  <li>C++ is a language that gives you a great power over how things should happen. And as you might know it well, with a great power, great responsibility also comes. Never forget that either.</li>
+</ol>
+:ET

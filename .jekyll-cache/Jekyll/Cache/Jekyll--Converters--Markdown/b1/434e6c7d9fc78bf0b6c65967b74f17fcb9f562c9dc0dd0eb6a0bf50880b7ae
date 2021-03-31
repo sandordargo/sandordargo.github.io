@@ -1,0 +1,256 @@
+I"G<p>Last time we discussed <a href="https://www.sandordargo.com/blog/2021/02/17/cpp-concepts-4-ways-to-use-them">how to use concepts with functions</a> and this time we are going to see how to use concepts with classes. I know it’s not what I promised at the end of the previous article, but I realized that I simply forgot about this episode.
+<!--more--></p>
+
+<p><a href="https://www.sandordargo.com/blog/2021/02/17/cpp-concepts-4-ways-to-use-them">We saw last week</a> that there are four ways to use concepts with functions:</p>
+
+<ul>
+  <li>the <code class="language-plaintext highlighter-rouge">requires</code> clause</li>
+  <li>the trailing <code class="language-plaintext highlighter-rouge">requires</code> clause</li>
+  <li>constrained template parameters</li>
+  <li>abbreviated function templates</li>
+</ul>
+
+<p>With classes, we have fewer options. The <em>trailing <code class="language-plaintext highlighter-rouge">requires</code> clause</em> wouldn’t make much sense as there is no function signature it could follow…</p>
+
+<p>And the abbreviated function templates also won’t work.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="cp">#include &lt;concepts&gt;
+#include &lt;iostream&gt;
+</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="p">&gt;</span>
+<span class="n">concept</span> <span class="n">Number</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">integral</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">||</span> <span class="n">std</span><span class="o">::</span><span class="n">floating_point</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">WrappedNumber</span> <span class="p">{</span>
+<span class="nl">public:</span>
+  <span class="n">WrappedNumber</span><span class="p">(</span><span class="n">Number</span> <span class="k">auto</span> <span class="n">num</span><span class="p">)</span> <span class="o">:</span> <span class="n">m_num</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="p">{}</span>
+<span class="nl">private:</span>
+  <span class="n">Number</span> <span class="k">auto</span> <span class="n">m_num</span><span class="p">;</span> <span class="c1">// error: non-static data member declared with placeholder</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>We cannot declare data members with <code class="language-plaintext highlighter-rouge">auto</code>, <a href="https://stackoverflow.com/questions/11302981/c11-declaring-non-static-data-members-as-auto">it’s prohibited by the standard</a>.</p>
+
+<p>If we remove the <code class="language-plaintext highlighter-rouge">auto</code>, we’ll have a different error message saying that we must use <code class="language-plaintext highlighter-rouge">auto</code> (or <code class="language-plaintext highlighter-rouge">decltype(auto)</code>) after the concept <code class="language-plaintext highlighter-rouge">Number</code>.</p>
+
+<p>So what is left?</p>
+
+<ul>
+  <li>the <code class="language-plaintext highlighter-rouge">requires</code> clause</li>
+  <li>constrained template parameters</li>
+</ul>
+
+<p>For our examples, we are going to use the same incomplete <code class="language-plaintext highlighter-rouge">Number</code> concept we used last time.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="cp">#include &lt;concepts&gt;
+</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="p">&gt;</span>
+<span class="n">concept</span> <span class="n">Number</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">integral</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">||</span> <span class="n">std</span><span class="o">::</span><span class="n">floating_point</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="the-requires-clause">The <code class="language-plaintext highlighter-rouge">requires</code> clause</h2>
+
+<p>We can use <em>the <code class="language-plaintext highlighter-rouge">requires</code> clause</em> to define constraints on a template class. All we have to do is the same as writing a template class and after the template parameter list, we have to put the requires clause with all the constraints we’d like to define.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre><span class="cp">#include &lt;concepts&gt;
+#include &lt;iostream&gt;
+</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="p">&gt;</span>
+<span class="n">concept</span> <span class="n">Number</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">integral</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">||</span> <span class="n">std</span><span class="o">::</span><span class="n">floating_point</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="p">&gt;</span>
+<span class="n">requires</span> <span class="n">Number</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">WrappedNumber</span> <span class="p">{</span>
+<span class="nl">public:</span>
+  <span class="n">WrappedNumber</span><span class="p">(</span><span class="n">T</span> <span class="n">num</span><span class="p">)</span> <span class="o">:</span> <span class="n">m_num</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="p">{}</span>
+<span class="nl">private:</span>
+  <span class="n">T</span>  <span class="n">m_num</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">WrappedNumber</span> <span class="n">wn</span><span class="p">{</span><span class="mi">42</span><span class="p">};</span>
+    <span class="c1">// WrappedNumber ws{"a string"}; // template constraint failure for 'template&lt;class T&gt;  requires  Number&lt;T&gt; class WrappedNumber'</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>As you can see in the example, apart from the additional line with <code class="language-plaintext highlighter-rouge">requires</code> it’s the same as a template class.</p>
+
+<p>If you use the template type name <code class="language-plaintext highlighter-rouge">T</code> at multiple places, the replacing values must be of the same type. In case you take two constrained <code class="language-plaintext highlighter-rouge">T</code>s in the constructor, they must of the same type. You won’t be able to call with an <code class="language-plaintext highlighter-rouge">int</code> and with a <code class="language-plaintext highlighter-rouge">float</code> despite the fact that they both satisfy the concept <code class="language-plaintext highlighter-rouge">Number</code>.</p>
+
+<p>In case you need that, for each - potentially different - usage of the template parameter, you need a different declaration in the template parameter list and also in the among the constraints:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="rouge-code"><pre><span class="cp">#include &lt;concepts&gt;
+#include &lt;iostream&gt;
+</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="p">&gt;</span>
+<span class="n">concept</span> <span class="n">Number</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">integral</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">||</span> <span class="n">std</span><span class="o">::</span><span class="n">floating_point</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="p">,</span> <span class="k">typename</span> <span class="nc">U</span><span class="p">&gt;</span>
+<span class="n">requires</span> <span class="n">Number</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="n">Number</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">WrappedNumber</span> <span class="p">{</span>
+<span class="nl">public:</span>
+  <span class="n">WrappedNumber</span><span class="p">(</span><span class="n">T</span> <span class="n">num</span><span class="p">,</span> <span class="n">U</span> <span class="n">anotherNum</span><span class="p">)</span> <span class="o">:</span> <span class="n">m_num</span><span class="p">(</span><span class="n">num</span><span class="p">),</span> <span class="n">m_anotherNum</span><span class="p">(</span><span class="n">anotherNum</span><span class="p">)</span> <span class="p">{}</span>
+<span class="nl">private:</span>
+  <span class="n">T</span>  <span class="n">m_num</span><span class="p">;</span>
+  <span class="n">U</span>  <span class="n">m_anotherNum</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">WrappedNumber</span> <span class="n">wn</span><span class="p">{</span><span class="mi">42</span><span class="p">,</span> <span class="mf">4.2</span><span class="n">f</span><span class="p">};</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>This above example also shows that we can use compound expressions as constraints. That’s something not possible with the other way to write constrained template classes.</p>
+
+<h2 id="constrained-template-parameters">Constrained template parameters</h2>
+
+<p>With <em>constrained template parameters</em> it’s even easier to use concepts. In the template parameter list, instead of the <code class="language-plaintext highlighter-rouge">typename</code> keyword you can simply concept you want to use.</p>
+
+<p>Here is an exmaple:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre><span class="cp">#include &lt;concepts&gt;
+#include &lt;iostream&gt;
+</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="p">&gt;</span>
+<span class="n">concept</span> <span class="n">Number</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">integral</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">||</span> <span class="n">std</span><span class="o">::</span><span class="n">floating_point</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="n">Number</span> <span class="n">T</span><span class="p">&gt;</span>
+<span class="k">class</span> <span class="nc">WrappedNumber</span> <span class="p">{</span>
+<span class="nl">public:</span>
+  <span class="n">WrappedNumber</span><span class="p">(</span><span class="n">T</span> <span class="n">num</span><span class="p">)</span> <span class="o">:</span> <span class="n">m_num</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="p">{}</span>
+<span class="nl">private:</span>
+  <span class="n">T</span>  <span class="n">m_num</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">WrappedNumber</span> <span class="n">wn</span><span class="p">{</span><span class="mi">42</span><span class="p">};</span>
+    <span class="c1">// WrappedNumber ws{"a string"}; // template constraint failure for 'template&lt;class T&gt;  requires  Number&lt;T&gt; class WrappedNumber'</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>In this example, you can see how we constrained <code class="language-plaintext highlighter-rouge">T</code> to satisfy the <code class="language-plaintext highlighter-rouge">Number</code> concept.</p>
+
+<p>The clear advantage of <em>constrained template parameters</em> is that they are so easy to use, they are so easy to read and there is no extra verbosity.</p>
+
+<p>The downside is that you cannot use compound expressions as constraints.</p>
+
+<p>While with the <code class="language-plaintext highlighter-rouge">requires</code> clause you can write something like this:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="p">&gt;</span>
+<span class="n">requires</span> <span class="n">std</span><span class="o">::</span><span class="n">integral</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">||</span> <span class="n">std</span><span class="o">::</span><span class="n">floating_point</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">WrappedNumber</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>With the constrained template parameters something like that would be impossible. If you have to use some complex constraints, you must extract them into their own concept.</p>
+
+<p>Apart from that, it’s similar to the <code class="language-plaintext highlighter-rouge">requires</code> clause, in case you have multiple parameters that need to satisfy <code class="language-plaintext highlighter-rouge">Number</code>, but they can be different, you must use multiple template parameters:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="k">template</span> <span class="o">&lt;</span><span class="n">Number</span> <span class="n">T</span><span class="p">,</span> <span class="n">Number</span> <span class="n">U</span><span class="p">&gt;</span>
+<span class="k">class</span> <span class="nc">WrappedNumber</span> <span class="p">{</span>
+<span class="nl">public:</span>
+  <span class="n">WrappedNumber</span><span class="p">(</span><span class="n">T</span> <span class="n">num</span><span class="p">,</span> <span class="n">U</span> <span class="n">anotherNum</span><span class="p">)</span> <span class="o">:</span> <span class="n">m_num</span><span class="p">(</span><span class="n">num</span><span class="p">),</span> <span class="n">m_anotherNum</span><span class="p">(</span><span class="n">anotherNum</span><span class="p">)</span> <span class="p">{}</span>
+<span class="nl">private:</span>
+  <span class="n">T</span>  <span class="n">m_num</span><span class="p">;</span>
+  <span class="n">U</span>  <span class="n">m_anotherNum</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Today we discovered the two ways to use concepts with classes. Both with <em>the <code class="language-plaintext highlighter-rouge">requires</code> clause</em> and with <em>constrained template parameters</em> we have an easy and readable way to use our concepts to constrain the types our template classes can accept.</p>
+
+<p>With the former, we can even define some complex requirements without having to extract them into separate concepts, while with the latter we can only use one concept per template parameter, but on the contrary, it’s very terse. Up to you to choose based on your needs.</p>
+
+<p>Next time, we are really going to discuss <a href="https://www.sandordargo.com/blog/2021/03/03/cpp-concepts-in-standard-library">what kind of concepts we get from the standard library</a> before we’d actually start writing our own concepts. No other surprises before!</p>
+
+<p>Stay tuned!</p>
+:ET

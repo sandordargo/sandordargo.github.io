@@ -1,0 +1,547 @@
+I"�<p>We all have our vices. One of mine is that I tend to jump in code reviews quickly, without considering how much time will be taken if I find something I don’t like.</p>
+
+<p>Recently I opened PR that seriously increased my WTF/minute level. Something struck me so hard that I felt I had to block the merge right away and take a cup of water before saying something thoughtlessly.</p>
+
+<p>A new macro. In 2020. 
+<!--more--></p>
+
+<p>To me, that’s an automatic no-no. It’s not a definitive no as there might be some justifiable cases, but in the vast majority, they have no raison d’etre. So better to block before enough less pedantic fellows would approve and merge.</p>
+
+<h2 id="so-what-was-the-problem">So what was the problem?</h2>
+
+<p>We have been introducing a new data logging framework to allow us to have more detailed insights on the requests we process. In turned out that some data that we wanted to add to our logs were not always available. While we tried to access them in their absence, exceptions were thrown. After taking into account several possibilities, the team decided to wrap the calls with try-catch blocks.</p>
+
+<p>But how do that?</p>
+
+<h2 id="the-naive-approach">The naive approach</h2>
+
+<p>An obvious option is to wrap each call separately.</p>
+
+<p>The could code look like this:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td> --><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">fill1</span><span class="p">(</span><span class="n">params</span><span class="p">...)</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="k">auto</span> <span class="n">someData</span> <span class="o">=</span> <span class="n">call1</span><span class="p">(</span><span class="n">params</span><span class="p">...);</span>
+    <span class="n">log</span><span class="p">(</span><span class="n">someFixedKey</span><span class="p">,</span> <span class="n">someData</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">ExceptionType</span><span class="o">&amp;</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//...</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(...)</span> <span class="p">{</span>
+    <span class="c1">//...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//...</span>
+<span class="kt">void</span> <span class="nf">fill2</span><span class="p">(</span><span class="n">params</span><span class="p">...)</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="k">auto</span> <span class="n">someData</span> <span class="o">=</span> <span class="n">call2</span><span class="p">(</span><span class="n">params</span><span class="p">...);</span>
+    <span class="n">log</span><span class="p">(</span><span class="n">someFixedKey</span><span class="p">,</span> <span class="n">someData</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">ExceptionType</span><span class="o">&amp;</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//...</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(...)</span> <span class="p">{</span>
+    <span class="c1">//...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>And repeat this n times.</p>
+
+<p>It’s cumbersome to write it, difficult to maintain, and as such error-prone. In case we need a modification in try-catch blocks, there is a fair chance to make a mistake.</p>
+
+<p>You might argue that multiple calls should be wrapped together, but if one call fails we would like to go with the next one. Wrapping all together is not a viable option as it would end the logging on the first failure.</p>
+
+<h2 id="precompiling-the-macros">Precompiling the macros</h2>
+
+<p>The solution implemented in the pull request was using the precompiler, so a macro, shortening significantly the implementation:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td> --><td class="rouge-code"><pre><span class="cp"># DEF...
+</span>
+<span class="kt">void</span> <span class="nf">fill1</span><span class="p">(</span><span class="n">params</span><span class="p">...)</span> <span class="p">{</span>
+  <span class="n">BEGIN_TRY</span>
+  <span class="k">auto</span> <span class="n">someData</span> <span class="o">=</span> <span class="n">call1</span><span class="p">(</span><span class="n">params</span><span class="p">...);</span>
+  <span class="n">log</span><span class="p">(</span><span class="n">someFixedKey</span><span class="p">,</span> <span class="n">someData</span><span class="p">);</span>
+  <span class="n">END_TRY</span>
+<span class="p">}</span>
+
+<span class="c1">//...</span>
+<span class="kt">void</span> <span class="nf">fill2</span><span class="p">(</span><span class="n">params</span><span class="p">...)</span> <span class="p">{</span>
+  <span class="n">BEGIN_TRY</span>
+  <span class="k">auto</span> <span class="n">someData</span> <span class="o">=</span> <span class="n">call2</span><span class="p">(</span><span class="n">params</span><span class="p">...);</span>
+  <span class="n">log</span><span class="p">(</span><span class="n">someFixedKey</span><span class="p">,</span> <span class="n">someData</span><span class="p">);</span>
+  <span class="n">END_TRY</span>
+<span class="p">}</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>This is a shorter way to achieve the same functionality, and you might argue that it’s more maintainable. After all, in case you want to add a new catch block, or if you just want to modify an existing one, you have to modify it in one place, where you declare the macro.</p>
+
+<p>So it’s shorter and you have one single point to update in case of modification. Then what’s the matter? Don’t we have a permanent solution?</p>
+
+<p>It’s very easy to make a mistake while writing a macro simply because it’s difficult to write one. It follows a different and less readable syntax, one we are not used to. Thus it will be a hotbed of bugs. For the author, it’s more difficult to write and for the code reviewer, it’s also more difficult to read.</p>
+
+<p>In addition, it’ll be more difficult to hunt down bugs as the debugging of macros is more difficult. Why? After all, a macro is not a function. It’s just text replaced by its definition right before the compilation starts (by the precompiler).</p>
+
+<p>This fact also complicates life if you use static code analyzers. Sometimes macros just create a bunch of false positives and there is no great way to get rid of them - except for getting rid off the macros.</p>
+
+<p>But even the compiler can have false positives. When we were removing all our compiler warnings from our codebase, the compiler considered variables only used in a macro an unused variable.</p>
+
+<p><em>You can find more details on why you should avoid macros in <a href="https://arne-mertz.de/2019/03/macro-evil/">this article from Arne Mertz</a></em></p>
+
+<h2 id="using-the-power-of-templates">Using the power of templates</h2>
+
+<p>When I saw that we want to wrap each of those small functions, I immediately thought about decorators from Python (or Java for that matter).
+Wouldn’t it be perfect to write something like this?</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td> --><td class="rouge-code"><pre><span class="err">@</span><span class="k">try</span>
+<span class="kt">void</span> <span class="nf">fill1</span><span class="p">(</span><span class="n">params</span><span class="p">...)</span> <span class="p">{</span>
+  <span class="k">auto</span> <span class="n">someData</span> <span class="o">=</span> <span class="n">call1</span><span class="p">(</span><span class="n">params</span><span class="p">...);</span>
+  <span class="n">log</span><span class="p">(</span><span class="n">someFixedKey</span><span class="p">,</span> <span class="n">someData</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>And then define that wrapper somewhere like this?</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td> --><td class="rouge-code"><pre><span class="k">auto</span> <span class="nf">try</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="n">params</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="k">decltype</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="n">params</span><span class="p">))</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">F</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">ExceptionType</span><span class="o">&amp;</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//...</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(...)</span> <span class="p">{</span>
+    <span class="c1">//...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Obviously this is not valid syntax, but how could we achieve a similar effect? What are the problems we have to solve?</p>
+
+<p>The main problem is that - as far as I know - you cannot just pass a function call with all its parameters to another function. At least not with the usual syntax of a function call: <code class="language-plaintext highlighter-rouge">a(b, c)</code>.</p>
+
+<p>Instead, you can pass a function pointer and a list of arguments, that’s easily doable.</p>
+
+<p>So, in theory, we could have an interface that we can use somehow like this:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td> --><td class="rouge-code"><pre><span class="n">safeFill</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fill1</span><span class="p">,</span> <span class="n">param1</span><span class="p">,</span> <span class="n">param2</span> <span class="cm">/*etc*/</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>As a first step, I tried to do something that works with one only parameter of a fixed type.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+</pre></td> --><td class="rouge-code"><pre><span class="cp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+</span>
+<span class="k">class</span> <span class="nc">Logger</span> <span class="p">{</span>
+<span class="nl">public:</span>
+<span class="err"> </span> <span class="kt">void</span> <span class="n">logA</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"A: "</span> <span class="o">&lt;&lt;</span> <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="err"> </span> <span class="p">}</span>
+<span class="err"> </span> 
+<span class="err"> </span> <span class="kt">void</span> <span class="n">logB</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"B: "</span> <span class="o">&lt;&lt;</span> <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="err"> </span> <span class="p">}</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> 
+<span class="p">};</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Function</span><span class="p">&gt;</span>
+<span class="k">auto</span> <span class="nf">safeLog</span><span class="p">(</span><span class="n">Function</span> <span class="n">f</span><span class="p">,</span> <span class="n">Logger</span><span class="o">*</span> <span class="n">l</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="k">decltype</span><span class="p">((</span><span class="n">l</span><span class="o">-&gt;*</span><span class="n">f</span><span class="p">)(</span><span class="n">s</span><span class="p">))</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+   <span class="err"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Logging s safely..."</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+   <span class="err"> </span><span class="k">return</span> <span class="p">(</span><span class="n">l</span><span class="o">-&gt;*</span><span class="n">f</span><span class="p">)(</span><span class="n">s</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">catch</span><span class="p">(...)</span> <span class="p">{</span>
+   <span class="err"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"s is not logged, we have an exception"</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+   <span class="err"> </span><span class="k">throw</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">()</span> <span class="p">{</span>
+<span class="err"> </span> <span class="n">Logger</span> <span class="n">l</span><span class="p">;</span>
+<span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span><span class="p">(</span><span class="s">"bla"</span><span class="p">);</span>
+<span class="err"> </span> <span class="n">safeLog</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Logger</span><span class="o">::</span><span class="n">logA</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">l</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
+<span class="err"> </span> <span class="n">safeLog</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Logger</span><span class="o">::</span><span class="n">logB</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">l</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>So where do we stand compared to what we wanted?</p>
+
+<p>Now we can wrap any call with a given type of parameter with a try-catch block.</p>
+
+<p>What are the things that I don’t like:</p>
+<ul>
+  <li>The return type (<code class="language-plaintext highlighter-rouge">decltype((l-&gt;*f)(s))</code>)</li>
+  <li>The parameter is not flexible (nor in type or in numbers)</li>
+  <li>We have to pass both a function pointer and a pointer to the instance containing that function.</li>
+</ul>
+
+<h3 id="getting-rid-of-that-fancy-return-type">Getting rid of that fancy return type</h3>
+
+<p>While calling <code class="language-plaintext highlighter-rouge">decltype()</code> will only return the resulting type of the passed expression, it’s something that would be nice to avoid. After all, it repeats our <code class="language-plaintext highlighter-rouge">return</code> statement.</p>
+
+<p>Nothing is easier than that, you can simply omit it and have this instead:</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td> --><td class="rouge-code"><pre><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Function</span><span class="p">&gt;</span>
+<span class="k">auto</span> <span class="nf">safeLog</span><span class="p">(</span><span class="n">Function</span> <span class="n">f</span><span class="p">,</span> <span class="n">Logger</span><span class="o">*</span> <span class="n">l</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// the body goes unchanged</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>But you can only do this if you use C++14 since it introduced the return type deduction for functions where all the returns return the same type. For C++11 you have to bear with <code class="language-plaintext highlighter-rouge">decltype</code>.</p>
+
+<h3 id="making-our-parameter-list-flexible">Making our parameter list flexible</h3>
+
+<p>You want to be able to deal with any number/type of parameters? Easy-peasy, just squueze a little variadic template type into <code class="language-plaintext highlighter-rouge">safeFill</code>:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td> --><td class="rouge-code"><pre><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Function</span><span class="p">,</span> <span class="k">typename</span> <span class="o">...</span> <span class="nc">Args</span><span class="p">&gt;</span>
+<span class="k">auto</span> <span class="nf">safeLog</span><span class="p">(</span><span class="n">Function</span> <span class="n">f</span><span class="p">,</span> <span class="n">Logger</span><span class="o">*</span> <span class="n">l</span><span class="p">,</span> <span class="n">Args</span><span class="o">&amp;&amp;</span> <span class="p">...</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+   <span class="err"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Logging s safely..."</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+   <span class="err"> </span><span class="k">return</span> <span class="p">(</span><span class="n">l</span><span class="o">-&gt;*</span><span class="n">f</span><span class="p">)(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Args</span><span class="o">&gt;</span><span class="p">(</span><span class="n">args</span><span class="p">)...);</span>
+  <span class="p">}</span>
+  <span class="k">catch</span><span class="p">(...)</span> <span class="p">{</span>
+   <span class="err"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"s is not logged, we have an exception"</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="k">throw</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Using variadic template types (<code class="language-plaintext highlighter-rouge">typename ... Args</code>) let us taking as many parameters as we want and of different types. Taking them by universal reference (<code class="language-plaintext highlighter-rouge">&amp;&amp;</code>) and perfect forwarding them (<code class="language-plaintext highlighter-rouge">std::forward&lt;&gt;()</code>) is not mandatory, but using both of them has positive impacts on performance due to fewer object copies. <em>(Going into details about perfect forwarding is out of scope today.)</em></p>
+
+<h3 id="dealing-with-the-need-for-a-function-pointer-and-a-pointer-to-the-object">Dealing with the need for a function pointer and a pointer to the object</h3>
+
+<p>The last point we wanted to address is that the call of the function is rather ugly:</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td> --><td class="rouge-code"><pre><span class="n">safeLog</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Logger</span><span class="o">::</span><span class="n">logA</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">l</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>It would be great to be able to call the function simply by <code class="language-plaintext highlighter-rouge">safeLog(&amp;l::logA, s)</code>. It would be, but it’s not possible. For the being, it’s not possible to pass a pointer to a member function of a class instance.</p>
+
+<p>If we reorganize our code and push <code class="language-plaintext highlighter-rouge">safeLog()</code> to be a member of <code class="language-plaintext highlighter-rouge">class Logger</code> and accept that it will only work with the current object then we can get rid off the second parameter:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+</pre></td> --><td class="rouge-code"><pre><span class="cp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+</span>
+<span class="k">class</span> <span class="nc">Logger</span> <span class="p">{</span>
+<span class="nl">public:</span>
+<span class="err"> </span> <span class="kt">void</span> <span class="n">logA</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"A: "</span> <span class="o">&lt;&lt;</span> <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="err"> </span> <span class="p">}</span>
+<span class="err"> </span> 
+<span class="err"> </span> <span class="kt">void</span> <span class="n">logB</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"B: "</span> <span class="o">&lt;&lt;</span> <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="err"> </span> <span class="p">}</span>
+
+<span class="err"> </span> <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Function</span><span class="p">,</span> <span class="k">typename</span> <span class="o">...</span> <span class="nc">Args</span><span class="p">&gt;</span>
+<span class="err"> </span> <span class="k">auto</span> <span class="n">safeLog</span><span class="p">(</span><span class="n">Function</span> <span class="n">f</span><span class="p">,</span> <span class="n">Args</span><span class="o">&amp;&amp;</span> <span class="p">...</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+<span class="err"> </span>   <span class="k">try</span> <span class="p">{</span>
+<span class="err"> </span>    <span class="err"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Logging s safely..."</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="err"> </span>    <span class="err"> </span><span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;*</span><span class="n">f</span><span class="p">)(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Args</span><span class="o">&gt;</span><span class="p">(</span><span class="n">args</span><span class="p">)...);</span>
+<span class="err"> </span>   <span class="p">}</span>
+<span class="err"> </span>   <span class="k">catch</span><span class="p">(...)</span> <span class="p">{</span>
+<span class="err"> </span>    <span class="err"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"s is not logged, we have an exception"</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="err"> </span>    <span class="err"> </span><span class="k">throw</span><span class="p">;</span>
+<span class="err"> </span>   <span class="p">}</span>
+<span class="err"> </span> <span class="p">}</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> 
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">()</span> <span class="p">{</span>
+<span class="err"> </span> <span class="n">Logger</span> <span class="n">l</span><span class="p">;</span>
+<span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span><span class="p">(</span><span class="s">"bla"</span><span class="p">);</span>
+<span class="err"> </span> <span class="n">l</span><span class="p">.</span><span class="n">safeLog</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Logger</span><span class="o">::</span><span class="n">logA</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
+<span class="err"> </span> <span class="n">l</span><span class="p">.</span><span class="n">safeLog</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Logger</span><span class="o">::</span><span class="n">logB</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="mi">42</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="a-more-real-world-example">A more real-world example</h3>
+
+<p>So far we have seen how to use macros and templates in order to wrap function calls with try-catch blocks. Then we simplified the template as much as we could by pushing it to a class, using variadic templates, and by using C++14 we could remove even the return type and benefit from return type deduction.</p>
+
+<p>Still it feels strange to use <code class="language-plaintext highlighter-rouge">safeLog</code> from the outside with some hardcoded variables. Here is a more complete example also with a safely swallowed exception:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+</pre></td> --><td class="rouge-code"><pre><span class="cp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;exception&gt;
+</span>
+<span class="k">class</span> <span class="nc">DataAccessor</span> <span class="p">{</span>
+<span class="nl">public:</span>
+
+<span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">getA</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="c1">// normally in these functions there would be more comlpex computation</span>
+<span class="err"> </span> <span class="err"> </span> <span class="c1">// or calls to the DB, etc</span>
+<span class="err"> </span> <span class="err"> </span> <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
+<span class="err"> </span> <span class="p">}</span>
+<span class="err"> </span> 
+<span class="err"> </span> <span class="kt">int</span> <span class="n">getB</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="k">return</span> <span class="n">b</span><span class="p">;</span>
+<span class="err"> </span> <span class="p">}</span>
+<span class="err"> </span> 
+<span class="err"> </span> <span class="kt">float</span> <span class="n">getC</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="p">{};</span>
+<span class="err"> </span> <span class="p">}</span>
+
+<span class="nl">private:</span>
+<span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">a</span><span class="p">{</span><span class="s">"this is a string"</span><span class="p">};</span>
+<span class="err"> </span> <span class="kt">int</span> <span class="n">b</span><span class="p">{</span><span class="mi">42</span><span class="p">};</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Logger</span> <span class="p">{</span>
+<span class="err"> </span><span class="k">private</span><span class="o">:</span>
+<span class="err"> </span> <span class="c1">// this has to come before we use it</span>
+<span class="err"> </span> <span class="c1">// with a header file this is not an issue</span>
+<span class="err"> </span> <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Function</span><span class="p">,</span> <span class="k">typename</span> <span class="o">...</span> <span class="nc">Args</span><span class="p">&gt;</span>
+<span class="err"> </span> <span class="k">auto</span> <span class="n">safeLog</span><span class="p">(</span><span class="n">Function</span> <span class="n">f</span><span class="p">,</span> <span class="n">Args</span><span class="o">&amp;&amp;</span> <span class="p">...</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+<span class="err"> </span>   <span class="k">try</span> <span class="p">{</span>
+<span class="err"> </span>    <span class="err"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Logging safely..."</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="err"> </span>    <span class="err"> </span><span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="o">-&gt;*</span><span class="n">f</span><span class="p">)(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Args</span><span class="o">&gt;</span><span class="p">(</span><span class="n">args</span><span class="p">)...);</span>
+<span class="err"> </span>   <span class="p">}</span>
+<span class="err"> </span>   <span class="k">catch</span><span class="p">(...)</span> <span class="p">{</span>
+   <span class="err"> </span> <span class="err"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"s is not logged, we have an exception"</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="err"> </span>    <span class="err"> </span> <span class="err"> </span>
+<span class="err"> </span>   <span class="p">}</span>
+<span class="err"> </span> <span class="p">}</span>
+
+<span class="err"> </span><span class="k">public</span><span class="o">:</span>
+<span class="err"> </span> <span class="kt">void</span> <span class="n">logData</span><span class="p">(</span><span class="k">const</span> <span class="n">DataAccessor</span><span class="o">&amp;</span> <span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">safeLog</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Logger</span><span class="o">::</span><span class="n">logA</span><span class="p">,</span> <span class="n">data</span><span class="p">);</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">safeLog</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Logger</span><span class="o">::</span><span class="n">logB</span><span class="p">,</span> <span class="n">data</span><span class="p">);</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">safeLog</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Logger</span><span class="o">::</span><span class="n">logC</span><span class="p">,</span> <span class="n">data</span><span class="p">);</span>
+<span class="err"> </span> <span class="p">}</span>
+<span class="err"> </span> <span class="c1">// void logOtherKindOfData(...);</span>
+<span class="err"> </span><span class="k">private</span><span class="o">:</span>
+<span class="err"> </span> <span class="kt">void</span> <span class="n">logA</span><span class="p">(</span><span class="k">const</span> <span class="n">DataAccessor</span><span class="o">&amp;</span> <span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"A: "</span> <span class="o">&lt;&lt;</span> <span class="n">data</span><span class="p">.</span><span class="n">getA</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="err"> </span> <span class="p">}</span>
+<span class="err"> </span> 
+<span class="err"> </span> <span class="kt">void</span> <span class="n">logB</span><span class="p">(</span><span class="k">const</span> <span class="n">DataAccessor</span><span class="o">&amp;</span> <span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"B: "</span> <span class="o">&lt;&lt;</span> <span class="n">data</span><span class="p">.</span><span class="n">getB</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="err"> </span> <span class="p">}</span>
+<span class="err"> </span> 
+<span class="err"> </span> <span class="kt">void</span> <span class="n">logC</span><span class="p">(</span><span class="k">const</span> <span class="n">DataAccessor</span><span class="o">&amp;</span> <span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"C: "</span> <span class="o">&lt;&lt;</span> <span class="n">data</span><span class="p">.</span><span class="n">getC</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="err"> </span> <span class="p">}</span>
+<span class="err"> </span> <span class="c1">// ...</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">()</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">DataAccessor</span> <span class="n">d</span><span class="p">;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">Logger</span> <span class="n">l</span><span class="p">;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">l</span><span class="p">.</span><span class="n">logData</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>This is still a simplified example, but it’s closer to a real-life one with an object that is responsible to fetch some data (possibly from a database).</p>
+
+<p>A reference to our data accessor class is passed to the logger which takes care of calling the right getters to read the data from somewhere else. This <code class="language-plaintext highlighter-rouge">DataAccessor</code> in the example is simplified as much as possible.</p>
+
+<p>On the other hand, it’s realistic that the code of <code class="language-plaintext highlighter-rouge">Logger::logA</code>, <code class="language-plaintext highlighter-rouge">Logger::logB</code>, and the rest is not just dumped into a huge method. As such moving from the conventional logging to a safe log is very easy. By replacing <code class="language-plaintext highlighter-rouge">logA(data)</code> with <code class="language-plaintext highlighter-rouge">safeLog(&amp;Logger::logA, data)</code> we get a version that is not prone to exceptions thrown in the <code class="language-plaintext highlighter-rouge">DataAccessor</code>.</p>
+
+<h2 id="conslusion">Conslusion</h2>
+
+<p>Today we saw how to wrap function calls with try-catch blocks in C++ with macros and with templates. Macros are error-prone and hard to debug as the precompiler changes the code that you actually wrote before the compilation started.</p>
+
+<p>The other solution, using templates gives us a bit more boilerplate (still on a manageable level I think) and the calling syntax is a little bit different, but I think it’s worth the advantages of not having a macro, but debuggable code and in overall, better readability.</p>
+
+<p>What do you think?</p>
+
+<p>Happy coding!</p>
+:ET

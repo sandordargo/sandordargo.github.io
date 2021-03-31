@@ -1,0 +1,68 @@
+I"l<p>Oh, singletons… We can’t live with them, we can’t live without them.</p>
+
+<p>I remember that in my first team there was a guy with a very bright mind, but he was not yet mature enough just after the university and in all the questions he was way too much opinionated and a bit too smug. Typical to most of us at the beginning of our career, isn’t it?
+<!--more--></p>
+
+<p>He was always there to express how he hates singletons and how the worst thing they are in the realm of software development.</p>
+
+<p>No, I’m not going to tell you that they are the best thing on Earth since sliced bread. Not at all. I was not so good in programming as he was - probably I am still not. But I had more life experience and I already understood that most of the things are not black or white.</p>
+
+<p>I didn’t like this very extreme view, so I read a couple of articles and watched a long conference talk and I came up with a different opinion than his.</p>
+
+<p>Why do I tell this? I’d like you to understand that even though I try to avoid using singletons, sometimes they are a valid alternative and we have to know how to use them.</p>
+
+<p>The easiest thing is to open up <a href="https://amzn.to/2KWCkLN">the book from the Gang of Four</a> at the singleton chapter, read it and implement it. Easy-peasy.</p>
+
+<h2 id="the-problem-of-the-dead-reference">The problem of the dead reference</h2>
+
+<p>Recently I suffered through <a href="https://amzn.to/33W81fy">Modern C++ Design: Generic Programming and Design Patterns Applied</a> by <a href="https://twitter.com/incomputable">Andrei Alexandrescu</a>. It’s not a bad book, not at all. It is me, the problem. I’m not so great at templates, to say the least. This book has a chapter on singletons. I furrowed my eyebrows. Templates? Singletons? On the same page? What? Why?</p>
+
+<p>You might be able to pimp up singletons with templates and you can address problems that are already there but you maybe never thought of.</p>
+
+<p>I don’t want to walk you through the whole chapter and how <a href="https://twitter.com/incomputable">Alexandrescu</a> implements singletons using templates, but I want to highlight one problem that I had not thought of before and that is probably specific to C++. I’m a bit worried that I don’t think that any of my colleagues thought about this. Or at least, they haven’t shared their concerns with the rest of the tea.</p>
+
+<p>I’ll use Alexandrescu’s example here. Let’s assume that in our system we have the concepts of <code class="language-plaintext highlighter-rouge">Keyboard</code>, <code class="language-plaintext highlighter-rouge">Display</code> and <code class="language-plaintext highlighter-rouge">Log</code>. As in that system, you can have only one of each, they are implemented as singletons. How do they work? Each singleton object has only one instance and it’s usually initialized when it’s first called.</p>
+
+<p>How are they destroyed? Randomly? It would be bad, and luckily it’s not the case. They are destroyed in reverse order of their creation.</p>
+
+<p>If we suppose that we log only in case of errors and we envision the next scenario, we can encounter a big problem:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Keyboard</code> is created successfully</li>
+  <li><code class="language-plaintext highlighter-rouge">Display</code> has a problem while it’s created</li>
+  <li>But it managed to create <code class="language-plaintext highlighter-rouge">Log</code></li>
+  <li>Some code is getting executed, probably error handling</li>
+  <li>Log is destroyed</li>
+  <li>Keyboard destruction has a problem, it wants to log… oh oh..</li>
+</ul>
+
+<p>This issue can arise in any application which uses multiple interacting singletons. There is no automated way to control their lifetime.</p>
+
+<p>One solution, of course, is to eliminate interacting singletons from the code. If this is not a viable possibility, the function returning the singleton instance has to check if it has been already destroyed. This is something that you can track with a boolean. Now we at least can know if our singleton had been already destroyed, but our issue has not been solved. Yet.</p>
+
+<p>Alexandrescu proposes three ways to solve the issue.</p>
+
+<h3 id="the-phoneix-singleton">The Phoneix singleton</h3>
+
+<p>The concept of it is rather simple. If you try to get the reference of an already destroyed singleton, it just gets recreated.</p>
+
+<p>Its downsides are that it might be confusing as it breaks the normal lifecycle of a singleton, plus if it had a state, it would lose it in the destruction-resurrection cycle.</p>
+
+<h3 id="singletons-with-longevity">Singletons with longevity</h3>
+
+<p>The idea of this solution works well when you know in what order you want to destroy your singletons. You assign longevity, in other words, an order, a priority for them and you register the singletons with their longevity to a dependency manager that will take care of their destruction in the good order at the end of the lifecycle.</p>
+
+<p>This is a fine solution, but it introduces extra complexity.</p>
+
+<h3 id="infinite-singleton">Infinite singleton</h3>
+
+<p>In this case, we have no destruction at all. The <a href="https://amzn.to/2KWCkLN">GoF book</a> implicitly uses this solution. This is very simple, but inelegant. Only the operating system will take care of the cleanup. Depending on your use-case, this can be acceptable, but you also have to consider that it might introduce some important memory leaks. There is no magic bullet, just best practices and case-by-case analysis.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>In this article, we learnt about the problem of the dead reference/ dead singleton which might occur when you have multiple singleton objects interacting with each other.</p>
+
+<p>We saw three main ideas to tackle it shared by <a href="https://twitter.com/incomputable">Alexandrescu</a> in his book. If you don’t want to rely on the simple C++ rules (last created, first destroyed), you have the options to create a resurrecting “Phoneix” singleton, to set the longevity for each of them or to simply never destroy them and leave it to the operating system.</p>
+
+<p>If you want to learn more about this problem, including the implementation details of the listed options, I encourage you to read the corresponding chapter of <a href="https://amzn.to/33W81fy">Modern C++ Design: Generic Programming and Design Patterns Applied</a>.</p>
+:ET

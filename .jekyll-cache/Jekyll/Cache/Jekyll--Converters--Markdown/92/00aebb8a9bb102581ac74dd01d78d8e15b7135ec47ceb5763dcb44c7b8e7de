@@ -1,0 +1,130 @@
+I"�"<p>A few weeks ago I had the chance to give a presentation at a company-wide event about the importance of not forgetting about the developer in the midst of the agile transformation.
+<!--more-->
+Why is that you might ask?</p>
+
+<p>What is agile anyway?</p>
+
+<p>Put aside the manifesto, the values and the principles. What does it mean in real life? In the life of a developer working in a big corporation?</p>
+
+<p>Most probably it will mean applying the scrum or kanban framework. It will mean daily meetings, endless sprints turning into marathons. Demos without clients and retrospectives with sugar overdose turning young males who never cooks into pseudo-bakers following their moms’ instructions over the phone.</p>
+
+<p>Joke aside, if your company is big and rich enough it might even mean the Scaled Agile Framework (<a href="https://www.scaledagileframework.com/">SAFe</a>). And the key is the last word. It’s a framework. But a framework for what? Well, let’s face it. For project management.</p>
+
+<h2 id="but-is-that-really-agile">But is that really agile?</h2>
+
+<p>I’m a big fan of history and I think it’s important to know ours in the industry. <a href="https://en.wikipedia.org/wiki/George_Orwell">George Orwell</a> knew that <em>“the most effective way to destroy people is to deny and obliterate their own understanding of their history.”</em> Without knowing our history we have no future. In our case, history doesn’t only mean the history of computing, programming languages, but also the way we work. Let’s have a look at that, the history of how we organize our development activities.</p>
+
+<p>Ever since the late fifties, there were attempts to use iterative development methods. Attempts? Well, engineers using iterative development put mankind on the orbit, then they built the primary avionics software for the space shuttle! It’s so funny that there are people saying nowadays that, <em>well, Agile is not for projects where there is a lot in risk and it’s a matter of life and death, for such matters there is still waterfall</em>. Tell that to the <a href="https://en.wikipedia.org/wiki/Mercury_Seven">Mercury Seven</a>…</p>
+
+<p>As usual, a lot of different initiatives spread around until in 2001, 17 engineers met in a ski resort in the 45th state of the US and around 4 values and 12 principles wrote a manifesto. (I love numbers, don’t I?)</p>
+
+<p>They wrote the manifesto for <del>agile project management</del>. Oh no, sorry, they wrote it for agile software development.</p>
+
+<p><em>Agile was made by developers for developers.</em></p>
+
+<h2 id="what-are-the-agile-practices">What are the agile practices?</h2>
+
+<p>Let’s have a look at the <a href="https://en.wikipedia.org/wiki/Agile_software_development">Wikipedia page of agile software development</a>. If we scroll down, we can see 22 practices. Is that a reference to the catch-22? I’m not sure. But I tried to categorize these practice into development practices and project management tools and practices. The second one is a bit vague, I know, but basically everything that is not directly about the way you develop, but more about meetings, organization, management.</p>
+
+<p>This is how I split</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Agile development practices</th>
+      <th style="text-align: center">Agile project management practices and tools</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">ATDD</td>
+      <td style="text-align: center">Backlogs</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Agile Modeling</td>
+      <td style="text-align: center">Cross-Functional team</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Agile Testing</td>
+      <td style="text-align: center">Daily standup-up</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">BDD</td>
+      <td style="text-align: center">Planning poker</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">CI</td>
+      <td style="text-align: center">Retrospective</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">DDD</td>
+      <td style="text-align: center">Scrum events</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">IID</td>
+      <td style="text-align: center">Timeboxing</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Pair Programming</td>
+      <td style="text-align: center">User story</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Refactoring</td>
+      <td style="text-align: center">Velocity tracking</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Specification by example</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Story-driven modelling</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">TDD</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Timeboxing</td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Of course, the list and the split are arguable, and I deliberately put <em>Timeboxing</em> into both bags. The list I took from the Wikipedia page, so no personal judgement there.</p>
+
+<p>Based on my split, the development practices are in the majority. On the other hand, and this is solely based on my experience both from my job and from the feedback I got from other people I talked to, the implemented practices are mostly from the second bucket.</p>
+
+<h2 id="how-agile-transformations-went-wrong">How agile transformations went wrong?</h2>
+
+<p>What does this mean? This means that when we are talking about transforming teams into agile teams, we focus on the way such teams work, the teams and the meetings are organized. Is that important? It is, for sure!</p>
+
+<p>On the other hand, we tend to forget that agile was founded on the grounds of modern engineering practices, extreme programming. Many times, developers don’t even know what <a href="https://en.wikipedia.org/wiki/Test-driven_development">TDD</a> is about, they have never tried pair programming and refactoring seems to them as a noble pastime that delivers no value and it pleases only snob software development engineers who enjoy nothing but perfection.</p>
+
+<p>Once, I was attending an agile introduction for a new forming project. The coach was speaking mostly about the non-technical parts. I couldn’t stand and I asked him what about the modern engineering practices that Agile was built upon?</p>
+
+<p>He stepped back thinking for a second. Seemingly he was thinking about whether he should share his honest opinion or not, but then he continued.</p>
+
+<p>Many companies do not pay for the technical coaching part, they want to be agile for sure, but they don’t want to pay for it and they think that changing the project management, project organization part will be just enough. But… If you take a couple of engineers who used to work without modern engineering best practices and they produced crap, so the management was not happy and wanted to change to agile, and now you don’t coach them on those topics, you don’t help these engineers to work with the new practices, they will just produce the same crap soaked with the Agile buzzwords…</p>
+
+<h2 id="so-what-can-you-do">So what can you do?</h2>
+
+<p>As we have seen, while the majority of agile practices is about the techy parts, in practice, at least big corporations tend to focus on the project management part. Both in terms of trainings and field coaching.</p>
+
+<p>This is a bit of nonsense to me. The agile transformation for a company usually takes years. Hoards of coaches and other professionals are encircling the “changing” company like vultures orbiting their victims to pick up some juicy contracts.</p>
+
+<p>We admit that such a transformation cannot happen without help, yet we fail to give help to those are in the centre of those changes.</p>
+
+<p>What does this mean?</p>
+
+<p>It’s not that much different from <a href="https://dev.to/sandordargo/why-clean-code-is-not-the-norm-d2d">clean coding</a>. It’s difficult to learn agile software development given that the number of programmers is steadily growing and there are simply not enough experienced developers and coaches who can help who really know agile software development.</p>
+
+<p>The need to learn agile and as such modern engineering practices is huge, but often stays unidentified.</p>
+
+<p>I’d advise everyone concerned the following three things:</p>
+<ul>
+  <li>Educate ourselves and let’s try to teach our teams and colleagues about those agile practices</li>
+  <li>Raise our voice towards the training department and the transformation teams that we need help, just like project managers</li>
+  <li>Share our experiences to spread the word!</li>
+</ul>
+:ET

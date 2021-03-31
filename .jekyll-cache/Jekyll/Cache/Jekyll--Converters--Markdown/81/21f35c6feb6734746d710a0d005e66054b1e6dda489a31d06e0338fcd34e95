@@ -1,0 +1,50 @@
+I"�<p>Put it differently, there are many ways to start exploring a database. You can learn about the paradigms behind that I think is the most important. It is essential to understand it on a high level how your data is stored and organized. For <a href="https://neo4j.com/">Neo4j</a> I already covered this in <a href="/blog/2017/09/06/intro-to-graph-databases">the introduction to graph databases</a>.</p>
+
+<p>But I don’t think it’s important at the beginning of your journey to understand how the data is organized on a low level. What data structures are used in order to store tables, or documents, nodes, and relationships. How these structures point to each other. That can come later.</p>
+
+<p>I think it’s better to jump right in where the fun is and start exploring your data and query it many different ways.</p>
+
+<p>Then as a next step you can experiment with the different drivers from your preferred language(s) and after or in parallel with that you can explore the underlying systems from a closer aspect.</p>
+
+<p>For <a href="https://neo4j.com/">Neo4j</a> - the graph database of my choice - the query language is called <a href="https://neo4j.com/developer/cypher-query-language/">Cypher</a>. As I assume that if you are already interested in querying a graph database you know things about SQL. I will not be afraid of making connections between Cypher and SQL in this series.</p>
+
+<p>I am going to write a series of articles about the concepts and different keywords of Cypher.</p>
+
+<p>Let’s make a little recap before we start.</p>
+
+<p>Neo4j is graph database implementing the labeled property graph data model. A lot of words, let’s cover them one by one:</p>
+
+<ul>
+  <li>
+    <p>Graph:
+It consists of nodes and relationships between the nodes. The relationships are always directed, they have a type, a start, and an end node. There are no broken relationships, that means each relationship must have both a start and an end point.</p>
+  </li>
+  <li>
+    <p>Property graph:
+A previously described graph can hold some attributes. An attribute means basically a key-value pair. Both nodes and relationship can have such attributes/properties. As examples, imagine Joe who has a birthday attribute: <code class="language-plaintext highlighter-rouge">{birthDay: 25/01/1985}</code>. And for a relationship, let’s say that there is a <code class="language-plaintext highlighter-rouge">:MANAGES</code> relationship between Jim and Joe. The key of an attribute on <code class="language-plaintext highlighter-rouge">:MANAGES</code> can be <code class="language-plaintext highlighter-rouge">since</code> and the value is <code class="language-plaintext highlighter-rouge">2017</code>.</p>
+  </li>
+  <li>
+    <p>Labeled property graph:
+On the top of this, nodes can have labels. Labels are tags which can represent different roles within your domain. Jim can a have a label of <code class="language-plaintext highlighter-rouge">:EMPLOYEE</code> and R&amp;D  can be <code class="language-plaintext highlighter-rouge">:DEPRATMENT</code>. A node can be tagged with multiple labels.</p>
+  </li>
+</ul>
+
+<p>To finish this post, let’s see how easy it is to write down a relationship in Cypher.</p>
+
+<p>Jim who is an employee is member of R&amp;D department since 2017. The department has a size of 250 people.</p>
+
+<p><code class="language-plaintext highlighter-rouge">(jim:EMPLOYEE {name: "Jim"})-[:MEMBER_OF {since: 2017}]-&gt;(rnd:DEPARTMENT {name: "R&amp;D", size:250})</code></p>
+
+<p>Some characteristics that you can see immediately:</p>
+<ul>
+  <li>nodes are described between parentheses</li>
+  <li>relationships are written between brackets</li>
+  <li>labels of a node and the type of a relationship will come after a colon</li>
+  <li>attributes are put between braces in a JSON style</li>
+  <li>the direction of the relationship is visible through the direction of the arrow</li>
+</ul>
+
+<p>Next time I’m going to <a href="/blog/2017/10/11/cypher-create">introduce the <code class="language-plaintext highlighter-rouge">CREATE</code> keyword</a> to you so that we can create our first small graph.</p>
+
+<p>Stay tuned and if you want to get notified of the latest articles follow me on <a href="https://twitter.com/SandorDargo">Twitter</a>!</p>
+:ET

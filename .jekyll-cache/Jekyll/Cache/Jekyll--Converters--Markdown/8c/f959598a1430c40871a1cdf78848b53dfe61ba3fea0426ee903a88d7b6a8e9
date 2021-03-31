@@ -1,0 +1,76 @@
+I"D<p>The goal of mutation testing or mutation analysis is to evaluate the quality of your existing software tests. In this kind of white-box testing your production code gets modified in tiny ways. A modified piece of code is called a mutant and if it makes a test fail, the mutant gets killed.</p>
+
+<p>The more mutants are killed, the better your tests are.</p>
+
+<p>But who should be a mutant created? There are well defined mutation operators that either mimic typical programming errors or force creation of valuable tests.</p>
+
+<p>An example for the previous one can be using a wrong operator or variable name and for the latter one it can be forcing divisions by zero.</p>
+
+<p>What does it mean if a mutant doesn’t get killed? It means that either the modification never gets executed, so you have dead code, or that the tests do not cover the outputs enough.</p>
+
+<p>The idea of mutation testing is based on two hypotheses. One is that most of the bugs are introduced by experienced programmers and those are small syntatic errors. The other hypothesis is that these small errors will cascade and couple to form other faults. Fault makes fault.</p>
+
+<h3 id="the-rip-model">The RIP model</h3>
+<p>To kill a mutant three conditions should be met which are collectively called the <em>RIP model</em></p>
+
+<ul>
+  <li>Reach the mutated statement</li>
+  <li>Infect the program state with the test data</li>
+  <li>Propagate the incorrect state to the output</li>
+</ul>
+
+<p>Here is an example. This is the original code:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>if a or b:
+    c = 1
+else:
+    c = 0
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>And here is the modified code, where <code class="language-plaintext highlighter-rouge">or</code> is replaced by <code class="language-plaintext highlighter-rouge">and</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>if a and b:
+    c = 1
+else:
+    c = 0
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>The <em>RIP</em> is for strong mutation testing. If only the first two are satisfied, we can call it weak mutation testing. It’s more related to code coverage.</p>
+
+<p>If a mutant doesn’t make a test fail so if it is not killed. it’s called an equvalent mutant.</p>
+
+<p>At the end of the test execution you will get your test suite’s mutation score by dividing the number of mutants killed by the total number of mutants.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>mutation score = number of mutants killed / total number of mutants
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="mutation-operators">Mutation operators</h3>
+
+<p>Just to give you some ideas how a program is modified by a mutation testing framework, I list a few so called mutation operators here.</p>
+
+<ul>
+  <li>Statement deletion</li>
+  <li>Statement duplication or insertion</li>
+  <li>Remove Conditionals Mutator <em>(e.g. Replacement of boolean subexpressions with <code class="language-plaintext highlighter-rouge">true</code> and <code class="language-plaintext highlighter-rouge">false</code>)</em></li>
+  <li>Replacement of some arithmetic operations with others <em>(e.g. + with *, - with /)</em></li>
+  <li>Conditionals Boundary Mutator <em>(e.g. replace &lt; with &lt;=)</em></li>
+  <li>Negate Conditionals Mutator</li>
+  <li>Invert Negatives Mutator</li>
+  <li>Replacement of variables with others from the same scope (where variable types must be compatible)</li>
+  <li>Return Values Mutator</li>
+  <li>Remove method calls to void methods</li>
+  <li>Non Void Method Call Mutator  <em>(i.e. replace return values by their type’s defaults)</em></li>
+  <li>Constructor Call Mutator (i.e. constructor returns <code class="language-plaintext highlighter-rouge">null</code> instead of an instance)</li>
+</ul>
+
+<p>Happy experimentation and testing!</p>
+:ET

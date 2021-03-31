@@ -1,0 +1,26 @@
+I"�<h2 id="books-i-wrote">Books I wrote</h2>
+
+<p>So far there is only one finished, but rest assured, more are coming.</p>
+
+<h3 id="how-to-use-const-in-c-on-the-virtues-of-constness"><a href="https://leanpub.com/cppconst/">How to use const in C++: On the virtues of constness</a></h3>
+
+<p><img src="/assets/img/cpp-const-cover.jpg" alt="How to use const in C++ cover" height="66%" width="66%" /></p>
+
+<p>Constness is such an important idea that in certain languages entities are <code class="language-plaintext highlighter-rouge">const</code>, in other words, immutable by default. If you want to become a seasoned C++ developer, you must understand how you can use <code class="language-plaintext highlighter-rouge">const</code> correctly. In this book, you’ll learn when and how to use it in the different contexts it might appear:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">const</code> functions</li>
+  <li><code class="language-plaintext highlighter-rouge">const</code> local variables</li>
+  <li><code class="language-plaintext highlighter-rouge">const</code> member variables</li>
+  <li><code class="language-plaintext highlighter-rouge">const</code> return types</li>
+  <li><code class="language-plaintext highlighter-rouge">const</code> parameters</li>
+</ul>
+
+<p><strong><em><a href="https://leanpub.com/cppconst/">You can get the book on LeanPub</a></em></strong></p>
+
+<h2 id="books-i-recommend">Books I recommend</h2>
+
+<p>I consider reading as a primary necessity of humans, just like eating. I’d like to help you to choose the good reads easier.</p>
+
+<p>Visit <a href="https://devreads.sandordargo.com/">DevReads</a> to access all my book reviews.</p>
+:ET

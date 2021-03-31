@@ -1,0 +1,26 @@
+I"�<p>I’ve recently had the chance to attend an advanced Python course. I was really waiting for those three days. By the end of it, my enthusiasm waned. Why? Was the teacher not knowledgeable enough? Was he just not a good presenter?
+<!--more--></p>
+
+<p>The answer is a clear no to both questions.</p>
+
+<p>He is knowledgeable and while he’s not exceptional, yet a decent presenter. I wish all the technical presentation would go at least that well! Probably he would have presented even better in French.</p>
+
+<p>My pain point is that it was hardly an advanced course.</p>
+
+<p>The first day, among others we covered how to write a class in python, what are <code class="language-plaintext highlighter-rouge">class</code> and <code class="language-plaintext highlighter-rouge">static</code> methods.
+I asked for <em>under</em> and <em>dunder</em> methods, so we covered those too. We saw how to use the <code class="language-plaintext highlighter-rouge">@property</code> decorator and we also looked into several usages of the <code class="language-plaintext highlighter-rouge">*</code>/<code class="language-plaintext highlighter-rouge">**</code> operators at the end of the day.</p>
+
+<p>I’d lie if I said I didn’t learn anything. I knew about properties, but I haven’t played around with them, especially not with the setter parts. But at least 2/3 of the day I found pretty useless.</p>
+
+<p>On the other hand. Is that the fault of the instructor? Of course, one might say. But when people who never wrote a single class in Python can enroll in an advanced Python training, then you can hardly blame the teacher for showing them how to do it.</p>
+
+<p>What is better? Is it less bad to lose those who are not supposed to attend an advanced course or to bore those who actually meet all the prerequisites?</p>
+
+<p>Have you ever been in a similar situation? Please share your experience both as an attendee and moreover if you’ve seen this as a trainer!</p>
+
+<p>How do you accept trainees? Should you reject some even if they would bring money?</p>
+
+<p>For the Pythonistas, what makes a Python training advanced after all? List comprehension is already an advanced concept and I am too harsh?</p>
+
+<p>Thanks for your thoughts!</p>
+:ET

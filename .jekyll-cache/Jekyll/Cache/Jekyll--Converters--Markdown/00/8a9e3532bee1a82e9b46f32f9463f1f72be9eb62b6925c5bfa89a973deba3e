@@ -1,0 +1,2 @@
+I"-<p>The idea of concepts is one of the major new features added to C++20. Concepts are an extension for templates. They can be used to perform compile-time validation of template arguments through boolean predicates. They can also be used to perform function dispatch based on properties of types.</p>
+:ET

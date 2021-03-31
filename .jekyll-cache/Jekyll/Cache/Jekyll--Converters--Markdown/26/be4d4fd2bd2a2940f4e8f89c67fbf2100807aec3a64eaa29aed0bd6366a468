@@ -1,0 +1,2 @@
+I"ø<p>Do you use exceptions in your code? Do you always catch the most generic one or do you write multiple catch blocks? Do you rethrow them or just swallow the exceptions right after they occur? Do you have an error-handling strategy after all?</p>
+:ET

@@ -1,0 +1,169 @@
+I"�'<p>What is your process to create a new commit? Is it just <code class="language-plaintext highlighter-rouge">git commit -am</code>? Or is it more sophisticated?
+<!--more--></p>
+
+<p>Mine used to be something like this:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td> --><td class="rouge-code"><pre>for file in files returned by git status:
+  git diff file
+  if like it:
+    git add file
+  else:
+    change the file
+    continue //so you will take it again from git st
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Writing those <code class="language-plaintext highlighter-rouge">git add</code>s and <code class="language-plaintext highlighter-rouge">git diff</code>s were tedious even if I used copy-paste and the command history a lot. Especially for bigger changes, it was really cumbersome.</p>
+
+<p>Then I thought it would be cool to simplify it a bit and combine <code class="language-plaintext highlighter-rouge">diff</code> and <code class="language-plaintext highlighter-rouge">add</code> and I came up with an alias that I call for simplicity <code class="language-plaintext highlighter-rouge">da</code> (<em>diff &amp; add</em>).</p>
+
+<p>If you call <code class="language-plaintext highlighter-rouge">git da myFile</code>, it will first show the diff of <code class="language-plaintext highlighter-rouge">myFile</code>, then it asks back whether you want to stage it or not and as a courtesy, as a third option it offers you patching in case you want to stage only part of the changed lines.</p>
+
+<p>If you are interested in using it, feel free take it from <a href="https://gist.github.com/sandordargo/ce3a55be6bd794be1826391ebe95718b">this gist</a>.</p>
+
+<p>If you interested in how I wrote this piece of code, please read on.</p>
+
+<h2 id="calling-shell-in-a-git-alias">Calling shell in a git alias</h2>
+
+<p>The first important problem I faced when I wanted to write <code class="language-plaintext highlighter-rouge">git da</code> was that in the second git command (git add) I’d have to use the first one’s (git diff) input. How to do that?</p>
+
+<p>The best way seemed to be if I just pass the filename as a parameter to both commands and chain them.</p>
+
+<p>This is very easy, just like in a shell script you can reference an input parameter by ${POSITION_STARTING_FROM_1}. Because… it’s a shell script that we need if we have to chain two commands.</p>
+
+<p>But how to call a shell script in a git alias?</p>
+
+<p>It’s very easy<code class="language-plaintext highlighter-rouge">!</code> I mean it <code class="language-plaintext highlighter-rouge">!</code></p>
+
+<p>You have nothing to do, just start the content of your new alias with <code class="language-plaintext highlighter-rouge">!</code> (bang)! That’s it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td> --><td class="rouge-code"><pre>[alias]
+  da = "! git diff $1 &amp;&amp; git add $1"
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>How would this work?</p>
+
+<p>Well, it would add the passed file unconditionally and that’s not what we want! Why did we do a diff then?</p>
+
+<p>We have to pop up a question asking if we want to call <code class="language-plaintext highlighter-rouge">git add</code> or not.</p>
+
+<p>Which git command can do that? I’m not aware of any. Patching (git add -p) is quite similar, show you a diff and asks you whether you want to stage it, but it goes hunk by hunk, and by default, it doesn’t show all the changes at once if you made a more complex change.</p>
+
+<p>I’m not a shell guru and <em>I like to copy and paste from Stackoverflow</em>, so I was looking around on the net and customized a bit and came up with something like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td> --><td class="rouge-code"><pre>[alias]
+    da = "! addprev() { while true; do \
+          read -p "Do you wish to add this file? ([Y]es, [N]o, [P]atch)" yn ; \
+          case $yn in \
+          [Yy]* ) git add $1; break;; \
+          [Pp]* ) git add -p $1; break;; \
+          [Nn]* ) exit;; \
+          * ) echo "Please answer yes, no or patch.";; \
+          esac \
+        done } ; \
+        git diff $1 ; addprev $1"
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>In <code class="language-plaintext highlighter-rouge">addprev()</code> the shell just asks you what do you want to do and maps it the corresponding comment. It keeps repeating the question as long as you don’t answer with one of the supported options or you can reboot, but com’on this is not vim!</p>
+
+<h2 id="wait-but-where-are-you">Wait, but where are you?</h2>
+
+<p>This version worked like a charm on my little local sample repo, then I started to use it at work in a much bigger repo. Usually, I have to modify one component and I don’t even want our build management system to check the other components, so I launch the compilation in a given subdirectory, in a given component.</p>
+
+<p>Aaaand my alias didn’t work… After some googling around, I learnt that aliases are always executed from the root of the repository. This means that if you are in <code class="language-plaintext highlighter-rouge">/home/auser/myrepo/mycomponent</code> and you call <code class="language-plaintext highlighter-rouge">git da myFileInMyComp</code>, it will be searched in <code class="language-plaintext highlighter-rouge">/home/auser/myrepo</code> and it will ruthlessly fail.</p>
+
+<p>I also found that the variable <code class="language-plaintext highlighter-rouge">${GIT_PREFIX}</code> holds your current path, so I simply prefixed my chain of commands with change directory to where ${GIT_PREFIX} points  to:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td> --><td class="rouge-code"><pre>cd ${GIT_PREFIX} &amp;&amp; git diff $1 &amp;&amp; addprev $1"
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="things-are-often-relative">Things are often relative</h3>
+
+<p>This solution was working as long as I was calling <code class="language-plaintext highlighter-rouge">git da</code> from a subcomponent but it stopped working from the repository root. After all, I was in the exact opposite situation than before. But why… - I asked myself.</p>
+
+<p>First, let’s see what is <code class="language-plaintext highlighter-rouge">GIT_PREFIX</code>. It is set as returned by <code class="language-plaintext highlighter-rouge">git rev-parse --show-prefix</code> from the current directory. Which means that it will return the path relative to your root repo.</p>
+
+<p>But what if you are in the root? Then your relative path is just nothing. But what is nothing in programming? Well, it can be many things. Zero, an empty string, a null pointer, etc.</p>
+
+<p>In our case, <code class="language-plaintext highlighter-rouge">${GIT_PREFIX}</code> is simply not defined and if you do <code class="language-plaintext highlighter-rouge">cd ${UNDEFINED_VARIABLE_NAME}</code> you will end up in your home directory.</p>
+
+<p>Like this, it’s straightforward why my solution didn’t work.</p>
+
+<h3 id="lets-fix-it">Let’s fix it</h3>
+
+<p>Now I understood that I only have to change directories if I’m not in the root. I wrote a small function to make that happen:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td> --><td class="rouge-code"><pre>if [ -n "${GIT_PREFIX}" ]; then \
+  cd ${GIT_PREFIX} ; \
+fi \
+} ; \
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>This is working fine and I’m using it both for side projects and for work. Here is my complete solution:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td> --><td class="rouge-code"><pre>[alias]
+    da = "! addprev() { while true; do \
+          read -p "Do you wish to add this file? ([Y]es, [N]o, [P]atch)" yn ; \
+          case $yn in \
+          [Yy]* ) git add $1; break;; \
+          [Pp]* ) git add -p $1; break;; \
+          [Nn]* ) exit;; \
+          * ) echo "Please answer yes, no or patch.";; \
+          esac \
+        done } ; \
+        gotoUsedDirectory() { \
+        if [ -n "${GIT_PREFIX}" ]; then \
+          cd ${GIT_PREFIX} ; \
+        fi \
+        } ; \
+        gotoUsedDirectory &amp;&amp; git diff $1 &amp;&amp; addprev $1"
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>In this post, I shared my workflow of how I create my commits so that I’m my very first code reviewer before creating the commit. I also showed how I eliminated some repetitive commands from this workflow by crafting an interactive git alias.</p>
+
+<p>The most important takeaway is that you can access shell any time which from git aliases giving you endless possibilities to create the alias you want.</p>
+
+<h2 id="call-to-action">Call to action</h2>
+
+<p>If you like the idea and you think it would enhance your workflow, feel free to take <a href="https://gist.github.com/sandordargo/ce3a55be6bd794be1826391ebe95718b">this small gist</a> and start using it - copy pasting from this page might now work due to character escape issues. If you’d like to be notified of my new posts, follow me on <a href="https://twitter.com/SandorDargo">Twitter</a>.</p>
+:ET

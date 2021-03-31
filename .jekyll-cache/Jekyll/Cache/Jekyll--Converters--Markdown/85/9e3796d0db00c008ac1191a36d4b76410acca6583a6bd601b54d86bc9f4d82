@@ -1,0 +1,149 @@
+I"!/<p>Recently, I’ve built <a href="https://www.dailycppinterview.com/">Daily C++ Interview</a> and since the beginning, I kept something important in mind. I need to provide value, and I don’t need a perfect implementation for that. I don’t need to automate a process if I barely have to perform it, especially if it’s simple and doesn’t take many efforts.
+<!--more--></p>
+
+<p>It’s different when your purpose is practising automation or just practising building tools. Then you might want to automate everything just for the sake of automation. It’s <em>l’art pour l’art</em>. But in this case, I just want to deliver valuable content to my audience.</p>
+
+<p>Mostly I just glued services together, it’s almost a no-code service from my perspective, I had some interesting bugs to fix and I’d like to share one of them with you.</p>
+
+<p>One of the activities I have to perform every day is adding a new question (and of course the answer) to my database. I’m using <a href="https://aws.amazon.com/dynamodb/">AWS DynamoDB</a> and I didn’t create any custom admin tools to add my data, I simply used DynamoDB’s UI for at least a month, until…</p>
+
+<h2 id="i-discovered-a-problem-with-my-content">I discovered a problem with my content</h2>
+
+<p>One thing, I’m really prudent of is that I only share valid information and that my code examples compile out of the box. Hence usually even if takes more space, I include the header inclusions and the <code class="language-plaintext highlighter-rouge">main()</code> function to my C++ sample code.</p>
+
+<p>I also have a friend who is - among his other activities - teaching C++ at a university and he free access to my <a href="https://www.dailycppinterview.com/checkout/">Pro membership</a> and when he has time, he reviews the mails I’m sending out.</p>
+
+<p>One evening he contacted me saying that it’s strange that when I share the original and the desired output of a code sample, both are the very same.</p>
+
+<p>I checked and indeed he was right. So the easiest thing for me was to open the code-sample in <a href="http://coliru.stacked-crooked.com/">coliru</a> and make the necessary changes to get the output I wanted to share.</p>
+
+<p>It didn’t compile. I forgot to add the template type to a vector:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">std</span><span class="o">::</span><span class="n">vector</span> <span class="n">v</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>And while this is valid code in C++20, I don’t use yet that version in my samples. Moreover, a simple <code class="language-plaintext highlighter-rouge">#include</code> without specifying the included header file will never be valid, and my code sample started like this</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="cp">#include
+#include
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">//...</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>I felt a bit peeved on how sloppy I was when I saved this piece of content. I didn’t quite understand how I could do that, but well, we all make mistakes, maybe I was just too tired at the end of the day.</p>
+
+<p>A few days later, another person contacted me that I have a syntax issue in an exercise.</p>
+
+<p>What the hell?</p>
+
+<p>I checked and he was also right. It was the very same type of problem. It’s impossible that I made these mistakes in a row.</p>
+
+<p>I was sure that something was broken in my pipeline.</p>
+
+<h2 id="code-as-html-tags">Code as HTML tags</h2>
+
+<p>In order to format the raw content into something I can send to my subscribers, I’m using two free services:</p>
+<ul>
+  <li><a href="https://markdowntohtml.com/">markdowntohtml.com</a> to convert markdown texts to HTML code</li>
+  <li><a href="http://hilite.me/">Hilite.Me</a> to convert raw code samples into well-formatted HTML content.</li>
+</ul>
+
+<p>So for example these lines:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="cp">#include &lt;iostream&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Hello world</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Would be formatted into something like this:</p>
+
+<p><img src="{{site.baseurl}}/assets/img/hiliteme.png" alt="Code foramatted with hilite.me" title="Code foramatted with hilite.me" /></p>
+
+<p>Notice how <code class="language-plaintext highlighter-rouge">#include &lt;iostream&gt;</code> is escaped and transformed into <code class="language-plaintext highlighter-rouge">#include &amp;lt;iostream&amp;gt;</code>.</p>
+
+<p>So I take the different parts from <a href="https://markdowntohtml.com/">Markdowntohtml</a> and from <a href="http://hilite.me/">Hilite.me</a>, assemble them into one HTML document and I just copy-paste the big string into DynamoDB UI.</p>
+
+<p>When I copied my content all seemed fine.</p>
+
+<p>Then my e-mail was sent, and instead of <code class="language-plaintext highlighter-rouge">#include &lt;iostream&gt;</code> only <code class="language-plaintext highlighter-rouge">#include</code> was there. Instead of <code class="language-plaintext highlighter-rouge">std::vector&lt;int&gt;</code> only <code class="language-plaintext highlighter-rouge">std::vector</code> could be read.</p>
+
+<p>When I checked the source code of the page with my e-mail on it (<code class="language-plaintext highlighter-rouge">Ctrl+U</code> in Chrome), I saw the missing <code class="language-plaintext highlighter-rouge">&lt;iostream&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;int&gt;</code> in it.</p>
+
+<p>It started to become clear. The includes and template parameters are handled as - never closed - HTML tags. But where is the problem? Is there a bug in <a href="http://hilite.me/">Hilite.me</a>? In Chrome? Or…</p>
+
+<p>In fact, the problem was with DynamoDB UI when I clicked on saving my new item, all the escaped HTML special sequences were transformed into plain HTML tags. So after the data was fetched and sent out in an e-mail, the browser handled included headers (<code class="language-plaintext highlighter-rouge">&lt;iostrea&gt;</code>) and template parameters (<code class="language-plaintext highlighter-rouge">&lt;int&gt;</code>) as HTML tags not as code.</p>
+
+<h2 id="do-it-yourself-and-save-time">Do it yourself and save time</h2>
+
+<p>I spent some time looking for some DynamoDB UI settings but in fact, I found none.</p>
+
+<p>So as a solution, I implemented a small helper script that connects to the database and uploads my content. Luckily then the escaped characters are kept escaped.</p>
+
+<p>The script is very simple as you can see:</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">boto3</span>
+
+<span class="k">def</span> <span class="nf">add_question</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">question</span><span class="p">,</span> <span class="n">answer</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">teaser</span><span class="p">):</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">boto3</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="s">'dynamodb'</span><span class="p">,</span> <span class="n">aws_access_key_id</span><span class="o">=</span><span class="s">'&lt;YOUR ACCESS KEY ID&gt;'</span><span class="p">,</span>
+                          <span class="n">aws_secret_access_key</span><span class="o">=</span><span class="s">'&lt;YOUR SECRET ACCESS KEY&gt;'</span><span class="p">,</span> <span class="n">region_name</span><span class="o">=</span><span class="s">'us-east-1'</span><span class="p">)</span>
+
+    <span class="n">client</span><span class="p">.</span><span class="n">put_item</span><span class="p">(</span><span class="n">TableName</span><span class="o">=</span><span class="s">'questions'</span><span class="p">,</span>
+                    <span class="n">Item</span><span class="o">=</span><span class="p">{</span><span class="s">'title'</span><span class="p">:</span> <span class="p">{</span><span class="s">'S'</span><span class="p">:</span> <span class="n">title</span><span class="p">},</span>
+                          <span class="s">'question'</span><span class="p">:</span> <span class="p">{</span><span class="s">'S'</span><span class="p">:</span> <span class="n">question</span><span class="p">},</span>
+                          <span class="s">'answer'</span><span class="p">:</span> <span class="p">{</span><span class="s">'S'</span><span class="p">:</span> <span class="n">answer</span><span class="p">},</span>
+                          <span class="s">'id'</span><span class="p">:</span> <span class="p">{</span><span class="s">'N'</span><span class="p">:</span> <span class="nb">id</span><span class="p">},</span>
+                          <span class="s">'teaser'</span><span class="p">:</span> <span class="p">{</span><span class="s">'S'</span><span class="p">:</span> <span class="n">teaser</span><span class="p">}})</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Then you just to call <code class="language-plaintext highlighter-rouge">add_question</code> with the right parameters.</p>
+
+<p>The key is that with <code class="language-plaintext highlighter-rouge">boto3.client</code> you make the connection to DynamoDB and with <code class="language-plaintext highlighter-rouge">put_item</code> you can upload the data into your table.</p>
+
+<p>As simple as that.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>There are a couple of morals to this story.</p>
+
+<p>If you build content, keep an eye on what reaches your users and if you can ask someone else to have a look at well. Don’t just read what you upload, but check what gets published. Even if you are sure that what you write is of high quality, make sure that your end-users receive the same content.</p>
+
+<p>This doesn’t mean that you have to reinvent the wheel just for the sake of writing some code and tools, but make sure that you have all the tools that you need.</p>
+
+<p>In my case, writing such a small and easy-to-use helper script even eased how I add content to my database. Updating a couple of parameters and hit on <em>Run</em> is more convenient than going to the UI.</p>
+
+<p>Let me know what kind of strange bugs you encountered when you built your side-projects!</p>
+
+<h2 id="connect-deeper">Connect deeper</h2>
+
+<p>If you found interesting this article, please <a href="http://eepurl.com/gvcv1j">subscribe to my personal blog</a> and let’s connect on <a href="https://twitter.com/SandorDargo">Twitter</a>!</p>
+:ET

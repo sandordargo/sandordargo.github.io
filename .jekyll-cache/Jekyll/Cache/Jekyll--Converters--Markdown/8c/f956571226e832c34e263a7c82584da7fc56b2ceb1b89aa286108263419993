@@ -1,0 +1,2 @@
+I"§<p>Last week we started to discuss <a href="https://www.sandordargo.com/blog/2021/03/10/write-your-own-cpp-concepts-part-i">how to write our own concepts</a>. Our first step was to combine different <a href="https://www.sandordargo.com/blog/2021/03/03/cpp-concepts-in-standard-library">already existing concepts</a>, then we continued with declaring constraints on the existence of certain operations, certain methods.</p>
+:ET

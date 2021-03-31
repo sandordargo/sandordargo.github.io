@@ -1,0 +1,14 @@
+I"<p>First, why do I even compare them? A few months ago at the <a href="https://www.meetup.com/Riviera-SCC">Riviera Craftsmanship Meetup group</a> we discussed about different testing strategies and first Chaos Engineering and then Mutation testin came up. I knew nothing about them, hence these posts.</p>
+
+<p>So let’s recap.</p>
+
+<p>Both strategies are based on more-or-less random changes related to the software under test.</p>
+
+<p>Chaos engineering is about changing the external world. You simulate traffic peaks, crashing servers, failing network hardwares. Then you check how your software behaves in such conditions.</p>
+
+<p>Mutation testing on the other hand is about changing the code itself. The code is changed to a small extent and then if your tests fails, the mutant can be rejected, a.k.a. killed. The more mutants your tests can kill, the better your test suite is.</p>
+
+<p>While chaos engineering is about raising your confindence in your system’s robustness and resiliency, mutation testing is about raising your confidence in your test suite, by locating weaknesses in your test data or in directly in your code.</p>
+
+<p>So both strategies are important and serve different roles. Using them can highly increase the quality of your tests, in the end the quality of your software.</p>
+:ET

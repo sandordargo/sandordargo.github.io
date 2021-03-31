@@ -1,0 +1,148 @@
+I"<p>Let’s start from the beginning. How do you recognize rules? You’ll see some public variables annotated with <code class="language-plaintext highlighter-rouge">@Rule</code> in your test class. Here is an example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>public class MyTest {
+
+  @Rule
+  public SomeRule someRule = new SomeRule()
+
+  @Test
+  public void returns42ToAllQuestions() {
+    //...
+  }
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>So if you see something annotated with <code class="language-plaintext highlighter-rouge">@Rule</code>, you have a rule in your test. Fine, but what the heck is that?!</p>
+
+<p>Each JUnit rule will be applied before and after each test is executed. Better to say it is applied around a test case. In some sense it’s like having a <code class="language-plaintext highlighter-rouge">@Before</code> and an <code class="language-plaintext highlighter-rouge">@After</code>, but a rule can be reused easily in multiple classes.</p>
+
+<p>You have to create a class implementing JUnit’s <code class="language-plaintext highlighter-rouge">TestRule</code> interface. Then in you can instantiate it in your test classes as a rule. That’s how you reuse it.</p>
+
+<p><em>Of course, JUnit also provides some predefined rules such as <a href="http://junit.org/junit4/javadoc/4.12/org/junit/rules/TemporaryFolder.html"><code class="language-plaintext highlighter-rouge">TemporaryFolder</code></a> which creates a temporary directory before each test and deletes it afterwards.</em></p>
+
+<p><strong>How to create a custom rule?</strong></p>
+
+<p>As I mentioned your rule class will have to implement the <code class="language-plaintext highlighter-rouge">TestRule</code> interface, you have to implement one method:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>@Override
+  public Statement apply(Statement base, Description description) {
+    //...
+  }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Normally this <code class="language-plaintext highlighter-rouge">apply</code> method will not do much, it will just return a new <code class="language-plaintext highlighter-rouge">Statement</code>, which is an abstract class in JUnit.</p>
+
+<p>In order to implement it, you only have to implement the abstract <code class="language-plaintext highlighter-rouge">evaluate()</code> method.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>public abstract void evaluate() throws Throwable;
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>A dummy example would be:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>@Override
+public Statement apply(Statement base, Description desc) {
+    return new Statement() {
+        @Override
+        public void evaluate() throws Throwable {
+            System.out.println("Before executing method " + desc.getMethodName());
+            base.evaluate();
+            System.out.println("After executing method " + desc.getMethodName());
+        }
+    };
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Your rule might expose other public methods which can be used in your test classes. Maybe directly in certain tests cases, maybe in some setup methods.</p>
+
+<p>For example, let’s have a quick look at <a href="https://stefanbirkner.github.io/system-rules/apidocs/org/junit/contrib/java/lang/system/EnvironmentVariables.html"><code class="language-plaintext highlighter-rouge">EnvironmentVariables</code></a>. It has two public methods:</p>
+
+<ul>
+  <li>
+    <p>the just described <code class="language-plaintext highlighter-rouge">apply()</code> returning a <code class="language-plaintext highlighter-rouge">Statement</code></p>
+  </li>
+  <li>
+    <p>and a <code class="language-plaintext highlighter-rouge">set()</code> method which takes two arguments, in fact a key-value pair</p>
+  </li>
+</ul>
+
+<p>So this class will enable you to set environment variables within your tests. You create the rule, then you use the setter method in your test or in the setup and after each test the changes you made are reverted without you having to care about the revert.</p>
+
+<p><strong>What happens if you need multiple rules?</strong></p>
+
+<p>You can have as many rules in your test class as you need. But as always, you should find the balance, you are not building a rule database. And don’t forget, the rules can be applied in any order regardless of the declaration order.</p>
+
+<p><strong>What if a rule depends on another one?</strong></p>
+
+<p>As I mentioned just before, rules can be executed in any order, you cannot and should not take the order of declaration as an order of execution. Instead, you can chain your rules! With the <code class="language-plaintext highlighter-rouge">@RuleChain</code> annotation it is straightforward. Let’s look at the example taken from the <a href="http://junit.org/junit4/javadoc/4.12/org/junit/rules/RuleChain.html">official documentation</a>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>public static class UseRuleChain {
+    @Rule
+    public final TestRule chain = RuleChain
+                           .outerRule(new LoggingRule("outer rule"))
+                           .around(new LoggingRule("middle rule"))
+                           .around(new LoggingRule("inner rule"));
+
+    @Test
+    public void example() {
+        assertTrue(true);
+    }
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Assuming that you have a <code class="language-plaintext highlighter-rouge">LoggingRule</code> class which would log the message you passed to its constructor at rule application time, you will have the following lines in your logs:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>Starting outer rule
+Starting middle rule
+Starting inner rule
+Finished inner rule
+Finished middle rule
+Finished outer rule
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>That’s it! Now you know enough to start using rules for managing your test resources, in addition to the <code class="language-plaintext highlighter-rouge">@Before</code>/<code class="language-plaintext highlighter-rouge">@After</code> <code class="language-plaintext highlighter-rouge">@BeforeClass</code>/<code class="language-plaintext highlighter-rouge">@AfterClass</code> annotations.
+You should use rules when you see yourself repeating the same <code class="language-plaintext highlighter-rouge">@Before</code>/<code class="language-plaintext highlighter-rouge">@After</code> methods in many of your test classes.</p>
+:ET

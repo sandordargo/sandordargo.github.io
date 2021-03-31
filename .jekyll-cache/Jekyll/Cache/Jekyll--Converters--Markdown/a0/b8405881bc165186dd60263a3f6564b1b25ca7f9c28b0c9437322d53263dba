@@ -1,0 +1,2 @@
+I"�<p>Reading through <a href="https://www.aristeia.com/">Scott Meyer</a>’s <a href="https://amzn.to/2EiL37U">Efective Modern C++</a> helped me discover a lot of features of modern C++, including <a href="http://sandordargo.com/blog/2018/11/25/override-r-and-l0-values">right value references</a>, the <a href="http://sandordargo.com/blog/2018/11/07/trailing-return-type">trailing return type declaration</a> and lambda expressions. Let’s talk about those lambdas in this post.</p>
+:ET

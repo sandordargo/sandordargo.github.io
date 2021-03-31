@@ -1,0 +1,178 @@
+I"y*<p>Fellow C++ developers out there!</p>
+
+<p>I have a question for you! Will the following code compile? If not, why not? If it does, why?
+<!--more--></p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td> --><td class="rouge-code"><pre><span class="cp">#include &lt;string&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">foo</span><span class="p">);</span>
+<span class="p">}</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Spend some time thinking about it before you paste it to <a href="http://coliru.stacked-crooked.com/a/c26a89cce6f9e07e">coliru</a> or to <a href="https://godbolt.org/z/_obTTn">godbolt</a> directly.</p>
+
+<h2 id="the-answer-is">The answer is…</h2>
+
+<p>…obviously 42. And if you treat the integer of 42 a boolean? It is considered <code class="language-plaintext highlighter-rouge">true</code>! So yes, this above code does compile.</p>
+
+<p>To be more exact, it depends… It depends on wehther you treat warnings as errors or not. But let’s not run forward so fast.</p>
+
+<p>Why would it compile in any case? Foo is not a variable defined anywhere, not even in the global namespace.</p>
+
+<p>I’ve seen this question in <a href="https://youtu.be/3MB2iiCkGxg?t=1745">a video from the CppCon 2017</a> and about 90% of the attendees got it wrong.</p>
+
+<p>I would have thought that this code will try to create a temporary string with the content of the variable foo. And of course, if foo is not defined, the code will not compile.</p>
+
+<p>Check <a href="http://coliru.stacked-crooked.com/a/4afcd5b18a0fd9f6">this code</a>:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td> --><td class="rouge-code"><pre><span class="cp">#include &lt;string&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">auto</span> <span class="n">bar</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">foo</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>The compiler tells you that <em>‘foo’ was not declared in this scope</em>.</p>
+
+<p>But let’s go back to our example that only emits a warning. Go and check on <a href="https://godbolt.org/z/_obTTn">godbolt</a> the assembly code generated for the above snippet. You can see that it actually creates a string.</p>
+
+<p>What it exactly does is creating an empty string and assign it to a variable called <code class="language-plaintext highlighter-rouge">foo</code>.</p>
+
+<p>The following two lines mean the same:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td> --><td class="rouge-code"><pre>std::string(foo);
+std::string foo;
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>I’m not fooling you.</p>
+
+<h2 id="the-cause">The cause</h2>
+
+<p>Have you ever heard about <a href="https://en.wikipedia.org/wiki/Most_vexing_parse">the most vexing parse</a>?</p>
+
+<p>If not and if you code in C++, I’m pretty sure you made a similar mistake at some point in your coding career:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td> --><td class="rouge-code"><pre><span class="c1">// ...</span>
+<span class="n">Widget</span> <span class="nf">w</span><span class="p">();</span>
+<span class="c1">// ...</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>And while you wanted to define a local variable of type <code class="language-plaintext highlighter-rouge">Widget</code> calling its default constructor, instead what you got was a compiler error. It’s C++. So pages of compiler errors.</p>
+
+<p>In short, the most vexing parse says that if something can be interpreted as a declaration, it will be interpreted as a declaration.</p>
+
+<p>The above line can be interpreted as a declaration of function <code class="language-plaintext highlighter-rouge">w</code> that takes no parameters and returns a Widget, so according to the section 8.2 of the <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/n4713.pdf">C++ language standard</a> this code not just can be but will be interpreted as a declaration.</p>
+
+<p>For inexperienced eyes (like mine are), the standard seems quite cryptic, but you have to read (a couple of dozens time) section 8.6 and 8.2 to get to the point.</p>
+
+<p>The bottom line is that you should avoid writing ambiguous code because you might end up with unwelcome surprises.</p>
+
+<p>How to write unambiguous code? Use <a href="http://www.modernescpp.com/index.php/initialization">brace initalization</a> if you are at least on C++11!</p>
+
+<p>What is that? It’s simple, instead of parentheses, use braces to call the constructor!</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td> --><td class="rouge-code"><pre>Widget w(); // declaring a function w()
+Widget w{}; // calling Widget::Widget() with an empty list of parameters!
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Using the braces this programs stops compiling, as expected. It’s not ambiguous anymore! And by the way, ambiguous code emits warnings by the compiler if you treat your warnings as errors, even the original code would not compile.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td> --><td class="rouge-code"><pre><span class="cp">#include &lt;string&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">{</span><span class="n">foo</span><span class="p">};</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="and-in-real-life">And in real life?</h2>
+
+<p>Now think about a more complex case than declaring a string. Think about a mutex.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td> --><td class="rouge-code"><pre><span class="cp">#include &lt;mutex&gt;
+</span> 
+<span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">mutex</span> <span class="n">m</span><span class="p">;</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">shared_resource</span><span class="p">;</span>
+ 
+<span class="kt">void</span> <span class="nf">increment_by_42</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+  <span class="n">shared_resource</span> <span class="o">+=</span> <span class="mi">42</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>What is happening here?</p>
+
+<p>At the beginning of the article, you might have thought about that okay, we create a temporary unique_lock, locking mutex m. Well. No. I think you can tell on your own what’s happening there. It might be sad, but true. According to the talk that inspired this article, this was a quite recurring bug at Facebook. They just created a lock on the type of a mutex and called that lock m. But nothing got locked.</p>
+
+<p>But if you express your intentions by naming that lock, or if you brace initialization it’ll work as expected.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td> --><td class="rouge-code"><pre><span class="cp">#include &lt;mutex&gt;
+</span> 
+<span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">mutex</span> <span class="n">m</span><span class="p">;</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">shared_resource</span><span class="p">;</span>
+ 
+<span class="kt">void</span> <span class="nf">increment_by_42</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span> <span class="n">aLock</span><span class="p">(</span><span class="n">m</span><span class="p">);</span> <span class="c1">// this works fine</span>
+  <span class="c1">// std::unique_lock&lt;std::mutex&gt; {m}; // even this would work fine</span>
+  <span class="n">shared_resource</span> <span class="o">+=</span> <span class="mi">42</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>By the way, using <code class="language-plaintext highlighter-rouge">-Wshadow</code> compiler option would have also caught the problem by creating a warning. Treat all warnings as errors and be happy!</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>C++ can be tricky and the standard is long but at least not easy to read. We’ve seen what most vexing parse is and how ambiguity can lead to unexpected behaviour. You have a couple of good weapons that will help you fight against these unwanted surprises.</p>
+
+<ul>
+  <li>Brace initialization removes ambiguity</li>
+  <li>Treat warnings as errors if you have the opportunity!</li>
+  <li>Read, watch talks and educate yourself to know about nuances!</li>
+</ul>
+
+<p>Happy coding!</p>
+:ET

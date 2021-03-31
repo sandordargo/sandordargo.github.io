@@ -1,0 +1,377 @@
+I"N0<p>In this next part of <a href="/blog/2019/01/30/stl-algos-intro">the big STL algorithm tutorial</a>, I’ll explain only one function. The <code class="language-plaintext highlighter-rouge">for_each</code> algorithm.
+<!--more--></p>
+
+<p>What does it do?</p>
+
+<p><code class="language-plaintext highlighter-rouge">for_each</code> takes a range and a function to apply on each element of the given range.</p>
+
+<p><a href="any-all-none">As we have seen</a>, a range (unless you are using the ranges library) means two iterators describing the beginning and the end of a range.</p>
+
+<p>The function must be unary, meaning that it should take one parameter that has the type of that given range element. Or at least it should be convertible to it (e.g. an int can be converted to a boolean).</p>
+
+<p>But how to pass a function? What is a function in this context?</p>
+
+<p>It can be either the function itself or a function pointer, a function object or a lambda function.</p>
+
+<p>Let’s have all of them in the next example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;string&gt;
+
+void printElement(const std::string&amp; i_element) {
+    std::cout &lt;&lt; i_element &lt;&lt; "\n";
+}
+
+class ElementPrinter {
+public:
+    
+    void operator()(const std::string&amp; i_element) const {
+        std::cout &lt;&lt; i_element &lt;&lt; "\n";
+    }
+};
+
+int main () {
+    
+  std::vector&lt;std::string&gt; strings {"The", "best", "revenge", "is", "not", "to", "be", "like", "your", "enemy"};
+  
+  std::for_each(strings.begin(), strings.end(), printElement);
+  std::for_each(strings.begin(), strings.end(), ElementPrinter());
+  std::for_each(strings.begin(), strings.end(), [](const std::string&amp; i_element) {
+        std::cout &lt;&lt; i_element &lt;&lt; "\n";
+  });
+    
+  return 0;
+}
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>The first for_each takes a function.</p>
+
+<p>The second one takes an instance of a functor.</p>
+
+<p>In the third case, we use a <a href="http://sandordargo.com/blog/2018/12/19/c++-lambda-expressions">lambda expression</a>.</p>
+
+<p>Which one should you use? It really depends on your use case. Sometimes you’ll need a one-off logic and you don’t want to store it anywhere and you go with a lambda. In some other cases, you might use any of the previous two. For more details refer to <a href="http://sandordargo.com/blog/2018/12/19/c++-lambda-expressions">my introduction to lambda functions</a>.</p>
+
+<p>If you go with a functor, pay special attention to <a href="https://en.cppreference.com/w/cpp/language/rule_of_three">the rule of five</a>. <code class="language-plaintext highlighter-rouge">for_each</code> needs functors to be move and copy constructible. Use a lambda and no such issues - everything needed is generated.</p>
+
+<p>You should also note that it doesn’t matter what the applied function returns, it will be omitted.</p>
+
+<p>You might remember that <code class="language-plaintext highlighter-rouge">for_each</code> is a non-modifying sequence operation. Does it mean, that we cannot modify what we have in a sequence?</p>
+
+<p>Let’s give it a try!</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+
+int main () {
+    
+  std::vector&lt;int&gt; numbers {1,2,3,4,5};
+  
+  std::for_each(numbers.begin(), numbers.end(), [](int&amp; i) {
+        i = i * i;
+  });
+  
+  for(auto num : numbers) {
+    std::cout &lt;&lt; num &lt;&lt; "\n";
+  }
+    
+  return 0;
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>What is the output?</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>1
+4
+9
+16
+25
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>So we could modify the list! We just had to pass the element to the function by reference. Great! But again, what about that non-modifying part?</p>
+
+<p>You cannot modify the number of the elements in a container with for_each, you cannot add or delete elements, but you can modify the value of the given elements. Anyway, it would be quite difficult to iterate over a sequence that is being modified in its length during the iteration, right?</p>
+
+<h2 id="the-alternatives">The Alternatives</h2>
+
+<p>We’ve seen what <code class="language-plaintext highlighter-rouge">for_each</code> is used for, we’ve seen how to use it, but why should we use it? What are its alternatives?</p>
+
+<h3 id="for-loop-with-index">For loop with index</h3>
+
+<p>The good old way of iterating over a container. Sooooo uncool, isn’t it?</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;string&gt;
+
+int main () {
+    
+  std::vector&lt;std::string&gt; strings {"The", "answer", "is", "within", "you"};
+
+  for (size_t i=0; i&lt;strings.size();++i) {
+      std::cout &lt;&lt; strings[i] &lt;&lt; "\n";
+
+  }
+  
+  return 0;
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Well, coolness is not the issue. But handling the index in a for loop is tedious and not elegant. But if you need the index of an element, it’s the goto option. Unless you have boost at your hands and <a href="https://www.fluentcpp.com/2018/10/26/how-to-access-the-index-of-the-current-element-in-a-modern-for-loop/">want to use something fancy</a>.</p>
+
+<h3 id="for-loop-with-iterators">For loop with iterators</h3>
+
+<p>You can use iterators to walk through a list. You don’t have to take care of the index anymore!</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+
+int main () {
+    
+
+  std::vector&lt;std::string&gt; strings {"Be", "tolerant", "with", "others", "and", "strict", "with", "yourself"};
+  for (std::vector&lt;std::string&gt;::iterator it = strings.begin(); it != strings.end(); ++it) {
+      std::cout &lt;&lt; *it &lt;&lt; "\n";
+
+  }
+  
+  return 0;
+}
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Initializing the iterator is simply awful, isn’t it? They have a long type, that’s the reason. Besides iterators act like pointers, hence you need to dereference it if you want to get the value.</p>
+
+<p>Since C++11, we can easily get rid off that awful iterator declaration by using the <code class="language-plaintext highlighter-rouge">auto</code> keyword.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+
+int main () {
+    
+
+  std::vector&lt;std::string&gt; strings {"Be", "tolerant", "with", "others", "and", "strict", "with", "yourself"};
+  for (auto it = strings.begin(); it != strings.end(); ++it) {
+      std::cout &lt;&lt; *it &lt;&lt; "\n";
+  }
+  
+  return 0;
+}
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>You see, it’s not inconvenient anymore. But we have better.</p>
+
+<h3 id="range-based-for-loop">Range-based for loop</h3>
+
+<p>We used the <code class="language-plaintext highlighter-rouge">auto</code> keyword to omit the iterator’s type at declaration time. But we can use that <code class="language-plaintext highlighter-rouge">auto</code> for an even better purpose.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+
+int main () {
+    
+
+  std::vector&lt;std::string&gt; strings {"The", "best", "revenge", "is", "not", "to", "be", "like", "your", "enemy"};
+  for (auto element: strings) {
+      std::cout &lt;&lt; element &lt;&lt; "\n";
+  }
+  
+  return 0;
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="range-based-for-loops-vs-for_each">Range based <code class="language-plaintext highlighter-rouge">for</code> loops vs. <code class="language-plaintext highlighter-rouge">for_each</code></h3>
+
+<p>The main question is when we don’t need the indexes, what should we use? A range based for loop or the <code class="language-plaintext highlighter-rouge">for_each</code> algorithm?</p>
+
+<p>To me, the range based for loop is the <em>go to</em> solution. On the other hand, it can be used only with the whole container, while with <code class="language-plaintext highlighter-rouge">for_each</code> it’s up to you to specify the range you want to iterate over.</p>
+
+<p>If you want to abstract out the logic that the loop has to perform on each element than using a <code class="language-plaintext highlighter-rouge">for_each</code> might be more elegant.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="rouge-code"><pre>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;string&gt;
+
+void printElement(const std::string&amp; i_element) {
+    std::cout &lt;&lt; i_element &lt;&lt; "\n";
+}
+
+int main () {
+    
+  std::vector&lt;std::string&gt; strings {"The", "best", "revenge", "is", "not", "to", "be", "like", "your", "enemy"};
+
+  std::for_each(strings.begin(), strings.end(), printElement);
+
+  for(const auto&amp; element: strings) {
+    printElement(element);
+  }
+   
+  return 0;
+}
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Which one reads better? Probably the first one. But it would not be worthwhile to use the <code class="language-plaintext highlighter-rouge">for_each</code> with a lambda.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>std::for_each(strings.begin(), strings.end(), [](const std::string&amp; i_element) {
+    std::cout &lt;&lt; i_element &lt;&lt; "\n";
+}]);
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>This doesn’t read well. So the choice is mainly a question of abstraction. <a href="https://www.fluentcpp.com/2018/03/30/is-stdfor_each-obsolete/">Here</a> you can read a deeper analysis on this topic.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Today, we’ve seen the <code class="language-plaintext highlighter-rouge">for_each</code> algorithm which was a cool enhancement in the pre-C++11 times when we didn’t have range-based <code class="language-plaintext highlighter-rouge">for</code> loops around. In comparison with it, it’s not a default solution for looping over containers, but we still have its fair usage. And don’t forget the pearls of wisdom of Marcus Aurelius and Seneca hidden in this post.</p>
+
+<p>Keep tuned, in the next episode we’ll discuss how to find items in a container.</p>
+:ET

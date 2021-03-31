@@ -1,0 +1,3 @@
+I"
+<p>So I had to explore what technology I could use for visualizing my data. When I was building my <a href="https://github.com/sandordargo/family-tree">family tree</a> application I used <a href="http://sigmajs.org/">sigma.js</a> but looking back at it, I didn’t find it very intuitive. Maybe because of my poor JS skills. Anyway, I decided to look around what is available to use. I started my exploration from <a href="https://neo4j.com/developer/guide-data-visualization/">Neo4j’s data visualization guide</a>.</p>
+:ET

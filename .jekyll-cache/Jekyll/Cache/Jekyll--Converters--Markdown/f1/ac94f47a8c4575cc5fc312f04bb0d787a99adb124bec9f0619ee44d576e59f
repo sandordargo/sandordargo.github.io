@@ -1,0 +1,139 @@
+I"�&<p><em>Just make everything <code class="language-plaintext highlighter-rouge">const</code> that you can! That’s the bare minimum you could do for your compiler!</em></p>
+
+<p>This is a piece of advice, many <em>senior</em> developers tend to repeat to juniors, while so often even the preaching ones - we - fail to follow this rule.
+<!--more--></p>
+
+<p>In this series of articles, we’ll discuss about:
+In this series of articles, we discuss about:</p>
+<ul>
+  <li><a href="https://www.sandordargo.com/blog/2020/11/04/when-use-const-1-functions-local-variables"><code class="language-plaintext highlighter-rouge">const</code> functions</a></li>
+  <li><a href="https://www.sandordargo.com/blog/2020/11/04/when-use-const-1-functions-local-variables"><code class="language-plaintext highlighter-rouge">const</code> local variables</a></li>
+  <li><a href="https://www.sandordargo.com/blog/2020/11/11/when-use-const-2-member-variables"><code class="language-plaintext highlighter-rouge">const</code> member variables</a></li>
+  <li><a href="https://www.sandordargo.com/blog/2020/11/18/when-use-const-3-return-types"><code class="language-plaintext highlighter-rouge">const</code> return types</a></li>
+  <li><a href="https://www.sandordargo.com/blog/2020/11/25/when-use-const-4-parameters"><code class="language-plaintext highlighter-rouge">const</code> parameters</a></li>
+</ul>
+
+<p>We already covered the last but one topic. Today we finish by stating when we should use const parameters. Let’s differentiate between plain old data types and classes.</p>
+
+<h2 id="const-pod-parameters">Const POD parameters</h2>
+
+<p>In this section, we talk about the primitive data types, such as bools, ints, floats, chars and alike.</p>
+
+<p>Should they be taken as const parameters?</p>
+
+<p>They should not be passed as const references or pointers. It’s inefficient. These data types can be accessed with one memory read if passed by value. On the other hand, if you pass them by reference/pointer, first the address of the variable will be read and then by dereferencing it, the value. That’s 2 memory reads instead of one.</p>
+
+<p>We shall not take a POD by <code class="language-plaintext highlighter-rouge">const&amp;</code>.</p>
+
+<p>But should we take them simply by const?</p>
+
+<p>As always, it depends.</p>
+
+<p>If we don’t plan to modify its value, yes we should. For better readability, for the compiler and for the future.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>
+<span class="kt">void</span> <span class="nf">setFoo</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">foo</span><span class="p">)</span> <span class="p">{</span>
+<span class="err"> </span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">m_foo</span> <span class="o">=</span> <span class="n">foo</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>I know this seems like overkill, but it doesn’t hurt, it’s explicit and you don’t know how the method would grow in the future. Maybe there will be some additional checks done, exception handling, and so on.</p>
+
+<p>And if it’s not marked as const, maybe someone will accidentally change its value and cause some subtle errors.</p>
+
+<p>If you mark <code class="language-plaintext highlighter-rouge">foo</code> const, you make this scenario impossible.</p>
+
+<p>What’s the worst thing can happen? You’ll actually have to remove the const qualifier, but you’ll do that intentionally.</p>
+
+<p>On the other hand, if you have to modify the parameter, don’t mark it as const.</p>
+
+<p>From time to time, you can see the following pattern:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">doSomething</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">foo</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// ...</span>
+<span class="kt">int</span> <span class="n">foo2</span> <span class="o">=</span> <span class="n">foo</span><span class="p">;</span>
+<span class="n">foo2</span><span class="o">++</span><span class="p">;</span>
+<span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Don’t do this. There is no reason to take a <code class="language-plaintext highlighter-rouge">const</code> value if you plan to modify it. One more variable on the stack in vain, on more assignment without any reason. Simply take it by value.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">doSomething</span><span class="p">(</span><span class="kt">int</span> <span class="n">foo</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// ...</span>
+<span class="n">foo</span><span class="o">++</span><span class="p">;</span>
+<span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>So we don’t take PODs by <code class="language-plaintext highlighter-rouge">const&amp;</code> and we only mark them <code class="language-plaintext highlighter-rouge">const</code> when we don’t want to modify them.</p>
+
+<h2 id="const-object-parameters">Const object parameters</h2>
+
+<p>For objects, there is another rule of thumb. If we’d take a class by value as a parameter, it’d mean that we would make a copy of them. In general, copying an object is more expensive, then just passing a reference around.</p>
+
+<p>So the rule to follow is not to take an object by value, but by <code class="language-plaintext highlighter-rouge">const&amp;</code> to avoid the copy.</p>
+
+<p>Obviously, if you want to modify the original object, then you only take it by reference and omit the const.</p>
+
+<p>You might take an object by value if you know you’d have to make a copy of it.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">doSomething</span><span class="p">(</span><span class="k">const</span> <span class="n">ClassA</span><span class="o">&amp;</span> <span class="n">foo</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// ...</span>
+<span class="n">ClassA</span> <span class="n">foo2</span> <span class="o">=</span> <span class="n">foo</span><span class="p">;</span>
+<span class="n">foo2</span><span class="p">.</span><span class="n">modify</span><span class="p">();</span>
+<span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>In that case, just simply take it by value. We can spare the cost of passing around a reference and the mental cost of declaring another variable and calling the copy constructor.</p>
+
+<p>Although it’s worth to note that, if you are accustomed to taking objects by <code class="language-plaintext highlighter-rouge">const&amp;</code> you might have done some extra thinking whether passing by value was on purpose or by mistake.</p>
+
+<p>So the balance of extra mental efforts is questionable.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">doSomething</span><span class="p">(</span><span class="n">ClassA</span> <span class="n">foo</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// ...</span>
+<span class="n">foo</span><span class="p">.</span><span class="n">modify</span><span class="p">();</span>
+<span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>You should also note that there are objects where making the copy is less expensive or on a comparison to the cost of passing a reference about. It’s the case for <a href="">Small String Optimization</a> or for <code class="language-plaintext highlighter-rouge">std::string_view</code>. This is beyond the scope of this article.</p>
+
+<p>For objects, we can say that by default we should take them by <code class="language-plaintext highlighter-rouge">const reference</code> and if we plan to locally modify them, then we can consider taking them by value. But never by <code class="language-plaintext highlighter-rouge">const</code> value, which would force a copy but not let us modify the object.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>In this series, we saw when and how to use the <code class="language-plaintext highlighter-rouge">const</code> qualifier for functions, for return values, local and member variables and finally today for function parameters.</p>
+
+<p>For function parameters, the rule is different for plain old data types and for objects. We tend to take primitive data types by value, and objects by <code class="language-plaintext highlighter-rouge">const&amp;</code>.</p>
+
+<p>In case, you liked the article, give it a like a subscribe to my <a href="">newsletter</a>.</p>
+:ET

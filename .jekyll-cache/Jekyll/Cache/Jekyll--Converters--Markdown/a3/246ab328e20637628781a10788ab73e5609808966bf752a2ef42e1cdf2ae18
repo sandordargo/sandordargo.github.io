@@ -1,0 +1,69 @@
+I"<<p>If you are following my posts, you might remember that I went to <a href="/blog/2018/06/01/i-went-to-riviera-dev-2018">Riviera DEV 2018</a> recently where I attended a really interesting talk about Flutter by <a href="https://github.com/floitschG">Florian Loitsch</a>. <a href="https://flutter.io/">Flutter</a> is a framework to develop native interfaces for Android and iOS devices, yet you keep only one code base.
+<!--more--></p>
+
+<p>I’ve developed a couple of Android apps mostly for my (and my wife’s) amusement, and for my own education. I was amused by the ease with which Loitsch created a new Flutter app in front of us during his session. I wanted to give it a try soon.</p>
+
+<p>I just needed an idea. While I was home <del>enjoying</del> (house)working through the paternity leave I got for my second child, once when I was going to the local DIY store, some soundingly very harsh lady was speaking on the radio quite outraged that Frech people including the French president himself are drinking way too much alcohol. She elaborated on the topic, citing the president, Macron who said that he drinks one glass of wine for every lunch and dinner. Thinking about a glass of 100 millis it’s already 14 units a week, even if he doesn’t drink anything else.</p>
+
+<p>According to <a href="https://www.bfmtv.com/societe/dix-verres-d-alcool-par-semaine-la-nouvelle-limite-fixee-par-les-experts-1157512.html">some new study</a>, you shall not drink more than 10 units of alcohol a week and you should have two days without any alcoholic drinks. Sorry, I didn’t find it in English. How lucky non-French speakers are, you still have a <a href="https://www.drinkaware.co.uk/alcohol-facts/alcoholic-drinks-units/how-much-is-too-much/">recommendation of 14 units</a> :D (Sidenote: <a href="https://en.wikipedia.org/wiki/Unit_of_alcohol">English</a> and <a href="https://fr.wikipedia.org/wiki/Unit%C3%A9_d%27alcool">French</a> calculate units differently. Apparently, 14 English units correspond to 11.2 French units. Still. That’s a small glass of wine.)</p>
+
+<p>I was thinking that having a glass of wine for a meal is actually not too much. Now, this lady is saying that it is too much. Hm… How much do I drink after all? I should measure it. Bamm!</p>
+
+<p>And the idea came. Of course, I could have downloaded an app… But it’s way more interesting to build your own, isn’t it?</p>
+
+<p>So I started.</p>
+
+<p>First and most important step, I wanted to save data about the drinks I consume. For that, an SQLite database seemed just perfect.</p>
+
+<p>In the beginning, I wanted something simple, so I had two screens.</p>
+
+<ol>
+  <li>List all the drinks I had (saved).</li>
+  <li>Add a new drink. A drink has a name, a date of consumption, a volume, a strength, units of alcohol calculated from the previous two and an optional remark.</li>
+</ol>
+
+<p>At this point, I only used the application for testing because there was a too important chance of data loss. I needed some synchronization.</p>
+
+<p>But before, I added some small features to make the existing parts more comfortable, I added an edit and a delete function to the application.</p>
+
+<p><img src="/assets/img/boozetracker-list-small.png" alt="BoozeTracker List of Drinks" title="BoozeTracker List of Drinks" /></p>
+
+<p>It was high time to get back to the synchronization part. First, I had to come up with a solution. So I had to clarify my needs.</p>
+
+<p>I wanted not to lose data in case I have to install the app on another phone. I wanted to store the data I described earlier, the data of one single SQL table.</p>
+
+<p>My data can be easily represented in a CSV format. In order not to lose data I can simply dump the data into a CSV file and send it via email. Not the most innovative solution, but I’ve already seen it in popular apps.</p>
+
+<p>So as a first iteration, I exported the data to a CSV file and I e-mailed it to myself. As a next step, I wanted to be capable of importing that data.</p>
+
+<p>I <a href="https://support.google.com/docs/answer/183965?co=GENIE.Platform%3DDesktop&amp;hl=en">published the csv</a> on my GoogleDrive and I read it from there simply with an HTTP GET request. Once you have the data in memory, it’s just about updating your database. Yes, at this point, if I imported I simply replaced the whole content of my local data.</p>
+
+<p>As you can feel this solution is okay to save data, but it’s not comfortable at all, because I had to manually update my published spreadsheet from the latest available backup each time I wanted to perform an import.</p>
+
+<p>Using Google Drive seemed to be a free and relatively comfortable solution so I started to discover its API. Unfortunately for Flutter, there is no native API available so far, thus I had to use their <a href="https://developers.google.com/drive/api/v2/about-sdk">REST API</a>. In the end, this might be a good thing as it’s something cross-platform/cross-language.</p>
+
+<p>By the end of this step, I stopped publishing the CSV file and I update and read the file through Google Drive API.</p>
+
+<p>This solution still could be improved as it is still invoked manually (with a button) and one still completely overwrites the other. But it is good enough for my needs, so I went to implement other features.</p>
+
+<p>My AppBar on the top of the screen was a bit overwhelming with a lot of buttons, so I implemented a <a href="https://flutter.io/cookbook/design/drawer/"><em>drawer</em></a> in order to ease the navigation between the different activities.</p>
+
+<p>I also implemented some widgets (in Flutter everything is a widget) to provide statistics on alcohol consumption.</p>
+
+<p>One, called <code class="language-plaintext highlighter-rouge">MainStats</code> provides the overall consumption and dry days of the last X days. It colours the values based on some limits defined by the user. (Green if you’re below the limit, red if above.) You will also get the day when you drank the most - well if you could keep track of it… If you don’t drink with moderation, it’s hard to use any apps, I guess.</p>
+
+<p><img src="/assets/img/boozetracker-stats-small.png" alt="BoozeTracker Statistics" title="BoozeTracker Statistics" /></p>
+
+<p>The big statistics page adds some more details, including a chart showing your drinking trends. I remember that I found it quite difficult last year to create a chart in Android, it took much more time than it took with Flutter. Maybe it’s just a change in my experience, but probably it’s more than that. The learning curve with <a href="https://google.github.io/charts/flutter/gallery.html">charts lib</a> was quite short. I’ll definitely write a more detailed post about it.</p>
+
+<p>At this point, the application is good enough for me. I’m going to take some time on refactoring because I was focusing too much on the features. And while I generally like TDD, I haven’t taken the time get familiar with the ways I can practice it with dart and Flutter, so I’ll discover how to add tests.</p>
+
+<p>Then I have to think about publishing. If I want to publish it, I’ll have to make some additional changes.</p>
+<ul>
+  <li>Implementing an automatic synchronization</li>
+  <li>Adding imperial/metric unit settings</li>
+  <li>Preferably I have to add logic to prefill data (like the level of alcohol based on the name)</li>
+</ul>
+
+<p>I gave time to myself until the end of September. At that point, I’ll take on another mini-project.</p>
+:ET

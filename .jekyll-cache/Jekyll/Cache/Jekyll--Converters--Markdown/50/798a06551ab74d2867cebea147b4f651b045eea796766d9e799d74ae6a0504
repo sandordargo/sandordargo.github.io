@@ -1,0 +1,17 @@
+I"<p>As I’m quite new on the underlying application I executed the procedure in one phase, just to see if it works fine, how the application responds. Then I talked to the author and we agreed, this should be automated. He said that we should ask for some time during the next sprint planning, so that we have a user story to create a tool. It seemed a good idea.</p>
+
+<p>In a few days - still before the next sprint - there was time to create those template in the next phase.</p>
+
+<p>I was sweating and swearing. Based on the sizing, I had a day to create those templates. Then I made the decision. Let’s write that tool, no way that I follow that procedure ever again.</p>
+
+<p>By the end of next morning - no, I did not work during the night - the tool was there, working!</p>
+
+<p>Two python scripts, both can be executed given a few arguments. There is a step between to be still done, but that’s not so complex, there is no much place to err there.</p>
+
+<p>My colleagues were happy about it, especailly my Product Owner when I told him that instead of billing the project for one day for the third phase, it is about half an hour.
+Me personally have nothing but advantages of this small development. I exposed myself to python’s urllib3 a bit, but what’s more important I could practice TDD.</p>
+
+<p>My advice is not to repeat boring procedures. Automate them! You’ll code which is way more fun and you’ll make people happy about you!</p>
+
+<p>Remeber: You didn’t study hard and struggle in life to become a machine!</p>
+:ET

@@ -1,0 +1,399 @@
+I"�a<p>Reading through <a href="https://www.aristeia.com/">Scott Meyer</a>’s <a href="https://amzn.to/2EiL37U">Efective Modern C++</a> helped me discover a lot of features of modern C++, including <a href="http://sandordargo.com/blog/2018/11/25/override-r-and-l0-values">right value references</a>, the <a href="http://sandordargo.com/blog/2018/11/07/trailing-return-type">trailing return type declaration</a> and lambda expressions. Let’s talk about those lambdas in this post.
+<!--more--></p>
+
+<p>You might think, come on, this is old stuff, every serious developer should know about lambda expressions. You might be right, yet, it’s not the case. Recently I made a brown bag session on lambdas and out of about 15 developers, two of us have already used lambdas in C++ and two others in Java. So the need is out there.</p>
+
+<h2 id="what-are-lambda-expressions">What are lambda expressions?</h2>
+
+<p>Lambda expressions are anonymous functions. They are small snippets of code that provide a better readability in most cases if they are not hidden into an enclosing class. By the way, in C++, those enclosing classes would be called functors or function objects. We are going to cover them in a minute.</p>
+
+<p>So we can say, that lambda expressions are here for us to replace functors and to make the code more expressive. Through their ease of usage and extreme expressivity, they boost the usage of the Standard Template Library.</p>
+
+<p>At this point, I have to make a confession. I used to be very bad at C++. I knew the basic syntax and of course, I kept improving the readability of my code, but my knowledge was very poor on the STL, the standard library, on everything that is beyond the basic syntax. <a href="http://sandordargo.com/blog/2018/01/03/new-year-new-start">When I was looking for a new team</a>, moving to a pure/mostly C++ team was a compromise to me. I preferred Java and python much more. Probably because I moved around their ecosystems’ more comfortably.</p>
+
+<p>In my new team even though I worked some weeks in Java parts too, I ended up on C++ projects and I made up my mind. I decided to learn C++ better, at least to an advanced-medium level this year. This journey helped me a lot to <strike>fall in love with C++</strike> like it better than before. Lambdas are one important part of this new relationship.</p>
+
+<p>Enough is enough. Let’s go back to our topic.</p>
+
+<h2 id="what-do-lambdas-replace-fu">What do lambdas replace? Fu…</h2>
+
+<p>Functors, that’s right. Functors, or by their maiden name, function objects are instances of classes where the <code class="language-plaintext highlighter-rouge">operator()</code> is overridden. So you can call them like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td> --><td class="rouge-code"><pre>FunctorClass aFunctor;
+aFunctor();
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Or if it takes a parameter:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td> --><td class="rouge-code"><pre>FunctorClass aFunctor;
+aFunctor(42);
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Defining them is pretty easy. They are normal classes, they just override <code class="language-plaintext highlighter-rouge">operator()</code>.</p>
+
+<p>Let’s sketch up quickly a functor that will decide if a given number is between 0 and 10.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td> --><td class="rouge-code"><pre>class IsBetweenZeroAndTen {
+  public:
+  bool operator()(int value) {
+    return 0 &lt; value &amp;&amp; value &lt; 10;
+  }
+};
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Fairly easy, but sometimes you really don’t care about reusability and you don’t want to find an <em>appropriate</em> place for this function. You just want to define it once and on the fly. Lambdas, here they come!</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<p>Let’s learn a bit about C++ lambda syntax. First, we are going to have a small overview then we go into details.</p>
+
+<h3 id="overview">Overview</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td> --><td class="rouge-code"><pre>[/* capture */] (/* parameters*/) { /* body */ }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>It’s that simple. So let’s rewrite our functor as a lambda expression:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td> --><td class="rouge-code"><pre>[](int value) {
+  return 0 &lt; value &amp;&amp; value &lt; 10;
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>As it’s something very simple, just looking at the code, you can easily understand it without a name. You don’t have to place a class somewhere, you just declare it on the fly. Yet, you might think that adding a name to it might help you increase code readability. That’s fine, there are such cases, still, you don’t need to write a class, you can save it in a variable:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td> --><td class="rouge-code"><pre>auto isBetweenZeroAndTen = [](int value) {
+  return 0 &lt; value &amp;&amp; value &lt; 10;
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Yes, it’s that easy. Are you interested in its type? Try using <code class="language-plaintext highlighter-rouge">decltype</code> to get it.</p>
+
+<p>Let’s move on.</p>
+
+<h3 id="capture">Capture</h3>
+
+<p>Something that is really nice about C++ lambdas is that you can practice English. You have all types of brackets in it. You will have to deal with parentheses or round brackets (<code class="language-plaintext highlighter-rouge">()</code>), square or box brackets (<code class="language-plaintext highlighter-rouge">[]</code>) and braces or curly brackets (<code class="language-plaintext highlighter-rouge">{}</code>). Let’s start with the square ones;</p>
+
+<p>In the scope of lambda expressions, they are called a capture. So far you only saw them empty. What do they capture? They might capture variables that are not passed to the lambdas as a parameter and they are also not created inside.</p>
+
+<p>Let’s go back to our example of <code class="language-plaintext highlighter-rouge">isBetweenZeroAndTen</code>. Let’s say we want to upper bound to vary.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td> --><td class="rouge-code"><pre>auto upperBound = 42;
+[](int value) {
+  return 0 &lt; value &amp;&amp; value &lt; upperBound; // doesn't compile, WTF is upperBound?
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>This will not compile, because in the scope of the lambda <code class="language-plaintext highlighter-rouge">upperBound</code> is unknown. It has to capture it. Let’s see how!</p>
+
+<h4 id="capture-nothing">Capture nothing</h4>
+
+<p>Well, when they are empty (<code class="language-plaintext highlighter-rouge">[]</code>), they capture nothing. That’s stupid simple.</p>
+
+<h4 id="capture-by-value">Capture by value</h4>
+
+<p>Write <code class="language-plaintext highlighter-rouge">[upperBound]</code> and our lambda will have the value of it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td> --><td class="rouge-code"><pre>auto upperBound = 42;
+[upperBound](int value) {
+  return 0 &lt; value &amp;&amp; value &lt; upperBound;
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="capture-by-reference">Capture by reference</h4>
+
+<p>With the <a href="">well-known ampersand</a> you can capture the variable by its reference, instead of the value.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td> --><td class="rouge-code"><pre>auto upperBound = 42;
+[&amp;upperBound](int value) {
+  return 0 &lt; value &amp;&amp; value &lt; upperBound;
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>This implies - at least - two important things:</p>
+<ul>
+  <li>The value of the captured variable can be modified even for the outside world</li>
+  <li>You must make sure that the referenced variable still exists once the lambda is executed</li>
+</ul>
+
+<h4 id="capture-all-by-value">Capture all by value</h4>
+
+<p><code class="language-plaintext highlighter-rouge">[=]</code> will save “all” the variables needed in the body of the lambda by value. Sounds fun? Have you noticed that I wrote <em>all</em> between double quotes? I did so because we have to understand what “<em>all</em>” variables mean. All means all the non-static local variables. So for example, if you reference a member variable in the lambda, even if you used it just next to the lambda declaration, it will not work.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td> --><td class="rouge-code"><pre>m_upperBound = 42;
+[=](int value) {
+  return 0 &lt; value &amp;&amp; value &lt; m_upperBound; // doesn't compile, m_upperBound is not a non-static local
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>How to fix this? There are two simple ways. One is that you make a local copy and capture that.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td> --><td class="rouge-code"><pre>m_upperBound = 42;
+auto upperBound = m_upperBound;
+[=](int value) {
+  return 0 &lt; value &amp;&amp; value &lt; upperBound;
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>The other way is to pass in the whole surrounding object, <code class="language-plaintext highlighter-rouge">this</code>, we’ll see it later.</p>
+
+<h4 id="capture-all-by-reference">Capture all by reference</h4>
+<p><code class="language-plaintext highlighter-rouge">[&amp;]</code> with this capture block, all the necessary and available variables will be captured by reference. Same notions apply here as for capturing all variables by value.</p>
+
+<p>And don’t forget. If a captured variable went out of scope since you captured it, you are in deep trouble.</p>
+
+<h4 id="capture-all-by-value-but">Capture all by value, but</h4>
+<p>With using <code class="language-plaintext highlighter-rouge">[=, &amp;divisor]</code> as a capture, everything will be captured by value except for the variable that is explicitly listed preceded with an <code class="language-plaintext highlighter-rouge">&amp;</code>.</p>
+
+<h4 id="capture-all-by-reference-but">Capture all by reference, but</h4>
+<p>With using <code class="language-plaintext highlighter-rouge">[&amp;, divisor]</code> as a capture, everything will be captured by value except for the variable that is explicitly listed.</p>
+
+<h4 id="capture-this">Capture <code class="language-plaintext highlighter-rouge">this</code></h4>
+<p>As we previously said, an only non-static local variable can be saved with the capture block. But as so frequently in life, there is a difference. You can also save the surrounding object like this: <code class="language-plaintext highlighter-rouge">[this]</code>. <code class="language-plaintext highlighter-rouge">this</code> is a pointer to the enclosing object, so if you capture <code class="language-plaintext highlighter-rouge">this</code>, you’ll have access to the members for example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td> --><td class="rouge-code"><pre>
+[this](int value) {
+  return 0 &lt; value &amp;&amp; value &lt; this-&gt;m_upperBound;
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>But we shall not forget that <code class="language-plaintext highlighter-rouge">this</code> is a pointer.  If it ceases to exist between the time we capture it and the time our lambda is executed, we’ll have to face undefined behaviour.</p>
+
+<h3 id="the-list-of-parameters">The list of parameters</h3>
+
+<p>The list of parameters, as usual, come in between parentheses (<code class="language-plaintext highlighter-rouge">()</code>). Some remarks:</p>
+<ul>
+  <li>In C++11 you cannot use <code class="language-plaintext highlighter-rouge">auto</code> as a type-specifier. But since C++14, you may.</li>
+  <li>If there are no parameters passed to a lambda, the empty list can be omitted. Meaning that <code class="language-plaintext highlighter-rouge">[]{}</code> is a valid lambda expression. Though for readability reasons, it’s better not to remove the empty parenthesis.</li>
+</ul>
+
+<h3 id="the-return-type">The return type</h3>
+
+<p>Hmmm… There was no return type in our example so what does this section do here? And why after the list of parameters?</p>
+
+<p>The return type of lambda expressions can be and most often is omitted when</p>
+<ul>
+  <li>it is void</li>
+  <li>or if it deducible (so if you could use <code class="language-plaintext highlighter-rouge">auto</code>)</li>
+</ul>
+
+<p>As such, in practice most of the time the return type is omitted. In fact, in production code, I have never seen lambdas with an explicit return type.</p>
+
+<p>If you do have to or want to declare them, you must use the [trailing return type syntax] meaning that you will declare the type between the parameter list and the body, putting the type after an arrow like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td> --><td class="rouge-code"><pre>[](int value) -&gt; bool {
+  return 0 &lt; value &amp;&amp; value &lt; 10;
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="the-body">The body</h3>
+
+<p>It’s just a normal body. As a best practice, it should be a quite lean one. If you need something longer, heavier, maybe a lambda is not the way you go.</p>
+
+<p>As a reminder let’s mention that you can work with the following variables:</p>
+<ul>
+  <li>local variables declared in the body</li>
+  <li>parameters passed into the lambda</li>
+  <li>non-static local variable captured within the square brackets called a <em>“capture”</em></li>
+</ul>
+
+<p>Again, just to emphasize, if you go with the option of capturing references you must be sure that the referenced variable will be still alive when the lambda would be executed.</p>
+
+<h2 id="advantages">Advantages</h2>
+
+<p>I already mentioned some of the advantages of using lambdas:</p>
+<ul>
+  <li>no need for writing a full class</li>
+  <li>no need to find an appropriate name for the class</li>
+  <li>no need to find a good place for the class</li>
+  <li>enhanced readability for simple use-cases.</li>
+</ul>
+
+<p>And there is one more to mention. <a href="https://cppinsights.io/lnk?code=I2luY2x1ZGUgPGNzdGRpbz4KI2luY2x1ZGUgPHZlY3Rvcj4KI2luY2x1ZGUgPGFsZ29yaXRobT4KCmNsYXNzIGZ1bmN0b3J7CiAgcHVibGljOgogIGJvb2wgb3BlcmF0b3IoKShpbnQgdmFsKSB7CiAgICByZXR1cm4gMCA8IHZhbCAmJiB2YWwgPCAxMDsKICB9Cn07CgppbnQgbWFpbigpCnsKICAgIHN0ZDo6dmVjdG9yPGludD4gY29udGFpbmVyIHsyLDQsNiw4LCAyNX07CgogIAlzdGQ6OmZpbmRfaWYoY29udGFpbmVyLmJlZ2luKCksIGNvbnRhaW5lci5lbmQoKSwgZnVuY3RvcigpKTsKICAKICAgIHN0ZDo6ZmluZF9pZihjb250YWluZXIuYmVnaW4oKSwgY29udGFpbmVyLmVuZCgpLAogICAgICAgCQkgICAgICBbXShpbnQgdmFsKSB7IHJldHVybiAwIDwgdmFsICYmIHZhbCA8IDEwOyB9KTsKICAKfQ==&amp;rev=1.0">Here</a> you can check how much code will be generated for a functor. Default constructors, move constructor, copy constructor, destructor and nothing for a lambda apart from the operator overload. Oh, and there is one more. The compiler will not find out if you forgot to declare <code class="language-plaintext highlighter-rouge">operator()</code> overload as const. No problem for a lambda.</p>
+
+<h2 id="some-examples">Some examples</h2>
+
+<p>Now that we understand the syntax of C++ lambda expressions, let see a couple of examples for their usage. I’ll stick with the C++11 syntax, meaning that I won’t use the <code class="language-plaintext highlighter-rouge">auto</code> keyword in the parameter list, and in the STL algorithms, I won’t use <a href="https://www.fluentcpp.com/2018/02/09/introduction-ranges-library/">ranges</a>.</p>
+
+<h3 id="do-the-same-thing-on-all-elements-of-a-list">Do the same thing on all elements of a list</h3>
+
+<p>Let’s say we have a list of <code class="language-plaintext highlighter-rouge">Widget</code>s and you want to call their <code class="language-plaintext highlighter-rouge">resize()</code> method.</p>
+
+<p>Non-lambda way:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td> --><td class="rouge-code"><pre>auto widgets = std::vector&lt;Widget&gt; { … }; // a bunch of widgets
+for (auto&amp; widget : widgets) {
+  widgets.resize();
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Lambda way:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td> --><td class="rouge-code"><pre>#include &lt;algorithm&gt;
+// ...
+
+auto widgets = std::vector&lt;Widget&gt; { … }; // a bunch of widgets
+
+std::for_each(std::begin(widgets), std::end(widgets), 
+  [](Widget&amp; widget) {
+  widgets.resize();
+} );
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>In this case, it’s debatable if you really want to use lambdas. The syntax is a bit more clunky, but it’s generic for all std containers and you define the range you want to iterate over.</p>
+
+<p>If we’d take the good old C++0x way, we can see even a readability advatage:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td> --><td class="rouge-code"><pre>for(std::vector&lt;Widget&gt;::iterator it = widgets.begin(); it != widgets.end() ; ++it)
+{
+   widgets.resize();
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Those iterators are just ugly to manage.</p>
+
+<p>But with this example, we might already get the idea, that among the STL algorithms, lambdas will become handy.</p>
+
+<h3 id="get-all-the-integers-of-a-string">Get all the integers of a string</h3>
+
+<p>I know, I know, you could easily do this with a regular expression. But let’s say you don’t want to.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td> --><td class="rouge-code"><pre>#include &lt;string&gt;
+#include &lt;algorithm&gt;
+#include &lt;cctype&gt;
+
+auto another = std::string{};
+std::copy_if(std::begin(input), std::end(input),
+            std::back_inserter(another),
+            [](char c) {
+                return std::isdigit(c);
+            }
+);
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">copy_if</code> function will iterate over a range defined by the first two parameters. The third one defines where to copy the upcoming character if the condition defined by the last parameter is true.</p>
+
+<p>In the last parameter, we defined a lambda expression. It gets a character as a parameter and returns <code class="language-plaintext highlighter-rouge">true</code> or <code class="language-plaintext highlighter-rouge">false</code> depending on whether the passed in character is a digit or not. Luckily in the standard library, there is a function to do, meaning that we don’t have to try to cast it, nor to check its ASCII value.</p>
+
+<h3 id="write-a-function-checking-if-a-string-is-lowercase">Write a function checking if a string is lowercase</h3>
+
+<p>Again this could be done with a regex, but it’s more fun to do it with a lambda (or not…). If it’s faster or not that should be measured.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td> --><td class="rouge-code"><pre>#include &lt;string&gt;
+#include &lt;cctype&gt;
+#include &lt;algorithm&gt;
+
+auto isLower(const std::string&amp; phrase) -&gt; bool {
+    return std::all_of(std::begin(phrase), std::end(phrase), [](char c){return std::islower(c);});
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">std::all_of</code> iterates over the range defined by the first two parameters and returns <code class="language-plaintext highlighter-rouge">true</code> if the lambda defined in the third parameter returns <code class="language-plaintext highlighter-rouge">true</code> for all the values. If there is at least one that evaluates to <code class="language-plaintext highlighter-rouge">false</code> the whole expression returns <code class="language-plaintext highlighter-rouge">false</code>. Again, luckily the <code class="language-plaintext highlighter-rouge">cctype</code> header has something helping us decide if a given character is lowercase.</p>
+
+<h3 id="use-custom-deleters-for-smart-pointers">Use custom deleters for smart pointers</h3>
+
+<p>As a last example let’s go to the shady world of pointers.</p>
+
+<p>Probably we all heard that we should use smart pointers instead of new and all. If we have to deal with dynamic memory allocation and ownership it’s better to choose an appropriate smart pointer either from boost or from the standard library depending on which version of C++ we are using.</p>
+
+<p>When our shiny smart pointer reaches the end of its lifetime, the raw pointer it holds inside gets deleted. But what if it’s not the only thing we want to do?</p>
+
+<p>What else we would want to do you might ask. Let’s say we want to log. If you want to see more use cases, read <a href="https://www.bfilipek.com/2016/04/custom-deleters-for-c-smart-pointers.html">this article</a>.</p>
+
+<p>In the case of some extra work needed, we have to define a deleter for the smart pointer and pass it as a parameter to the declaration.</p>
+
+<p>You can either define a deleter class, a functor, or as you might have guessed, you can just pass a lambda like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td> --><td class="rouge-code"><pre>std::shared_ptr&lt;Widget&gt; pw1(new Widget, [](Widget *w){ ... });
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>The downside is that you cannot use <code class="language-plaintext highlighter-rouge">make_shared</code>, but that’s another story and not the fault of lambdas.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>I hope you enjoyed this short journey to the - not so - new world of C++ lambdas. We covered not just why we should use lambdas, but we went into details regarding their syntax and saw a couple of examples.</p>
+
+<p>If you only learned C++0x, you should keep in mind that C++ got a lot of features “recently” and it’s getting more and more expressive just like lambdas show us.</p>
+
+<p>Happy coding!</p>
+:ET

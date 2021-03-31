@@ -1,0 +1,20 @@
+I"<p>So I had to explore what technology I could use for visualizing my data. When I was building my <a href="https://github.com/sandordargo/family-tree">family tree</a> application I used <a href="http://sigmajs.org/">sigma.js</a> but looking back at it, I didn’t find it very intuitive. Maybe because of my poor JS skills. Anyway, I decided to look around what is available to use. I started my exploration from <a href="https://neo4j.com/developer/guide-data-visualization/">Neo4j’s data visualization guide</a>.</p>
+
+<p>My first choice was <a href="http://graphalchemist.github.io/Alchemy/#/">Alchemy.js</a>. At a first glance the code examples seemed quite easy to understand and I liked that there is some documentation. And in the end if it is listed on Neo4j’s site, can it be that bad? Well. For me it did not work out. I faced the first problems when I wanted to include in my <code class="language-plaintext highlighter-rouge">html</code> files the library with a URL. The URL was broken. Okay… So I downloaded the library and copied the source code into my project. Not a big deal.</p>
+
+<p>After some research it turned out that I had to include something else. If I remember well, it was <a href="https://d3js.org/">d3.js</a>, nothing more. But I’m not if it was the only library.</p>
+
+<p>Finally I managed to plot a nice graph with some nodes representing Hungarian wine regions and sub-regions. It was nice.</p>
+
+<p>The next set of problems found me when I wanted to add some interactivity to the graph. Long story short, the project seems a bit abandoned and the documentation is outdated. The code doesn’t do what the docs say and even the API changed. I kept quite some time hacking the source code in javascript - do you remember that I don’t know javascript? - and finally I concluded that this is just not going to work out.</p>
+
+<p>However at the dependencies I met with <a href="https://d3js.org/">d3.js</a> which was also mentioned in the <a href="https://neo4j.com/developer/guide-data-visualization/">guide</a> and at some other places. It was also mentioned that it’d be quite difficult to use for a newbie as me as you have to take care of a lot of configurations manually.</p>
+
+<p>It’s said that taking the upper road is always beneficial. So I took it. Within less time and with less frustration I reached the same point as with Alchemy before. But it was mostly copy-pasting some parts from here and there and welding them together. Still - or more hence - there are some parts which are not working well. Such as gravity and scaling. Maybe they are not that important at the first iteration. But still…</p>
+
+<p>So I decided to learn <a href="https://d3js.org/">d3.js v4</a> better. However I don’t want to spend weeks on reading books and learning javascript from scrach. The same time, I have been reading John Sonmez’s book called <a href="http://amzn.to/2wK0lLI">Soft Skills:The software developer’s life manual</a>. In it he lists some learning techniques which helped him to produce a lot of educational material quite fast. I decided to give a try to his techniques. I’m not sure if I could briefly conclude them as he is selling them in a form of a course and a book as well, so I rather not go into details.</p>
+
+<p>The main idea is that at any point you learn the least necessary you need in order to make something work and then you start using it. Now I’m learning about data bindings and putting it into place. Then I move to stylings and transformations. In a few weeks I will get into a position where I will be in control of my UI and not the examples I find on the internet.</p>
+
+<p>I will also post my findings about <a href="https://d3js.org/">d3.js</a> and I will blog more about <a href="https://neo4j.com/">Neo4j</a> as I plan to deepen my knowledge in it. Stay tuned.</p>
+:ET

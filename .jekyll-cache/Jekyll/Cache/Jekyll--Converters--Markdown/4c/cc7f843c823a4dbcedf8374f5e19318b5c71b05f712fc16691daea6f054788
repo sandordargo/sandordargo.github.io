@@ -1,0 +1,224 @@
+I"�M<p>In this next part of <a href="http://sandordargo.com/blog/2019/01/30/stl-algos-intro">the big STL algorithm tutorial</a>, we will finish the episodes on modifying sequence operations by three functions involving randomicity.
+<!--more--></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">random_shuffle</code></li>
+  <li><code class="language-plaintext highlighter-rouge">shuffle</code></li>
+  <li><code class="language-plaintext highlighter-rouge">sample</code></li>
+</ul>
+
+<h2 id="random_shuffle"><code class="language-plaintext highlighter-rouge">random_shuffle</code></h2>
+
+<p>So that we don’t forget let’s start by the fact that <code class="language-plaintext highlighter-rouge">random_shuffle</code> is dead. It had a couple of different signatures and all of them were remove latest in C++17 and were replaced by <code class="language-plaintext highlighter-rouge">shuffle</code>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">random_shuffle</code> takes its input range by defining its beginning and end as usual by two iterators and it also takes an optional random number generator (RNG).</p>
+
+<p>When an RNG is not provided it usually uses <code class="language-plaintext highlighter-rouge">std::rand</code>, but that’s implementation specific.</p>
+
+<p>Here is a simple example, when we use the built-in generator.</p>
+
+<p>http://www.cplusplus.com/reference/algorithm/random_shuffle/</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td> --><td class="rouge-code"><pre><span class="cp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">()</span> <span class="p">{</span>
+<span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">numbers</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">};</span>
+<span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">random_shuffle</span> <span class="p">(</span><span class="n">numbers</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">numbers</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+<span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"numbers vector contains:"</span><span class="p">;</span>
+<span class="err"> </span> <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="n">n</span><span class="o">:</span> <span class="n">numbers</span><span class="p">)</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="sc">' '</span> <span class="o">&lt;&lt;</span> <span class="n">n</span><span class="p">;</span>
+<span class="err"> </span> <span class="p">}</span>
+<span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="sc">'\n'</span><span class="p">;</span>
+
+<span class="err"> </span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>And here is the other when you pass in your RNG.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td> --><td class="rouge-code"><pre><span class="cp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+#include &lt;ctime&gt;
+#include &lt;cstdlib&gt;
+</span>
+
+<span class="kt">int</span> <span class="nf">myrandom</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="n">i</span><span class="p">;}</span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">()</span> <span class="p">{</span>
+<span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">srand</span><span class="p">(</span><span class="kt">unsigned</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">time</span><span class="p">(</span><span class="mi">0</span><span class="p">)));</span> <span class="c1">// 1</span>
+<span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">numbers</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">};</span>
+
+<span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">random_shuffle</span> <span class="p">(</span><span class="n">numbers</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">numbers</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="p">[](</span><span class="k">auto</span> <span class="n">number</span><span class="p">){</span><span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="n">number</span><span class="p">;});</span> <span class="c1">// 2</span>
+
+<span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"numbers vector contains:"</span><span class="p">;</span>
+<span class="err"> </span> <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="n">n</span><span class="o">:</span> <span class="n">numbers</span><span class="p">)</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="sc">' '</span> <span class="o">&lt;&lt;</span> <span class="n">n</span><span class="p">;</span>
+<span class="err"> </span> <span class="p">}</span>
+<span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="sc">'\n'</span><span class="p">;</span>
+
+<span class="err"> </span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>If you look at the include statements, you can observe that we are using legacy headers (<code class="language-plaintext highlighter-rouge">&lt;ctime&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;cstdlib&gt;</code> start with C) and the third (optional) argument.</p>
+
+<p>At 1), from <code class="language-plaintext highlighter-rouge">&lt;ctime&gt;</code> we use <code class="language-plaintext highlighter-rouge">std::time</code> in order to provide a seed for <code class="language-plaintext highlighter-rouge">&lt;cstdlib&gt;</code>’s <code class="language-plaintext highlighter-rouge">std::srand</code>. Then in 2) we simply have to pass any function as a third - optional - parameter to <code class="language-plaintext highlighter-rouge">std::random_shuffle</code>. Yes, any. You could simply pass a function always returning 42. Would it work well? Try and see it!</p>
+
+<h2 id="shuffle"><code class="language-plaintext highlighter-rouge">shuffle</code></h2>
+<p>A good API, a good library is easy to use and hard to misuse. As we saw, <code class="language-plaintext highlighter-rouge">std::random_shuffle</code> might be easy to use, but it’s just as easy to misuse. <code class="language-plaintext highlighter-rouge">std::shuffle</code> takes standard generators as those defined in <code class="language-plaintext highlighter-rouge">&lt;random&gt;</code> and it’s not optional.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td> --><td class="rouge-code"><pre><span class="cp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;std::vector&gt;    
+#include &lt;random&gt;
+#include &lt;chrono&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">()</span> <span class="p">{</span>
+<span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">numbers</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">};</span>
+
+<span class="err"> </span> <span class="kt">unsigned</span> <span class="n">seed</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">system_clock</span><span class="o">::</span><span class="n">now</span><span class="p">().</span><span class="n">time_since_epoch</span><span class="p">().</span><span class="n">count</span><span class="p">();</span>
+
+<span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">shuffle</span> <span class="p">(</span><span class="n">numbers</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">numbers</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">std</span><span class="o">::</span><span class="n">default_random_engine</span><span class="p">(</span><span class="n">seed</span><span class="p">));</span>
+
+<span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"numbers vector contains:"</span><span class="p">;</span>
+<span class="err"> </span> <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="n">n</span><span class="o">:</span> <span class="n">numbers</span><span class="p">)</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="sc">' '</span> <span class="o">&lt;&lt;</span> <span class="n">n</span><span class="p">;</span>
+<span class="err"> </span> <span class="p">}</span>
+
+<span class="err"> </span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>You can observe that in this case instead of the C libraries, we <code class="language-plaintext highlighter-rouge">&lt;random&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;chrono&gt;</code> that were introduced in C++11. In case you want to understand better how to create a random number generator, you should start your journey at the <a href="https://en.cppreference.com/w/cpp/numeric/random"><code class="language-plaintext highlighter-rouge">&lt;random&gt;</code></a> header.</p>
+
+<h2 id="sample"><code class="language-plaintext highlighter-rouge">sample</code></h2>
+
+<p>While the previous two algorithms randomly reordered the elements in their input ranges, <code class="language-plaintext highlighter-rouge">sample</code> - available since C++17 - leaves its input intact. The input doesn’t change, but on the other hand, it will take a given (by you) number of elements randomly from its input and push it into its out container.</p>
+
+<p>Once you understand this concept, and you’ve seen a few STL algorithms -  and we did, this is the 15th episode of [this series] - you can guess it’s signature with a quite high level on confidence.</p>
+
+<p>First, you pass in two iterators denoting the input range, then one iterator for the output. At this point, you might think a bit, but the next one is the number of elements you want to pick and finally, you have to pick a random number generator.</p>
+
+<p>What questions can we have? We have already discussed a lot about <a href="http://sandordargo.com/blog/2019/08/14/stl-alogorithms-tutorial-part-5-copy-operations">what happens if we don’t pass the iterators propoerly</a>. So regarding the parameters, we can have only one question. What happens if the number of elements we want to pick is more than the size of the input range?</p>
+
+<p>One could think that in that case some elements will be picked multiple times, but it wouldn’t really be a “sample” anymore. So if <code class="language-plaintext highlighter-rouge">n &gt; input.size()</code> then <code class="language-plaintext highlighter-rouge">n</code> will be the size of the input by default.</p>
+
+<p>One more thing is worth to note, in case you one of the standard iterators to populate the output range (like <code class="language-plaintext highlighter-rouge">std::back_inserter</code>), this algorithm is stable. Meaning that the relative order of the selected items is the same as in the input range. If 4 became 3 in the input, it will come before in the output too.</p>
+
+<p>Here is a simple example:</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td> --><td class="rouge-code"><pre><span class="cp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;    
+#include &lt;random&gt;
+#include &lt;chrono&gt;
+</span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">()</span> <span class="p">{</span>
+<span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">numbers</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">};</span>
+<span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">out</span><span class="p">;</span>
+
+<span class="err"> </span> <span class="kt">unsigned</span> <span class="n">seed</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">system_clock</span><span class="o">::</span><span class="n">now</span><span class="p">().</span><span class="n">time_since_epoch</span><span class="p">().</span><span class="n">count</span><span class="p">();</span>
+
+<span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">sample</span> <span class="p">(</span><span class="n">numbers</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">numbers</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">std</span><span class="o">::</span><span class="n">back_inserter</span><span class="p">(</span><span class="n">out</span><span class="p">),</span> <span class="mi">3</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">default_random_engine</span><span class="p">(</span><span class="n">seed</span><span class="p">));</span>
+
+<span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"out vector contains:"</span><span class="p">;</span>
+<span class="err"> </span> <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="n">n</span><span class="o">:</span> <span class="n">out</span><span class="p">)</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="sc">' '</span> <span class="o">&lt;&lt;</span> <span class="n">n</span><span class="p">;</span>
+<span class="err"> </span> <span class="p">}</span>
+
+<span class="err"> </span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Today, we learned about our last modifying sequence algorithms, 3 functions involving some randomness in how they reorder or select items. We are far from finishing the exploration of the <code class="language-plaintext highlighter-rouge">&lt;algorithm&gt;</code> header, next time we will learn about partitioning operations. Stay tuned!</p>
+
+<h2 id="connect-deeper">Connect deeper</h2>
+
+<p>If you found interesting this article, please <a href="http://eepurl.com/gvcv1j">subscribe to my personal blog</a> and let’s connect on <a href="https://twitter.com/SandorDargo">Twitter</a>!</p>
+:ET
