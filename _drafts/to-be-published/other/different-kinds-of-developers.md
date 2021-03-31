@@ -1,4 +1,13 @@
+---
+layout: post
+title: "What kind of developer are you?"
+date: 2021-xx-xx
+category: dev
+tags: [career, psychology, watercooler, diversity]
+excerpt_separator: <!--more-->
+---
 I've seen [this video](https://www.youtube.com/watch?v=EsSnw50udSA) recently by Clément Mihailescu the guy who created AlgoExpert. No, this video is not about algorithms. It's about the 4+1 different kind of developers he identified during his career. In this post, I am going to reflect on this video, I'll do a self-analysis and share my opinion why I think that the Clément is right and we should be aware of what kinds of developers we are and who we are working with.
+<!--more-->
 
 ## The 4+1 kinds of different programmers
 
