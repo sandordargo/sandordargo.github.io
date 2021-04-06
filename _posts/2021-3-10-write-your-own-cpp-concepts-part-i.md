@@ -15,7 +15,7 @@ Next week, I'll show you how to write requirements on return types, how to expre
 
 It's high time to finally get started.
 
-## The simples `concept`
+## The simplest `concept`
 
 Let's define the simplest concept we can imagine first, just to see the syntax.
 
