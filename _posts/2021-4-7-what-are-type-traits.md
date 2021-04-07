@@ -101,7 +101,7 @@ template<>
 struct std::is_integral<MyInt> : public std::integral_constant<bool, true> {};
 ```
 
-This is exactly what I proposed in the ]Write your own concepts](https://www.sandordargo.com/blog/2021/03/10/write-your-own-cpp-concepts-part-i) article.
+This is exactly what I proposed in the [Write your own concepts](https://www.sandordargo.com/blog/2021/03/10/write-your-own-cpp-concepts-part-i) article.
 
 If you read attentively, probably you pointed out that I used the auxiliary "might" and it's not incidental.
 
