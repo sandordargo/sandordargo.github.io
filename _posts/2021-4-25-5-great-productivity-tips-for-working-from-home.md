@@ -58,8 +58,6 @@ Say you're far from the mic again, say you're far from the mic again, I dare you
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/qo5jnBJvGUs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-https://www.youtube.com/watch?v=qo5jnBJvGUs
-
 I prefer to have at least half an hour between meetings in order to get some rest and calm down. I usually break down all my user stories into microtasks, so I have some time to work on them in between (and sometimes during) the meetings. 
 
 By spanning them all over the week, I'm not overwhelmed with meetings during any part of the day or the week.
