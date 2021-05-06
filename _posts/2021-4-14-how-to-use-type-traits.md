@@ -48,7 +48,7 @@ Oh, oh! The sum is smaller than one of the inputs!
 
 Type traits can help us solve this issue in different ways.
 
-### `static_assert`
+### static_assert
 
 We can simply statically assert that `T` is an unsigned type.
 
@@ -76,7 +76,7 @@ main.cpp:6:40: error: static assertion failed: T must be unsigned, but it's
 
 If you think that the error message is not good enough, just write a better one as it's taken from your `static_assert`.
 
-### `std::enable_if` 
+### std::enable_if
 
 Now let's say that we want to support different additions and we want to use the same function signature `T add(T a, T b)`. We can use the `std::enable_if` metafunction from the `<type_traits>` header.
 
@@ -115,7 +115,7 @@ In case, `std::enable_if` receives `true` as its first argument, then it will ha
 
 I know this is still a bit vague, but this part that is often referred to as SFINAE deserves its own article. Something we are going to cover in detail in the coming weeks.
 
-### `if constexpr`
+### if constexpr
 
 Since C++17, there is a third way, as we have `if constexpr` at our hands. With `if constepxr` we can evaluate conditions at compile time and we can discard branches from the compilation. With `if constexpr` you can significantly simplify obscure metaprogramming constructs.
 
@@ -200,7 +200,7 @@ Now let's have a look at how type traits can alter types. There are templates sh
 
 Let's see three examples.
 
-### Adding/removing `const` specifier
+### Adding/removing the const specifier
 
 With `std::add_const`/`std::remove_const` you can add/remove the topmost const of a type:
 
@@ -261,7 +261,7 @@ Making unsigned to signed worked
 ```
 As you can see, we used the `_t`-style helper functions to get back directly the modified type.
 
-### `std::conditional` to choose between two types at compile time 
+### std::conditional to choose between two types at compile time 
 
 With `std::conditional` you can choose between two types based on a compile time condition. You can imagine it as the compile-time ternary operator though probably it's a bit more difficult to read.
 
