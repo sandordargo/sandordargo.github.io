@@ -237,3 +237,5 @@ Today, we have seen how to use concepts with function parameters. We detailed 4 
 The next article is about [how to use concepts with classes](https://www.sandordargo.com/blog/2021/02/24/cpp-concepts-with-classes)!
 
 Stay tuned!
+
+**If you want to learn more details about _C++ concepts_, [check out my book on Leanpub](https://leanpub.com/cppconcepts)!**

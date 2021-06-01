@@ -141,3 +141,5 @@ During the next couple of weeks we are going to discuss:
 - how to write our own concepts ([part I](https://www.sandordargo.com/blog/2021/03/10/write-your-own-cpp-concepts-part-i) and [part II](https://www.sandordargo.com/blog/2021/03/17/write-your-own-cpp-concepts-part-ii))
 
 Stay tuned!
+
+**If you want to learn more details about _C++ concepts_, [check out my book on Leanpub](https://leanpub.com/cppconcepts)!**

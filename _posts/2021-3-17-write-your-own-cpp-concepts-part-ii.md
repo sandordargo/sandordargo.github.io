@@ -408,3 +408,5 @@ In the next post, we'll see how to use a nested requirement when even the enclos
 Today we continued and finished discussing what building blocks are available for us to write our own concepts. We saw how to make constraints on function return types, how to use type requirements on inner types, template aliases and specialisations and finally we saw that it's possible to nest requirements, even though often there are easier ways to express ourselves.
 
 Next time, we'll continue with [some real life examples](https://www.sandordargo.com/blog/2021/03/24/concepts-in-real-life) of how concepts can make our projects easier to understand. Stay tuned!
+
+**If you want to learn more details about _C++ concepts_, [check out my book on Leanpub](https://leanpub.com/cppconcepts)!**

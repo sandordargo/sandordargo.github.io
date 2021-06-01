@@ -245,3 +245,5 @@ If you are curious, having a borrowed range means that a function can take it by
 Today we've seen a few examples of concepts shipped with the C++20 standard library. There are about 50 of them shared among 3 headers (`concepts`, `iterators`, `ranges`).
 
 Next week, we are going to see how to implement our own concepts.
+
+**If you want to learn more details about _C++ concepts_, [check out my book on Leanpub](https://leanpub.com/cppconcepts)!**

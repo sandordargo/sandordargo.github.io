@@ -169,3 +169,5 @@ In this extra part of the concepts series, we saw that requiring the opposite of
 As such, a conjunction or a disjunction is not as simple as a boolean `and` or `or` operation but something more complex. It gives more possibilities to have a concept satisfied.
 
 We saw that negating an expression is not considered such a simple act as combining expressions in conjunction or disjunctions. They require parenthesws and in case you want to rely on subsumption and avoid ambiguous function calls, negated expressions have to be placed into their own concepts.
+
+**If you want to learn more details about _C++ concepts_, [check out my book on Leanpub](https://leanpub.com/cppconcepts)!**

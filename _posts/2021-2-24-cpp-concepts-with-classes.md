@@ -177,3 +177,5 @@ With the former, we can even define some complex requirements without having to 
 Next time, we are really going to discuss [what kind of concepts we get from the standard library](https://www.sandordargo.com/blog/2021/03/03/cpp-concepts-in-standard-library) before we'd actually start writing our own concepts. No other surprises before!
 
 Stay tuned!
+
+**If you want to learn more details about _C++ concepts_, [check out my book on Leanpub](https://leanpub.com/cppconcepts)!**

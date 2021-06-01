@@ -209,3 +209,4 @@ I hope you enjoyed this series as much as I did, let me know in the comments if 
 
 If you're looking forward to getting even more examples and more verbose explanations that wouldn't fit the size limits of blog posts, [enter your e-mail address here](https://leanpub.com/cppconcepts) to get notified once my book on concepts is released!
 
+**If you want to learn more details about _C++ concepts_, [check out my book on Leanpub](https://leanpub.com/cppconcepts)!**
