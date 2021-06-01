@@ -165,3 +165,6 @@ Today, we learned about `const` return types. We saw that simply returning `cons
 Const pointers are bit more varied topics, you don't face many dangers but constness there can be ignored.
 
 Stay tuned, next time we'll learn about `const` parameters.
+
+
+**If you want to learn more details about _How to use const in C++_, [check out my book on Leanpub](https://leanpub.com/cppconst)!**

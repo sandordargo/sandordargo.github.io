@@ -141,4 +141,8 @@ No performance gain. Less readability in the special functions and for slightly 
 
 Do you think it's worth it?
 
-Stay tuned, next time we'll discuss `const` return types.
+Stay tuned, next time we'll discuss `const` return types.
+
+
+**If you want to learn more details about _How to use const in C++_, [check out my book on Leanpub](https://leanpub.com/cppconst)!**
+

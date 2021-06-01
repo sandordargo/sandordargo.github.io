@@ -120,4 +120,6 @@ In this series, we saw when and how to use the `const` qualifier for functions, 
 
 For function parameters, the rule is different for plain old data types and for objects. We tend to take primitive data types by value, and objects by `const&`.
 
-In case, you liked the article, give it a like a subscribe to my [newsletter]().
+In case, you liked the article, give it a like a subscribe to my [newsletter](eepurl.com/gvcv1j).
+
+**If you want to learn more details about _How to use const in C++_, [check out my book on Leanpub](https://leanpub.com/cppconst)!**

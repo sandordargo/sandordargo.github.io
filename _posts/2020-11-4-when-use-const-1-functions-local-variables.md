@@ -89,3 +89,5 @@ Today, we started a new series about when and how to use the `const` keyword in 
 On the other hand, I've never simply said variables. It's because not the same considerations apply to member variables.
 
 Stay tuned, next time we'll learn about whether having `const` member variables is a good idea or not.
+
+**If you want to learn more details about _How to use const in C++_, [check out my book on Leanpub](https://leanpub.com/cppconst)!**
