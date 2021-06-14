@@ -35,7 +35,7 @@ std::string bar{};
 
 Now let's have a look at a bit more interesting example:
 
-```
+```cpp
 #include <iostream>
 #include <string>
 
