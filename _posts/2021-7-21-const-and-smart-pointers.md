@@ -13,7 +13,7 @@ There are two ways to approach this. One way is to simply consider that smart po
 
 In another perspective, we consider that smart pointers are class type objects. After all, they are wrapping pointers. As a smart pointer is an object, the rule of thumb might say that it can be passed around as a `const` reference. We are going to see that it's a bad idea.
 
-Let's examine see both perspectives.
+Let's see both perspectives.
 
 ## `const` and smart pointers as pointers
 
