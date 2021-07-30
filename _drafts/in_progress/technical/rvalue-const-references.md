@@ -10,17 +10,45 @@ Recently I facilitated a workshop at [C++OnSea](https://cpponsea.uk/2021/session
 
 ## What are rvalue references?
 
-Rvalue references were introdued to C++ with C++11. Since then, we refer to the traditional references (marked with one `&`) as lvalue references.
+Rvalue references were introduced to C++ with C++11. Since then, we refer to the traditional references (marked with one `&`) as lvalue references.
 
-With the use of rvalue (`&&`) references we can avoid logically unnecessary copying and implement perfect forwarding functions, thus achieving higher performance and more robust libraries.
+With the use of rvalue (`&&`) references, we can avoid logically unnecessary copying by moving the values instead of making an extra copy with the sacrifice of potentially leaving the original value in an unusable state.
+
+```
+MyObject a{param1, param2};
+MyObject b = std::move(a);
+a.foo() // Don't do this, it's unsafe, potentially a is in a default constructed state or worse
+```
+
+As said, with the help of rvalue references we can limit unnecessary copying and implement perfect forwarding functions, thus achieving higher performance and more robust libraries.
 
 If we try to define rvalue references in contrast with lvaule references, we can say that an lvalue is an expression whose address can be taken, as such an lvalue reference is a locator value. 
 
 At the same time, an rvalue is an unnamed value that exists only during the evaluation of an expression.
 
+```cpp
+#include <iostream>
+
+int f() { return 13; }
+
+int main() {
+    int i = 42; // i is an lvalue
+    
+    int& lvri = i;     // lvri is an lvalue reference
+    
+    int&& rvrt = f(); // rvr1 is rvalue reference to temporary rvalue returned by f()
+    
+    int&& rvrl = 1;   // rvalue reference to a literal!
+    
+    // int&& rv3 = i;   // ERROR, cannot bind int&& to int lvalue
+    std::cout << i << " " <<  lvri << " " 
+              << rvrt << " " << rvrl << '\n';
+}
+```
+
 In other terms, *"an lvalue is an expression that refers to a memory location and allows us to take the address of that memory location via the `&` operator. An rvalue is an expression that is not an lvalue."* ([source](http://thbecker.net/articles/rvalue_references/section_01.html))
 
-From one point of view we might say that if you have a temporary value on the right, why would anyone want to modify it.
+From one point of view, we might say that if you have a temporary value on the right, why would anyone want to modify it.
 
 But on the other hand, we said that rvalue references are used for removing unnecessary copying, they are used with move semantics. If we "move away" from a variable, it implies modification.
 
@@ -28,9 +56,9 @@ Why would anyone (and how!) make such move-away variables `const`?
 
 ## Binding rules
 
-Given the abpve constraint, not surprisingly, the canonical signatures of the move assignment operator and of the move constructor use non-`const` rvalue references.
+Given the above constraint, not surprisingly, the canonical signatures of the move assignment operator and of the move constructor use non-`const` rvalue references.
 
-But that does't mean that `const T&&` doesn't exist. It does, it's syntactically completely valid.
+But that doesn't mean that `const T&&` doesn't exist. It does, it's syntactically completely valid.
 
 It's not simply syntactically valid, but the language has clear, well-defined binding rules for it.
 
@@ -45,7 +73,7 @@ void f(const T&&) { std::cout << "const rvalue ref\n"; } // #4
 
 If you have a non-`const` rvalue reference, it can be used with any of these, but the non-`const` lvalue reference (#1). The first choice is `f(T&&)`, then `f(const T&&)` and finally `f(const T&)`.
 
-But if none of those are available, only `f(T&)`, you'll get the following error message:
+But if none of those is available, only `f(T&)`, you'll get the following error message:
 
 ```cpp
 #include <iostream>
@@ -89,9 +117,9 @@ int main() {
 }
 ```
 
-There is a little bit of assymetry here.
+There is a little bit of asymmetry here.
 
-Can we "fix" this assimetry? Is there any option that can be used only with the rvalue overloads?
+Can we "fix" this asymmetry? Is there any option that can be used only with the rvalue overloads?
 
 No. If we take a `const` rvalue reference, it can be used with the `f(const T&&)` and `f(const T&)`, but not with any of the non-`const` references.
 
@@ -154,7 +182,7 @@ const lvalue ref
 */
 ```
 
-On the other hand, if we delete the `const T&&` overload, we make sure that no rvalue references are accepted at all.
+However, if we delete the `const T&&` overload, we make sure that no rvalue references are accepted at all.
 
 ```cpp
 #include <iostream>
@@ -197,7 +225,7 @@ You can observe this the standard library too, for example with [`std::reference
 
 ## Conclusion
 
-Today we discussed about `const` rvalue references. We saw that although at a first glance they don't make much sense, they are still useful. Rvalue references in general are used with move semantics which implies modifying the referred object, but in some rare cases it might have a good semantic meaning. At the same time, it's also used with `=delete` to prohibit rvalue references in a bullet proof way.
+Today we discussed `const` rvalue references. We saw that although at a first glance they don't make much sense, they are still useful. Rvalue references in general are used with move semantics which implies modifying the referred object, but in some rare cases, it might have a good semantic meaning. At the same time, it's also used with `=delete` to prohibit rvalue references in a bulletproof way.
 
 Let me know if you've ever used `const` rvalue references in your code!
 
