@@ -1,0 +1,46 @@
+Do algorithms validate ranges? Would the following piece of code compile? What do you expect the content of `copiedNumebrs` to be?
+
+```
+auto numbers21 = { 1, 3 };
+auto numbers22 = { 3, 5 };
+std::vector<int> copiedNumbers;
+
+std::copy_if(numbers21.begin(), numbers22.end(), 
+  std::back_inserter(copiedNumbers), 
+  [](auto number) {return number % 2 == 1;});
+```
+
+A:
+
+`std::copy_if` takes three parameters, the start and the end iterator of the range to be copied if the third parameter (a function pointer, a function object or a lambda expression) evaluates to `true`.
+
+`std::copy_if` - or any function from the `<algorithm>` header by the way - does not, cannot evaluate whether the start and the end iterator, its first two parameters, belong to the same container or not. It's the responsability of the caller to make sure that correct parameters are passed in. If they are not respecting the rules, the result is the dreaded undefined behaviour.
+
+So what will happen is that inside the `copy_if`, the iterator pointing at the current position will be incremented as long as it doesn't reach the end iterator. What if the address of the end is actually before the starting the starting point? What if the two containers are next to each other? What if there is some garbage between them?
+
+It's all undefined behaviour. You might have seemingly correct results, like the combination of the two containers, you might get a timeout or a nice core dump.
+
+The only thing the compiler can validate is that two iterators are of the same type. So you cannot combine a `list` with a `vector` or a `vector` of `int`s with a `vector` of `float`s.
+
+You have to always double check that whay you pass in is valid and respect the contracts imposed by the given algorithm.
+
+"""Do algorithms validate ranges?"""
+
+"""<p>Do algorithms validate ranges? Would the following piece of code compile? What do you expect the content of <code>copiedNumbers</code> to be?</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">auto</span> <span style="color: #d0d0d0">numbers21</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">{</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">3</span> <span style="color: #d0d0d0">};</span>
+<span style="color: #6ab825; font-weight: bold">auto</span> <span style="color: #d0d0d0">numbers22</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">{</span> <span style="color: #3677a9">3</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">5</span> <span style="color: #d0d0d0">};</span>
+<span style="color: #d0d0d0">std::vector&lt;</span><span style="color: #6ab825; font-weight: bold">int</span><span style="color: #d0d0d0">&gt;</span> <span style="color: #d0d0d0">copiedNumbers;</span>
+
+<span style="color: #d0d0d0">std::copy_if(numbers21.begin(),</span> <span style="color: #d0d0d0">numbers22.end(),</span> 
+  <span style="color: #d0d0d0">std::back_inserter(copiedNumbers),</span> 
+  <span style="color: #d0d0d0">[](</span><span style="color: #6ab825; font-weight: bold">auto</span> <span style="color: #d0d0d0">number)</span> <span style="color: #d0d0d0">{</span><span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">number</span> <span style="color: #d0d0d0">%</span> <span style="color: #3677a9">2</span> <span style="color: #d0d0d0">==</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">;});</span>
+</pre></div>"""
+
+"""<p><code>std::copy_if</code> - or any function from the <code>&lt;algorithm&gt;</code> header by the way - doesn&#39;t, it cannot evaluate whether the start and the end iterator, its first two parameters, belong to the same container or not. It&#39;s the responsibility of the caller to make sure that correct parameters are passed in. If they are not respecting the rules, the result is the dreaded undefined behaviour...</p>""" 
+
+"""<p><code>std::copy_if</code> takes three parameters, the start and the end iterator of the range to be copied if the third parameter (a function pointer, a function object or a lambda expression) evaluates to <code>true</code>.</p>
+<p><code>std::copy_if</code> - or any function from the <code>&lt;algorithm&gt;</code> header by the way - doesn&#39;t, it cannot evaluate whether the start and the end iterator, its first two parameters, belong to the same container or not. It&#39;s the responsibility of the caller to make sure that correct parameters are passed in. If they are not respecting the rules, the result is the dreaded undefined behaviour.</p>
+<p>So what will happen is that inside the <code>copy_if</code>, the iterator pointing at the current position will be incremented as long as it doesn&#39;t reach the end iterator. What if the address of the end is actually before the starting point? What if the two containers are next to each other? What if there is some garbage between them?</p>
+<p>It&#39;s all undefined behaviour. You might have seemingly correct results, like the combination of the two containers, you might get a timeout or a nice core dump.</p>
+<p>The only thing the compiler can validate is that two iterators are of the same type. So you cannot combine a <code>list</code> with a <code>vector</code> or a <code>vector</code> of <code>int</code>s with a <code>vector</code> of <code>float</code>s.</p>
+<p>You have to always double-check that whay you pass in is valid and respect the contracts imposed by the given algorithm.</p>""" 

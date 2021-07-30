@@ -1,0 +1,33 @@
+How a `vector`'s memory layout organized?
+
+If you create a vector locally on the stack (without using `new`) you might expect that you will have the data on the stack. But in fact, the vector object on the stack itself is quite small and it cosists of a pointer that point at some dynamically allocated memory on the heap.
+
+So on the stack, you'll have the above mentioned pointer and some other extra variables to keep track of the size and the the capacity. You can take a look at [this illustration](https://www.sthu.org/blog/16-cpp-arrays/img/std_vector_layout.svg).
+
+Other implementations are also possible, when iterators are stored pointing at the beginning of the allocated memory, at the current end and at the end of the total capacity. Check [this illustration](https://frogatto.com/wp-content/uploads/2009/11/vector.png).
+
+The bottom line is that you have some variables in the main vector object that help to find the data that is actually stored on the heap. That memory on the heap must be contiguous and if your vector grows and an extension is required it might happen that the whole content must be copied to somewhere else.
+
+In order to protect yourself from these extra copies, if you know how big your vector will grow, it's good to reserve that capacity right away after its declaration, by calling `std::vector<T>::reserve(maxCapacity)`
+
+References:
+- [Frogatto: How C++’s vector works: the gritty details](https://frogatto.com/2009/11/17/how-cs-vector-works-the-gritty-details/)
+- [STHU.org: Array-like C++ containers: Four steps of trading speed](https://www.sthu.org/blog/16-cpp-arrays/index.html)
+
+
+"""How a vector's memory layout organized?"""
+
+"""<p><strong>How a <code>vector</code>&#39;s memory layout organized?</strong></p>"""
+
+"""<p>If you create a vector locally on the stack (without using <code>new</code>) you might expect that you will have the data on the stack. But in fact, the vector object on the stack itself is quite small and it consists of a pointer that point at some dynamically allocated memory on the heap...</p>"""
+
+"""<p>If you create a vector locally on the stack (without using <code>new</code>) you might expect that you will have the data on the stack. But in fact, the vector object on the stack itself is quite small and it consists of a pointer that point at some dynamically allocated memory on the heap.</p>
+<p>So on the stack, you&#39;ll have the above-mentioned pointer and some other extra variables to keep track of the size and the capacity. You can take a look at <a href="https://www.sthu.org/blog/16-cpp-arrays/img/std_vector_layout.svg">this illustration</a>.</p>
+<p>Other implementations are also possible when iterators are stored pointing at the beginning of the allocated memory, at the current end and at the end of the total capacity. Check <a href="https://frogatto.com/wp-content/uploads/2009/11/vector.png">this illustration</a>.</p>
+<p>The bottom line is that you have some variables in the main vector object that help to find the data that is actually stored on the heap. That memory on the heap must be contiguous and if your vector grows and an extension is required it might happen that the whole content must be copied to somewhere else.</p>
+<p>In order to protect yourself from these extra copies, if you know how big your vector will grow, it&#39;s good to reserve that capacity right away after its declaration, by calling <code>std::vector&lt;T&gt;::reserve(maxCapacity)</code></p>
+<p>References:</p>
+<ul>
+<li><a href="https://frogatto.com/2009/11/17/how-cs-vector-works-the-gritty-details/">Frogatto: How C++’s vector works: the gritty details</a></li>
+<li><a href="https://www.sthu.org/blog/16-cpp-arrays/index.html">STHU.org: Array-like C++ containers: Four steps of trading speed</a></li>
+</ul>"""

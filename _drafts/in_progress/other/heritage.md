@@ -24,3 +24,6 @@ I think that a kid is not responsible in any way for their parents acts. It's to
 
 On the other hand, there is a responsibility in the children's lives how they interpret their parents' lives, what they share about it. Many such children talk in public about how their parents loved them, how adorable they were after they came home from work (work == torturing, killing people, right [Mr Bauer](https://en.wikipedia.org/wiki/Tam%C3%A1s_Bauer)?). It's completly not OK and disgusting to share "lvoely stories" about monsters who are responsible for deaths of dozens, hundreds, or thousands of people, or even of just one. That's the point where children start sharing responsibilty and become unacceptable.
 
+I'm not one of them, not even from 4 generations away and apparently my grandfather was not such a person either.
+
+Teher vagy?

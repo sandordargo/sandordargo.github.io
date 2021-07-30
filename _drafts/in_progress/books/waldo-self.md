@@ -1,0 +1,1 @@
+In every work of genius we recognize our own rejected thoughts: they come back to us with a certain alienated majesty.

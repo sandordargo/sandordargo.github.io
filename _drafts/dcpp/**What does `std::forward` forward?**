@@ -1,0 +1,50 @@
+**What does `std::forward` forward?**
+
+Just like `std::move` doesn't move anything, `std::forward` doesn't forward anything either. Similarly, it does nothing at all at runtime. It doesn't even generate a single byte of executable code.
+
+`std::forward` is also a cast. But how it is used?
+
+The most common scenario for is `std::forward` is a function template that takes a universal reference parameter that is to be passed to another function:
+
+```
+void process(MyClass&& rvalueArgument);
+
+template<typename T>
+void logAndProcess(T&& param)            
+{
+  auto now = std::chrono::system_clock::now();
+  makeLogEntry("Calling 'process'", now);
+  process(std::forward<T>(param));
+}
+```
+
+It is also called perfect forwarding. It has two overloads.
+
+One forwards lvalues as lvalues and rvalues as rvalues, while the other is a conditional cast. It forwards rvalues as rvalues and prohibits forwarding of rvalues as lvalues. Attempting to forward an rvalue as an lvalue, is a compile-time error.
+
+"""What does std::forward forward?"""
+
+"""<p><strong>What does <code>std::forward</code> forward?</strong></p>"""
+
+"""<p>Just like <code>std::move</code> doesn&#39;t move anything, <code>std::forward</code> doesn&#39;t forward anything either. Similarly, it does nothing at all at runtime. It doesn&#39;t even generate a single byte of executable code...</p>"""
+
+"""<p>Just like <code>std::move</code> doesn&#39;t move anything, <code>std::forward</code> doesn&#39;t forward anything either. Similarly, it does nothing at all at runtime. It doesn&#39;t even generate a single byte of executable code.</p>
+<p><code>std::forward</code> is also a cast. But how it is used?</p>
+<p>The most common scenario for is <code>std::forward</code> is a function template that takes a universal reference parameter that is to be passed to another function:</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">void</span> <span style="color: #447fcf">process</span><span style="color: #d0d0d0">(MyClass&amp;&amp;</span> <span style="color: #d0d0d0">rvalueArgument);</span>
+
+<span style="color: #6ab825; font-weight: bold">template</span><span style="color: #d0d0d0">&lt;</span><span style="color: #6ab825; font-weight: bold">typename</span> <span style="color: #d0d0d0">T&gt;</span>
+<span style="color: #6ab825; font-weight: bold">void</span> <span style="color: #d0d0d0">logAndProcess(T&amp;&amp;</span> <span style="color: #d0d0d0">param)</span>            
+<span style="color: #d0d0d0">{</span>
+  <span style="color: #6ab825; font-weight: bold">auto</span> <span style="color: #d0d0d0">now</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">std::chrono::system_clock::now();</span>
+  <span style="color: #d0d0d0">makeLogEntry(</span><span style="color: #ed9d13">&quot;Calling &#39;process&#39;&quot;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">now);</span>
+  <span style="color: #d0d0d0">process(std::forward&lt;T&gt;(param));</span>
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+<p>It is also called perfect forwarding. It has two overloads.</p>
+<p>One forwards lvalues as lvalues and rvalues as rvalues, while the other is a conditional cast. It forwards rvalues as rvalues and prohibits forwarding of rvalues as lvalues. Attempting to forward an rvalue as an lvalue, is a compile-time error.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/utility/forward">C++ Reference: std::forward</a></li>
+<li><a href="https://amzn.to/38gK5bd">Effective Modern C++ by Scott Meyers: Item 21</a></li>
+</ul>"""

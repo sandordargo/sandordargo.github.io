@@ -1,0 +1,53 @@
+What is observable behaviour of code?
+
+The term "observable behavior", according to the standard, means the following:
+
+> — Accesses (reads and writes) to volatile objects occur strictly according to the semantics of the expressions in which they occur. In particular, they are not reordered with respect to other volatile accesses on the same thread.
+
+> — At program termination, all data written into files shall be identical to one of the possible results that execution of the program according to the abstract semantics would have produced.
+
+> — The input and output dynamics of interactive devices shall take place in such a fashion that prompting output is actually delivered before a program waits for input. What constitutes an interactive device is implementation-defined.
+
+The _"as-if rule"_ is strongly related, in short any code transformation is allowed that do not change the observable behavior of the program.
+
+The C++ standard precisely defines the observable behavior of every C++ program that does not fall into one of the following classes:
+
+- ill-formed
+- ill-formed, no diagnostic required
+- implementation defined behaviour
+- unspecified behaviour
+- undefined behaviour
+
+References:
+- [C++ Reference: The as-if rule](https://en.cppreference.com/w/cpp/language/as_if)
+- [C++ Reference: Undefined behaviour](https://en.cppreference.com/w/cpp/language/ub)
+- [Stackoverflow: "Observable behaviour" and compiler freedom to eliminate/transform pieces c++ code](https://stackoverflow.com/questions/6664471/observable-behaviour-and-compiler-freedom-to-eliminate-transform-pieces-c-co)
+
+"""What is observable behaviour of code?"""
+
+"""<p><strong>What is observable behaviour of code?</strong></p>""" 
+
+"""<p>The <em>&quot;as-if rule&quot;</em> is strongly related, in short, any code transformation is allowed that does not change the observable behavior of the program. The C++ standard precisely defines the observable behavior of every C++ program that does not fall into one of the following classes...</p>
+""" 
+
+"""<p>The term observable behavior, according to the standard, means the following:</p>
+<blockquote>
+<p>— Accesses (reads and writes) to volatile objects occur strictly according to the semantics of the expressions in which they occur. In particular, they are not reordered with respect to other volatile accesses on the same thread.</p>
+<p>— At program termination, all data written into files shall be identical to one of the possible results that execution of the program according to the abstract semantics would have produced.</p>
+<p>— The input and output dynamics of interactive devices shall take place in such a fashion that prompting output is actually delivered before a program waits for input. What constitutes an interactive device is implementation-defined.</p>
+</blockquote>
+<p>The <em>&quot;as-if rule&quot;</em> is strongly related, in short, any code transformation is allowed that does not change the observable behavior of the program.</p>
+<p>The C++ standard precisely defines the observable behavior of every C++ program that does not fall into one of the following classes:</p>
+<ul>
+<li>ill-formed</li>
+<li>ill-formed, no diagnostic required</li>
+<li>implementation-defined behaviour</li>
+<li>unspecified behaviour</li>
+<li>undefined behaviour</li>
+</ul>
+<p>References:</p>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/language/as_if">C++ Reference: The as-if rule</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/language/ub">C++ Reference: Undefined behaviour</a></li>
+<li><a href="https://stackoverflow.com/questions/6664471/observable-behaviour-and-compiler-freedom-to-eliminate-transform-pieces-c-co">Stackoverflow: &quot;Observable behaviour&quot; and compiler freedom to eliminate/transform pieces c++ code</a></li>
+</ul>""" 

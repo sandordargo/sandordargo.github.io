@@ -1,0 +1,65 @@
+**Which data type you get when you add too bools?**
+
+And to be more practical, what's the output of this code snippet:
+
+```
+#include <iostream>
+
+auto foo(bool n, bool m) {
+    return n + m;
+}
+
+int main() {
+    bool a = true;
+    bool b = true;
+    
+    auto c = a + b;
+    
+    std::cout << c << ", " << typeid(c).name() << '\n';
+    std::cout << foo(a,b); 
+}
+```
+
+Both `c` and the return value of `foo()` will equal to 2. So obviously their type is not `bool` but rather `int`.
+
+In order to understand what happens, the best you can do is to copy-paste the code to [CppInsights](https://cppinsights.io/) that does a source-to-source transformation. It helps you to see your source code with the eyes of a compiler.
+
+You'll see this:
+
+```
+int c = static_cast<int>(a) + static_cast<int>(b);
+```
+
+And something very similar for `foo`. So both of our booleans, `a` and `b` are promoted, they are casted to integers before they are added together.
+
+
+"""Which data type you get when you add too bools?"""
+
+"""<p><strong>Which data type you get when you add too bools?</strong></p>
+<p>And to be more practical, what&#39;s the output of this code snippet:</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #cd2828; font-weight: bold">#include &lt;iostream&gt;</span>
+
+<span style="color: #6ab825; font-weight: bold">auto</span> <span style="color: #447fcf">foo</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">bool</span> <span style="color: #d0d0d0">n,</span> <span style="color: #6ab825; font-weight: bold">bool</span> <span style="color: #d0d0d0">m)</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">n</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">m;</span>
+<span style="color: #d0d0d0">}</span>
+
+<span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">main</span><span style="color: #d0d0d0">()</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #6ab825; font-weight: bold">bool</span> <span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">true</span><span style="color: #d0d0d0">;</span>
+    <span style="color: #6ab825; font-weight: bold">bool</span> <span style="color: #d0d0d0">b</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">true</span><span style="color: #d0d0d0">;</span>
+    
+    <span style="color: #6ab825; font-weight: bold">auto</span> <span style="color: #d0d0d0">c</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">b;</span>
+    
+    <span style="color: #d0d0d0">std::cout</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #d0d0d0">c</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #ed9d13">&quot;, &quot;</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #6ab825; font-weight: bold">typeid</span><span style="color: #d0d0d0">(c).name()</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #ed9d13">&#39;\n&#39;</span><span style="color: #d0d0d0">;</span>
+    <span style="color: #d0d0d0">std::cout</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #d0d0d0">foo(a,b);</span> 
+<span style="color: #d0d0d0">}</span>
+</pre></div>"""
+
+"""<p>In order to understand what happens, the best you can do is to copy-paste the code to <a href="https://cppinsights.io/">CppInsights</a> that does a source-to-source transformation. It helps you to see your source code with the eyes of a compiler...</p>"""
+
+"""<p>Both <code>c</code> and the return value of <code>foo()</code> will equal to 2. So obviously their type is not <code>bool</code> but rather <code>int</code>.</p>
+<p>In order to understand what happens, the best you can do is to copy-paste the code to <a href="https://cppinsights.io/">CppInsights</a> that does a source-to-source transformation. It helps you to see your source code with the eyes of a compiler.</p>
+<p>You&#39;ll see this:</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">c</span> <span style="color: #d0d0d0">=</span> <span style="color: #6ab825; font-weight: bold">static_cast</span><span style="color: #d0d0d0">&lt;</span><span style="color: #6ab825; font-weight: bold">int</span><span style="color: #d0d0d0">&gt;(a)</span> <span style="color: #d0d0d0">+</span> <span style="color: #6ab825; font-weight: bold">static_cast</span><span style="color: #d0d0d0">&lt;</span><span style="color: #6ab825; font-weight: bold">int</span><span style="color: #d0d0d0">&gt;(b);</span>
+</pre></div>
+<p>And something very similar for <code>foo</code>. So both of our booleans, <code>a</code> and <code>b</code> are promoted, they are casted to integers before they are added together.</p>
+"""

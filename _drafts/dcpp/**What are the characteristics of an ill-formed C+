@@ -1,0 +1,41 @@
+**What are the characteristics of an ill-formed C++ program?**
+
+Yesterday we saw that the C++ stadrad defined the behaviour of C++ programs, unless it doesn't fall into some six cases. One of them is "ill-formed" ad another is "ill-formed, no diagnostic required"
+
+**ill-formed**
+
+In this case the program has syntax errors and/or diagnosable semantic errors. The compiler will tell you about them. The violated rules are written in the standard with either _shall_, _shall not_ or _ill-formed_.
+
+
+**ill-formed, no diagnostic required**
+
+Under this category, there will be no compiler errors. The program doesn't have syntactic errors, only semantic ones, but in general they are not diangosable by the compiler. 
+
+These semantic errors errors are either detectable at link time, or if the program is executed, it results in undefined behaviour.
+
+Such problems are violations against the One Definition Rule which says that only one definition of any variable, function, class type, enumeration type, concept (since C++20) or template is allowed in any one translation unit. There might be mutiple declarations, but only one definition. Check out the refernces for more details on ODR.
+
+References:
+- [C++ Reference: ODR](https://en.cppreference.com/w/cpp/language/definition)
+- [C++ Reference: Undefined Behaviour](https://en.cppreference.com/w/cpp/language/ub)
+
+
+
+"""What are the characteristics of an ill-formed C++ program?"""
+
+"""<p><strong>What are the characteristics of an ill-formed C++ program?</strong></p>"""
+
+"""<p>Ill-formed programs have syntax errors and/or diagnosable semantic errors. The compiler will tell you about them. The violated rules are written in the standard with either <em>shall</em>, <em>shall not</em> or <em>ill-formed</em>...</p>"""
+
+"""<p>Yesterday we saw that the C++ standard defined the behaviour of C++ programs unless it doesn&#39;t fall into some six cases. One of them is &quot;ill-formed&quot; ad another is &quot;ill-formed, no diagnostic required&quot;</p>
+<p><strong>ill-formed</strong></p>
+<p>In this case, the program has syntax errors and/or diagnosable semantic errors. The compiler will tell you about them. The violated rules are written in the standard with either <em>shall</em>, <em>shall not</em> or <em>ill-formed</em>.</p>
+<p><strong>ill-formed, no diagnostic required</strong></p>
+<p>Under this category, there will be no compiler errors. The program doesn&#39;t have syntactic errors, only semantic ones, but in general, they are not diagnosable by the compiler. </p>
+<p>These semantic errors are either detectable at link time, or if the program is executed, it results in undefined behaviour.</p>
+<p>Such problems are violations against the One Definition Rule which says that only one definition of any variable, function, class type, enumeration type, concept (since C++20) or template is allowed in any one translation unit. There might be multiple declarations, but only one definition. Check out the references for more details on ODR.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/language/definition">C++ Reference: ODR</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/language/ub">C++ Reference: Undefined Behaviour</a></li>
+</ul>"""

@@ -24,7 +24,7 @@ They have to implicitely know, even to feel what is happening around them. This 
 
 We all operate within our own [OODA loops](https://en.wikipedia.org/wiki/OODA_loop) and it is extremenly important that we can observe our surroundings as fast as possible, faster than our enemies or our competitors so that we can react in timely manners and adjust our plans if needed.
 
-If you think about it, this ability to adjust quickly is what is behind agile and the frequent iterations of scrum. [According to one of the founding fathers of Scrum, Jeff Sutherland](), a fighter pilot himself, it was the OODA loop that inspired the creation of Scrum.
+If you think about it, this ability to adjust quickly is what is behind agile and the frequent iterations of scrum. [According to one of the founding fathers of Scrum, Jeff Sutherland](https://devreads.sandordargo.com/scrum-by-jeff-sutherland/), a fighter pilot himself, it was the OODA loop that inspired the creation of Scrum.
 
 ![OODA loop by John Boyd]({{ site.baseurl }}/assets/img/OODA-boyd.svg "OODA loop by John Boyd")
 
@@ -83,3 +83,8 @@ We saw that fingertip feeling, unity, mission tactics and main effort are simila
 Later, I'll examine the above points one-by-one in detail in regards of software development managament practices.
 
 Stay tuned!
+
+
+
+
+** commies break down unity

@@ -1,0 +1,58 @@
+**What is the difference between universal and rvalue references?**
+
+If a function template parameter has type T&& for a deduced type T, or if an object is declared using auto&&, the parameter or object is a universal reference.
+
+```
+template<typename T>
+void f(T&& param); // universal reference 
+auto&& v2 = v; // universal reference
+```
+
+But what is a universal reference, you might ask. Universal references correspond to rvalue references if they’re initialized with rvalues. They correspond to lvalue references if they’re initialized with lvalues. They are either this or that depending on what is passed in.
+
+If the form of the type declaration isn’t precisely `type&&`, or if type deduction does not occur - there is no auto used` - we have an rvalue reference.
+
+```
+void f(MyClass&& param); // rvalue reference
+
+MyClass&& var1 = MyClass(); // rvalue reference
+
+template<typename T>
+void f(std::vector<T>&& param); // rvalue reference
+```
+
+The takeaway is that by nowing the differences between rvalue and universal references, you can read source code more accurately. Is this an rvalue type that can be bound only to rvalues or is this a universal referenes that can be bound to either rvalue or lvalue references. This understanding will also avoid ambiguities when you communicate with your colleagues ("I'm using a universal reference here, not an rvalue reference...")
+
+References:
+- [ISOCpp.org](Universal References in C++11)
+- [Effective Modern C++ by Scott Meyers: Item 24](https://amzn.to/38gK5bd)
+
+
+
+"""What is the difference between universal and rvalue references?"""
+
+"""<p><strong>What is the difference between universal and rvalue references?</strong></p>"""
+
+"""<p>But what is a universal reference, you might ask. Universal references correspond to rvalue references if they&#39;re initialized with rvalues. They correspond to lvalue references if they’re initialized with lvalues. They are either this or that depending on what is passed in...</p>"""
+
+"""<p>If a function template parameter has type T&amp;&amp; for a deduced type T, or if an object is declared using auto&amp;&amp;, the parameter or object is a universal reference.</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">template</span><span style="color: #d0d0d0">&lt;</span><span style="color: #6ab825; font-weight: bold">typename</span> <span style="color: #d0d0d0">T&gt;</span>
+<span style="color: #6ab825; font-weight: bold">void</span> <span style="color: #d0d0d0">f(T&amp;&amp;</span> <span style="color: #d0d0d0">param);</span> <span style="color: #999999; font-style: italic">// universal reference </span>
+<span style="color: #6ab825; font-weight: bold">auto</span><span style="color: #d0d0d0">&amp;&amp;</span> <span style="color: #d0d0d0">v2</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">v;</span> <span style="color: #999999; font-style: italic">// universal reference</span>
+</pre></div>
+<p>But what is a universal reference, you might ask. Universal references correspond to rvalue references if they’re initialized with rvalues. They correspond to lvalue references if they’re initialized with lvalues. They are either this or that depending on what is passed in.</p>
+<p>If the form of the type declaration isn’t precisely <code>type&amp;&amp;</code>, or if type deduction does not occur - there is no <code>auto</code> used - we have an rvalue reference.</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">void</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(MyClass&amp;&amp;</span> <span style="color: #d0d0d0">param);</span> <span style="color: #999999; font-style: italic">// rvalue reference</span>
+
+<span style="color: #d0d0d0">MyClass&amp;&amp;</span> <span style="color: #d0d0d0">var1</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">MyClass();</span> <span style="color: #999999; font-style: italic">// rvalue reference</span>
+
+<span style="color: #6ab825; font-weight: bold">template</span><span style="color: #d0d0d0">&lt;</span><span style="color: #6ab825; font-weight: bold">typename</span> <span style="color: #d0d0d0">T&gt;</span>
+<span style="color: #6ab825; font-weight: bold">void</span> <span style="color: #d0d0d0">f(std::vector&lt;T&gt;&amp;&amp;</span> <span style="color: #d0d0d0">param);</span> <span style="color: #999999; font-style: italic">// rvalue reference</span>
+</pre></div>
+<p>The takeaway is that by knowing the differences between rvalue and universal references, you can read source code more accurately. Is this an rvalue type that can be bound only to rvalues or is this a universal references that can be bound to either rvalue or lvalue references? This understanding will also avoid ambiguities when you communicate with your colleagues (&quot;I&#39;m using a universal reference here, not an rvalue reference...&quot;)</p>
+<p>References:</p>
+<ul>
+<li><a href="Universal References in C++11">ISOCpp.org</a></li>
+<li><a href="https://amzn.to/38gK5bd">Effective Modern C++ by Scott Meyers: Item 24</a></li>
+</ul>"""
+

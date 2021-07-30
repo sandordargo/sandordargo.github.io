@@ -1,0 +1,85 @@
+**What are concepts in C++?**
+Concepts are an extension to the templates feature, they are predicates that you use to express a generic algorithm’s expectations on its template arguments.
+
+Concepts allow you to formally document constraints on templates and have the compiler enforce them. As a bonus, you can also take advantage of that enforcement to improve the compile time of your program via concept-based overloading.
+
+The main uses of concepts are:
+
+- Introducing type-checking to template programming
+- Simplified compiler diagnostics for failed template instantiations
+- Selecting function template overloads and class template specializations based on type properties
+- Constraining automatic type deduction
+
+C++ provides 4 different ways to define concepts, here is one to define the Integral concept:
+
+```
+template<typename T>
+concept Integral = std::is_integral<T>::value;
+```
+
+Then you could use it as such:
+
+```
+auto add(Integral a, Integral b) {
+  return a+b;
+}
+```
+
+What are the advantages of concepts?
+
+- Requirements for templates are part of the interface.
+- The overloading of functions or specialisation of class templates can be based on concepts.
+- We get improved error message because the compiler compares the requirements of the template parameter with the actual template arguments
+- You can use predefined concepts or define your own.
+- The usage of auto and concepts is unified. Instead of auto, you can use a concept.
+- If a function declaration uses a concept, it automatically becomes a function template. Writing function templates is, therefore, as easy as writing a function.
+
+
+References:
+- [Modernes C++: Concepts, the details](https://www.modernescpp.com/index.php/c-20-concepts-the-details)
+- [Modernes C++: Defining Concepts](https://www.modernescpp.com/index.php/c-20-concepts-defining-concepts)
+- [CppReference](https://en.cppreference.com/w/cpp/language/constraints)
+- [Microsoft C++ Blog](https://devblogs.microsoft.com/cppblog/c20-concepts-are-here-in-visual-studio-2019-version-16-3/)
+- [Wikipedia](https://en.wikipedia.org/wiki/Concepts_(C%2B%2B))
+
+"""What are concepts in C++?"""
+
+"""<p><strong>What are concepts in C++?</strong></p>"""
+
+"""<p>Concepts allow you to formally document constraints on templates and have the compiler enforce them. As a bonus, you can also take advantage of that enforcement to improve the compile time of your program via concept-based overloading...</p>"""
+
+"""<p>Concepts are an extension to the templates feature, they are predicates that you use to express a generic algorithm’s expectations on its template arguments.</p>
+<p>Concepts allow you to formally document constraints on templates and have the compiler enforce them. As a bonus, you can also take advantage of that enforcement to improve the compile time of your program via concept-based overloading.</p>
+<p>The main uses of concepts are:</p>
+<ul>
+<li>Introducing type-checking to template programming</li>
+<li>Simplified compiler diagnostics for failed template instantiations</li>
+<li>Selecting function template overloads and class template specializations based on type properties</li>
+<li>Constraining automatic type deduction</li>
+</ul>
+<p>C++ provides 4 different ways to define concepts, here is one to define the Integral concept:</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">template</span><span style="color: #d0d0d0">&lt;</span><span style="color: #6ab825; font-weight: bold">typename</span> <span style="color: #d0d0d0">T&gt;</span>
+<span style="color: #d0d0d0">concept</span> <span style="color: #d0d0d0">Integral</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">std::is_integral&lt;T&gt;::value;</span>
+</pre></div>
+<p>Then you could use it as such:</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">auto</span> <span style="color: #447fcf">add</span><span style="color: #d0d0d0">(Integral</span> <span style="color: #d0d0d0">a,</span> <span style="color: #d0d0d0">Integral</span> <span style="color: #d0d0d0">b)</span> <span style="color: #d0d0d0">{</span>
+  <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">a+b;</span>
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+<p>What are the advantages of concepts?</p>
+<ul>
+<li>Requirements for templates are part of the interface.</li>
+<li>The overloading of functions or specialisation of class templates can be based on concepts.</li>
+<li>We get improved error message because the compiler compares the requirements of the template parameter with the actual template arguments</li>
+<li>You can use predefined concepts or define your own.</li>
+<li>The usage of auto and concepts is unified. Instead of auto, you can use a concept.</li>
+<li>If a function declaration uses a concept, it automatically becomes a function template. Writing function templates is, therefore, as easy as writing a function.</li>
+</ul>
+<p>References:</p>
+<ul>
+<li><a href="https://www.modernescpp.com/index.php/c-20-concepts-the-details">Modernes C++: Concepts, the details</a></li>
+<li><a href="https://www.modernescpp.com/index.php/c-20-concepts-defining-concepts">Modernes C++: Defining Concepts</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/language/constraints">CppReference</a></li>
+<li><a href="https://devblogs.microsoft.com/cppblog/c20-concepts-are-here-in-visual-studio-2019-version-16-3/">Microsoft C++ Blog</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Concepts_(C%2B%2B">Wikipedia</a>)</li>
+</ul>"""

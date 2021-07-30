@@ -1,0 +1,50 @@
+Short circuit evaluation
+
+What's the output of the following piece of code and why?
+
+#include <iostream>
+
+bool a() {
+  std::cout << "a|";
+  return false;
+}
+
+bool b() {
+  std::cout << "b|";
+  return true;
+}
+
+int main() {
+  if (a() && b()) {
+    std::cout << "main";
+  }
+  return 0;
+}
+
+
+The output will simply be `a|`.
+
+In `main()`, in the `if` condition first `a()` is called which before returning `false`, prints `a|`.
+
+In C++, like in many other programming languages there is short-circuit evaluation meaning that once it's for sure thta tthe whole ocndition cannot be fulfilled, the evaluation stops. 
+
+As the two subexrepssions are joined with `&&`, both sides must be `true` in order to have the full expression `true`:
+
+| a() | b() | a() && b() |
+|----:|----:|-----------:|
+|false|false|false|
+|false|true|false|
+|true|false|false|
+|true|true|true|
+
+In case, `a()` is not true, the rest of the expression is not evaluated to save some precious CPU cycles.
+
+This short circuiting is also a reason - besides sheer readability -, why calls in a condition should not have side effects (changing states of an object/variable) besides simply returning a boolean. The caller cannot be sure whether it would be evaluated.
+
+I know this sounds simple and probably we all learnt this in the beginning of our C++ career. But there is something else to remember. When you define the logical operators for your own class, so when you overload for example `operator&&`, you lose short circuiting. 
+
+The reason is that before calling the overloaded operator &&, both the left-hand-side and the right-hand-side arguments of the overloaded function are evaluated. A function call is a sequence-point and therefore all the computations and the side-effects are complete before making the function call. This is eager strategy.
+
+References:
+[Cpp Truths](http://cpptruths.blogspot.com/2014/09/short-circuiting-overloaded-and-using.html)
+[StackOverflow](https://stackoverflow.com/questions/25913237/is-there-actually-a-reason-why-overloaded-and-dont-short-circuit)

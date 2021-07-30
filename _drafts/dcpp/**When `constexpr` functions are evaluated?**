@@ -1,0 +1,32 @@
+**When `constexpr` functions are evaluated?**
+
+`constexpr` functions might be evaluated at compile time, but it's not guaranteed. It can be executes both at runtime and at compile time. It often depends on the compiler version and the optimisation level.
+
+If the value of a `constexpr` function is requested during compile time with `constexpr` variable, then it will be executaed at compile time: `constexpr auto foo = bar(42)` where `bar` is a `constexpr` function.
+
+Also, if a `constexpr` fuctions is exectued in the context of a C-array initialization or static assertions, it will be evaluated at cmpile time.
+
+In case, a constant is needed, but you provide a only runtime function, the compiler will you.
+
+It's not a good idea to make all functions `constexpr` as most computations are best done at run time. At the same time, it's worth to note that `constexpr` functions will be always threadsafe and inlined.
+
+References:
+- [C++ Core Guidelines: If a function may have to be evaluated at compile time, declare it constexpr](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#f4-if-a-function-may-have-to-be-evaluated-at-compile-time-declare-it-constexpr)
+- [Modernes C++: Programming at Compile Time with constexpr](https://www.modernescpp.com/index.php/c-core-guidelines-programming-at-compile-time-with-constexpr)
+
+"""When constexpr functions are evaluated?"""
+
+"""<p><strong>When <code>constexpr</code> functions are evaluated?</strong></p>"""
+
+"""<p>Also, if a <code>constexpr</code> functions are executed in the context of a C-array initialization or static assertions, it will be evaluated at compile time...</p>"""
+
+"""<p><code>constexpr</code> functions might be evaluated at compile-time, but it&#39;s not guaranteed. It can be executed both at runtime and at compile time. It often depends on the compiler version and the optimisation level.</p>
+<p>If the value of a <code>constexpr</code> function is requested during compile time with <code>constexpr</code> variable, then it will be executed at compile time: <code>constexpr auto foo = bar(42)</code> where <code>bar</code> is a <code>constexpr</code> function.</p>
+<p>Also, if a <code>constexpr</code> functions are executed in the context of a C-array initialization or static assertions, it will be evaluated at compile time.</p>
+<p>In case, a constant is needed, but you provide an only runtime function, the compiler will you.</p>
+<p>It&#39;s not a good idea to make all functions <code>constexpr</code> as most computations are best done at run time. At the same time, it&#39;s worth to note that <code>constexpr</code> functions will be always threadsafe and inlined.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#f4-if-a-function-may-have-to-be-evaluated-at-compile-time-declare-it-constexpr">C++ Core Guidelines: If a function may have to be evaluated at compile-time, declare it constexpr</a></li>
+<li><a href="https://www.modernescpp.com/index.php/c-core-guidelines-programming-at-compile-time-with-constexpr">Modernes C++: Programming at Compile Time with constexpr</a></li>
+</ul>"""

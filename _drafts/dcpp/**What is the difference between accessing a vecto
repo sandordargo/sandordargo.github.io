@@ -1,0 +1,33 @@
+**What is the difference between accessing a vector element with `operator[]` or with `at()` member function?**
+
+Both `std::vector::operator[]` and `std::vector::at` have the same signatures. They take a `size_type` that represents the position of the element to be returned and they both have a `const` and a non-`const` version.
+
+The difference is between how they handle when a non-existant element is requested. Let's say you have a vector of 5 elements, so the highest position in it has the index of 4. (0 is the first). When you pass position 5 to `operator[]`, all bets are off. It's undefined behaviour, the compiler is allowed to do whatever. In most cases, `operator[]` will read memory that doesn't belong to the vector. It will read the memory address where the requested element would be. Whatever there is, it will be returned. There is a fair chance to get a segmentation fault.
+
+On the other hand, `at()` will perform a runtime check and if the requested element is out of bounds, an `out_of_range` exception is thrown. This is rahter unique in the STL, one of the very few exception thrown by it.
+
+The downside of this safety is that it's slow. It can be 250% slower then the `operator[]` without optimizations turned out. With compiler optimizations turned on, the difference is negliable. But it's not a good practice to rely on optimizations.
+
+As element access is mostly used in loop contexts, and there bounds checks are not needed.
+
+Reference:
+- [Undefined behaviour in the STL - Sandor Dargo (C++ on Sea 2020)](https://www.youtube.com/watch?v=BEmAo6Fdg-Q)
+
+
+
+
+"""What is the difference between accessing a vector element with operator[] or with at() member function?"""
+
+"""<p><strong>What is the difference between accessing a vector element with <code>operator[]</code> or with <code>at()</code> member function?</strong></p>"""
+
+"""<p><code>at()</code> will perform a runtime check and if the requested element is out of bounds, an <code>out_of_range</code> exception is thrown. This is rather unique in the STL, one of the very few exceptions thrown by it...</p>"""
+
+"""<p>Both <code>std::vector::operator[]</code> and <code>std::vector::at</code> have the same signatures. They take a <code>size_type</code> that represents the position of the element to be returned and they both have a <code>const</code> and a non-<code>const</code> version.</p>
+<p>The difference is between how they handle when a non-existent element is requested. Let&#39;s say you have a vector of 5 elements, so the highest position in it has the index of 4. (0 is the first). When you pass position 5 to <code>operator[]</code>, all bets are off. It&#39;s undefined behaviour, the compiler is allowed to do whatever. In most cases, <code>operator[]</code> will read memory that doesn&#39;t belong to the vector. It will read the memory address where the requested element would be. Whatever there is, it will be returned. There is a fair chance to get a segmentation fault.</p>
+<p>On the other hand, <code>at()</code> will perform a runtime check and if the requested element is out of bounds, an <code>out_of_range</code> exception is thrown. This is rather unique in the STL, one of the very few exceptions thrown by it.</p>
+<p>The downside of this safety is that it&#39;s slow. It can be 250% slower then the <code>operator[]</code> without optimizations turned on. With compiler optimizations turned on, the difference is negligible. But it&#39;s not a good practice to rely on optimizations.</p>
+<p>As element access is mostly used in loop contexts when the passed parameter is always between 0 and the size of the <code>vector</code>. There bounds checks are not needed.</p>
+<p>Reference:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=BEmAo6Fdg-Q">Undefined behaviour in the STL - Sandor Dargo (C++ on Sea 2020)</a></li>
+</ul>"""

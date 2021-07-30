@@ -1,0 +1,26 @@
+What advatages alias has over typedef?
+
+**What advatages alias has over typedef?**
+
+First, let's see what is a typedef. In case, you want to avoid writing all the time complex typenames, you can introduce a "shortcut", a typedef:
+
+`typedef std::unique_ptr<std::unordered_map<std::string, std::string>> MyStringMap;`
+
+Since C++11, you can use _alias declarations_ instead: `using MyStringMap = std::unique_ptr<std::unordered_map<std::string, std::string>>`
+
+They are doing exactly the same thing, but alias declarations offer a couple of advantages.
+
+In case of function pointers they are more readable:
+
+typedef void (*MyFunctionPointer)(int, int);
+using MyFunctionPointer = void(*)(int, int);
+
+Another advantages is that typedefs don't support templatization, but alias declarations do.
+
+```
+template<typename T>                        
+using MyAllocList = std::list<T, MyAlloc<T>>;
+```
+With typedefs it's much more obscure, given that you even have to use the "::type" suffix and, in templates, the "typename" prefix often required to refer to typedefs.
+
+C++14 even offers alias templates for all the C++11 type traits transformations, such as std::remove_const_t<T>, std::remove_reference_t<T> or std::add_lvalue_reference_t<T>.

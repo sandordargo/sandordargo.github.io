@@ -1,0 +1,30 @@
+**What is 3-way comparison?**
+
+The three-way comparison operator is also known as the starship operator and it looks like this: `lhs <=> rhs`.
+
+It helps to decide which oparand is greater, lesser or whteher they are equal.
+
+If you ever implemented comparison operators in C++, you know what a menial, tedious task it is. You have to define six operators (`==`, `!=`, `<`, `<=`, `>`, `>=`).
+
+With C++20, you can simply `=default` the spaceship operator and it will generate all the six `constexpr` and `noexcept` operators for you and they perform lexicographical comparison.
+
+For the exact rules on the supported types, check [CppReference](https://en.cppreference.com/w/cpp/language/operator_comparison).
+
+References:
+-[ModernesC++](https://www.modernescpp.com/index.php/c-20-the-three-way-comparison-operator)
+-[CppReference](https://en.cppreference.com/w/cpp/language/operator_comparison)
+
+"""What is 3-way comparison?"""
+
+"""<p><strong>What is 3-way comparison?</strong></p>"""
+
+"""<p>With C++20, you can simply <code>=default</code> the spaceship operator and it will generate all the six <code>constexpr</code> and <code>noexcept</code> operators for you and they perform lexicographical comparison...</p>"""
+
+"""<p>The three-way comparison operator is also known as the starship operator and it looks like this: <code>lhs &lt;=&gt; rhs</code>.</p>
+<p>It helps to decide which operand is greater, lesser or whether they are equal.</p>
+<p>If you ever implemented comparison operators in C++, you know what a menial, tedious task it is. You have to define six operators (<code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>).</p>
+<p>With C++20, you can simply <code>=default</code> the spaceship operator and it will generate all the six <code>constexpr</code> and <code>noexcept</code> operators for you and they perform lexicographical comparison.</p>
+<p>For the exact rules on the supported types, check <a href="https://en.cppreference.com/w/cpp/language/operator_comparison">CppReference</a>.</p>
+<p>References:</p>
+<p>-<a href="https://www.modernescpp.com/index.php/c-20-the-three-way-comparison-operator">ModernesC++</a></p>
+<p>-<a href="https://en.cppreference.com/w/cpp/language/operator_comparison">CppReference</a></p>"""

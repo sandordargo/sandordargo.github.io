@@ -1,0 +1,68 @@
+**When should we use unique pointers?**
+
+If you need a smart pointer, by default, you should reach for `std::unique_ptr`. It is a small, fast, move-only smart pointer for managing resources with exclusive-ownership semantics. 
+
+They have the same size as a raw pointer, and for most operations they require the same amount of instructions.
+
+As mentioned, it's for exclusive-ownership. Whatever it points to, it also owns it. `std::unique_ptr` is a move only type, copying is not allowed, there can be only one owner. There is no reference counting, this makes it smaller and faster than the `std::shared_ptr`.
+
+By default, resource destruction takes place via `delete`, but custom deleters can be specified. Stateful deleters and function pointers as deleters increase the size of std::unique_ptr objects. Resource destruction happens as soon as the pointer goes out of scope.
+
+In C++11, one can create a unique poitner as such:
+
+```
+std::unique_ptr<T> ptr (new T());
+// or;
+T* t = new T();
+std::unique_ptr<T> ptr2 (t);
+```
+
+C++14 introduced `std::make_unique` to ease the creation:
+
+```
+std::unique_ptr<T> ptr = std::make_unique<T>();
+```
+
+The new way of pointer creation is safer, because before you could accidentally pass in a raw pointer twice to a new unique pointer.
+
+A common use for std::unique_ptr is as a factory function return type for objects in a hierarchy. In case it turns out that a shared pointer would be a better fit, the conversion is really easy:
+
+```
+std::unique_ptr<T> unique = std::make_unique<T>();
+std::shared_ptr<T> shared = std::move(unique);
+```
+
+"""When should we use unique pointers?"""
+
+"""<p><strong>When should we use unique pointers?</strong></p>"""
+
+"""<p>A common use for std::unique_ptr is as a factory function return type for objects in a hierarchy. In case it turns out that a shared pointer would be a better fit, the conversion is really easy...</p>"""
+
+"""<p>If you need a smart pointer, by default, you should reach for <code>std::unique_ptr</code>. It is a small, fast, move-only smart pointer for managing resources with exclusive-ownership semantics. </p>
+<p>They have the same size as a raw pointer, and for most operations, they require the same amount of instructions.</p>
+<p>As mentioned, it&#39;s for exclusive-ownership. Whatever it points to, it also owns it. <code>std::unique_ptr</code> is a move only type, copying is not allowed, there can be only one owner. There is no reference counting, this makes it smaller and faster than the <code>std::shared_ptr</code>.</p>
+<p>By default, resource destruction takes place via <code>delete</code>, but custom deleters can be specified. Stateful deleters and function pointers as deleters increase the size of std::unique_ptr objects. Resource destruction happens as soon as the pointer goes out of scope.</p>
+<p>In C++11, one can create a unique poitner as such:</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #d0d0d0">std::unique_ptr&lt;T&gt;</span> <span style="color: #d0d0d0">ptr</span> <span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">new</span> <span style="color: #d0d0d0">T());</span>
+<span style="color: #999999; font-style: italic">// or;</span>
+<span style="color: #d0d0d0">T*</span> <span style="color: #d0d0d0">t</span> <span style="color: #d0d0d0">=</span> <span style="color: #6ab825; font-weight: bold">new</span> <span style="color: #d0d0d0">T();</span>
+<span style="color: #d0d0d0">std::unique_ptr&lt;T&gt;</span> <span style="color: #d0d0d0">ptr2</span> <span style="color: #d0d0d0">(t);</span>
+</pre></div>
+<p>C++14 introduced <code>std::make_unique</code> to ease the creation:</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #d0d0d0">std::unique_ptr&lt;T&gt;</span> <span style="color: #d0d0d0">ptr</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">std::make_unique&lt;T&gt;();</span>
+</pre></div>
+<p>The new way of pointer creation is safer, because before you could accidentally pass in a raw pointer twice to a new unique pointer.</p>
+<p>A common use for std::unique_ptr is as a factory function return type for objects in a hierarchy. In case it turns out that a shared pointer would be a better fit, the conversion is really easy:</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #d0d0d0">std::unique_ptr&lt;T&gt;</span> <span style="color: #d0d0d0">unique</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">std::make_unique&lt;T&gt;();</span>
+<span style="color: #d0d0d0">std::shared_ptr&lt;T&gt;</span> <span style="color: #d0d0d0">shared</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">std::move(unique);</span>
+</pre></div>
+<p>References:</p>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/memory/unique_ptr">C++ Reference</a></li>
+<li><a href="https://www.nextptr.com/question/qa1257940863/converting-unique_ptr-to-shared_ptr-factory-function-example">Converting unique_ptr to shared_ptr: Factory function example</a></li>
+<li><a href="https://amzn.to/38gK5bd">Effective Modern C++ by Scott Meyers</a></li>
+</ul>"""
+
+What is Sandor's biggest strength?
+What is Sandor's biggest potential?
+What can Sandor be better at than anyone else?

@@ -1,0 +1,59 @@
+**When should you declare your functions as `noexcept`?**
+
+You should definitely put `noexcept` on every function written completely in C or in any other language without exceptions. The C++ Standard Library does that implicitly for all functions in the C Standard Library.
+
+Otherwise you should use `noexcept` for functions that doesn't throw an exception, or if it throws, then you don't mind letting the program crash.
+
+Here is a small code sample from [ModernesC++](https://www.modernescpp.com/index.php/c-core-guidelines-the-noexcept-specifier-and-operator) to show how to use it:
+
+```
+void func1() noexcept;        // does not throw
+void func2() noexcept(true);  // does not throw
+void func3() throw();         // does not throw
+
+void func4() noexcept(false); // may throw
+```
+
+But what does it mean that a function doesn't throw an exception? It means it cannot use any other function that throws, it is declared as `noexcept` itself and it doesn't use `dynamic_cast` to a reference type.
+
+The six generated special functions are implictely `noexcept` functions.
+
+If an exception is thrown in spite `noexcept` specifier present, `std::terminate` is called.
+
+So you can use `noexcept` when it's better to crash than actually handling an exception, as the Core Guidlienes also indicates.
+
+Using `noexcept` can give hints both for the compiler to perform certain optimizations and for the developers as well that they don't have to handle possible exceptions.
+
+
+References:
+- [C++ Core Guidelines: F6](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#f6-if-your-function-may-not-throw-declare-it-noexcept)
+- [C++ Core Guidelines: E12](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Re-noexcept)
+- [ModernesC++: C++ Core Guidelines: The noexcept Specifier and Operator](https://www.modernescpp.com/index.php/c-core-guidelines-the-noexcept-specifier-and-operator)
+
+"""When should you declare your functions as noexcept?"""
+
+"""<p><strong>When should you declare your functions as <code>noexcept</code>?</strong></p>"""
+
+"""<p>So you can use <code>noexcept</code> when it&#39;s better to crash than actually handling an exception, as the Core Guidelines also indicates...</p>"""
+
+"""<p>You should definitely put <code>noexcept</code> on every function written completely in C or in any other language without exceptions. The C++ Standard Library does that implicitly for all functions in the C Standard Library.</p>
+<p>Otherwise, you should use <code>noexcept</code> for functions that don&#39;t throw an exception, or if it throws, then you don&#39;t mind letting the program crash.</p>
+<p>Here is a small code sample from <a href="https://www.modernescpp.com/index.php/c-core-guidelines-the-noexcept-specifier-and-operator">ModernesC++</a> to show how to use it:</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">void</span> <span style="color: #d0d0d0">func1()</span> <span style="color: #d0d0d0">noexcept;</span>        <span style="color: #999999; font-style: italic">// does not throw</span>
+<span style="color: #6ab825; font-weight: bold">void</span> <span style="color: #447fcf">func2</span><span style="color: #d0d0d0">()</span> <span style="color: #d0d0d0">noexcept(</span><span style="color: #24909d">true</span><span style="color: #d0d0d0">);</span>  <span style="color: #999999; font-style: italic">// does not throw</span>
+<span style="color: #6ab825; font-weight: bold">void</span> <span style="color: #447fcf">func3</span><span style="color: #d0d0d0">()</span> <span style="color: #6ab825; font-weight: bold">throw</span><span style="color: #d0d0d0">();</span>         <span style="color: #999999; font-style: italic">// does not throw</span>
+
+<span style="color: #6ab825; font-weight: bold">void</span> <span style="color: #447fcf">func4</span><span style="color: #d0d0d0">()</span> <span style="color: #d0d0d0">noexcept(</span><span style="color: #24909d">false</span><span style="color: #d0d0d0">);</span> <span style="color: #999999; font-style: italic">// may throw</span>
+</pre></div>
+
+<p>But what does it mean that a function doesn&#39;t throw an exception? It means it cannot use any other function that throws, it is declared as <code>noexcept</code> itself and it doesn&#39;t use <code>dynamic_cast</code> to a reference type.</p>
+<p>The six generated special functions are implictely <code>noexcept</code> functions.</p>
+<p>If an exception is thrown in spite of <code>noexcept</code> specifier being present, <code>std::terminate</code> is called.</p>
+<p>So you can use <code>noexcept</code> when it&#39;s better to crash than actually handling an exception, as the Core Guidelines also indicates.</p>
+<p>Using <code>noexcept</code> can give hints both for the compiler to perform certain optimizations and for the developers as well that they don&#39;t have to handle possible exceptions.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#f6-if-your-function-may-not-throw-declare-it-noexcept">C++ Core Guidelines: F6</a></li>
+<li><a href="http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Re-noexcept">C++ Core Guidelines: E12</a></li>
+<li><a href="https://www.modernescpp.com/index.php/c-core-guidelines-the-noexcept-specifier-and-operator">ModernesC++: C++ Core Guidelines: The noexcept Specifier and Operator</a></li>
+</ul>"""

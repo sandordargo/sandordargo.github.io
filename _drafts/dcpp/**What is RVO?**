@@ -1,0 +1,93 @@
+**What is RVO?**
+
+RVO stands for return value optimization.
+
+It is a compiler optimization that involves eliminating the temporary object created to hold a function's return value. RVO is particularly notable for being allowed to change the observable behaviour of the resulting program by the C++ standard.
+
+In general, the C++ standard allows a compiler to perform any optimization, provided the resulting executable exhibits the same observable behaviour as if (i.e. pretending) all the requirements of the standard have been fulfilled. This is commonly referred to as the "as-if rule". The term return value optimization refers to a special clause in the C++ standard that goes even further than the "as-if" rule: an implementation may omit a copy operation resulting from a return statement, even if the copy constructor has side effects.
+
+#include <iostream>
+
+struct C {
+  C() = default;
+  C(const C&) { std::cout << "A copy was made.\n"; }
+};
+
+C f() {
+  return C();
+}
+
+int main() {
+  std::cout << "Hello World!\n";
+  C obj = f();
+}
+
+In the past, using old compilers, the resulting program may have displayed the following output:
+
+Hello World!
+A copy was made.
+A copy was made.
+
+These days, thanks to RVO, there would be no copies and the output would simply be:
+
+Hello World!
+
+When the compiler sees a variable in the calling function (that will be constructed from the return value), and a variable in the called function (that will be returned), it realizes it doesn’t need both variables. Under the covers, the compiler passes the address of the calling function’s variable to the called function.
+
+To quote the C++98 standard, “Whenever a temporary class object is copied using a copy constructor … an implementation is permitted to treat the original and the copy as two different ways of referring to the same object and not perform a copy at all, even if the class copy constructor or destructor have side effects. For a function with a class return type, if the expression in the return statement is the name of a local object … an implementation is permitted to omit creating the temporary object to hold the function return value …” (Section 12.8 [class.copy], paragraph 15 of the C++98 standard. The C++11 standard has similar language in section 12.8, paragraph 31, but it’s more complicated.)
+
+References:
+- [Abseil.io](https://abseil.io/tips/11)
+- [Wikipedia: copy elision](https://en.wikipedia.org/wiki/Copy_elision#Return_value_optimization)
+
+**How can we ensure the compiler performs RVO?**
+
+Let's remind us from yesterday about what RVO is!
+
+It is a compiler optimization that involves eliminating the temporary object created to hold a function's return value. RVO is particularly notable for being allowed to change the observable behaviour of the resulting program by the C++ standard.
+
+In practice, it means that when RVO is applied, less copies of an object will be made, the copy constructor will be invoked fewer times. The gain can be considerable for some big objects.
+
+In order to have RVO applied the returned object has to be constructed on a return statement. A function can have multiple exits, it's not a problem as long as the construction happens on the return statememt.
+
+SomeBigObject f()
+{
+    if (...)
+    {
+        return SomeBigObject{...};
+    }
+    else
+    {
+        return SomeBigObject{...};
+    }
+}
+
+What is NRVO and when can it happen?
+
+N in NRVO stands from _Named_, so we speak about Named Return Value Optimization. Copies of temporary objects can be spared even if the returned object has a name and is therefore not constructed on the return statement. The requirement for an NRVO is to have one single object to return even if there are multiple exit points.
+
+SomeBigObject f()
+
+{    SomeBigObject result{...};
+    if (...)
+    {
+        return result;
+    }
+    ...
+    return result;
+}
+
+So NRVO won’t happen here:
+SomeBigObject f(...) {
+  SomeBigObject object1{...}
+  SomeBigObject object2{...};
+  if (...) {
+    return object1;
+  } else {
+    return object2;
+  }
+}
+
+References:
+- [Abseil.io](https://abseil.io/tips/11)
+- [Fluent C++](https://www.fluentcpp.com/2016/11/28/return-value-optimizations/)

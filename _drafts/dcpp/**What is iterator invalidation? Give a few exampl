@@ -1,0 +1,82 @@
+**What is iterator invalidation? Give a few examples.**
+
+When you declare an iterator pointing at an element of a container, you might expect it to be valid all the time. There are some iterators that will be always valid and point at the place you'd expect it to point to.
+
+For example insert iterators (e.g. `std::back_insert_iterator`) is guaranteed to remain valid as long as all insertions are performed through this iterator and no other independent iterator-invalidating event occurs. They will even remain valid if a container has to be reallocated as it grows (notably a `std::vector`).
+
+Also, read-only methods never invalidate iterators or references. Methods which modify the contents of a container may invalidate iterators and/or references.
+
+Refer to [this table](https://en.cppreference.com/w/cpp/container#Iterator_invalidation) to have a full list of when a container is invalidated.
+
+Here is an example:
+
+```
+#include <algorithm>
+#include <iostream>
+#include <vector>
+
+int main() {
+    std::vector<int> numbers { 1, 2, 3, 4, 5, 6, 4};
+
+    int val = 4;
+    std::vector<int>::iterator it;
+    for (it = numbers.begin(); it != numbers.end(); ++it) {
+        if (*it == val) {
+            numbers.erase(it);
+            numbers.shrink_to_fit();
+        }
+    }
+    
+    std::cout << "numbers after erase:";
+    for (const auto num : numbers) std::cout << num << " ";
+    
+}
+```
+
+When `erase` is called with `it`, its position becomed invalidated and what should happen in the next iteratiot is undefined behaviour. You might find that everything is fine, or that the results are not coherent, or event you can get a segmentation fault. Compiler the above code and check it yourself, play with the inputs.
+
+References:
+- [C++ Reference: Iterator invalidation](https://en.cppreference.com/w/cpp/container#Iterator_invalidation)
+- [Stackoverflow: Iterator invalidation rules](https://stackoverflow.com/questions/6438086/iterator-invalidation-rules)
+- [Undefined behaviour in the STL - Sandor Dargo (C++ on Sea 2020)](https://www.youtube.com/watch?v=BEmAo6Fdg-Q)
+
+
+"""What is iterator invalidation? Give a few examples."""
+
+"""<p><strong>What is iterator invalidation? Give a few examples.</strong></p>"""
+
+"""<p>Read-only methods never invalidate iterators or references. Methods which modify the contents of a container may invalidate iterators and/or references...</p>"""
+
+"""<p>When you declare an iterator pointing at an element of a container, you might expect it to be valid all the time. There are some iterators that will be always valid and point at the place you&#39;d expect it to point to.</p>
+<p>For example, insert iterators (e.g. <code>std::back_insert_iterator</code>) is guaranteed to remain valid as long as all insertions are performed through this iterator and no other independent iterator-invalidating event occurs. They will even remain valid if a container has to be reallocated as it grows (notably a <code>std::vector</code>).</p>
+<p>Also, read-only methods never invalidate iterators or references. Methods which modify the contents of a container may invalidate iterators and/or references.</p>
+<p>Refer to <a href="https://en.cppreference.com/w/cpp/container#Iterator_invalidation">this table</a> to have a full list of when a container is invalidated.</p>
+<p>Here is an example:</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #cd2828; font-weight: bold">#include &lt;algorithm&gt;</span>
+<span style="color: #cd2828; font-weight: bold">#include &lt;iostream&gt;</span>
+<span style="color: #cd2828; font-weight: bold">#include &lt;vector&gt;</span>
+
+<span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">main</span><span style="color: #d0d0d0">()</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #d0d0d0">std::vector&lt;</span><span style="color: #6ab825; font-weight: bold">int</span><span style="color: #d0d0d0">&gt;</span> <span style="color: #d0d0d0">numbers</span> <span style="color: #d0d0d0">{</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">2</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">3</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">4</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">5</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">6</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">4</span><span style="color: #d0d0d0">};</span>
+
+    <span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">val</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">4</span><span style="color: #d0d0d0">;</span>
+    <span style="color: #d0d0d0">std::vector&lt;</span><span style="color: #6ab825; font-weight: bold">int</span><span style="color: #d0d0d0">&gt;::iterator</span> <span style="color: #d0d0d0">it;</span>
+    <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">(it</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">numbers.begin();</span> <span style="color: #d0d0d0">it</span> <span style="color: #d0d0d0">!=</span> <span style="color: #d0d0d0">numbers.end();</span> <span style="color: #d0d0d0">++it)</span> <span style="color: #d0d0d0">{</span>
+        <span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">(*it</span> <span style="color: #d0d0d0">==</span> <span style="color: #d0d0d0">val)</span> <span style="color: #d0d0d0">{</span>
+            <span style="color: #d0d0d0">numbers.erase(it);</span>
+            <span style="color: #d0d0d0">numbers.shrink_to_fit();</span>
+        <span style="color: #d0d0d0">}</span>
+    <span style="color: #d0d0d0">}</span>
+    
+    <span style="color: #d0d0d0">std::cout</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #ed9d13">&quot;numbers after erase:&quot;</span><span style="color: #d0d0d0">;</span>
+    <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">const</span> <span style="color: #6ab825; font-weight: bold">auto</span> <span style="color: #d0d0d0">num</span> <span style="color: #d0d0d0">:</span> <span style="color: #d0d0d0">numbers)</span> <span style="color: #d0d0d0">std::cout</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #d0d0d0">num</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #ed9d13">&quot; &quot;</span><span style="color: #d0d0d0">;</span>
+    
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+<p>When <code>erase</code> is called with <code>it</code>, its position became invalidated and what should happen in the next iteration is undefined behaviour. You might find that everything is fine, or that the results are not coherent, or event you can get a segmentation fault. Compiler the above code and check it yourself, play with the inputs.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/container#Iterator_invalidation">C++ Reference: Iterator invalidation</a></li>
+<li><a href="https://stackoverflow.com/questions/6438086/iterator-invalidation-rules">Stackoverflow: Iterator invalidation rules</a></li>
+<li><a href="https://www.youtube.com/watch?v=BEmAo6Fdg-Q">Undefined behaviour in the STL - Sandor Dargo (C++ on Sea 2020)</a></li>
+</ul>"""

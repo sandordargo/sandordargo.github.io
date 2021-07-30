@@ -1,0 +1,63 @@
+**What are POD types in C++?**
+
+First, what does POD stand for? It stands for Plain Old Data. 
+
+As an answer you might start to enumerate all the different integer and floating-point types, character types, boolean and lay back. But, in fact, those are pretty much the __fundamental types__. The previous enumeration only lacked `void` and `nullptr_t`.
+
+Then what can be the POD types?
+
+The definition changed with C++11, I'll only consider them. For older requirements, check out [this link](https://en.cppreference.com/w/cpp/named_req/PODType).
+
+POD types are either scalar types or can be class types or an array of POD types.
+
+Scalar POD types are either
+- arithmetic types, like boolean, integer or floating-point numbers or characters.
+- pointers
+- enums
+- `nullptr_t`
+
+Class POD types (`class`, `struct`, `union`) have to satisfy the next characeristics. They are
+- trivial types
+- types with standard layout
+- all of their non-static members are PODs themselves
+
+As you can see, this is a recursive definition.
+
+C++20 deprecated `PODType` and replaces it with `TrivialType`.
+
+References:
+- [C++ Reference: Fundamental Type](https://en.cppreference.com/w/cpp/language/types)
+- [C++ Reference: POD Type](https://en.cppreference.com/w/cpp/named_req/PODType)
+
+
+"""What are POD types in C++?"""
+
+"""<p><strong>What are POD types in C++?</strong></p>"""
+
+"""<p>As an answer, you might start to enumerate all the different integer and floating-point types, character types, boolean and lay back. But, in fact, those are pretty much the <strong>fundamental types</strong>. The previous enumeration only lacked <code>void</code> and <code>nullptr_t</code>...</p>"""
+
+"""<p>First, what does POD stand for? It stands for Plain Old Data. </p>
+<p>As an answer, you might start to enumerate all the different integer and floating-point types, character types, boolean and lay back. But, in fact, those are pretty much the <strong>fundamental types</strong>. The previous enumeration only lacked <code>void</code> and <code>nullptr_t</code>.</p>
+<p>Then what can be the POD types?</p>
+<p>The definition changed with C++11, I&#39;ll only consider them. For older requirements, check out <a href="https://en.cppreference.com/w/cpp/named_req/PODType">this link</a>.</p>
+<p>POD types are either scalar types or can be class types or an array of POD types.</p>
+<p>Scalar POD types are either</p>
+<ul>
+<li>arithmetic types, like boolean, integer or floating-point numbers or characters.</li>
+<li>pointers</li>
+<li>enums</li>
+<li><code>nullptr_t</code></li>
+</ul>
+<p>Class POD types (<code>class</code>, <code>struct</code>, <code>union</code>) have to satisfy the next characteristics. They are</p>
+<ul>
+<li>trivial types</li>
+<li>types with a standard layout</li>
+<li>all of their non-static members are PODs themselves</li>
+</ul>
+<p>As you can see, this is a recursive definition.</p>
+<p>C++20 deprecated <code>PODType</code> and replaces it with <code>TrivialType</code>.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/language/types">C++ Reference: Fundamental Type</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/named_req/PODType">C++ Reference: POD Type</a></li>
+</ul>"""

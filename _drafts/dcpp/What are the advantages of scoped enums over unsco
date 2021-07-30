@@ -1,0 +1,37 @@
+What are the advantages of scoped enums over unscoped enums?
+
+**What are the advantages of scoped enums over unscoped enums?**
+
+C++98-style enums are now known as unscoped enums. You'd declare them as such:
+
+```
+enum Transmission { manual, automatic };
+
+auto manual = false; // compilation error, as manual is already declared in the scope
+```
+
+The modern scoped enums use the class keyword and the enumerators are visible only within the enum. They convert to other types only with a cast.
+
+```
+enum class Transmission { manual, automatic };
+auto manual = false; // now compiles, manual has not been declared in the scope
+
+Transmission t = manual; // error, no enumerator manual is in scope
+
+Transmission t = Transmission::manual; // OK
+auto t = Transmission::manual; // OK
+```
+Both scoped and unscoped enums support specification of the underlying type. The default underlying type for scoped enums is int. Unscoped enums have no default underlying type.
+
+The specification happens with the same syntax:
+
+```
+enum Status: std::uint32_t { /*..*/ };
+enum class Status: std::uint32_t { /*...*/ };
+```
+
+Unscoped enums may be forward-declared only if their declaration specifies an underlying type, otherwise the size of an enum is unknown. On the other hand, as scoped enums by default have an underlying type, they can be always forward declared.
+
+References:
+- [C++ Reference](https://en.cppreference.com/w/cpp/language/enum)
+- [Effective Modern C++ by Scott Meyers](https://amzn.to/38gK5bd)

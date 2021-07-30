@@ -1,0 +1,86 @@
+How the follwing piece of could should behave?
+
+```
+#include <algorithm>
+#include <iostream>
+#include <vector>
+
+int main() {
+  std::vector<int> values{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+  std::vector<int> otherValues{ 10, 20, 30 };
+  std::vector<int> results;
+
+  std::transform(values.begin(), values.end(), otherValues.begin(), 
+    std::back_inserter(results), 
+    [](int number, int otherNumber) {return number + otherNumber;});
+  
+  std::cout << "copied numbers: ";
+  for (const auto& number : results) {
+    std::cout << ' ' << number;
+  }
+  std::cout << '\n';
+
+  return 0;
+}
+```
+
+First, what can be the intention behind such code? With `std::transform` we try to combine the content of two vectors, by adding up the nth element of the `values` with the nth element of the `otherValues` and we push the sum to the `results` vector.
+
+It's simple code, but there is a catch. The two ranges that are passed in, don't have the same amount of elements.
+
+Remember, `std::transform` takes the first range by a begin and an end iterator and a second input range (which is not mandatory by the way) only by the begin iterator.
+
+Like all the similar functions in the `<algorithm>` header, `std::transform` assumes andin fact expects that the second input range has at least as many elements as the first.
+
+But what if this expectation is not met?
+
+You might expect that a zero initalized item will be taken instead, but it's not the case, even though it's easy to come up with some example code that would support this assumption, but no.
+
+It's undefined behaviour.
+
+In most cases, the runtime will just take any value that it finds in a next memory address even if that does not belong to the vector.
+
+So you always have to make sure that the second input range, defined only by its starting point is always at least as long as the first one.
+
+"""Can you combine containers of different sizes?"""
+
+
+"""<p>Explain what the following piece of code does!</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #cd2828; font-weight: bold">#include &lt;algorithm&gt;</span>
+<span style="color: #cd2828; font-weight: bold">#include &lt;iostream&gt;</span>
+<span style="color: #cd2828; font-weight: bold">#include &lt;vector&gt;</span>
+
+<span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">main</span><span style="color: #d0d0d0">()</span> <span style="color: #d0d0d0">{</span>
+  <span style="color: #d0d0d0">std::vector&lt;</span><span style="color: #6ab825; font-weight: bold">int</span><span style="color: #d0d0d0">&gt;</span> <span style="color: #d0d0d0">values{</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">2</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">3</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">4</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">5</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">6</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">7</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">8</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">9</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">10</span> <span style="color: #d0d0d0">};</span>
+  <span style="color: #d0d0d0">std::vector&lt;</span><span style="color: #6ab825; font-weight: bold">int</span><span style="color: #d0d0d0">&gt;</span> <span style="color: #d0d0d0">otherValues{</span> <span style="color: #3677a9">10</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">20</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">30</span> <span style="color: #d0d0d0">};</span>
+  <span style="color: #d0d0d0">std::vector&lt;</span><span style="color: #6ab825; font-weight: bold">int</span><span style="color: #d0d0d0">&gt;</span> <span style="color: #d0d0d0">results;</span>
+
+  <span style="color: #d0d0d0">std::transform(values.begin(),</span> <span style="color: #d0d0d0">values.end(),</span> <span style="color: #d0d0d0">otherValues.begin(),</span> 
+    <span style="color: #d0d0d0">std::back_inserter(results),</span> 
+    <span style="color: #d0d0d0">[](</span><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">number,</span> <span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">otherNumber)</span> <span style="color: #d0d0d0">{</span><span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">number</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">otherNumber;});</span>
+  
+  <span style="color: #d0d0d0">std::cout</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #ed9d13">&quot;copied numbers: &quot;</span><span style="color: #d0d0d0">;</span>
+  <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">const</span> <span style="color: #6ab825; font-weight: bold">auto</span><span style="color: #d0d0d0">&amp;</span> <span style="color: #d0d0d0">number</span> <span style="color: #d0d0d0">:</span> <span style="color: #d0d0d0">results)</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #d0d0d0">std::cout</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #ed9d13">&#39; &#39;</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #d0d0d0">number;</span>
+  <span style="color: #d0d0d0">}</span>
+  <span style="color: #d0d0d0">std::cout</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #ed9d13">&#39;\n&#39;</span><span style="color: #d0d0d0">;</span>
+
+  <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">;</span>
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+"""
+
+
+"""It's simple code, but there is a catch. The two ranges that are passed in, don't have the same amount of elements..."""
+
+
+"""<p>First, what can be the intention behind such code? With <code>std::transform</code> we try to combine the content of two vectors, by adding up the nth element of the <code>values</code> with the nth element of the <code>otherValues</code> and we push the sum to the <code>results</code> vector.</p>
+<p>It&#39;s simple code, but there is a catch. The two ranges that are passed in, don&#39;t have the same amount of elements.</p>
+<p>Remember, <code>std::transform</code> takes the first range by a begin and an end iterator and a second input range (which is not mandatory by the way) only by the begin iterator.</p>
+<p>Like all the similar functions in the <code>&lt;algorithm&gt;</code> header, <code>std::transform</code> assumes and in fact, expects that the second input range has at least as many elements as the first.</p>
+<p>But what if this expectation is not met?</p>
+<p>You might expect that a zero initialized item will be taken instead, but it&#39;s not the case, even though it&#39;s easy to come up with some example code that would support this assumption, but no.</p>
+<p>It&#39;s undefined behaviour.</p>
+<p>In most cases, the runtime will just take any value that it finds in a next memory address even if that does not belong to the vector.</p>
+<p>So you always have to make sure that the second input range, defined only by its starting point is always at least as long as the first one.</p>
+"""

@@ -1,0 +1,38 @@
+What advantages does having a default constructor has?
+
+We could say that a default constructor gives us the possibility of simple object creation, but it's not so much the case.
+
+It's true that it's simple to create an object without passing any parameters, but it's only useful if the created object is fully usable. If it still has to be initialized, then the simple creation is worth nothing and in fact, it's even misleading and harmful.
+
+On the other hand, many features of the standard library requires having a default constructor.
+
+Think about `std::vector`, when you create a vector of 10 elements (`std::vector<T> ts(10);`), 10 default constructed `T` objects will be added to the new vector.
+
+Having a default constructor also helps to define how an object should look like that was just moved away from.
+
+It's worth to note that having a default constructor doesn't mean that you should define it. Whenever possible, let the compiler generate it. So for example, if a default constructor only default initializes data members, then you are better off using in-class member initializers instead and let the compiler generate the default constructor.
+
+So whenever possible have a default constructor, because it lets you use more language and standard library features, but also make sure that a default constructor leaves a fully usable object behind.
+
+References:
+- [Core Guidelines: C43](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c43-ensure-that-a-copyable-value-type-class-has-a-default-constructor)
+- [Core Guidelines: C45](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c45-dont-define-a-default-constructor-that-only-initializes-data-members-use-in-class-member-initializers-instead)
+
+"""What advantages does having a default constructor has?"""
+
+"""<p><strong>What advantages does having a default constructor has?</strong></p>"""
+
+"""<p>Whenever possible have a default constructor, because it lets you use more language and standard library features, but also make sure that a default constructor leaves a fully usable object behind.</p>"""
+
+"""<p>We could say that a default constructor gives us the possibility of simple object creation, but it&#39;s not so much the case.</p>
+<p>It&#39;s true that it&#39;s simple to create an object without passing any parameters, but it&#39;s only useful if the created object is fully usable. If it still has to be initialized, then the simple creation is worth nothing and in fact, it&#39;s even misleading and harmful.</p>
+<p>On the other hand, many features of the standard library require having a default constructor.</p>
+<p>Think about <code>std::vector</code>, when you create a vector of 10 elements (<code>std::vector&lt;T&gt; ts(10);</code>), 10 default constructed <code>T</code> objects will be added to the new vector.</p>
+<p>Having a default constructor also helps to define how an object should look like that was just moved away from.</p>
+<p>It&#39;s worth to note that having a default constructor doesn&#39;t mean that you should define it. Whenever possible, let the compiler generate it. So for example, if a default constructor only default initializes data members, then you are better off using in-class member initializers instead and let the compiler generate the default constructor.</p>
+<p>So whenever possible have a default constructor, because it lets you use more language and standard library features, but also make sure that a default constructor leaves a fully usable object behind.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c43-ensure-that-a-copyable-value-type-class-has-a-default-constructor">Core Guidelines: C43</a></li>
+<li><a href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c45-dont-define-a-default-constructor-that-only-initializes-data-members-use-in-class-member-initializers-instead">Core Guidelines: C45</a></li>
+</ul>"""

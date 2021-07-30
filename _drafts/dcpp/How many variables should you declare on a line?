@@ -1,0 +1,51 @@
+How many variables should you declare on a line?
+
+One and only one. In most cases. Syntactically it's fine to declare just as many as you want, but declaring only one will increase readability and avoid mistakes.
+
+Consider such a line:
+
+```
+char *p, c, a[7], *pp[7], **aa[10];
+```
+
+It's pretty difficult to know what goes on and easy to make mistakes. When you start adding initializations, it becomes more a mess.
+
+```
+int a, b = 3;
+```
+
+How is `a` initialized?
+
+It's default initialized, but inexperienced colleagues might think, that it should be 3.
+
+If you initialize each variable on its own line, you won't have such misunderstanding, plus it's much easier to add meaningful comments to the code if you want to explain the intention of the variable.
+
+When I see multiple declarations on the same line, most often initialiation comes line by line, variable by variable a few lines below, which is a complete waste of assignment.
+
+Declare and if possible initialize one variable per line to spare some assignments and to oost readabilty.
+
+Reference:
+- [Core Guidelines: ES10](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#es10-declare-one-name-only-per-declaration)
+
+"""How many variables should you declare on a line?"""
+
+"""<p><strong>How many variables should you declare on a line?</strong></p>"""
+
+"""<p>Declare and if possible initialize one variable per line to spare some assignments and to boost readability...</p>"""
+
+"""<p>One and only one. In most cases. Syntactically it&#39;s fine to declare just as many as you want, but declaring only one will increase readability and avoid mistakes.</p>
+<p>Consider such a line:</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">char</span> <span style="color: #d0d0d0">*p,</span> <span style="color: #d0d0d0">c,</span> <span style="color: #d0d0d0">a[</span><span style="color: #3677a9">7</span><span style="color: #d0d0d0">],</span> <span style="color: #d0d0d0">*pp[</span><span style="color: #3677a9">7</span><span style="color: #d0d0d0">],</span> <span style="color: #d0d0d0">**aa[</span><span style="color: #3677a9">10</span><span style="color: #d0d0d0">];</span>
+</pre></div>
+<p>It&#39;s pretty difficult to know what goes on and easy to make mistakes. When you start adding initializations, it becomes more a mess.</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">a,</span> <span style="color: #d0d0d0">b</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">3</span><span style="color: #d0d0d0">;</span>
+</pre></div>
+<p>How is <code>a</code> initialized?</p>
+<p>It&#39;s default initialized, but inexperienced colleagues might think, that it should be 3.</p>
+<p>If you initialize each variable on its own line, you won&#39;t have such misunderstanding, plus it&#39;s much easier to add meaningful comments to the code if you want to explain the intention of the variable.</p>
+<p>When I see multiple declarations on the same line, most often initialization comes line by line, variable by variable a few lines below, which is a complete waste of assignment.</p>
+<p>Declare and if possible initialize one variable per line to spare some assignments and to boost readability.</p>
+<p>Reference:</p>
+<ul>
+<li><a href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#es10-declare-one-name-only-per-declaration">Core Guidelines: ES10</a></li>
+</ul>"""

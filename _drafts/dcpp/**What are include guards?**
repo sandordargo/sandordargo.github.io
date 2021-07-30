@@ -1,0 +1,54 @@
+**What are include guards?**
+
+Include or header guards are there to prevent that the same header file is included multiple times. If a header is included multiple files, then the same entitites would be defined multiple times which is a clear viorlation of the one definition rule. As such, the code wouldn't compile.
+
+In order to understand this beter, we have to remind ourselves that before the compilation the preprocessor replaces all the `#include` statements with the textual copy of the included file.
+
+Hence, we must use include guards in all our header files:
+
+```
+#ifndef SOME_UNIQUE_NAME_HERE
+#define SOME_UNIQUE_NAME_HERE
+ 
+// your declarations (and certain types of definitions) here
+ 
+#endif
+```
+
+At the first inclusion as `SOME_UNIQUE_NAME_HERE` is not defined yet, it will be defined and the content of the header file will be copied. At the second inclusion, `#ifndef SOME_UNIQUE_NAME_HERE` will be evaluated to false and such the preprocessor jumps right after `#endif`, so at the end of the file.
+
+With most moder compilers you can simply start your header file with `pragma once` and avoid the above syntax to get the same results.
+
+References:
+- [Core Guidelines: SF8](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#sf8-use-include-guards-for-all-h-files)
+- [LearnCpp: Header guards](https://www.learncpp.com/cpp-tutorial/header-guards/)
+- [Wikipedia: include guard](https://en.wikipedia.org/wiki/Include_guard)
+
+
+
+
+"""What are include guards?"""
+
+"""<p><strong>What are include guards?</strong></p>"""
+
+"""<p>We have to remind ourselves that before the compilation the preprocessor replaces all the <code>#include</code> statements with the textual copy of the included file...</p>"""
+
+"""<p>Include or header guards are there to prevent that the same header file is included multiple times. If a header is included multiple files, then the same entities would be defined multiple times which is a clear violation of the one definition rule. As such, the code wouldn&#39;t compile.</p>
+<p>In order to understand this better, we have to remind ourselves that before the compilation the preprocessor replaces all the <code>#include</code> statements with the textual copy of the included file.</p>
+<p>Hence, we must use include guards in all our header files:</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #cd2828; font-weight: bold">#ifndef SOME_UNIQUE_NAME_HERE</span>
+<span style="color: #cd2828; font-weight: bold">#define SOME_UNIQUE_NAME_HERE</span>
+ 
+<span style="color: #999999; font-style: italic">// your declarations (and certain types of definitions) here</span>
+ 
+<span style="color: #cd2828; font-weight: bold">#endif</span>
+</pre></div>
+<p>At the first inclusion as <code>SOME_UNIQUE_NAME_HERE</code> is not defined yet, it will be defined and the content of the header file will be copied. At the second inclusion, <code>#ifndef SOME_UNIQUE_NAME_HERE</code> will be evaluated to false and such the preprocessor jumps right after <code>#endif</code>, so at the end of the file.</p>
+<p>With most modern compilers you can simply start your header file with <code>pragma once</code> and avoid the above syntax to get the same results.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#sf8-use-include-guards-for-all-h-files">Core Guidelines: SF8</a></li>
+<li><a href="https://www.learncpp.com/cpp-tutorial/header-guards/">LearnCpp: Header guards</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Include_guard">Wikipedia: include guard</a></li>
+</ul>
+"""

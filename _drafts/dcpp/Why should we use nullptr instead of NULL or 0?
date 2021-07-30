@@ -1,0 +1,34 @@
+Why should we use nullptr instead of NULL or 0?
+
+Why should we use `nullptr` instead of `NULL` or `0`?
+
+The literal `0` is an `int`, not a pointer. If the compiler is looking at a `0` where only a pointer can be used, it will interpret 0 as a null pointer, but that's only a fallback position. The same is true for `NULL`, though implementations are allowed to give NULL an integral type other than `int`, such as `long`, but that is uncommon.
+
+This has the following implication. In case you have a function with three overloads, including integral types and pointers, you might get some surprises:
+
+```
+void foo(int);        // three overloads of f
+void foo(bool);
+void foo(void*);
+
+foo(0);               // calls f(int), not f(void*)
+
+foo(NULL);            // might not compile, but typically calls f(int), never f(void*)
+```                    
+
+Hence was created the guideline to avoid overloading on pointer and integral types.
+
+On the other hand, `nullptr` doesn't have an integral type. It's type is `std::nullptr_t`. It is a distinct type that is not itself a pointer type or a pointer to member type. At the same time, it implicitly converts to all raw pointer types, and that’s what makes `nullptr` act as if it were a pointer of all types.
+
+
+As such, using `nullptr` the pointer overload can be called:
+
+```
+foo(nullptr);  // calls foo(void*) overload
+```
+
+For further advantages related to `nullptr` come into picture with tempalate metaprogramming. For further details, I urge you to check Item 8 or Effective Modern C++.
+
+References:
+- [C++ Reference](https://en.cppreference.com/w/cpp/types/nullptr_t)
+- [Effective Modern C++ by Scott Meyers](https://amzn.to/38gK5bd)

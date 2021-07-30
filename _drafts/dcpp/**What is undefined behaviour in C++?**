@@ -1,0 +1,54 @@
+**What is undefined behaviour in C++?**
+
+Among unspecified, implementation defined and undefined behaviour, this latter one is the most dagnerous one.
+
+When you implement a program invoking some behaviour that is undefined, it basically means that there are no requirements on the behaviour of your whole program. The possible effects are not limited to the calls whose behaviour are unspecified, the compiler can do anything so your software can:
+- crash with seemingly no reasons
+- return logically impossible results
+- have non-deterministic behavior
+
+In fact, the compiler can remove whole execution paths. Let's say you have a big function with one line invoking undefined behaviour. It's possible that the whole function will be removed from the compiled code.
+
+When you have undefined behaviour in your code, you break the rules of the langauge and it won't be detected until runtime. Turning on as many compiler warnings as possible usually helps a lot in removing undefined behaviour.
+
+Some examples for undefined behaviour:
+- Accessing uninitialzied variables
+- Accessing objects after the lifetime ended
+- Deleting objects through base class pointers without a virtual destructor
+
+Avoid undefined behaviour like the plague.
+
+References:
+- [Quora: What is the difference between undefined, unspecified and implementation defined behavior?](https://www.quora.com/What-is-the-difference-between-undefined-unspecified-and-implementation-defined-behavior)
+- [StakcOverFlow: Undefined, unspecified and implementation-defined behavior](https://stackoverflow.com/questions/2397984/undefined-unspecified-and-implementation-defined-behavior)
+- [Undefined behaviour in the STL - Sandor Dargo (C++ on Sea 2020)](https://www.youtube.com/watch?v=BEmAo6Fdg-Q)
+
+
+"""What is undefined behaviour in C++?"""
+
+"""<p><strong>What is undefined behaviour in C++?</strong></p>"""
+
+"""<p>The compiler can remove whole execution paths. Let&#39;s say you have a big function with one line invoking undefined behaviour. It&#39;s possible that the whole function will be removed from the compiled code...</p>"""
+
+"""<p>Among unspecified, implementation-defined and undefined behaviour, this latter one is the most dangerous one.</p>
+<p>When you implement a program invoking some behaviour that is undefined, it basically means that there are no requirements on the behaviour of your whole program. The possible effects are not limited to the calls whose behaviour are unspecified, the compiler can do anything so your software can:</p>
+<ul>
+<li>crash with seemingly no reasons</li>
+<li>return logically impossible results</li>
+<li>have non-deterministic behaviour</li>
+</ul>
+<p>In fact, the compiler can remove whole execution paths. Let&#39;s say you have a big function with one line invoking undefined behaviour. It&#39;s possible that the whole function will be removed from the compiled code.</p>
+<p>When you have undefined behaviour in your code, you break the rules of the language and it won&#39;t be detected until runtime. Turning on as many compiler warnings as possible usually helps a lot in removing undefined behaviour.</p>
+<p>Some examples of undefined behaviour:</p>
+<ul>
+<li>Accessing uninitialized variables</li>
+<li>Accessing objects after the lifetime ended</li>
+<li>Deleting objects through base class pointers without a virtual destructor</li>
+</ul>
+<p>Avoid undefined behaviour like the plague.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://www.quora.com/What-is-the-difference-between-undefined-unspecified-and-implementation-defined-behavior">Quora: What is the difference between undefined, unspecified and implementation defined behavior?</a></li>
+<li><a href="https://stackoverflow.com/questions/2397984/undefined-unspecified-and-implementation-defined-behavior">StakcOverFlow: Undefined, unspecified and implementation-defined behavior</a></li>
+<li><a href="https://www.youtube.com/watch?v=BEmAo6Fdg-Q">Undefined behaviour in the STL - Sandor Dargo (C++ on Sea 2020)</a></li>
+</ul>"""

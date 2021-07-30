@@ -1,0 +1,71 @@
+**What do you exepct that this piece of code does? Will it find `7`?**
+
+```cpp
+#include <algorithm>
+#include <iostream>
+#include <vector>
+
+int main() {
+    std::vector<int> numbers{1,54,7,5335,8};
+    std::cout << std::binary_search(numbers.begin(), numbers.end(), 7) << std::endl;
+}
+```
+
+A
+
+It will most probably not find the position of `7` and even if you have a good result, you cannot rely on it. In fact, the above code has undefined behaviour.
+
+It's all about contracts and principles. In C++, one of the foundational concepts is that you should not pay for what you don't use. According to this spirit, `std::binary_search` and some other algorithms expect that its input range is sorted. After all, a search algorithms should not be responsible for sorting and those who already pass in a sorted range should not pay for a needless sorting attempt.
+
+So to make this code working, you just have to sort the vector before passing it to the search.
+
+```
+#include <algorithm>
+#include <iostream>
+#include <vector>
+
+int main() {
+    std::vector<int> numbers{1,54,7,5335,8};
+    std::sort(numbers.begin(), numbers.end());
+    std::cout << std::binary_search(numbers.begin(), numbers.end(), 7) << std::endl;
+}
+```
+
+The bottom line is that algorithms come with their contracts which you should consult first and - of course - respect.
+
+Reference:
+- [Undefined behaviour in the STL - Sandor Dargo (C++ on Sea 2020)](https://www.youtube.com/watch?v=BEmAo6Fdg-Q)
+
+"""Binary search an element with algorithms!"""
+
+"""<p><strong>What do you exepct that this piece of code does? Will it find <code>7</code>?</strong></p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #cd2828; font-weight: bold">#include &lt;algorithm&gt;</span>
+<span style="color: #cd2828; font-weight: bold">#include &lt;iostream&gt;</span>
+<span style="color: #cd2828; font-weight: bold">#include &lt;vector&gt;</span>
+
+<span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">main</span><span style="color: #d0d0d0">()</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #d0d0d0">std::vector&lt;</span><span style="color: #6ab825; font-weight: bold">int</span><span style="color: #d0d0d0">&gt;</span> <span style="color: #d0d0d0">numbers{</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">54</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">7</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">5335</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">8</span><span style="color: #d0d0d0">};</span>
+    <span style="color: #d0d0d0">std::cout</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #d0d0d0">std::binary_search(numbers.begin(),</span> <span style="color: #d0d0d0">numbers.end(),</span> <span style="color: #3677a9">7</span><span style="color: #d0d0d0">)</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #d0d0d0">std::endl;</span>
+<span style="color: #d0d0d0">}</span>
+</pre></div>"""
+
+"""<p>It will most probably not find the position of <code>7</code> and even if you have a good result, you cannot rely on it. In fact, the above code has undefined behaviour. It&#39;s all about contracts and principles. In C++, one of the foundational concepts is that you should not pay for what you don&#39;t use...</p>"""
+
+"""<p>It will most probably not find the position of <code>7</code> and even if you have a good result, you cannot rely on it. In fact, the above code has undefined behaviour.</p>
+<p>It&#39;s all about contracts and principles. In C++, one of the foundational concepts is that you should not pay for what you don&#39;t use. According to this spirit, <code>std::binary_search</code> and some other algorithms expect that its input range is sorted. After all, search algorithms should not be responsible for sorting and those who already pass in a sorted range should not pay for a needless sorting attempt.</p>
+<p>So to make this code working, you just have to sort the vector before passing it to the search.</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #cd2828; font-weight: bold">#include &lt;algorithm&gt;</span>
+<span style="color: #cd2828; font-weight: bold">#include &lt;iostream&gt;</span>
+<span style="color: #cd2828; font-weight: bold">#include &lt;vector&gt;</span>
+
+<span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">main</span><span style="color: #d0d0d0">()</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #d0d0d0">std::vector&lt;</span><span style="color: #6ab825; font-weight: bold">int</span><span style="color: #d0d0d0">&gt;</span> <span style="color: #d0d0d0">numbers{</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">54</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">7</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">5335</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">8</span><span style="color: #d0d0d0">};</span>
+    <span style="color: #d0d0d0">std::sort(numbers.begin(),</span> <span style="color: #d0d0d0">numbers.end());</span>
+    <span style="color: #d0d0d0">std::cout</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #d0d0d0">std::binary_search(numbers.begin(),</span> <span style="color: #d0d0d0">numbers.end(),</span> <span style="color: #3677a9">7</span><span style="color: #d0d0d0">)</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #d0d0d0">std::endl;</span>
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+<p>The bottom line is that algorithms come with their contracts which you should consult first and - of course - respect.</p>
+<p>Reference:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=BEmAo6Fdg-Q">Undefined behaviour in the STL - Sandor Dargo (C++ on Sea 2020)</a></li>
+</ul>"""

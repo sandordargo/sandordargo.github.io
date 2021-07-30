@@ -1,0 +1,46 @@
+**Explain what `consteval` and `constinit` brings to C++?**
+
+C++11 introduced `constexpr` which are expression that might be evaluated at compile-time.
+
+C++20 introduces two new related keywords, `consteval` and `constinit`.
+
+`consteval` can be used with functions:
+
+```
+consteval int sqr(int n) {
+    return n * n;
+}
+```
+
+`consteval` functions are guaranteed to be executed at compile-time, thus they create compile-time constants. They cannot allocate or deallocate data, nor they can interact with `static` or thread local variables.
+
+`constinit` can be applied to variables with static storage duration or thread storage duration. So a local or member variable cannot be `constinit`. What it guarantees that the initialization of the variable happens at compile-time.
+
+It must be noted that while `constexpr` and `const` variables cannot be changed once they are assigned, a `constinit` variable is not constant, its value can change.
+
+References:
+-[CppReference: consteval specifier](https://en.cppreference.com/w/cpp/language/consteval)
+-[CppReference: constinit specifier](https://en.cppreference.com/w/cpp/language/constinit)
+-[Modernes C++](https://www.modernescpp.com/index.php/c-20-consteval-and-constinit)
+
+"""Explain what consteval and constinit brings to C++?"""
+
+"""<p><strong>Explain what <code>consteval</code> and <code>constinit</code> brings to C++?</strong></p>"""
+
+"""<p>It must be noted that while <code>constexpr</code> and <code>const</code> variables cannot be changed once they are assigned, a <code>constinit</code> variable is not constant, its value can change...</p>"""
+
+"""<p>C++11 introduced <code>constexpr</code> expressions that might be evaluated at compile-time.</p>
+<p>C++20 introduces two new related keywords, <code>consteval</code> and <code>constinit</code>.</p>
+<p><code>consteval</code> can be used with functions:</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #d0d0d0">consteval</span> <span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">sqr</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">n)</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">n</span> <span style="color: #d0d0d0">*</span> <span style="color: #d0d0d0">n;</span>
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+<p><code>consteval</code> functions are guaranteed to be executed at compile-time, thus they create compile-time constants. They cannot allocate or deallocate data, nor they can interact with <code>static</code> or thread-local variables.</p>
+<p><code>constinit</code> can be applied to variables with static storage duration or thread storage duration. So a local or member variable cannot be <code>constinit</code>. What it guarantees that the initialization of the variable happens at compile-time.</p>
+<p>It must be noted that while <code>constexpr</code> and <code>const</code> variables cannot be changed once they are assigned, a <code>constinit</code> variable is not constant, its value can change.</p>
+<p>References:</p>
+<p>-<a href="https://en.cppreference.com/w/cpp/language/consteval">CppReference: consteval specifier</a></p>
+<p>-<a href="https://en.cppreference.com/w/cpp/language/constinit">CppReference: constinit specifier</a></p>
+<p>-<a href="https://www.modernescpp.com/index.php/c-20-consteval-and-constinit">Modernes C++</a></p>
+"""

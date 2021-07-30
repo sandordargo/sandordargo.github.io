@@ -1,0 +1,30 @@
+**Should you use smart pointers over raw pointers all the time?**
+
+No, raw pointers are - although considered dangerous in many cases - still have their place.
+
+`std::unique_ptr` transfers and `std::shared_ptr` shares ownership. In case a function has nothing to do with ownership, there should be no need for it to take pointer parameters by a smart pointers.
+
+Taking smart pointers in such cases will only make its API more restrictive and the run-time cost higher.
+
+At the same time, we should refrain from using the `new` keyword. `new` almost always means that you should `delete` somewhere. Unless you are creating a `std::unique_ptr` in C++11 where `std::make_auto` is not available.
+
+To summarize, try not to use `new`, when it comes to ownership use smart pointers and the related factory functions - unless some special cases apply (check Effective Modern C++: Item 21). Otherwise, if you don't want to share or transfer ownership, just use a raw pointer. It'll keep the API more user-friendly and run-time performance faster.
+
+- [Core Guidelines: F7](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#f7-for-general-use-take-t-or-t-arguments-rather-than-smart-pointers)
+- [Effective Modern C++ by Scott Meyers (Item 21)](https://amzn.to/38gK5bd)
+
+"""Should you use smart pointers over raw pointers all the time?"""
+
+"""<p><strong>Should you use smart pointers over raw pointers all the time?</strong></p>""" 
+
+"""<p>We should refrain from using the <code>new</code> keyword. <code>new</code> almost always means that you should <code>delete</code> somewhere. Unless you are creating a <code>std::unique_ptr</code> in C++11 where <code>std::make_auto</code> is not available...</p>"""
+
+"""<p>No, raw pointers are - although considered dangerous in many cases - still have their place.</p>
+<p><code>std::unique_ptr</code> transfers and <code>std::shared_ptr</code> shares ownership. In case a function has nothing to do with ownership, there should be no need for it to take pointer parameters by a smart pointer.</p>
+<p>Taking smart pointers in such cases will only make its API more restrictive and the run-time cost higher.</p>
+<p>At the same time, we should refrain from using the <code>new</code> keyword. <code>new</code> almost always means that you should <code>delete</code> somewhere. Unless you are creating a <code>std::unique_ptr</code> in C++11 where <code>std::make_auto</code> is not available.</p>
+<p>To summarize, try not to use <code>new</code> when it comes to ownership use smart pointers and the related factory functions - unless some special cases apply (check Effective Modern C++: Item 21). Otherwise, if you don&#39;t want to share or transfer ownership, just use a raw pointer. It&#39;ll keep the API more user-friendly and run-time performance faster.</p>
+<ul>
+<li><a href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#f7-for-general-use-take-t-or-t-arguments-rather-than-smart-pointers">Core Guidelines: F7</a></li>
+<li><a href="https://amzn.to/38gK5bd">Effective Modern C++ by Scott Meyers (Item 21)</a></li>
+</ul>"""

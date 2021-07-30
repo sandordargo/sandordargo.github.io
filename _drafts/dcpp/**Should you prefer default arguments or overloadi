@@ -1,0 +1,58 @@
+**Should you prefer default arguments or overloading?**
+
+In most cases default arguments should be preferred. There is no technical or perfromance reason behind, it's more practical. While it's possible that one overload simple calls the others with the "default" as in the following example, but there is no guarantee that this will be respected and we won't end up with duplicated code, or worse with diverging behaviours when the intention was to have the same behaviour.
+
+"default": values with overloading
+
+```
+int foo(int a, int b) {
+  //...
+}
+
+int foo(int a) {
+  return foo(a, 0); // 0 acts as default value for b
+}
+```
+
+A real default argument:
+```
+int foo(int a, int b=0) {
+  // ...
+}
+```
+
+Though if you are a library maintainer, you might have to take binary compatibility into consideration. Adding a new parameter to to a function, even if it has a default argument, it breaks binary compatibility. On the other hand, adding a new overload does not break binary compatibility.
+
+Therefore if you are a library maintainer and binary compatbility is something you care about, prefer the overloads and take a note to merge them once you plan to release a new major version.
+
+References:
+-[Core Guidelines: F51](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#f51-where-there-is-a-choice-prefer-default-arguments-over-overloading)
+-[KDE Community Wiki: Policies/Binary Compatibility Issues With C++](https://community.kde.org/Policies/Binary_Compatibility_Issues_With_C%2B%2B)
+
+"""Should you prefer default arguments or overloading?"""
+
+"""<p><strong>Should you prefer default arguments or overloading?</strong></p>"""
+
+"""<p>If you are a library maintainer and binary compatibility is something you care about, prefer the overloads and take a note to merge them once you plan to release a new major version...</p>"""
+
+"""<p>In most cases, default arguments should be preferred. There is no technical or performance reason behind, it&#39;s more practical. While it&#39;s possible that one overload simple calls the others with the &quot;default&quot; as in the following example, but there is no guarantee that this will be respected and we won&#39;t end up with duplicated code, or worse with diverging behaviours when the intention was to have the same behaviour.</p>
+<p>&quot;default&quot;: values with overloading</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">foo</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">a,</span> <span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">b)</span> <span style="color: #d0d0d0">{</span>
+  <span style="color: #999999; font-style: italic">//...</span>
+<span style="color: #d0d0d0">}</span>
+
+<span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">foo</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">a)</span> <span style="color: #d0d0d0">{</span>
+  <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">foo(a,</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">);</span> <span style="color: #999999; font-style: italic">// 0 acts as default value for b</span>
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+<p>A real default argument:</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">foo</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">a,</span> <span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">b=</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">)</span> <span style="color: #d0d0d0">{</span>
+  <span style="color: #999999; font-style: italic">// ...</span>
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+<p>Though if you are a library maintainer, you might have to take binary compatibility into consideration. Adding a new parameter to a function, even if it has a default argument, it breaks binary compatibility. On the other hand, adding a new overload does not break binary compatibility.</p>
+<p>Therefore if you are a library maintainer and binary compatibility is something you care about, prefer the overloads and take a note to merge them once you plan to release a new major version.</p>
+<p>References:
+-<a href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#f51-where-there-is-a-choice-prefer-default-arguments-over-overloading">Core Guidelines: F51</a>
+-<a href="https://community.kde.org/Policies/Binary_Compatibility_Issues_With_C%2B%2B">KDE Community Wiki: Policies/Binary Compatibility Issues With C++</a></p>"""
+

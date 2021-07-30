@@ -1,0 +1,63 @@
+Should you prefer a switch or chained if statements?
+
+Prefer the switch statement. There are multiple reasons.
+
+A switch statement is more readable, even if you take into account all the necessary `break` statements. 
+
+Besides, usually a `switch` statement can be better optimized.
+
+But here comes the most important. It might be that you `switch` over an `int`, but most probably it can be turned into an `enum`. If you do so, and you avoid having a `default` case, the compiler will emit a warning in case you don't cover all the different cases in the `enum`.
+
+This is also a good reason not to have a `default` case, just to got you covered. Imagine that one day, you add a new case to the `enum` and you forget to update all the switch statements in your codebase. If you don't use `default`s and you treat warnings as errors, your code simply won't compile.
+
+```
+enum class Color {Red, Green, Blue, Yellow};
+
+// ...
+Color c = getColor();
+    
+switch (c) {
+    case Color::Red: break;
+    case Color::Red: break;
+};
+/*
+main.cpp:9:12: warning: enumeration value 'Blue' not handled in switch [-Wswitch]
+main.cpp:9:12: warning: enumeration value 'Yellow' not handled in switch [-Wswitch]
+*/    
+```
+
+References:
+- [Core Guidelines: ES70](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#es70-prefer-a-switch-statement-to-an-if-statement-when-there-is-a-choice)
+- [Correct by Construction by Matt Godbolt](https://www.youtube.com/watch?v=nLSm3Haxz0I)
+
+"""Should you prefer a switch or chained if statements?"""
+
+"""<p><strong>Should you prefer a switch or chained if statements?</strong></p>"""
+
+"""<p>Here comes the most important. It might be that you <code>switch</code> over an <code>int</code>, but most probably it can be turned into an <code>enum</code>. If you do so, and you avoid having a <code>default</code> case, the compiler will emit a warning in case you don&#39;t cover all the different cases in the <code>enum</code>.</p>"""
+
+"""<p>Prefer the switch statement. There are multiple reasons.</p>
+<p>A switch statement is more readable, even if you take into account all the necessary <code>break</code> statements. </p>
+<p>Besides, usually, a <code>switch</code> statement can be better optimized.</p>
+<p>But here comes the most important. It might be that you <code>switch</code> over an <code>int</code>, but most probably it can be turned into an <code>enum</code>. If you do so, and you avoid having a <code>default</code> case, the compiler will emit a warning in case you don&#39;t cover all the different cases in the <code>enum</code>.</p>
+<p>This is also a good reason not to have a <code>default</code> case, just to get you covered. Imagine that one day, you add a new case to the <code>enum</code> and you forget to update all the switch statements in your codebase. If you don&#39;t use <code>default</code>s and you treat warnings as errors, your code simply won&#39;t compile.</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">enum</span> <span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">Color</span> <span style="color: #d0d0d0">{Red,</span> <span style="color: #d0d0d0">Green,</span> <span style="color: #d0d0d0">Blue,</span> <span style="color: #d0d0d0">Yellow};</span>
+
+<span style="color: #999999; font-style: italic">// ...</span>
+<span style="color: #d0d0d0">Color</span> <span style="color: #d0d0d0">c</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">getColor();</span>
+    
+<span style="color: #6ab825; font-weight: bold">switch</span> <span style="color: #d0d0d0">(c)</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #6ab825; font-weight: bold">case</span> <span style="color: #d0d0d0">Color</span>:<span style="color: #d0d0d0">:Red:</span> <span style="color: #6ab825; font-weight: bold">break</span><span style="color: #d0d0d0">;</span>
+    <span style="color: #6ab825; font-weight: bold">case</span> <span style="color: #d0d0d0">Color</span>:<span style="color: #d0d0d0">:Red:</span> <span style="color: #6ab825; font-weight: bold">break</span><span style="color: #d0d0d0">;</span>
+<span style="color: #d0d0d0">};</span>
+<span style="color: #999999; font-style: italic">/*</span>
+<span style="color: #999999; font-style: italic">main.cpp:9:12: warning: enumeration value &#39;Blue&#39; not handled in switch [-Wswitch]</span>
+<span style="color: #999999; font-style: italic">main.cpp:9:12: warning: enumeration value &#39;Yellow&#39; not handled in switch [-Wswitch]</span>
+<span style="color: #999999; font-style: italic">*/</span>
+</pre></div>
+<p>References:</p>
+<ul>
+<li><a href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#es70-prefer-a-switch-statement-to-an-if-statement-when-there-is-a-choice">Core Guidelines: ES70</a></li>
+<li><a href="https://www.youtube.com/watch?v=nLSm3Haxz0I">Correct by Construction by Matt Godbolt</a></li>
+</ul>
+"""

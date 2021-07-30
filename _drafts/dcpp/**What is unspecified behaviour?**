@@ -1,0 +1,108 @@
+**What is unspecified behaviour?**
+
+The behaviour of a program is said to be unspecified when the standard does not specify what should happen or it specifies multiple options. The exact behavior depends on the implementation and may not be completely determined upon examination of the program's source code. 
+
+Even the implemenentation, the compiler doesn't have to document how it resolves such situations.
+
+This means that different result sets can be completely valid depending on which implementation you are using.
+
+But whatever will happen it's guaranteed that effects of the unspecified code is strictly limited to the commands effected. It's not the case for undefined behviour, when the compiler is free to remove complete execution branches.
+
+Let's see two examples for unspecified behaviour.
+
+```
+int x;
+int y;
+bool isHigher = &x > &y;
+```
+
+In other words, if you take two local variables and for any reason you want to compare their memory addresses, it's completely unspecified whose address will be higher. There is no right or good answer, it depends on the implementation, but it doesn't have to document it.
+
+The other example is related to expression evaluation orders. Take the following piece of code
+
+```
+#include <iostream>
+
+int x = 333;
+
+int add(int i, int j) {
+    return i + j;
+}
+
+int left() {
+    x = 100;
+    return x;
+}
+
+int right() {
+    ++x;
+    return x;
+}
+
+int main() {
+    std::cout << add(left(), right()) << std::endl;
+}
+```
+
+In this example, you call an adder function with two parameters, both are the results of funtion calls on the same line. Their evaluation order is not specified by the standard and as the invoked functions operate on a global variable, the result depends on the evaluation order.
+
+Different compilers might give you different results.
+
+I recommend to use [Wandbox](https://wandbox.org/) if you quickly want to run your code with different compilers and versions.
+
+By the way, in the recent standards a lot of similar cases have been specified. Check out the references for more details.
+
+References:
+- [Wikipedia](https://en.wikipedia.org/wiki/Unspecified_behavior)
+- [GeeksForGeeks](https://www.geeksforgeeks.org/unspecified-behavior-in-c-c-with-examples/)
+- [Undefined behaviour in the STL - Sandor Dargo (C++ on Sea 2020)](https://www.youtube.com/watch?v=BEmAo6Fdg-Q)
+
+"""What is unspecified behaviour?"""
+
+"""<p><strong>What is unspecified behaviour?</strong></p>"""
+
+"""<p>Even the implementation, the compiler doesn&#39;t have to document how it resolves such situations. This means that different result sets can be completely valid depending on which implementation you are using...</p>"""
+
+"""<p>The behaviour of a program is said to be unspecified when the standard does not specify what should happen or it specifies multiple options. The exact behaviour depends on the implementation and may not be completely determined upon examination of the program&#39;s source code. </p>
+<p>Even the implementation, the compiler doesn&#39;t have to document how it resolves such situations.</p>
+<p>This means that different result sets can be completely valid depending on which implementation you are using.</p>
+<p>But whatever will happen it&#39;s guaranteed that effects of the unspecified code is strictly limited to the commands effected. It&#39;s not the case for undefined behaviour when the compiler is free to remove complete execution branches.</p>
+<p>Let&#39;s see two examples of unspecified behaviour.</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">x;</span>
+<span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">y;</span>
+<span style="color: #6ab825; font-weight: bold">bool</span> <span style="color: #d0d0d0">isHigher</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">&amp;x</span> <span style="color: #d0d0d0">&gt;</span> <span style="color: #d0d0d0">&amp;y;</span>
+</pre></div>
+<p>In other words, if you take two local variables and for any reason, you want to compare their memory addresses, it&#39;s completely unspecified whose address will be higher. There is no right or good answer, it depends on the implementation, but it doesn&#39;t have to document it.</p>
+<p>The other example is related to expression evaluation orders. Take the following piece of code</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #cd2828; font-weight: bold">#include &lt;iostream&gt;</span>
+
+<span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">333</span><span style="color: #d0d0d0">;</span>
+
+<span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">add</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">i,</span> <span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">j)</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">i</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">j;</span>
+<span style="color: #d0d0d0">}</span>
+
+<span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">left</span><span style="color: #d0d0d0">()</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">100</span><span style="color: #d0d0d0">;</span>
+    <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">x;</span>
+<span style="color: #d0d0d0">}</span>
+
+<span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">right</span><span style="color: #d0d0d0">()</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #d0d0d0">++x;</span>
+    <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">x;</span>
+<span style="color: #d0d0d0">}</span>
+
+<span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">main</span><span style="color: #d0d0d0">()</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #d0d0d0">std::cout</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #d0d0d0">add(left(),</span> <span style="color: #d0d0d0">right())</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #d0d0d0">std::endl;</span>
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+<p>In this example, you call an adder function with two parameters, both are the results of function calls on the same line. Their evaluation order is not specified by the standard and as the invoked functions operate on a global variable, the result depends on the evaluation order.</p>
+<p>Different compilers might give you different results.</p>
+<p>I recommend using <a href="https://wandbox.org/">Wandbox</a> if you quickly want to run your code with different compilers and versions.</p>
+<p>By the way, in the recent standards, a lot of similar cases have been specified. Check out the references for more details.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Unspecified_behavior">Wikipedia</a></li>
+<li><a href="https://www.geeksforgeeks.org/unspecified-behavior-in-c-c-with-examples/">GeeksForGeeks</a></li>
+<li><a href="https://www.youtube.com/watch?v=BEmAo6Fdg-Q">Undefined behaviour in the STL - Sandor Dargo (C++ on Sea 2020)</a></li>
+</ul>"""

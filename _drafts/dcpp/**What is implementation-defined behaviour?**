@@ -1,0 +1,39 @@
+**What is implementation-defined behaviour?**
+
+In many ways, implemenentation-defined behaviour is similar to unspecified behaviour. First of all, the standard doesn't impose on how the concerned item should be implemented. That will depend on the compiler.
+
+It's also true that the effects of implementation-defined behaviour are limited to the very commands in question. So no full execution branches can be removed, like in the case of undefined behaviour.
+
+What differs between unspecified and implemenentation-defined behaviour is that the implementation must document what is a valid result set.
+
+Let's see some examples for implemenentation-defined behaviour and let's step out of the C++ world for a moment.
+
+If you think about SQL and how `ORDER BY` works on NULL values you'll find that it differs between the different implementations. Some will put NULL in the beginning of an ordered result set, some will put such values in the back. You don't have to figure this out by trying, you'll find it in the documentation, it's implemenentation-defined behaviour.
+
+In C++, `sizeof(int)` and the size of integer types in general is implementation specified. And even the size of a byte.
+
+References:
+- [Quora: What is the difference between undefined, unspecified and implementation defined behavior?](https://www.quora.com/What-is-the-difference-between-undefined-unspecified-and-implementation-defined-behavior)
+- [StakcOverFlow: Undefined, unspecified and implementation-defined behavior](https://stackoverflow.com/questions/2397984/undefined-unspecified-and-implementation-defined-behavior)
+- [Undefined behaviour in the STL - Sandor Dargo (C++ on Sea 2020)](https://www.youtube.com/watch?v=BEmAo6Fdg-Q)
+
+
+
+"""What is implementation-defined behaviour?"""
+
+"""<p><strong>What is implementation-defined behaviour?</strong></p>"""
+
+"""<p>In many ways, implementation-defined behaviour is similar to unspecified behaviour. First of all, the standard doesn&#39;t impose on how the concerned item should be implemented. That will depend on the compiler...</p>"""
+
+"""<p>In many ways, implementation-defined behaviour is similar to unspecified behaviour. First of all, the standard doesn&#39;t impose on how the concerned item should be implemented. That will depend on the compiler.</p>
+<p>It&#39;s also true that the effects of implementation-defined behaviour are limited to the very commands in question. So no full execution branches can be removed, like in the case of undefined behaviour.</p>
+<p>What differs between unspecified and implementation-defined behaviour is that the implementation must document what is a valid result set.</p>
+<p>Let&#39;s see some examples of implementation-defined behaviour and let&#39;s step out of the C++ world for a moment.</p>
+<p>If you think about SQL and how <code>ORDER BY</code> works on NULL values you&#39;ll find that it differs between the different implementations. Some will put NULL at the beginning of an ordered result set, some will put such values in the back. You don&#39;t have to figure this out by trying, you&#39;ll find it in the documentation, it&#39;s implementation-defined behaviour.</p>
+<p>In C++, <code>sizeof(int)</code> and the size of integer types, in general, is implementation specified. And even the size of a byte.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://www.quora.com/What-is-the-difference-between-undefined-unspecified-and-implementation-defined-behavior">Quora: What is the difference between undefined, unspecified and implementation defined behavior?</a></li>
+<li><a href="https://stackoverflow.com/questions/2397984/undefined-unspecified-and-implementation-defined-behavior">StakcOverFlow: Undefined, unspecified and implementation-defined behavior</a></li>
+<li><a href="https://www.youtube.com/watch?v=BEmAo6Fdg-Q">Undefined behaviour in the STL - Sandor Dargo (C++ on Sea 2020)</a></li>
+</ul>"""

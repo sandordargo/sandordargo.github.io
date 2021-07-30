@@ -1,0 +1,35 @@
+**What is the STL?**
+
+STL stands for the Standard Template Library, but there is no such library as the STL. It is part of the C++ standard library.
+
+It's a set of template classes and functions to provide solutions for common problems. The elements of the STL can be divided into 4 categories:
+
+- algorithms, e.g.: `std::find`, `std::copy`
+- containers, e.g.: `std::vector<T>`, `std::list<T>` 
+- function objects, e.g.: `std::greater<T>`, `std::logical_and<T>`
+- iterators, e.g.: `std::iterator`, `std::back_inserter`
+
+The STL was created by Alexander Stepanov, who already had the idea of a generic data processing library in the 1970s, but there was no language support to implement his dream.
+
+In the 80s, he made his first attempts in ADA, but that language never got widely adopted outside the defense industry.
+
+A former colleague convinced him to present the idea to the C++ Committee that he did in November, 1993. Then things happened fast. In March, 1994 Stepanov submitted the formal proposal which was accepted in just a mere 4 months. In August, HP - the employer of Stepanov - published the first implementation of the STL.
+
+
+"""What is the STL?"""
+
+"""<p><strong>What is the STL?</strong></p>"""
+
+"""<p>It&#39;s a set of template classes and functions to provide solutions for common problems. The elements of the STL can be divided into 4 categories...</p>"""
+
+"""<p>STL stands for the Standard Template Library, but there is no such library as the STL. It is part of the C++ standard library.</p>
+<p>It&#39;s a set of template classes and functions to provide solutions for common problems. The elements of the STL can be divided into 4 categories:</p>
+<ul>
+<li>algorithms, e.g.: <code>std::find</code>, <code>std::copy</code></li>
+<li>containers, e.g.: <code>std::vector&lt;T&gt;</code>, <code>std::list&lt;T&gt;</code> </li>
+<li>function objects, e.g.: <code>std::greater&lt;T&gt;</code>, <code>std::logical_and&lt;T&gt;</code></li>
+<li>iterators, e.g.: <code>std::iterator</code>, <code>std::back_inserter</code></li>
+</ul>
+<p>The STL was created by Alexander Stepanov, who already had the idea of a generic data processing library in the 1970s, but there was no language support to implement his dream.</p>
+<p>In the 80s, he made his first attempts in ADA, but that language never got widely adopted outside the defence industry.</p>
+<p>A former colleague convinced him to present the idea to the C++ Committee that he did in November 1993. Then things happened fast. In March 1994 Stepanov submitted the formal proposal which was accepted in just a mere 4 months. In August, HP - the employer of Stepanov - published the first implementation of the STL.</p>"""

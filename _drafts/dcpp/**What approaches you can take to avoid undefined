@@ -1,0 +1,86 @@
+**What approaches you can take to avoid undefined behaviour in our application?**
+
+Maybe first we can discuss what will not work. 
+
+Using try-catch blocks will not going to work, undefined behaviour is not about exceptions handled in a wrong way. Similarly, some epxlicit checks for example on input containers are going to work either. 
+
+```
+std::copy_if(numbers21.begin(), numbers22.end(), 
+  std::back_inserter(copiedNumbers), 
+  [](auto number) {return number % 2 == 1;});
+```
+
+There is no valid check to avoid against such a typo, but it's true that with some defensive programming you could handle the situation.
+
+```
+std::vector<int> doCopy(std::vector<int> numbers) {
+  std::vector<int> copiedNumbers;
+  std::copy_if(numbers.begin(), numbers.end(), 
+    std::back_inserter(copiedNumbers), 
+    [](auto number) {return number % 2 == 1;});
+  return copiedNumbers;
+}
+
+// ...
+auto copiedNumbers = doCopy(numbers);
+```
+
+This is just a simlly example, but the bottom line is that by limiting the scope of a funcion, by limiting the number of available variables, you can limit the compilable typos you can make. Yet, it doesn't look nice to wrap every algorithm like that.
+
+So what can you do against undefined behaviour?
+
+- You can listen to your compiler! Turn on whatever warnings you can (`-Wall`, `-Wextra`, `-Wpedantic`) and treat them as errors. They will catch a lot of undefined behaviour.
+
+- Use a sanitizer, both g++ and clang offer some
+
+- Follow coding best practices and naming guidelines. In the above example, the typo was only possible due to low quality names (`numbers21` and `number22`). Legacy code have a lot of such names. Use proper, descriptive names and you won't make such typos.
+
+- Understand the concepts behind the language. If you consider that in C++ you shouldn't pay for things you don't use, it becomes self-evident why `std::binary_search` expects a sorted input range.
+
+- Practice contractual programming. If you want to use elements of the standard library (you should), check the contract it proposes, in other words, read their documentation, read what kind of input they expect.
+
+- Share knowledge! If you learn something, share it with your teammates. Organize dedicated sessions, use the team chat and code reviews.
+
+
+
+
+"""What approaches to take to avoid undefined behaviour?"""
+
+"""<p><strong>What approaches you can take to avoid undefined behaviour in our application?</strong></p>""" 
+
+"""<p>Understand the concepts behind the language. If you consider that in C++ you shouldn&#39;t pay for things you don&#39;t use, it becomes self-evident why <code>std::binary_search</code> expects a sorted input range...</p>""" 
+
+"""<p>Maybe first we can discuss what will not work. </p>
+<p>Using try-catch blocks will not going to work, undefined behaviour is not about exceptions handled in a wrong way. Similarly, some epxlicit checks for example on input containers are going to work either. </p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #d0d0d0">std::copy_if(numbers21.begin(),</span> <span style="color: #d0d0d0">numbers22.end(),</span> 
+  <span style="color: #d0d0d0">std::back_inserter(copiedNumbers),</span> 
+  <span style="color: #d0d0d0">[](</span><span style="color: #6ab825; font-weight: bold">auto</span> <span style="color: #d0d0d0">number)</span> <span style="color: #d0d0d0">{</span><span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">number</span> <span style="color: #d0d0d0">%</span> <span style="color: #3677a9">2</span> <span style="color: #d0d0d0">==</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">;});</span>
+</pre></div>
+<p>There is no valid check to avoid against such a typo, but it&#39;s true that with some defensive programming you could handle the situation.</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #d0d0d0">std::vector&lt;</span><span style="color: #6ab825; font-weight: bold">int</span><span style="color: #d0d0d0">&gt;</span> <span style="color: #d0d0d0">doCopy(std::vector&lt;</span><span style="color: #6ab825; font-weight: bold">int</span><span style="color: #d0d0d0">&gt;</span> <span style="color: #d0d0d0">numbers)</span> <span style="color: #d0d0d0">{</span>
+  <span style="color: #d0d0d0">std::vector&lt;</span><span style="color: #6ab825; font-weight: bold">int</span><span style="color: #d0d0d0">&gt;</span> <span style="color: #d0d0d0">copiedNumbers;</span>
+  <span style="color: #d0d0d0">std::copy_if(numbers.begin(),</span> <span style="color: #d0d0d0">numbers.end(),</span> 
+    <span style="color: #d0d0d0">std::back_inserter(copiedNumbers),</span> 
+    <span style="color: #d0d0d0">[](</span><span style="color: #6ab825; font-weight: bold">auto</span> <span style="color: #d0d0d0">number)</span> <span style="color: #d0d0d0">{</span><span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">number</span> <span style="color: #d0d0d0">%</span> <span style="color: #3677a9">2</span> <span style="color: #d0d0d0">==</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">;});</span>
+  <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">copiedNumbers;</span>
+<span style="color: #d0d0d0">}</span>
+
+<span style="color: #999999; font-style: italic">// ...</span>
+<span style="color: #6ab825; font-weight: bold">auto</span> <span style="color: #d0d0d0">copiedNumbers</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">doCopy(numbers);</span>
+</pre></div>
+<p>This is just a simlly example, but the bottom line is that by limiting the scope of a funcion, by limiting the number of available variables, you can limit the compilable typos you can make. Yet, it doesn&#39;t look nice to wrap every algorithm like that.</p>
+<p>So what can you do against undefined behaviour?</p>
+<ul>
+<li><p>You can listen to your compiler! Turn on whatever warnings you can (<code>-Wall</code>, <code>-Wextra</code>, <code>-Wpedantic</code>) and treat them as errors. They will catch a lot of undefined behaviour.</p>
+</li>
+<li><p>Use a sanitizer, both g++ and clang offer some</p>
+</li>
+<li><p>Follow coding best practices and naming guidelines. In the above example, the typo was only possible due to low quality names (<code>numbers21</code> and <code>number22</code>). Legacy code have a lot of such names. Use proper, descriptive names and you won&#39;t make such typos.</p>
+</li>
+<li><p>Understand the concepts behind the language. If you consider that in C++ you shouldn&#39;t pay for things you don&#39;t use, it becomes self-evident why <code>std::binary_search</code> expects a sorted input range.</p>
+</li>
+<li><p>Practice contractual programming. If you want to use elements of the standard library (you should), check the contract it proposes, in other words, read their documentation, read what kind of input they expect.</p>
+</li>
+<li><p>Share knowledge! If you learn something, share it with your teammates. Organize dedicated sessions, use the team chat and code reviews.</p>
+</li>
+</ul>"""

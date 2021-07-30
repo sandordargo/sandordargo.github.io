@@ -1,0 +1,46 @@
+**What is an Iterator class?**
+
+As you probably remember, the Standard Template Library is composed of containers, algorithms, functors and iterators. Iterators are the connecting dots between containers and functors.
+
+In the STL, before ranges appeared, algorithms never operated directly on the containers, but on interators instead. 
+
+An interators is like a pointer. It's object that, pointing to some element in a range of elements (such as an array or a container), has the ability to iterate through the elements of that range using a set of operators (with at least the increment (++) and dereference (*) operators).
+
+Iterators have different categories and their classification depends on the functionality they implement. The list goesfrom the most generic towards the most specialized category:
+
+- Random Access
+- Bidirectional
+- Forward
+- Input
+- Output (input and output are, in fact, on the same level)
+
+To get more detailed information about the categories, check out [this link](https://www.cplusplus.com/reference/iterator/).
+
+References:
+- [CPlusPlus.com](https://www.cplusplus.com/reference/iterator/)
+- [Learn C++](https://www.learncpp.com/cpp-tutorial/introduction-to-iterators/)
+
+"""What is an Iterator class?"""
+
+"""<p><strong>What is an Iterator class?</strong></p>"""
+
+"""<p>In the STL, before ranges appeared, algorithms never operated directly on the containers, but on iterators instead...</p>"""
+
+"""<p>As you probably remember, the Standard Template Library is composed of containers, algorithms, functors and iterators. Iterators are the connecting dots between containers and functors.</p>
+<p>In the STL, before ranges appeared, algorithms never operated directly on the containers, but on iterators instead. </p>
+<p>An iterator is like a pointer. It&#39;s an object that, pointing to some element in a range of elements (such as an array or a container), has the ability to iterate through the elements of that range using a set of operators (with at least the increment (++) and dereference (*) operators).</p>
+<p>Iterators have different categories and their classification depends on the functionality they implement. The list goes from the most generic towards the most specialized category:</p>
+<ul>
+<li>Random Access</li>
+<li>Bidirectional</li>
+<li>Forward</li>
+<li>Input</li>
+<li>Output (input and output are, in fact, on the same level)</li>
+</ul>
+<p>To get more detailed information about the categories, check out <a href="https://www.cplusplus.com/reference/iterator/">this link</a>.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://www.cplusplus.com/reference/iterator/">CPlusPlus.com</a></li>
+<li><a href="https://www.learncpp.com/cpp-tutorial/introduction-to-iterators/">Learn C++</a></li>
+</ul>
+"""

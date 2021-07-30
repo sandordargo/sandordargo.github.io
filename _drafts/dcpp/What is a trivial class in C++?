@@ -1,0 +1,107 @@
+What is a trivial class in C++?
+
+**What is a trivial class in C++?**
+
+When a class or struct in C++ has compiler-provided or explicitly defaulted special member functions, then it is a trivial type. It occupies a contiguous memory area. It can have members with different access specifiers. In C++, the compiler is free to choose how to order members in this situation. Therefore, you can `memcopy` such objects but you cannot reliably consume them from a C program. A trivial type `T` can be copied into an array of `char` or `unsigned char`, and safely copied back into a `T` variable. Note that because of alignment requirements, there might be padding bytes between type members.
+
+Trivial types have a trivial default constructor, trivial copy and move constructor, trivial copy and move assignment operator and trivial destructor. In each case, trivial means the constructor/operator/destructor is not user-provided and belongs to a class that has
+
+- no virtual functions or virtual base classes,
+- no base classes with a corresponding non-trivial constructor/operator/destructor
+- no data members of class type with a corresponding non-trivial constructor/operator/destructor
+
+Whether a class is trivial or not, you can verify with the `std::is_trivial` trait class. It checks whether the class is trivailly copyable (`std::is_trivially_copyable`) and is trivailly default constructible `std::is_trivially_default_constructible`.
+
+Some exaples:
+
+```cpp
+#include <iostream>
+#include <type_traits>
+ 
+class A {
+public:
+    int m;
+};
+ 
+class B {
+public:
+    B() {}
+};
+
+class C {
+public:
+    C() = default;
+};
+
+class D : C {};
+
+class E { virtual void foo() {} };
+ 
+int main() 
+{
+    std::cout << std::boolalpha;
+    std::cout << std::is_trivial<A>::value << '\n';
+    std::cout << std::is_trivial<B>::value << '\n';
+    std::cout << std::is_trivial<C>::value << '\n';
+    std::cout << std::is_trivial<D>::value << '\n';
+    std::cout << std::is_trivial<E>::value << '\n';   
+}
+```
+
+References:
+- [C++ Reference](https://en.cppreference.com/w/cpp/types/is_trivial)
+- [Microsoft Docs](https://docs.microsoft.com/en-us/cpp/cpp/trivial-standard-layout-and-pod-types?view=msvc-160)
+
+
+"""What is a trivial class in C++?"""
+
+"""<p><strong>What is a trivial class in C++?</strong></p>"""
+
+"""<p>A trivial type <code>T</code> can be copied into an array of <code>char</code> or <code>unsigned char</code>, and safely copied back into a <code>T</code> variable. Note that because of alignment requirements, there might be padding bytes between type members...</p>"""
+
+"""<p>When a class or struct in C++ has compiler-provided or explicitly defaulted special member functions, then it is a trivial type. It occupies a contiguous memory area. It can have members with different access specifiers. In C++, the compiler is free to choose how to order members in this situation. Therefore, you can <code>memcpy</code> such objects but you cannot reliably consume them from a C program. A trivial type <code>T</code> can be copied into an array of <code>char</code> or <code>unsigned char</code>, and safely copied back into a <code>T</code> variable. Note that because of alignment requirements, there might be padding bytes between type members.</p>
+<p>Trivial types have a trivial default constructor, trivial copy and move constructor, trivial copy and move assignment operator and trivial destructor. In each case, trivial means the constructor/operator/destructor is not user-provided and belongs to a class that has</p>
+<ul>
+<li>no virtual functions or virtual base classes,</li>
+<li>no base classes with a corresponding non-trivial constructor/operator/destructor</li>
+<li>no data members of class type with a corresponding non-trivial constructor/operator/destructor</li>
+</ul>
+<p>Whether a class is trivial or not, you can verify with the <code>std::is_trivial</code> trait class. It checks whether the class is trivially copyable (<code>std::is_trivially_copyable</code>) and is trivially default constructible <code>std::is_trivially_default_constructible</code>.</p>
+<p>Some exaples:</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #cd2828; font-weight: bold">#include &lt;iostream&gt;</span>
+<span style="color: #cd2828; font-weight: bold">#include &lt;type_traits&gt;</span>
+ 
+<span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">A</span> <span style="color: #d0d0d0">{</span>
+<span style="color: #d0d0d0">public:</span>
+    <span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">m;</span>
+<span style="color: #d0d0d0">};</span>
+ 
+<span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">B</span> <span style="color: #d0d0d0">{</span>
+<span style="color: #d0d0d0">public:</span>
+    <span style="color: #d0d0d0">B()</span> <span style="color: #d0d0d0">{}</span>
+<span style="color: #d0d0d0">};</span>
+
+<span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">C</span> <span style="color: #d0d0d0">{</span>
+<span style="color: #d0d0d0">public:</span>
+    <span style="color: #d0d0d0">C()</span> <span style="color: #d0d0d0">=</span> <span style="color: #6ab825; font-weight: bold">default</span><span style="color: #d0d0d0">;</span>
+<span style="color: #d0d0d0">};</span>
+
+<span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">D</span> <span style="color: #d0d0d0">:</span> <span style="color: #d0d0d0">C</span> <span style="color: #d0d0d0">{};</span>
+
+<span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">E</span> <span style="color: #d0d0d0">{</span> <span style="color: #6ab825; font-weight: bold">virtual</span> <span style="color: #6ab825; font-weight: bold">void</span> <span style="color: #d0d0d0">foo()</span> <span style="color: #d0d0d0">{}</span> <span style="color: #d0d0d0">};</span>
+ 
+<span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">main</span><span style="color: #d0d0d0">()</span> 
+<span style="color: #d0d0d0">{</span>
+    <span style="color: #d0d0d0">std::cout</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #d0d0d0">std::boolalpha;</span>
+    <span style="color: #d0d0d0">std::cout</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #d0d0d0">std::is_trivial&lt;A&gt;::value</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #ed9d13">&#39;\n&#39;</span><span style="color: #d0d0d0">;</span>
+    <span style="color: #d0d0d0">std::cout</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #d0d0d0">std::is_trivial&lt;B&gt;::value</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #ed9d13">&#39;\n&#39;</span><span style="color: #d0d0d0">;</span>
+    <span style="color: #d0d0d0">std::cout</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #d0d0d0">std::is_trivial&lt;C&gt;::value</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #ed9d13">&#39;\n&#39;</span><span style="color: #d0d0d0">;</span>
+    <span style="color: #d0d0d0">std::cout</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #d0d0d0">std::is_trivial&lt;D&gt;::value</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #ed9d13">&#39;\n&#39;</span><span style="color: #d0d0d0">;</span>
+    <span style="color: #d0d0d0">std::cout</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #d0d0d0">std::is_trivial&lt;E&gt;::value</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #ed9d13">&#39;\n&#39;</span><span style="color: #d0d0d0">;</span>   
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+<p>References:</p>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/types/is_trivial">C++ Reference</a></li>
+<li><a href="https://docs.microsoft.com/en-us/cpp/cpp/trivial-standard-layout-and-pod-types?view=msvc-160">Microsoft Docs</a></li>
+</ul>"""

@@ -1,0 +1,73 @@
+**How to check if a string starts or ends with a certain substring?**
+
+Unlike Python or other languages, C++'s string type didn't have `starts_with`/`ends_with` functions that could easily tell if a string starts with a certain prefix or ends with a given suffix.
+
+This has changed with C++20, where [`starts_with`](https://en.cppreference.com/w/cpp/string/basic_string/starts_with) and [`ends_with`](https://en.cppreference.com/w/cpp/string/basic_string_view/ends_with) where added both to `std::sting` and `std::string_view` and performing such checks became extremly simple and readable!
+
+```
+#include <iostream>
+#include <string>
+
+
+int main() {
+    std::string s{"what a string"};
+    std::cout << std::boolalpha << s.starts_with("what") << std::endl;
+    std::cout << std::boolalpha << s.ends_with("not") << std::endl;
+}
+/*
+true
+false
+*/
+```
+
+Before C++20 it was still easy to perform similar tests, though a bit less readable and more verbose.
+
+In order to check if a string starts with a prefix, one could use `std::string::find` and check if the returned position is the one of the first character, `0`. 
+
+To verify the suffix is a bit more complex and less readable. We can use `std::string::compare`. After making sure that the string to be checked is at least as long as the suffix we want to verify, we have to pass the starting position of the potential suffix, it's length and the suffix itself.
+
+Wrapping it to a functoin it looks like this:
+
+```
+#include <iostream>
+#include <string>
+
+bool ends_with(const std::string& str, const std::string& suffix) {
+    if (str.size() >= suffix.size()) {
+        return str.compare(str.size() - suffix.size(), suffix.size(), suffix) == 0;
+    }
+    return false;
+}
+
+int main() {
+    std::string s{"what a string"};
+    std::cout << std::boolalpha << (s.find("what") == 0) << std::endl;
+    std::cout << std::boolalpha << (s.find("a") == 0) << std::endl;
+    std::cout << std::boolalpha << ends_with(s, "string") << std::endl;
+    std::cout << std::boolalpha << ends_with(s, "what") << std::endl;
+}
+```
+
+If you have access to boost, you might use `boost::algorithm::starts_with`/`boost::algorithm::ends_with`:
+
+```cpp
+#include <iostream>
+#include <string>
+#include <boost/algorithm/string/predicate.hpp>
+
+
+int main() {
+    std::string s{"what a string"};
+    std::cout << std::boolalpha << boost::algorithm::starts_with(s, "what") << std::endl;
+    std::cout << std::boolalpha << boost::algorithm::starts_with(s, "a") << std::endl;
+    std::cout << std::boolalpha << boost::algorithm::ends_with(s, "string") << std::endl;
+    std::cout << std::boolalpha << boost::algorithm::ends_with(s, "what") << std::endl;
+}
+```
+
+References:
+- [Boost Header <boost/algorithm/string/predicate.hpp>](https://www.boost.org/doc/libs/1_72_0/doc/html/string_algo/reference.html#header.boost.algorithm.string.predicate_hpp)
+- [C++ Reference: compare](https://en.cppreference.com/w/cpp/string/basic_string/compare)
+- [C++ Reference: starts_with](https://en.cppreference.com/w/cpp/string/basic_string/starts_with)
+- [C++ Reference: ends_with](https://en.cppreference.com/w/cpp/string/basic_string_view/ends_with)
+- [Find out if string ends with another string in C++ - Stackoverflow](https://stackoverflow.com/questions/874134/find-out-if-string-ends-with-another-string-in-c)

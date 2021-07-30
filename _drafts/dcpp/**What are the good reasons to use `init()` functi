@@ -1,0 +1,32 @@
+**What are the good reasons to use `init()` functions to initialize an object?**
+
+It's a short list. There is none.
+
+When an object is created, the user can rightly exepct to have a fully usable, fully initialized object. If the user still has to call `init()`, that's not the case.
+
+On the contrary, no `destroy()`, `close()` or alike function should be called by the user when he stops using the object. An object should take care of releasing whatever resources it acquired during its initialization. This concept is also known as RAII (Resource Acquisition Is Initialization).
+
+In case, an object really cannot be instantiated through a constructor in a convenient way, than the construction and initialization should be encapsulated by a factory function, so that the user still doesn't have to take care of this process.
+
+To conclude, don't use `init()` functions. An object should take care of itself through its constructor and destructor. If the construction is not possible like that, encapsulate it by a factory function.
+
+References:
+- [Core Guidelines: C41](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c41-a-constructor-should-create-a-fully-initialized-object)
+- [Core Guidelines: F50](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c50-use-a-factory-function-if-you-need-virtual-behavior-during-initialization)
+
+"""What are the good reasons to use init() functions to initialize an object?"""
+
+"""<p><strong>What are the good reasons to use <code>init()</code> functions to initialize an object?</strong></p>"""
+
+"""<p>Don&#39;t use <code>init()</code> functions. An object should take care of itself through its constructor and destructor. If the construction is not possible like that, encapsulate it by a factory function...</p>"""
+
+"""<p>It&#39;s a short list. There is none.</p>
+<p>When an object is created, the user can rightly expect to have a fully usable, fully initialized object. If the user still has to call <code>init()</code>, that&#39;s not the case.</p>
+<p>On the contrary, no <code>destroy()</code>, <code>close()</code> or alike function should be called by the user when he stops using the object. An object should take care of releasing whatever resources it acquired during its initialization. This concept is also known as RAII (Resource Acquisition Is Initialization).</p>
+<p>In case, an object really cannot be instantiated through a constructor in a convenient way, then the construction and initialization should be encapsulated by a factory function so that the user still doesn&#39;t have to take care of this process.</p>
+<p>To conclude, don&#39;t use <code>init()</code> functions. An object should take care of itself through its constructor and destructor. If the construction is not possible like that, encapsulate it by a factory function.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c41-a-constructor-should-create-a-fully-initialized-object">Core Guidelines: C41</a></li>
+<li><a href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c50-use-a-factory-function-if-you-need-virtual-behavior-during-initialization">Core Guidelines: F50</a></li>
+</ul>"""

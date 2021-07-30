@@ -1,0 +1,115 @@
+**Can you call a virtual function from a constructor or a desturctor?**
+
+Technically you can, the code will compile. But the code can be misleading and it can even lead to undefined behaviour.
+
+Attempting to call a derived class function from a base class under construction is dangerous.
+
+```
+#include <iostream>
+
+class Base {
+public:
+    Base() {
+        foo();
+    }
+protected:
+
+    virtual void foo() {std::cout << "Base::foo\n";};
+};
+
+class Derived : public Base {
+public:
+    Derived() {
+    }
+    
+    void foo() override {
+        std::cout << "Derived::foo\n";
+    }
+};
+
+int main() {
+  Derived d;
+}
+```
+
+The output is simply `Base::foo`:
+
+- By contract, the derived class constructor starts by calling the base class constructor.
+- The base class constructor calls the base member function and not the one overridden in the child class, which is confusing for child class' developer.
+
+In case, the virtual method is also a pure virtual method, you have undefined behaviour. If you're lucky, at link time you'll get some errors.
+
+What's the solution?
+
+The simplest probably is just to fully reference the function that you'll call:
+```
+Base() {
+  Base::foo();
+}
+```
+
+In case of the Base class, it can only be that, when you're in the Derived class, you can decide. A more elegant solution if you wrap the virtual functions in non-virtual functions and from the constructors/destructors you only use them.
+
+For full source code, check out the references.
+
+References:
+- [SEI CERT: OOP50-CPP. Do not invoke virtual functions from constructors or destructors](https://wiki.sei.cmu.edu/confluence/display/cplusplus/OOP50-CPP.+Do+not+invoke+virtual+functions+from+constructors+or+destructors)
+- [SonarSource: RPSEC-1699](https://rules.sonarsource.com/cpp/RSPEC-1699)
+
+
+
+
+"""Can you call a virtual function from a constructor or a desturctor?"""
+
+"""<p><strong>Can you call a virtual function from a constructor or a destructor?</strong></p>""" 
+
+"""<p>Technically you can, the code will compile. But the code can be misleading and it can even lead to undefined behaviour...</p>
+""" 
+
+"""<p>Technically you can, the code will compile. But the code can be misleading and it can even lead to undefined behaviour.</p>
+<p>Attempting to call a derived class function from a base class under construction is dangerous.</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #cd2828; font-weight: bold">#include &lt;iostream&gt;</span>
+
+<span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">Base</span> <span style="color: #d0d0d0">{</span>
+<span style="color: #d0d0d0">public:</span>
+    <span style="color: #d0d0d0">Base()</span> <span style="color: #d0d0d0">{</span>
+        <span style="color: #d0d0d0">foo();</span>
+    <span style="color: #d0d0d0">}</span>
+<span style="color: #d0d0d0">protected:</span>
+
+    <span style="color: #6ab825; font-weight: bold">virtual</span> <span style="color: #6ab825; font-weight: bold">void</span> <span style="color: #d0d0d0">foo()</span> <span style="color: #d0d0d0">{std::cout</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #ed9d13">&quot;Base::foo\n&quot;</span><span style="color: #d0d0d0">;};</span>
+<span style="color: #d0d0d0">};</span>
+
+<span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">Derived</span> <span style="color: #d0d0d0">:</span> <span style="color: #6ab825; font-weight: bold">public</span> <span style="color: #d0d0d0">Base</span> <span style="color: #d0d0d0">{</span>
+<span style="color: #d0d0d0">public:</span>
+    <span style="color: #d0d0d0">Derived()</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #d0d0d0">}</span>
+    
+    <span style="color: #6ab825; font-weight: bold">void</span> <span style="color: #d0d0d0">foo()</span> <span style="color: #d0d0d0">override</span> <span style="color: #d0d0d0">{</span>
+        <span style="color: #d0d0d0">std::cout</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #ed9d13">&quot;Derived::foo\n&quot;</span><span style="color: #d0d0d0">;</span>
+    <span style="color: #d0d0d0">}</span>
+<span style="color: #d0d0d0">};</span>
+
+<span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">main</span><span style="color: #d0d0d0">()</span> <span style="color: #d0d0d0">{</span>
+  <span style="color: #d0d0d0">Derived</span> <span style="color: #d0d0d0">d;</span>
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+<p>The output is simply <code>Base::foo</code>:</p>
+<ul>
+<li>By contract, the derived class constructor starts by calling the base class constructor.</li>
+<li>The base class constructor calls the base member function and not the one overridden in the child class, which is confusing for child class&#39; developer.</li>
+</ul>
+<p>In case, the virtual method is also a pure virtual method, you have undefined behaviour. If you&#39;re lucky, at link time you&#39;ll get some errors.</p>
+<p>What&#39;s the solution?</p>
+<p>The simplest probably is just to fully reference the function that you&#39;ll call:</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #d0d0d0">Base()</span> <span style="color: #d0d0d0">{</span>
+  <span style="color: #d0d0d0">Base::foo();</span>
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+<p>In the case of the Base class, it can only be that, when you&#39;re in the Derived class, you can decide. A more elegant solution if you wrap the virtual functions in non-virtual functions and from the constructors/destructors you only use them.</p>
+<p>For full source code, check out the references.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://wiki.sei.cmu.edu/confluence/display/cplusplus/OOP50-CPP.+Do+not+invoke+virtual+functions+from+constructors+or+destructors">SEI CERT: OOP50-CPP. Do not invoke virtual functions from constructors or destructors</a></li>
+<li><a href="https://rules.sonarsource.com/cpp/RSPEC-1699">SonarSource: RPSEC-1699</a></li>
+</ul>"""

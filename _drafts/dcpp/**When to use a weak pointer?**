@@ -1,0 +1,75 @@
+**When to use a weak pointer?**
+
+A weak pointer - `std::weak_ptr` is a smart pointer that doesn't affect the object's reference count and as such what it points at might have been destroyed.
+
+`std::weak_ptr` is created from a `shared_ptr` and in case the pointed at object gets destroyed, the weak pointer expires.
+
+```
+auto* sp = std::make_shared<WidgeT>();
+std::weak_ptr<T> wp(sp);
+//...
+sp = nullptr;
+
+if (wp.expired()) {
+  std::cout << "wp doesn't point to a valid object anymore" << std::endl;
+}
+```
+
+In case you want to use it, you can either call `lock()` on it that retutnes a `std::shared_ptr` or nullptr in case the pointer is expired, or you can directly pass a weak ptr to `shared_ptr` constructor.
+
+```
+std::shared_ptr<T> sp = wp.lock();
+std::shared_ptr<T> sp2(wp);
+```
+
+So how it can be useful?
+
+It can be useful for cyclyc ownerships, to break the cycle. Let's say that you have an instance of a Keyboard, a Logger, and a Screen object. Both the Screen and the Keyboard has a shared pointer of the Logger and the Logger should have a pointer to the Screen.
+
+Keyboard -> Logger <--> Screen
+
+
+What pointer can it use? If we use a raw pointer, when the Screen gets destroyed, the Logger will be still alive and the Keyboard still a shared ownership on it. Logger has a dangling pointer to Screen.
+
+If it's a shared pointer, there is a cyclic dependency between them, they cannot be destoryed, there is a resource leak.
+
+Here comes the `std::weak_ptr` to the rescue. There is still a dangling pointer from Logger to the Screen, when the Screen gets destoryed, but it can be easily detected as we have seen above.
+
+Otherwise, it can be useful for caching and for the observer pattern. Check out the referenced book to get more details.
+
+References:
+- [Effective Modern C++ by Scott Meyers: Item 20](https://amzn.to/38gK5bd)
+
+
+"""When to use a weak pointer?"""
+
+"""<p><strong>When to use a weak pointer?</strong></p>"""
+
+"""<p>A weak pointer - <code>std::weak_ptr</code> is a smart pointer that doesn&#39;t affect the object&#39;s reference count and as such what it points at might have been destroyed. <code>std::weak_ptr</code> is created from a <code>shared_ptr</code> and in case the pointed at object gets destroyed, the weak pointer expires...</p>"""
+
+"""<p>A weak pointer - <code>std::weak_ptr</code> is a smart pointer that doesn&#39;t affect the object&#39;s reference count and as such what it points at might have been destroyed.</p>
+<p><code>std::weak_ptr</code> is created from a <code>shared_ptr</code> and in case the pointed at object gets destroyed, the weak pointer expires.</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">auto</span><span style="color: #d0d0d0">*</span> <span style="color: #d0d0d0">sp</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">std::make_shared&lt;WidgeT&gt;();</span>
+<span style="color: #d0d0d0">std::weak_ptr&lt;T&gt;</span> <span style="color: #d0d0d0">wp(sp);</span>
+<span style="color: #999999; font-style: italic">//...</span>
+<span style="color: #d0d0d0">sp</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">nullptr;</span>
+
+<span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">(wp.expired())</span> <span style="color: #d0d0d0">{</span>
+  <span style="color: #d0d0d0">std::cout</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #ed9d13">&quot;wp doesn&#39;t point to a valid object anymore&quot;</span> <span style="color: #d0d0d0">&lt;&lt;</span> <span style="color: #d0d0d0">std::endl;</span>
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+<p>In case you want to use it, you can either call <code>lock()</code> on it that returns a <code>std::shared_ptr</code> or nullptr in case the pointer is expired, or you can directly pass a weak ptr to <code>shared_ptr</code> constructor.</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #d0d0d0">std::shared_ptr&lt;T&gt;</span> <span style="color: #d0d0d0">sp</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">wp.lock();</span>
+<span style="color: #d0d0d0">std::shared_ptr&lt;T&gt;</span> <span style="color: #d0d0d0">sp2(wp);</span>
+</pre></div>
+<p>So how it can be useful?</p>
+<p>It can be useful for cyclic ownerships, to break the cycle. Let&#39;s say that you have an instance of a Keyboard, a Logger, and a Screen object. Both the Screen and the Keyboard has a shared pointer of the Logger and the Logger should have a pointer to the Screen.</p>
+<p>Keyboard -&gt; Logger &lt;--&gt; Screen</p>
+<p>What pointer can it use? If we use a raw pointer when the Screen gets destroyed, the Logger will be still alive and the Keyboard still a has shared ownership on it. Logger has a dangling pointer to Screen.</p>
+<p>If it&#39;s a shared pointer, there is a cyclic dependency between them, they cannot be destroyed, there is a resource leak.</p>
+<p>Here comes the <code>std::weak_ptr</code> to the rescue. There is still a dangling pointer from Logger to the Screen, when the Screen gets destroyed, but it can be easily detected as we have seen above.</p>
+<p>Otherwise, it can be useful for caching and for the observer pattern. Check out the referenced book to get more details.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://amzn.to/38gK5bd">Effective Modern C++ by Scott Meyers: Item 20</a></li>
+</ul>"""

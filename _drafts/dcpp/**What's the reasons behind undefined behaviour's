@@ -1,0 +1,26 @@
+**What's the reasons behind undefined behaviour's existance?**
+
+First of all, we have to remark that the concept of undefined behaviour was not introduced by C++. It was already there in C. And what is C after all? It's just a high level assembler that had to work on completely different platforms and architectures.
+
+From the language designer’s point of view, undefined behavior is a way to cope with significant differences between compilers and between platforms. Some even refer to that epoch as chaotic. Different compilers treated the language differently and to be fairly backward-compatible, a lot of details (like layout, endianess) were not defined or specified.
+
+This gave compiler writers a lot of flexibility and they could and still can get really creative with this freedom. They can use it to simplify, to shorten, to speed up the compiled code without violating any rules.
+
+References:
+- [StackExchange: Why does C++ have 'undefined behaviour' (UB) and other languages like C# or Java don't?](https://softwareengineering.stackexchange.com/questions/398703/why-does-c-have-undefined-behaviour-ub-and-other-languages-like-c-or-java)
+- [Undefined behaviour in the STL - Sandor Dargo (C++ on Sea 2020)](https://www.youtube.com/watch?v=BEmAo6Fdg-Q)
+
+"""What's the reasons behind undefined behaviour's existence?"""
+
+"""<p><strong>What&#39;s the reasons behind undefined behaviour&#39;s existence?</strong></p>"""
+
+"""<p>First of all, we have to remark that the concept of undefined behaviour was not introduced by C++. It was already there in C. And what is C after all? It&#39;s just a high-level assembler that had to work on completely different platforms and architectures...</p>"""
+
+"""<p>First of all, we have to remark that the concept of undefined behaviour was not introduced by C++. It was already there in C. And what is C after all? It&#39;s just a high-level assembler that had to work on completely different platforms and architectures.</p>
+<p>From the language designer’s point of view, undefined behaviour is a way to cope with significant differences between compilers and between platforms. Some even refer to that epoch as chaotic. Different compilers treated the language differently and to be fairly backwards-compatible, a lot of details (like layout, endianness) were not defined or specified.</p>
+<p>This gave compiler writers a lot of flexibility and they could and still can get really creative with this freedom. They can use it to simplify, to shorten, to speed up the compiled code without violating any rules.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://softwareengineering.stackexchange.com/questions/398703/why-does-c-have-undefined-behaviour-ub-and-other-languages-like-c-or-java">StackExchange: Why does C++ have &#39;undefined behaviour&#39; (UB) and other languages like C# or Java don&#39;t?</a></li>
+<li><a href="https://www.youtube.com/watch?v=BEmAo6Fdg-Q">Undefined behaviour in the STL - Sandor Dargo (C++ on Sea 2020)</a></li>
+</ul>"""

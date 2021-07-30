@@ -1,0 +1,41 @@
+What is the return valie of `main` and what are the available signatures?
+
+Though in some cases you might see `void`, it is not correct. The return type of the `main` function of a C++ program is `int`.
+
+If the program finishes successfully `main` returns `0`, otherwise a non-zero number. Based on this return type the OS knows if the program succeeded or not. Though there is no standard on what different integer values would mean.
+
+Even though the return type of `main` is `int`, in this case a `return` can be omitted and it will be automatically treated as `0`, so it will be considered a succesful return.
+
+Main has two valid signatures:
+- `int main()` where there is no arguments passed in
+- `int main(int argc, char **argv)` or equivalent such as `int main(int argc, char *argv[])`
+
+In this latter case, `argc` represents the number of command line arguments passed in to C++ and in `argv` you can find the program name and the arguments. When `argc` is bigger than 0, argv[0] will be the program name and the rest is the program name.
+
+As an example, if you execute: `./myProg foo bar 'b a z'`, `argc` will be 3 and `argv` will be `["myProg", "foo", "bar", "b a z"]`.
+
+References:
+-[Core Guidelines: F46](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#f46-int-is-the-return-type-for-main)
+-[Stackoverflow: What should main() return in C and C++?](https://stackoverflow.com/questions/204476/what-should-main-return-in-c-and-c)
+-[CPlusPlus.com](http://www.cplusplus.com/articles/DEN36Up4/)
+
+"""What is the return value of main and what are the available signatures?"""
+
+"""<p><strong>What is the return value of <code>main</code> and what are the available signatures?</strong></p> """
+
+"""<p>Even though the return type of <code>main</code> is <code>int</code>, a <code>return</code> can be omitted and it will be automatically treated as <code>0</code>, so it will be considered a successful return...</p>"""
+
+"""<p>Though in some cases you might see <code>void</code>, it is not correct. The return type of the <code>main</code> function of a C++ program is <code>int</code>.</p>
+<p>If the program finishes successfully <code>main</code> returns <code>0</code>, otherwise a non-zero number. Based on this return type the OS knows if the program succeeded or not. Though there is no standard on what different integer values would mean.</p>
+<p>Even though the return type of <code>main</code> is <code>int</code>, in this case, a <code>return</code> can be omitted and it will be automatically treated as <code>0</code>, so it will be considered a successful return.</p>
+<p>Main has two valid signatures:</p>
+<ul>
+<li><code>int main()</code> where there is no arguments passed in</li>
+<li><code>int main(int argc, char **argv)</code> or equivalent such as <code>int main(int argc, char *argv[])</code></li>
+</ul>
+<p>In this latter case, <code>argc</code> represents the number of command-line arguments passed into C++ and in <code>argv</code> you can find the program name and the arguments. When <code>argc</code> is bigger than 0, argv[0] will be the program name and the rest is the program name.</p>
+<p>As an example, if you execute: <code>./myProg foo bar &#39;b a z&#39;</code>, <code>argc</code> will be 3 and <code>argv</code> will be <code>[&quot;myProg&quot;, &quot;foo&quot;, &quot;bar&quot;, &quot;b a z&quot;]</code>.</p>
+<p>References:
+-<a href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#f46-int-is-the-return-type-for-main">Core Guidelines: F46</a>
+-<a href="https://stackoverflow.com/questions/204476/what-should-main-return-in-c-and-c">Stackoverflow: What should main() return in C and C++?</a>
+-<a href="http://www.cplusplus.com/articles/DEN36Up4/">CPlusPlus.com</a></p>"""

@@ -1,0 +1,51 @@
+**Should you use angle brackets(`<filename>`) or double quotes(`"filename"`) to include?**
+
+As almost always in life, the answer is it depends!
+
+For files that are in the same project, files that exist at the relative path to the including file, one should use the double quotes.
+
+For files from the standard library, or in fact, from any library that you depend on, the angle brackets form should be preferred.
+
+```
+// foo.cpp:
+#include <string>                // From the standard library, requires the <> form
+#include <some_library/common.h> // A file that is not locally relative, included from another library; use the <> form
+#include "foo.h"                 // A file locally relative to foo.cpp in the same project, use the "" form
+#include "foo_utils/utils.h"     // A file locally relative to foo.cpp in the same project, use the "" form
+```
+
+If you use double quotes, it will first look up the file in the local relative path first and then if it failed to file a match, it will look for it anywhere else it's possible.
+
+This also means that if you use double quotes to include a file from another library and a file with the same name is created in your local project at the same relative path, you will have a bad surprise while compiling.
+
+These are the commonly followed best practices, for exact information, it's worth to check your compilers implementation.
+
+
+References:
+-[Core Guidelines: SF8](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#sf8-use-include-guards-for-all-h-files)
+-[Stackoverflow: What is the difference between #include <filename> and #include “filename”?
+](https://stackoverflow.com/questions/21593/what-is-the-difference-between-include-filename-and-include-filename)
+
+"""Should you use angle brackets(<filename>) or double quotes("filename") to include?"""
+
+"""<p><strong>Should you use angle brackets(<code>&lt;filename&gt;</code>) or double quotes(<code>&quot;filename&quot;</code>) to include?</strong></p>"""
+
+"""<p>For files that are in the same project, files that exist at the relative path to the including file, one should use the double-quotes. For files from the standard library, or in fact, from any library that you depend on, the angle brackets form should be preferred.</p>"""
+
+"""<p>As almost always in life, the answer is it depends!</p>
+<p>For files that are in the same project, files that exist at the relative path to the including file, one should use the double-quotes.</p>
+<p>For files from the standard library, or in fact, from any library that you depend on, the angle brackets form should be preferred.</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #999999; font-style: italic">// foo.cpp:</span>
+<span style="color: #cd2828; font-weight: bold">#include &lt;string&gt;                </span><span style="color: #999999; font-style: italic">// From the standard library, requires the &lt;&gt; form</span>
+<span style="color: #cd2828; font-weight: bold">#include &lt;some_library/common.h&gt; </span><span style="color: #999999; font-style: italic">// A file that is not locally relative, included from another library; use the &lt;&gt; form</span>
+<span style="color: #cd2828; font-weight: bold">#include &quot;foo.h&quot;                 </span><span style="color: #999999; font-style: italic">// A file locally relative to foo.cpp in the same project, use the &quot;&quot; form</span>
+<span style="color: #cd2828; font-weight: bold">#include &quot;foo_utils/utils.h&quot;     </span><span style="color: #999999; font-style: italic">// A file locally relative to foo.cpp in the same project, use the &quot;&quot; form</span>
+</pre></div>
+<p>If you use double quotes, it will first look up the file in the local relative path first and then if it failed to file a match, it will look for it anywhere else it&#39;s possible.</p>
+<p>This also means that if you use double quotes to include a file from another library and a file with the same name is created in your local project at the same relative path, you will have a bad surprise while compiling.</p>
+<p>These are the commonly followed best practices, for exact information, it&#39;s worth to check your compilers implementation.</p>
+<p>References:
+-<a href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#sf8-use-include-guards-for-all-h-files">Core Guidelines: SF8</a>
+-<a href="https://stackoverflow.com/questions/21593/what-is-the-difference-between-include-filename-and-include-filename">Stackoverflow: What is the difference between #include <filename> and #include “filename”?
+</a></p>"""
+

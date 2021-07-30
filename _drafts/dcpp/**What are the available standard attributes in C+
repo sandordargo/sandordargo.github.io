@@ -1,0 +1,85 @@
+**What are the available standard attributes in C++?**
+
+First, what is an attribute? And how does it look like?
+
+A simple one looks like this: `[[attribute]]`. But it can have parameters (`[[deprecated("because")]]`) or a namespace (`[[gnu::unused]]`) or both.
+
+Attributes provide the unified standard syntax for implementation-defined language extensions, such as the GNU and IBM language extensions. They can be used almost anywhere in a C++ program, but our focus is not on them today.
+
+We are interested in attributes defined by the C++ standard.
+
+The first one were introduced by C++11:
+
+- `[[noreturn]]` indicates that a function does not return. It doesn't mean that it returns a void, but that it doesn't return. It can mean that it always throws an exception. Maybe different ones based on their input.
+
+- `[[carries_dependency]]` indicates that a dependency chain in release-consume `std::memory_order` propagates in and out of the function, which allows the compiler to skip unnecessary memory fence instructions.
+
+Then C++14 added another type of attribute with two versions:
+
+- `[[deprecated]]` and `[[deprecated(reason)]]` indicate that the usage of that entity is discuraged. A reason can be specified as a parameter.
+
+C++17 fastened up and added three more.
+
+- `[[fallthrough]]` indicates in a `switch`-`case` that a `break` or `return` is missing on purpose. The fall through from one case label to another is intentional
+
+- `[[nodiscard]]` indicates that the return value of a function should not be discarded - in other words it must be saved into a varaible - otherwise you'll get a compiler warning
+
+- `[[maybe_unused]]` suppresses compiler warnings on unused entities, if any. For example, you'll not get a compiler warning for an unused variable if it was declared with the `[[maybe_unused]]` variable.
+
+C++20 added another 4 attributes:
+- `[[nodiscard("reason")]]` it's the same as `[[nodiscard]]` but with a reason specified.
+
+- `[[likely]]` indicates to the compiler that a `switch`-`case` or an `if-else` branch is likely to be executed more frequently than the others and as such it lets the compiler to optimize for that evaluation path.
+
+- `[[unlikely]]` has the same concept as `[[likely]]`, but in this case such labelled paths are less likely to be executed than the others.
+
+- `[[no_unique_address]]` indicates that this data member need not have an address distinct from all other non-static data members of its class.
+
+Reference:
+- [C++ Reference](https://en.cppreference.com/w/cpp/language/attributes)
+
+"""What are the available standard attributes in C++?"""
+
+"""<p><strong>What are the available standard attributes in C++?</strong></p>"""
+
+"""<p>Attributes provide the unified standard syntax for implementation-defined language extensions, such as the GNU and IBM language extensions. They can be used almost anywhere in a C++ program, but our focus is not on them today...</p>"""
+
+"""<p>First, what is an attribute? And how does it look like?</p>
+<p>A simple one looks like this: <code>[[attribute]]</code>. But it can have parameters (<code>[[deprecated(&quot;because&quot;)]]</code>) or a namespace (<code>[[gnu::unused]]</code>) or both.</p>
+<p>Attributes provide the unified standard syntax for implementation-defined language extensions, such as the GNU and IBM language extensions. They can be used almost anywhere in a C++ program, but our focus is not on them today.</p>
+<p>We are interested in attributes defined by the C++ standard.</p>
+<p>The first one was introduced by C++11:</p>
+<ul>
+<li><p><code>[[noreturn]]</code> indicates that a function does not return. It doesn&#39;t mean that it returns a void, but that it doesn&#39;t return. It can mean that it always throws an exception. Maybe different ones based on their input.</p>
+</li>
+<li><p><code>[[carries_dependency]]</code> indicates that a dependency chain in release-consume <code>std::memory_order</code> propagates in and out of the function, which allows the compiler to skip unnecessary memory fence instructions.</p>
+</li>
+</ul>
+<p>Then C++14 added another type of attribute with two versions:</p>
+<ul>
+<li><code>[[deprecated]]</code> and <code>[[deprecated(reason)]]</code> indicate that the usage of that entity is discouraged. A reason can be specified as a parameter.</li>
+</ul>
+<p>C++17 fastened up and added three more.</p>
+<ul>
+<li><p><code>[[fallthrough]]</code> indicates in a <code>switch</code>-<code>case</code> that a <code>break</code> or <code>return</code> is missing on purpose. The fall through from one case label to another is intentional</p>
+</li>
+<li><p><code>[[nodiscard]]</code> indicates that the return value of a function should not be discarded - in other words, it must be saved into a variable - otherwise, you&#39;ll get a compiler warning</p>
+</li>
+<li><p><code>[[maybe_unused]]</code> suppresses compiler warnings on unused entities, if any. For example, you&#39;ll not get a compiler warning for an unused variable if it was declared with the <code>[[maybe_unused]]</code> variable.</p>
+</li>
+</ul>
+<p>C++20 added another 4 attributes:</p>
+<ul>
+<li><p><code>[[nodiscard(&quot;reason&quot;)]]</code> it&#39;s the same as <code>[[nodiscard]]</code> but with a reason specified.</p>
+</li>
+<li><p><code>[[likely]]</code> indicates to the compiler that a <code>switch</code>-<code>case</code> or an <code>if-else</code> branch is likely to be executed more frequently than the others and as such it lets the compiler to optimize for that evaluation path.</p>
+</li>
+<li><p><code>[[unlikely]]</code> has the same concept as <code>[[likely]]</code>, but in this case, such labelled paths are less likely to be executed than the others.</p>
+</li>
+<li><p><code>[[no_unique_address]]</code> indicates that this data member need not have an address distinct from all other non-static data members of its class.</p>
+</li>
+</ul>
+<p>Reference:</p>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/language/attributes">C++ Reference</a></li>
+</ul>"""

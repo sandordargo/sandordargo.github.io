@@ -1,0 +1,45 @@
+**What are the reasons to use shared pointers?**
+
+Shared pointers brought C++ developers the advantages of two worlds. It offers automatic cleanup (garbage collection) that is applicatble to all types with a destructor and it is predictable, not like Garbage Collectors in other langauges.
+
+Compared to `std::unique_ptr` or to a raw pointer, `std::shared_ptr` objects are typically twice as big because they don't just contain a raw pointer, but they also contain another raw pointer to a dynamically allocated memory area where the reference counting happens.
+
+By default, destruction happens via `delete`, but just like for `std::unique_ptr`, custom deleters can be passed. It's worth to note that the type of the deleter has no effect on the type of the `std::shared_ptr`.
+
+Resource destruction happens as soon as the pointer goes out of scope.
+
+It's available since C++11 and there are two ways to initalize a shared pointer:
+
+```
+std::unique_ptr<T> ptr (new T());
+std::unique_ptr<T> ptr2 = std::make_unique<T>();
+```
+
+The second way of pointer creation - via `std::make_shared` is safer, because before you could accidentally pass in a raw pointer twice and the cost of the dynamic allocation for the reference count memory is avoided.
+
+Avoid creating std::shared_ptrs from variables of raw pointer type as it's difficult to maintain, to understand when the pointed object would be destoyed.
+
+Use std::shared_ptr for shared-ownership resource management.
+
+"""What are the reasons to use shared pointers?"""
+
+"""<p><strong>What are the reasons to use shared pointers?</strong></p>"""
+
+"""<p>Shared pointers brought C++ developers the advantages of two worlds. It offers automatic cleanup (garbage collection) that is applicable to all types with a destructor and it is predictable, not like Garbage Collectors in other languages.</p>"""
+
+"""<p>Shared pointers brought C++ developers the advantages of two worlds. It offers automatic cleanup (garbage collection) that is applicable to all types with a destructor and it is predictable, not like Garbage Collectors in other languages.</p>
+<p>Compared to <code>std::unique_ptr</code> or to a raw pointer, <code>std::shared_ptr</code> objects are typically twice as big because they don&#39;t just contain a raw pointer, but they also contain another raw pointer to a dynamically allocated memory area where the reference counting happens.</p>
+<p>By default, destruction happens via <code>delete</code>, but just like for <code>std::unique_ptr</code>, custom deleters can be passed. It&#39;s worth to note that the type of the deleter has no effect on the type of the <code>std::shared_ptr</code>.</p>
+<p>Resource destruction happens as soon as the pointer goes out of scope.</p>
+<p>It&#39;s available since C++11 and there are two ways to initalize a shared pointer:</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #d0d0d0">std::unique_ptr&lt;T&gt;</span> <span style="color: #d0d0d0">ptr</span> <span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">new</span> <span style="color: #d0d0d0">T());</span>
+<span style="color: #d0d0d0">std::unique_ptr&lt;T&gt;</span> <span style="color: #d0d0d0">ptr2</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">std::make_unique&lt;T&gt;();</span>
+</pre></div>
+<p>The second way of pointer creation - via <code>std::make_shared</code> is safer, because before you could accidentally pass in a raw pointer twice and the cost of the dynamic allocation for the reference count memory is avoided.</p>
+<p>Avoid creating std::shared_ptrs from variables of raw pointer type as it&#39;s difficult to maintain, to understand when the pointed object would be destroyed.</p>
+<p>Use std::shared_ptr for shared-ownership resource management.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/memory/shared_ptr">C++ Reference</a></li>
+<li><a href="https://amzn.to/38gK5bd">Effective Modern C++ by Scott Meyers</a></li>
+</ul>"""

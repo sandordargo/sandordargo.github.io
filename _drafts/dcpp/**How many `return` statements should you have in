@@ -1,0 +1,42 @@
+**How many `return` statements should you have in a function?**
+
+While some would insist that you should only have one return statement for better understandibility, it's counter-productive.
+
+It's true that with multiple return statements you'll have multiple exit points that you have to consider when you try to understand what a function does. But this is only a problem, if your function is too big. If you write short functions, let's say what fits a screen (use a nice, big font size) then this is not a problem.
+
+Besides, with multiple return statements, it's easy to create some guards on top of the function:
+
+```
+void foo(MyClass* iMyClass) {
+  if (iMyClass == nullptr) {
+    return; 
+  }
+  // do stuff
+}
+```
+
+With multiple return statemetns, you can avoid unnecessarily convoluted code and the introduction of extra state variables.
+
+References:
+-[Core Guidelines: NR2](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#nr2-dont-insist-to-have-only-a-single-return-statement-in-a-function)
+
+"""How many return statements should you have in a function?"""
+
+"""<p><strong>How many <code>return</code> statements should you have in a function?</strong></p>"""
+
+"""<p>With multiple return statements, you can avoid unnecessarily convoluted code and the introduction of extra state variables...</p>"""
+
+"""<p>While some would insist that you should only have one return statement for better understandability, it&#39;s counter-productive.</p>
+<p>It&#39;s true that with multiple return statements you&#39;ll have multiple exit points that you have to consider when you try to understand what a function does. But this is only a problem if your function is too big. If you write short functions, let&#39;s say what fits a screen (use a nice, big font size) then this is not a problem.</p>
+<p>Besides, with multiple return statements, it&#39;s easy to create some guards on top of the function:</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">void</span> <span style="color: #447fcf">foo</span><span style="color: #d0d0d0">(MyClass*</span> <span style="color: #d0d0d0">iMyClass)</span> <span style="color: #d0d0d0">{</span>
+  <span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">(iMyClass</span> <span style="color: #d0d0d0">==</span> <span style="color: #d0d0d0">nullptr)</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #6ab825; font-weight: bold">return</span><span style="color: #d0d0d0">;</span> 
+  <span style="color: #d0d0d0">}</span>
+  <span style="color: #999999; font-style: italic">// do stuff</span>
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+<p>With multiple return statements, you can avoid unnecessarily convoluted code and the introduction of extra state variables.</p>
+<p>References:
+-<a href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#nr2-dont-insist-to-have-only-a-single-return-statement-in-a-function">Core Guidelines: NR2</a></p>
+"""

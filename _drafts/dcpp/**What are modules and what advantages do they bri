@@ -1,0 +1,76 @@
+**What are modules and what advantages do they bring?**
+
+As we already discussed `#include` statements are basically textual inclusions. The preprocessor macro copies replace the `#include` statement with the content of the file to be included.
+
+Hence a simple hello world program can grow from around 100 bytes up to 13,000. Simply because the inclusion of `<iostream>`.
+
+All the header headers will be copied, even if you only want to use one small function.
+
+Modules, introduced by C++20, finally bring a solution. Importing a module is basically free, unlike for inclusion, the order of imports doesn't matter.
+
+With modules, you can easily structure your libraries and with `export` qualifiers you can easily decide what you want to expose and what not.
+
+Thanks to the modules, there is no more need for separating header and implementation files.
+
+Here is a short example:
+
+```
+// math.cppm
+export module math;
+
+export int square(int n){
+    return n*n;
+} 
+
+// main.cpp
+
+import math;
+
+int main(){
+  square(42);
+}
+```
+For more details - there are a lot! - check out the references.
+
+References:
+
+-[CppReference](https://en.cppreference.com/w/cpp/language/modules)
+
+-[Microsoft Devblogs](https://devblogs.microsoft.com/cppblog/a-tour-of-cpp-modules-in-visual-studio/)
+
+-[ModernesC++](https://www.modernescpp.com/index.php/c-20-modules)
+
+
+"""What are modules and what advantages do they bring?"""
+
+"""<p><strong>What are modules and what advantages do they bring?</strong></p>"""
+
+"""<p>Hence a simple hello world program can grow from around 100 bytes up to 13,000. Simply because of the inclusion of <code>&lt;iostream&gt;</code>. All the header headers will be copied, even if you only want to use one small function...</p>"""
+
+"""<p>As we already discussed <code>#include</code> statements are basically textual inclusions. The preprocessor macro copies replace the <code>#include</code> statement with the content of the file to be included.</p>
+<p>Hence a simple hello world program can grow from around 100 bytes up to 13,000. Simply because of the inclusion of <code>&lt;iostream&gt;</code>.</p>
+<p>All the header headers will be copied, even if you only want to use one small function.</p>
+<p>Modules, introduced by C++20, finally bring a solution. Importing a module is basically free, unlike for inclusion, the order of imports doesn&#39;t matter.</p>
+<p>With modules, you can easily structure your libraries and with <code>export</code> qualifiers you can easily decide what you want to expose and what not.</p>
+<p>Thanks to the modules, there is no more need for separating header and implementation files.</p>
+<p>Here is a short example:</p>
+<!-- HTML generated using hilite.me --><div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #999999; font-style: italic">// math.cppm</span>
+<span style="color: #6ab825; font-weight: bold">export</span> <span style="color: #d0d0d0">module</span> <span style="color: #d0d0d0">math;</span>
+
+<span style="color: #6ab825; font-weight: bold">export</span> <span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">square</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">n){</span>
+    <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">n*n;</span>
+<span style="color: #d0d0d0">}</span> 
+
+<span style="color: #999999; font-style: italic">// main.cpp</span>
+
+<span style="color: #d0d0d0">import</span> <span style="color: #d0d0d0">math;</span>
+
+<span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">main</span><span style="color: #d0d0d0">(){</span>
+  <span style="color: #d0d0d0">square(</span><span style="color: #3677a9">42</span><span style="color: #d0d0d0">);</span>
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+<p>For more details - there are a lot! - check out the references.</p>
+<p>References:</p>
+<p>-<a href="https://en.cppreference.com/w/cpp/language/modules">CppReference</a></p>
+<p>-<a href="https://devblogs.microsoft.com/cppblog/a-tour-of-cpp-modules-in-visual-studio/">Microsoft Devblogs</a></p>
+<p>-<a href="https://www.modernescpp.com/index.php/c-20-modules">ModernesC++</a></p>"""

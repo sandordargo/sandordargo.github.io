@@ -1,0 +1,38 @@
+**Should you explicitely delete unused/unsupported special functions or declare them as private?**
+
+The first question to answer is why would you do any of the options? You might not want a class to be copied or moved, so you want to keep related special functions unreachable for the caller. One option is to declare them as private or protected and the other is that you explicitely delete them.
+
+```
+class NonCopyable {
+public:
+  NonCopyable() {/*...*/}
+  // ...
+private:
+  NonCopyable(const NonCopyable&); //not defined
+  NonCopyable& operator=(const NonCopyable&); //not defined
+};
+
+```
+
+Before C++11 there was no other option than declaring the unneeded special functions private and not implementing them. As such one could disallow copying objects (there was no move back in time). The lack of implementation/definition helps against accidental usages in members, friends, or when you disregard the access specifiers. You'll face a problem at linking time.
+
+Since C++11 you can simply mark them deleted by declaring them as `= delete;` 
+
+```
+class NonCopyable {
+public:
+  NonCopyable() {/*...*/}
+  NonCopyable(const NonCopyable&) = delete;
+  NonCopyable& operator=(const NonCopyable&) = delete;
+  // ...
+private:
+  // ...
+};
+```
+
+The C++11 way is a better approach because 
+
+- it's more explicit than having the functions in the private section which might only be an error
+- in case you try to make a copy, you'll already get an error at compilation time
+
+Deleted functions should be declared as public, not private. It's not a mandate by the compiler, but some compilers might only complain about that you call a private function, not that it's deleted.
