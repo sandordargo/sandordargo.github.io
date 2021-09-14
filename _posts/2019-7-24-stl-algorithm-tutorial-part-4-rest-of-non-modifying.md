@@ -19,7 +19,7 @@ Namely, we are going to have a deeper look at the following functions:
 ## `count`
 The name speaks for itself, right? `count` takes a range of iterators and as a third parameter, it takes a value that it'd look for in the passed in range. As simple as that
 
-```
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -40,8 +40,7 @@ Unsurprisingly the answer is 2.
 
 A unary predicate can be a function object, a pointer to a function or a lambda function. [It depends on your use-case which one you should use.](http://sandordargo.com/blog/2018/12/19/c++-lambda-expressions)
 
-
-```
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -63,7 +62,7 @@ In this case, the answer will be again two. But while in or example for `count` 
 
 With the constructor that takes only the parameters, it is definitely the case. The first two iterators define a range and the third parameter defines the start of another range. Let's take a simple case, where we have two vectors with the same contents:
 
-```
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -82,7 +81,7 @@ int main () {
 
 Easy-peasy, our two vectors are equal. In our next example we insert an element at the beginning of the second vector and we try to ignore it from the comparison by not passing the `begin()` iterator, but an iterator of `begin()+1`. What should happen?
 
-```
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -104,7 +103,7 @@ We start a comparison after the mismatching element, so if in the second vector 
 
 So what is going to happen if insert the same element at the end of the vector and we start the comparison from the beginning?
 
-```
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -127,7 +126,7 @@ Equal will return `true`! What? So what does equal do again? It checks if the fi
 
 There is a second constructor through which it's possible to pass a binary predicate as a comparator of the two ranges. Otherwise it works the same way.
 
-```
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -154,7 +153,7 @@ The difference is that while `equal` returns an integer, mismatch returns a pair
 
 In case of failure, so in case of no mismatch, the iterator of the first range is points right after to its last element and the second iterator points to the second range at the same relative position as the first one. So in case the two ranges are equal, both points after the last element. When the first range is part of the second range, but the second range is longer, the second iterator points to the first element that is not in the first range.
 
-```
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -168,14 +167,13 @@ int main () {
 }
 ```
 
-
 ## `is_permutation`
 
 `is_permutation` is also similar to `equal`. It offers two constructors, both taking two ranges, the first one defined by its beginning and end while the other is only defined by its start point. And as we've seen with `equal` and `mismatch`, `is_permutation` also accepts an optional binary predicate that is used to compare the elements of the first and second ranges.
 
 Like `equal`, `is_permutation` also returns a boolean which will be `true` in case all the elements match. But for `is_permutation` the order doesn't matter. It'll return `true` if the two queried ranges consist of the same elements regardless of their positions.
 
-```
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <vector>
