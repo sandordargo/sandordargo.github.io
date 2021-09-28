@@ -1,49 +1,62 @@
 ---
 layout: post
-title: "Why to use the 'override' specifier in C++ 11?"
+title: "Why to use the override specifier in C++ 11?"
 date: 2018-7-5
 category: dev
-tags: [cpp, tutorial, clean code]
+tags: [cpp, tutorial, clean code, override, virtual]
 excerpt_separator: <!--more-->
 ---
-If you know Java this might be completely straightforward to you as you are already used to Java's `@Override annotation`. If you've been always coding in C/C++, this might be new. You might ask yourself the question, why should one put there an extra specifier when it's not necessary. Your code will just work the very same way.
+The `override` specifier was introduced to the language with C++11 and it is one of the easiest tool to significantly improve the maintainability of our codebases.
 <!--more-->
 
-While in most of the cases it's true that your code's behaviour will not change, in some others - when you're actually making a mistake - using `override` will stop you from checking in the buggy code as your compilation will fail. And none of us checks in code that doesn't even compile, right?
+`override` tells both the reader and the compiler that a given function is not simply `virtual` but it overrides a `virtual` method from its base class(es).
 
-The `override` specifier will tell both the compiler and the reader that the function where it is used is actually overriding a method from its base class. 
+Hopefully it you replace the right `virtual` keywords in your codebase your compilation will not break, but if it does it means that you just identified some bugs and now you have a way to fix them.
 
-It tells the reader that "this is a virtual method, that is overriding a virtual method of the base class."
-
-Use it correctly and you see no effect:
+If you are correctly overriding a `virtual` method of a base class, you will see no effect:
 
 ```cpp
 class Base
 {
     virtual void foo();
+    virtual void bar();
 };
  
-class Derived : Base
+class Derived : public Base
 {
     void foo() override; // OK: Derived::foo overrides Base::foo
 };
+
+class Derived2 : public Derived
+{
+    void bar() override; // OK: Derived2::bar overrides Base::bar
+};
 ```
 
-But it will help you _revealing problems with constness_:
+Now let's see the different kind of errors it can help catch.
+
+## Catch `const`/non-`const` mismatch with `override`
+
+`override`  will help you revealing *problems with constness*. Meaning that if you try to override a `const` method with a non-`const` method, or if you try to override a non-`const` method with a `const` one, it's not going to work:
 
 ```cpp
 class Base
 {
     virtual void foo();
-    void bar();
+    virtual void bar() const;
 };
  
 class Derived : Base
 {
-    void foo() const override; // Error: Derived::foo does not override Base::foo
-                               // It tries to override Base::foo const that doesn't exist```
+    void foo() const override; // error: Derived::foo does not override Base::foo
+
+    void bar() override;    // error: 'void Derived::bar()' marked 'override', but does not override              
 };
 ```
+
+What we've just see would work also with `volatile` and `noexcept`. All these qualifiers must exactly be the same in the base and dervided classes in order to correctly override a base class method.
+
+## Find when you `override` a non-`virtual` method
 
 Let's not forget that in C++, methods are non-virtual by default. If we use `override`, we might find that there is nothing to override. Without the `override` specifier we would just simply create a brand new method. _No more base methods forgotten to be declared as virtual._
 
@@ -58,6 +71,8 @@ class Derived : Base
     void foo() override; // Error: Base::foo is not virtual
 };
 ```
+
+## Find mismatching signatures with `override`
 
 We should also keep in mind that when we override a method - with or without the `override` specifier - _no conversions are possible_:
 
@@ -78,6 +93,15 @@ class Derived: public Base
 };
 ``` 
 
+## Conclusion
+
 In my opinion, using the override specifier from C++11 is part of clean coding principles. It reveals the author's intentions, it makes the code more readable and helps to identify bugs at build time. Use it without moderation!
 
 _If you are looking for more modern C++ tricks, I'd recommend you to check out [Scott Meyers](https://www.aristeia.com/)'s [Effective Modern C++](https://amzn.to/2VZrLec)!_
+
+## Connect deeper
+
+If you liked this article, please 
+- hit on the like button,  
+- [subscribe to my newsletter](http://eepurl.com/gvcv1j) 
+- and let's connect on [Twitter](https://twitter.com/SandorDargo)!

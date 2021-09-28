@@ -52,7 +52,7 @@ The function's return value in the above examples is a boolean, we simply compar
 Alright, this last sentence should give us the hint. We can replace the above expression with `std::any_of`:
 
 ```cpp
-return std::any_of(myCollection.begin(), myCollection.end(), [](      myType* anItem) {
+return std::any_of(myCollection.begin(), myCollection.end(), [](MyType* anItem) {
           return anItem->m_code == ENUM_ELEMENT;
         });
 
@@ -81,7 +81,7 @@ You guessed it right, in such cases we can replace `find_if` with `none_of`:
 ```cpp
 return (std::none_of(items->begin(), item->end(), [&iName](const Item& anItem) {
     return inItem._name == iName;
-  });) ? nullptr : &(*aPotentialItem);
+  })) ? nullptr : &(*aPotentialItem);
 ```
 
 Our gains are similar. We still spare comparison and potentially a temporary as well. Besides, our code is more terse, more expressive and we didn't even have to touch the lambda we use.
