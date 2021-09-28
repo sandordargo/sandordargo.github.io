@@ -3,7 +3,7 @@ layout: post
 title: "Top 6+1 responsibilities of a developer"
 date: 2021-9-15
 category: dev
-tags: [watercooler, career, responsibilities]
+tags: [watercooler, career, responsibilities, professionalism]
 excerpt_separator: <!--more-->
 ---
 I took one of my usual weekend power walks and I was listening to motivational speeches. Like I usually do during the first half of these 10km walks.
@@ -151,3 +151,10 @@ Imagine that you live in a world where people care enough to raise an alert, to 
 The responsibilities we discussed earlier, the responsibilities of a (remote) programmer are not complex. On the contrary, they are quite simple. Items that we can all act on. We can start doing our best, we can start adding at least 15 minutes of learning time with which we already started managing our time better. We can raise an alert if we see something wrong or if we are treated unfairly. And we can definitely start taking steps towards a healthier life which often includes improving our workspace with the right equipment.
 
 Take responsibility, work on these items one at a time and you'll elevate professional your life to the next level!
+
+## Connect deeper
+
+If you liked this article, please 
+- hit on the like button,  
+- [subscribe to my newsletter](http://eepurl.com/gvcv1j) 
+- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
