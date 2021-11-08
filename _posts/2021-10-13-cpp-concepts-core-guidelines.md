@@ -57,8 +57,7 @@ auto add(Num a, Num b) {
 }
 ```
 
-### [Whenever possible use standard concepts
-](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#t11-whenever-possible-use-standard-concepts)
+### [T.11: Whenever possible use standard concepts](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#t11-whenever-possible-use-standard-concepts)
 
 This rule reminds me of something we discussed in [Loops are bad, algorithms are good! Aren't they?](https://www.sandordargo.com/blog/2020/05/13/loops-vs-algorithms).
 
@@ -121,8 +120,7 @@ A good concept will also communicate semantics.
 
 For example, it's more than enforcing having the `operator+` defined, it's communicating that the type modelling a concept is a *number*.
 
-### [T.21: Require a complete set of operations for a concept
-](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#t21-require-a-complete-set-of-operations-for-a-concept)
+### [T.21: Require a complete set of operations for a concept](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#t21-require-a-complete-set-of-operations-for-a-concept)
 
 This next rule is closely related to the previous one. If you want to have meaningful semantics it's hardly useful to model a number only supporting addition.
 
