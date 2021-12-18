@@ -31,7 +31,7 @@ Once again, thanks for this great event.
 
 Let me share my 3 favourite talks from the conference.
 
-### Zen and the art of Code Lifecycle maintenance by Phil Nash
+### [Zen and the art of Code Lifecycle maintenance by Phil Nash](https://www.youtube.com/watch?v=tjnFXS10jU0)
 
 It might be surprising, but one of my favourite talks were not about C++. Probably it's less surprising if I tell you that it was about software quality and it was delivered by the main organizer of [C++ On Sea](https://cpponsea.uk/), [Phil Nash](https://twitter.com/phil_nash).
 
@@ -68,7 +68,7 @@ From that point, the talk could have been a bit boring if these elements had bee
 
 He absolutely convinced me to read [Zen and the Art of Motorcycle Maintenance](https://www.amazon.com/gp/product/B0026772N8/ref=as_li_qf_asin_il_tl?ie=UTF8&tag=sandordargo-20&creative=9325&linkCode=as2&creativeASIN=B0026772N8&linkId=b6e3038308f349e9e00809ff90e2f1ed) which I already started and I find it fascinating after the first few pages.
 
-### How to rangify your code by Tina Ulbrich
+### [How to rangify your code by Tina Ulbrich](https://www.youtube.com/watch?v=d9ToM7sIvq0)
 
 There were some slots where I wanted to watch multiple talks at the same time. Luckily the uncut recordings were quickly available, so in the evenings and during the next days' lunchtimes I could watch some more talks.
 
@@ -92,9 +92,9 @@ We have a lot of new *verbs* introduced by the ranges library that were not avai
 
 Tina's presentation is a great starting point to learn more. Watch it, stop it, try the code yourself, read the documentation and then continue watching the video.
 
-This is one of the videos that I don't recommend watching once, or watching all at once, but take more time to fully benefit from it.
+[This is one of the videos](https://www.youtube.com/watch?v=d9ToM7sIvq0) that I don't recommend watching once, or watching all at once, but take more time to fully benefit from it.
 
-### Breaking Dependencies: Type Erasure - A Design Analysis by Klaus Iglberger
+### [Breaking Dependencies: Type Erasure - A Design Analysis by Klaus Iglberger](https://www.youtube.com/watch?v=jKt6A3wnDyI)
 
 At [C++ On Sea](https://cpponsea.uk/) I attended a few hours of Klaus' workshop on modern C++ design patterns, but due to work matters, I couldn't stay the whole day. Yet, I was impressed by the calmity and professionality of his way of presenting. I knew I wanted to attend his presentation.
 
@@ -117,7 +117,7 @@ Type Erasure is a mixture of three design patterns:
 
 The big strengths of this talk are the detailed example with tons of code and Klaus' great explanations. I don't even try to detail Type Erasure for you here in a couple of lines and I also don't want to claim that now I have a deep understanding of it.
 
-I'll keep revisiting this video and implement Type Erasure myself on some code katas and post my experience so that I can confirm Klaus' summary on the extremely interesting design pattern that reduces dependencies and improves the performance while also improving readability and comprehension. That sounds like an ideal combination.
+I'll keep revisiting [this video](https://www.youtube.com/watch?v=jKt6A3wnDyI) and implement Type Erasure myself on some code katas and post my experience so that I can confirm Klaus' summary on the extremely interesting design pattern that reduces dependencies and improves the performance while also improving readability and comprehension. That sounds like an ideal combination.
 
 ## My 3 favourite thoughts
 
@@ -125,7 +125,7 @@ Besides my 3 favourite presentations, I'd also like to highlight 3 engaging thou
 
 ### On the alignment trap by Phil Nash
 
-I'd like to mention one thought from [Phil Nash](https://twitter.com/phil_nash)'s presentation on *Zen and the art of Code Lifecycle maintenance*.
+I'd like to mention one thought from [Phil Nash](https://twitter.com/phil_nash)'s presentation on [*Zen and the art of Code Lifecycle maintenance*](https://www.youtube.com/watch?v=tjnFXS10jU0).
 
 He mentioned the alignment trap that was introduced by [Allan Kelly](https://twitter.com/allankellynet). He examined many teams and put categorized them along two axes. What makes a team more successful? Doing the right thing or doing the things right?
 
@@ -147,7 +147,7 @@ This thought is far from a novel idea, but it's a very important reminder for us
 
 ### On ~~forwarding~~ universal references by Nico Josuttis
 
-Nico was mentioning certain ranges that cannot be passed by `const&`. When you are unsure what kind of ranges should be accepted by a function, you should rather be prepared for everything.
+[Nico was mentioning](https://www.youtube.com/watch?v=ey4pTOfdi9k) certain ranges that cannot be passed by `const&`. When you are unsure what kind of ranges should be accepted by a function, you should rather be prepared for everything.
 
 It's not that difficult in this case as there is a type, a reference that can refer to everything. While a normal non-`const` reference cannot refer to temporary objects, a universal reference can. It can universally refer to anything by keeping all its attributes. That was the original usecase for unirversal references, and it's an old term. 
 
@@ -163,7 +163,7 @@ Old fads, habits and patterns that went out of fashion can reappear anytime and 
 
 I would like to thank once more the organizers of [Meeting C++](https://meetingcpp.com/2021/) for making this great event happen. It's another great place to be if you want to learn about trends and great techniques of modern C++.
 
-I shared here only a couple of talks and thoughts but I can assure you that there were many others that could have made it to this report. The talks will be soon available at the [Youtube page of Meeting C++](https://www.youtube.com/c/MeetingCPP) and I'll also update this article with the links to the referenced talks once they are available to the public.
+I shared here only a couple of talks and thoughts but I can assure you that there were many others that could have made it to this report. The talks are available at the [Youtube page of Meeting C++](https://www.youtube.com/c/MeetingCPP).
 
 ## Connect deeper
 
