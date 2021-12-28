@@ -60,7 +60,7 @@ In the book, he doesn’t only speak about these problems but also suggests solu
 
 Who would be more capable of writing a book on Scrum if not one of the most important person among the 17 founders of [the Agile Manifesto](https://agilemanifesto.org/)?
 
-[Jeff Sutherland](https://twitter.com/jeffsutherland) just did that, he wrote *Scrum: The Art of Doing Twice the Work in Half the Time* and he clearly considers it the best way of doing things - if Scrum is done right.
+[Jeff Sutherland](https://twitter.com/jeffsutherland) just did that, he wrote [*Scrum: The Art of Doing Twice the Work in Half the Time*](https://capitaloneshopping.com/p/scrum-the-art-of-doing-twice-the/RQRRZQHZ79) and he clearly considers it the best way of doing things - if Scrum is done right.
 
 It's an inspiring book with many real-life examples and pieces of advice. Some I followed up, like the OODA principle and some I'd be happy if managers would follow such as the number of people on a team.
 
