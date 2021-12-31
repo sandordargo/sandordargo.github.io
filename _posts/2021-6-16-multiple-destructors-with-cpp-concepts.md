@@ -6,7 +6,7 @@ category: dev
 tags: [cpp, cpp20, concepts, templates]
 excerpt_separator: <!--more-->
 ---
-We probably all learnt that one cannot overload the destructor. Hence I write about ***"the"*** destructor and *a* destructor... After all, it has no return type and it doesn't take parameters. It's also not really `const` as it destroys the underlying object.
+We probably all learnt that one cannot overload the destructor. Hence I write about ***"the"*** destructor and *a* destructor... After all, it has no return type and it doesn't take parameters. It's also not `const` as it destroys the underlying object.
 <!--more-->
 
 Yet, there were techniques existing to have multiple destructors in a class and those techniques are getting simplified with C++20.
@@ -29,7 +29,7 @@ So how to do this?
 
 As I've learned from [C++ Weekly](https://www.youtube.com/watch?v=A3_xrqr5Kdw), you can use [std::conditional](https://en.cppreference.com/w/cpp/types/conditional).
 
-[std::conditional](https://en.cppreference.com/w/cpp/types/conditional) lets us choose between two implementation at compile-time. If the condition that we pass in as a first parameter evaluates to `true`, then the whole call is replaced with the second parameter, otherwise with the third.
+[std::conditional](https://en.cppreference.com/w/cpp/types/conditional) lets us choose between two implementations at compile-time. If the condition that we pass in as a first parameter evaluates to `true`, then the whole call is replaced with the second parameter, otherwise with the third.
 
 Here comes the example:
 ```cpp
@@ -63,11 +63,11 @@ int main()
 ```
 So, our `Wrapper` class doesn't include a destructor, but it inherits it either from `Wrapper_Trivial` or `Wrapper_NonTrivial` based on a condition, based on whether the contained type `T` is trivially destructible or not.
 
-It's a bit ugly, almost write-only code. Plus supporting the second case - cleanup after non-RAII code - is even uglier.
+It's a bit ugly, almost *write-only* code. Plus supporting the second case - cleanup after non-RAII code - is even uglier.
 
 # Multiple destructors with C++20
 
-C++ concepts help us to simplify the above example. Still with no run-time costs, and probably with cheaper write costs.
+C++ concepts help us simplify the above example. Still with no run-time costs, and probably with cheaper write costs.
 
 ```cpp
 #include <iostream>
@@ -95,13 +95,27 @@ int main()
 Not trivial
 */
 ```
-We still have a class template, but instead of using the cumbersome to decipher `std::conditional`, first, we wrote a destructor with a `requires` clause. Then we defaulted the unconstrained one.
+We still have a class template, but instead of using the cumbersome to decipher `std::conditional`, we use the trailing `requires` clause to provide an overload for the destructor.
 
-In the `requires` clause, we constrain that implementation so that the wrapped type cannot be trivially destructible.
+Remember, we learned earlier that in class templates we can provide function overloads using different constraints. This is true even for constructors and destructors.
+
+In the above example, first, we wrote a destructor with a `requires` clause. Then we also provided the default implementation without specifying any constraint.
+
+In the `requires` clause, we specify a constraint that makes it a valid overload only for types that are not trivially destructible. [`std::is_trivially_destructible_v`](https://en.cppreference.com/w/cpp/types/is_destructible) is true if one of the following conditions apply:
+- The destructor is not user-provided, e.g. it's either explicitly defaulted or not provided
+- The destructor is not virtual, including all the base classes' destructors
+- All direct base classes have trivial destructors
+- All non-static data members of class type (or array of class type) have trivial destructors
+
+Given all that, what output do we expect from the above example?
+
+`Wrapper<int> wrappedInt` should be destructed with the default, unconstrained constructor because `int` is a trivially destructible type, therefore the constrained overload is not considered.
+
+On the other hand, `Wrapper<std::string> wrappedString` should use the constrained destructor and therefore print *"Not trivial"* on the console, as `std::string` is not a trivially destructible type.
 
 The above example [works fine with gcc](godbolt.org/z/rKeETW5jE). We receive the expected output. On the other hand, if you try to compile it [with the latest clang](godbolt.org/z/rqME8W1rn) (as of June 2021, when this article was written), you get a swift compilation error.
 
-```cpp
+```
 <source>:19:18: error: invalid reference to function '~Wrapper': constraints not satisfied
     Wrapper<int> wrappedInt;
                  ^
@@ -120,7 +134,7 @@ ASM generation compiler returned: 1
 ```
 Basically, the error message says that the code is not compilable, because `int` is trivially destructible, therefore it doesn't satisfy the requirements of the first destructor which requires a not trivially destructible type.
 
-It's sad because `int` should use the other destructor...
+It's sad because `int` should use the other destructor as we discussed earlier...
 
 While I was looking at the code, I realized that I dislike something about it - apart from the compilation failure. We started with the most specific, with the most constrained overload, instead of going from the general implementation towards the specific.
 

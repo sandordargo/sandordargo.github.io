@@ -376,7 +376,7 @@ INSTANTIATE_TEST_CASE_P(
                 std::make_tuple(1600, true)));
 ```
 
-In this case, `GetParam()` retrieves tuples. In order to obtain an element of a tuple we can use [std::get<T>](https://en.cppreference.com/w/cpp/utility/tuple/get). Or we could even use structured bidings starting from C++17:
+In this case, `GetParam()` retrieves tuples. In order to obtain an element of a tuple we can use [`std::get<T>`](https://en.cppreference.com/w/cpp/utility/tuple/get). Or we could even use structured bidings starting from C++17:
 
 ```cpp
 auto [year, expected] = GetParam();
