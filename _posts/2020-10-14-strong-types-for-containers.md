@@ -108,7 +108,7 @@ But the lack of undefined behaviour doesn't lead to undefined behaviour and memo
 
 If you delete an object through a pointer to a base class that has a non-virtual destructor, you have to face the consequences of undefined behaviour. Plus if the derived object introduces new member variables, you'll also have some nice memory leak. But again, that's the smaller problem.
 
-On the other hand, this also means that those who rigidly oppose inheriting from `std::vector` - or from any class without a virtual destructor - because of undefined behaviour and memory leaks, are not right. 
+On the other hand, this also means that those who rigidly oppose inheriting from `std::vector` - or from any class without a virtual destructor - because of undefined behaviour and memory leaks, are not right. 
 
 If you know what you are doing, and you only use this inheritance to introduce a strongly typed vector, not to introduce polymorphic behaviour and additional states to your container, you are perfectly fine to use this technique. Simply, you have to respect the limitations, though probably this is not the best strategy to use in case of a public library. But more on that just in a second.
 
@@ -141,7 +141,7 @@ Let's move to our next option.
 
 ### Private inheritance
 
-Instead of the original idea which was to use public inheritance, we can use private inheritance to get our strong type. [As discussed a few weeks ago](XXXXXXXXXXXXXX) with private inheritance, you'll only inherit the implementation from the base class, but not the API as it basically represents a `has-a` relationship instead of an `is-a` one.
+Instead of the original idea which was to use public inheritance, we can use private inheritance to get our strong type. [As discussed a few months ago](https://www.sandordargo.com/blog/2020/04/01/private-inheritanc-vs-composition) with private inheritance, you'll only inherit the implementation from the base class, but not the API as it basically represents a `has-a` relationship instead of an `is-a` one.
 
 This means that if you inherit privately from `std::vector` no functionality of the underlying container class will be exposed to the users of the new derived class.
 
@@ -152,10 +152,10 @@ On the other hand, you'll have to type a lot as you'll have to expose manually t
 ```cpp
 class Team : private std::vector<Player> {
 public:
- using std::vector<Player>::push_back;
- bool empty() const {
-    return std::vector<Player>::empty();
- }
+  using std::vector<Player>::push_back;
+  bool empty() const {
+    return std::vector<Player>::empty();
+  }
 };
 ```
 
@@ -179,18 +179,18 @@ We can follow the good old _follow composition over inheritance rule_ and do som
 class Team
 {
 public:
-  
-  Team() = default;
+  
+  Team() = default;
 
-  std::vector<Person>::iterator begin() { return people.begin(); }
-  std::vector<Person>::iterator end() { return people.end(); }
-  std::vector<Person>::const_iterator begin() const { return people.begin(); }
-  std::vector<Person>::const_iterator end() const { return people.end(); }
-  std::vector<Person>::const_iterator cbegin() const { return people.cbegin(); }
-  std::vector<Person>::const_iterator cend() const { return people.cend(); }
+  std::vector<Person>::iterator begin() { return people.begin(); }
+  std::vector<Person>::iterator end() { return people.end(); }
+  std::vector<Person>::const_iterator begin() const { return people.begin(); }
+  std::vector<Person>::const_iterator end() const { return people.end(); }
+  std::vector<Person>::const_iterator cbegin() const { return people.cbegin(); }
+  std::vector<Person>::const_iterator cend() const { return people.cend(); }
 
 private:
-  std::vector<Person> people;
+  std::vector<Person> people;
 };
 ```
 
@@ -203,23 +203,23 @@ Let's make it a bit simpler to read:
 ```cpp
 class Team
 {
-  using Team_t = std::vector<Person>;
+  using Team_t = std::vector<Person>;
 public:
-  using iterator = std::vector<Person>::iterator;
-  using const_iterator = std::vector<Person>::const_iterator;
+  using iterator = std::vector<Person>::iterator;
+  using const_iterator = std::vector<Person>::const_iterator;
 
-  Team() = default;
+  Team() = default;
 
-  iterator begin() { return people.begin(); }
-  iterator end() { return people.end(); }
-  const_iterator begin() const { return people.begin(); }
-  const_iterator end() const { return people.end(); }
-  const_iterator cbegin() const { return people.cbegin(); }
-  const_iterator cend() const { return people.cend(); }
-  void push_back (const Person& person) {people.push_back(person);}
+  iterator begin() { return people.begin(); }
+  iterator end() { return people.end(); }
+  const_iterator begin() const { return people.begin(); }
+  const_iterator end() const { return people.end(); }
+  const_iterator cbegin() const { return people.cbegin(); }
+  const_iterator cend() const { return people.cend(); }
+  void push_back (const Person& person) {people.push_back(person);}
 
 private:
-  std::vector<Person> people;
+  std::vector<Person> people;
 };
 ```
 
@@ -233,8 +233,8 @@ Here is very simple example how you can `Team` now. Here is the full example.
 
 class Person {
 public:
-    Person(std::string name) : _name(name) {}
-    std::string _name{};
+    Person(std::string name) : _name(name) {}
+    std::string _name{};
 };
 
 class Team
@@ -243,21 +243,21 @@ class Team
 };
 
 int main() {
-  
-  Team team;
-  team.push_back(Person{"Messi"});
-  team.push_back(Person{"Suarez"});
-  team.push_back(Person{"Griezmann"});
-  
-  
-  
-  std::cout << "team members are: ";
-  for (const auto& player : team) {
-    std::cout << ' ' << player._name;
-  }
-  std::cout << '\n';
+  
+  Team team;
+  team.push_back(Person{"Messi"});
+  team.push_back(Person{"Suarez"});
+  team.push_back(Person{"Griezmann"});
+  
+  
+  
+  std::cout << "team members are: ";
+  for (const auto& player : team) {
+    std::cout << ' ' << player._name;
+  }
+  std::cout << '\n';
 
-  return 0;
+  return 0;
 }
 ```
 ## Conclusion
@@ -269,3 +269,10 @@ Given the discussed options, I cannot say which is the best. As almost always in
 Otherwise, if public inheritance is out of scope and a simple alias is not enough for your use-case, even though I prefer composition over inheritance, the possibility to use the `using` keyword pushes me a bit towards private inheritance.
 
 Do you use strong types in your projects?
+
+## Connect deeper
+
+If you liked this article, please 
+- hit on the like button,  
+- [subscribe to my newsletter](http://eepurl.com/gvcv1j) 
+- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
