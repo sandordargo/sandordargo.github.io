@@ -1,1 +1,0 @@
-use && qualifier to have functions thatyou can call only once
