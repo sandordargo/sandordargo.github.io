@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The big STL Algorithms tutorial: \"numeric\" scans"
+title: "The big STL Algorithms tutorial: *numeric* scans"
 date: 2022-1-19
 category: dev
 tags: [cpp, tutorial, stl, algorithms]
@@ -18,7 +18,7 @@ They all end with `_scan`? But what do they scan? Let's have a closer look.
 
 ## `exclusive_scan`
 
-`std::exclusive_scan` resembles a lot to `std::partial_sum` that we discussed [in the previous episode](). It takes an input range denoted by its beginning and its end, an output range defined by its beginning and an initial value for the summing.
+`std::exclusive_scan` resembles a lot to `std::partial_sum` that we discussed [in the previous episode](https://www.sandordargo.com/blog/2022/01/05/stl-alogorithms-tutorial-part-28-more_numeric). It takes an input range denoted by its beginning and its end, an output range defined by its beginning and an initial value for the summing.
 
 *Exclusive* in the name means that the given *i*th element is excluded from the partial sum. To see this perfectly, we can have a look at the first element of the output which is the initial value instead of the first element of the input.
 
