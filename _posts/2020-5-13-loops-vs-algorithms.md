@@ -72,10 +72,10 @@ How would you do this in C++?
 ```cpp
 bool isIncluded = false;
 for (const auto& item : collection) {
-  if (searchedOne == item) {
-    isIncluded = true;
-    break;
-  }
+  if (searchedOne == item) {
+    isIncluded = true;
+    break;
+  }
 }
 ```
 And this is not the worst possible form as I already took advantage of the range based for loop.
@@ -107,10 +107,10 @@ The difference was that it also contained a condition. Here is the original for 
 
 ```cpp
 for (const std::string& key : keys) {
-  std::string aValue;
-  if (not iCache.read(key, aValue) || expectedValue != aValue) {
-    return false;
-  }
+  std::string aValue;
+  if (not iCache.read(key, aValue) || expectedValue != aValue) {
+    return false;
+  }
 }
 return true;
 ```
@@ -119,11 +119,11 @@ Without too much thinking, I just asked if we could use an algorithm, like `std:
 
 ```cpp
 auto found = std::find_if(keys.begin(), keys.end(),
-    [&expectedValue, &iCache](const std::string& key) {
-  std::string aValue;
-  return not iCache.read(key, aValue) || expectedValue != aValue;
+    [&expectedValue, &iCache](const std::string& key) {
+  std::string aValue;
+  return not iCache.read(key, aValue) || expectedValue != aValue;
 });
-return found != keys.end();
+return found == keys.end();
 ```
 
 It's not really shorter than the original code, probably it's even longer a bit. And while the variable name `found` is clear enough and the meaning of `std::find_if` is also straightforward, there is something that is difficult to understand. Maybe it's not doing the same thing as the original code. The lambda is our scapegoat. It's a bit complex. How could we do it better?
@@ -142,8 +142,8 @@ There is an algorithm exactly for that.
 
 ```cpp
 auto valueMismatch = [&expectedValue, &iCache](const std::string& key) {
-  std::string aValue;
-  return (not iCache.read(key, aValue)) || expectedValue != aValue;
+  std::string aValue;
+  return (not iCache.read(key, aValue)) || expectedValue != aValue;
 };
 return std::none_of(keys.begin(), keys.end(), valueMismatch);
 ```
