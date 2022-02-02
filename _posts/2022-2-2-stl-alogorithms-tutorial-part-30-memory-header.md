@@ -115,7 +115,7 @@ int main() {
             
             std::uninitialized_move(std::begin(in), std::end(in), first);
             // comment the previous line and uncomment the next one
-            // to see uninitialized_fill_n in action
+            // to see uninitialized_move_n in action
             // std::uninitialized_move_n(std::begin(in), sz, first);
  
             print("after move, in: ", std::begin(in), std::end(in));
