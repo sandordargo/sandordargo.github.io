@@ -15,6 +15,8 @@ One of the inputs I received was about [*deducing `this`*](http://www.open-std.o
 
 In this article, I'd like to share in a nutshell what I learnt about [this proposal](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2021/p0847r7.html).
 
+And the good news is that it's been already accepted, it's going to be part of C++23.
+
 ## What is this `this` about?
 
 So what is the proposal of [Gašper Ažman](https://twitter.com/atomgalaxy), [Sy Brand](https://twitter.com/TartanLlama), [Ben Deane](https://twitter.com/ben_deane) and [Barry Revzin](https://twitter.com/BarryRevzin) about?
@@ -217,7 +219,7 @@ std::cout << gcd(20, 30) << std::endl;
 
 ## Conclusion
 
-In this example, we saw one of the most popular and most-waited proposed features of C++23, deducing `this`. If [P0847R7](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2021/p0847r7.html) gets accepted, in the next version of C++ we will be able to take an explicit object type parameter in member functions. With the help of it, we will be able *"tell from within a member function whether the expression it’s invoked on is an lvalue or an rvalue; whether it is `const` or `volatile`; and the expression’s type"*
+In this example, we saw one of the most popular and most-waited proposed features of C++23, [deducing `this`](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2021/p0847r7.html). In the next version of C++, we will be able to take an explicit object type parameter in member functions. With the help of it, we will be able *"tell from within a member function whether the expression it’s invoked on is an lvalue or an rvalue; whether it is `const` or `volatile`; and the expression’s type"*
 
 As we saw, this addition will give us tools to greatly simplify our code when we have multiple overloads for the same member functions, not to mention the CRTP patterns or recursive lambda functions.
 
