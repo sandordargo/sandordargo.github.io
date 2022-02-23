@@ -25,7 +25,7 @@ The first C stands for **commitment**. If you are not committed to achieve somet
 
 ... **capability**! The period of courage will lead you attain the new capabilities that you need for the breakthrough you look for. When you learn how to do new things, you gain something more than the sheer capability. Along the way, as you practice as you apply your new skills you also gain confidence.
 
-That **confidence** is already a reward on its own. We all love being confident, we wish we could always feel that way. But that's only part of the reward. The even bigger payoff is that your greater confidence will increase your motivation and your ability to start over the cycle and keep growing.
+That **confidence** is already a reward on its own. We all love being confident, we wish we could always feel that way. But that's only part of the reward. The even bigger payoff is that your [greater confidence](https://coachfoundation.com/blog/how-to-become-a-confidence-coach/) will increase your motivation and your ability to start over the cycle and keep growing.
 
 If you don't believe what Dan wrote, it's time to think about your breakthroughs and identify the 4 stages I described to you earlier. He claims that you'll always be able to identify those.
 
