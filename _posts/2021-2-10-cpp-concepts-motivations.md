@@ -134,11 +134,14 @@ How? That's what we are going to explore in this series on C++ concepts.
 
 During the next couple of weeks we are going to discuss:
 
-- [the 4 ways to use a concept](https://www.sandordargo.com/blog/2021/02/10/cpp-concepts-motivations)
 - [how to use concepts with functions](https://www.sandordargo.com/blog/2021/02/17/cpp-concepts-4-ways-to-use-them)
 - [how to use concepts with classes](https://www.sandordargo.com/blog/2021/02/24/cpp-concepts-with-classes)
 - [what kind of predefined concepts the standard library introduced](https://www.sandordargo.com/blog/2021/03/03/cpp-concepts-in-standard-library)
 - how to write our own concepts ([part I](https://www.sandordargo.com/blog/2021/03/10/write-your-own-cpp-concepts-part-i) and [part II](https://www.sandordargo.com/blog/2021/03/17/write-your-own-cpp-concepts-part-ii))
+- [C++ concepts in real life](https://www.sandordargo.com/blog/2021/03/24/concepts-in-real-life)
+- [C++ Concepts and logical operators](https://www.sandordargo.com/blog/2021/05/05/cpp-concepts-and-logical-operators)
+- [Multiple destructors with C++ concepts](https://www.sandordargo.com/blog/2021/06/16/multiple-destructors-with-cpp-concepts)
+- [C++ Concepts and the Core Guidelines](https://www.sandordargo.com/blog/2021/10/13/cpp-concepts-core-guidelines)
 
 Stay tuned!
 
