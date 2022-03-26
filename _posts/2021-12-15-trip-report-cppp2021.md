@@ -27,11 +27,11 @@ Two years later, it became the reality! I could even share what I know in 2 talk
 
 So how did it go?
 
-My presentation on [The Concepts of concepts](https://cppp.fr/schedule2021/#session-309) went really well. It was not the first time for me to present something similar, though the presentation keeps evolving based on my experience and on my knowledge.
+My presentation on [The Concepts of concepts](https://www.codereckons.com/speakers/sandor-dargo) went really well. It was not the first time for me to present something similar, though the presentation keeps evolving based on my experience and on my knowledge.
 
 Probably for the first time, I was really satisfied at the end when I turned off the streaming. I shared everything I wanted and I didn't feel that sometimes the words hadn't come.
 
-I cannot feel the same way regarding [Parameterized tests with Gtest](https://cppp.fr/schedule2021/#session-107). I was facing two issues. The first one was my mood. I got some worrying news about a family member who got hospitalized. My son also didn't sleep very well, so obviously, neither we did.
+I cannot feel the same way regarding [Parameterized tests with Gtest](https://www.codereckons.com/speakers/2.-sandor-dargo). I was facing two issues. The first one was my mood. I got some worrying news about a family member who got hospitalized. My son also didn't sleep very well, so obviously, neither we did.
 
 The other problem was the way I prepared for this presentation. I cannot say that I was lazy, I was clearly not. I updated the article on this topic, I rewrote the repository containing the examples and I spent a lot of time polishing the slides.
 
@@ -45,9 +45,9 @@ In any case, I hope the attendees found it useful and I learnt something once ag
 
 Now let me mention to you 3 talks that I particularly liked.
 
-### C++'s Superpower by Matt Godbolt
+### [C++'s Superpower by Matt Godbolt](https://www.codereckons.com/keynotes/c%2B%2B's-superpower)
 
-CPPP 2021 opened in a very strong way, it all started with the keynote of [Matt *"sometimes verb"* Godbolt](https://cppp.fr/schedule2021/#session-3). His talk had 2 main parts. In the first one, he iterated over what might be considered the superpower of C++, what it is in his view and then he showcased it.
+CPPP 2021 opened in a very strong way, it all started with the keynote of [Matt *"sometimes verb"* Godbolt](https://www.codereckons.com/keynotes/c%2B%2B's-superpower). His talk had 2 main parts. In the first one, he iterated over what might be considered the superpower of C++, what it is in his view and then he showcased it.
 
 So first thing first. What is the superpower of C++?
 
@@ -65,7 +65,7 @@ So in the second part, he explained how he took a codebase from his student year
 
 I think all the techniques, approaches he detailed will come in handy for everyone working on legacy code.
 
-### The Performance Price of Virtual Functions by Ivica Bogosavljevic
+### [The Performance Price of Virtual Functions by Ivica Bogosavljevic](https://www.codereckons.com/speakers/ivica-bogosavljevic)
 
 [Ivica](https://twitter.com/i_bogosavljevic) delivered a very practical talk about something we heard so many myths about. The costs of virtual functions, something many of us are afraid of!
 
@@ -83,7 +83,7 @@ In any case, one of his key messages was that if you have to optimize the code i
 
 ### The discussions!
 
-I was hesitating whether I should detail [How I learned to stop worrying and love MISRA](https://cppp.fr/schedule2021/#session-210) by [Loïc Joly](https://www.linkedin.com/in/lo%C3%AFc-joly-1493391/) or the discussions we had. As you see, I went with the discussion, but I recommend you to watch the talk on MISRA - once it's available.
+I was hesitating whether I should detail [How I learned to stop worrying and love MISRA](https://www.codereckons.com/speakers/lo%C3%AFc-joly) by [Loïc Joly](https://www.linkedin.com/in/lo%C3%AFc-joly-1493391/) or the discussions we had. As you see, I went with the discussion, but I recommend you to watch the talk on MISRA - once it's available.
 
 It was a bit unclear first in the agenda what the dark pink colour meant. 
 
@@ -119,7 +119,7 @@ I find this topic really interesting and I don't want it to take over the whole 
 
 ### Push- vs pull-based iterations
 
-[Barry Revzin](https://twitter.com/BarryRevzin) delivered a very interesting keynote on iterators and ranges. He compared the design behind these concepts in different languages. He focused mainly on C++, D and Rust, but he covered a bit also Python and Java.
+[Barry Revzin](https://twitter.com/BarryRevzin) delivered [a very interesting keynote on iterators and ranges](https://www.codereckons.com/keynotes/iterators-and-ranges%3A-comparing-c%2B%2B-to-d%2C-rust%2C-and-others). He compared the design behind these concepts in different languages. He focused mainly on C++, D and Rust, but he covered a bit also Python and Java.
 
 I'd like to highlight one topic, one concept that was completely new to me. The notation of and differences between push- and pull-based iterations.
 
@@ -163,7 +163,7 @@ Lambdas are not recursive. They cannot call themselves. It makes sense after all
 
 And while probably you cannot come up with any good reason to have a lambda calling itself, it's still possible to achieve it.
 
-[Sy Brand](https://twitter.com/TartanLlama) shared a story about how they thought to show the interviewer their smartness, but as you can imagine it was not how it was perceived. In any case, I borrow their code to share with you how to turn a lambda into recursive:
+In [On the Aesthetics of Code](https://www.codereckons.com/keynotes/on-the-aesthetics-of-code), [Sy Brand](https://twitter.com/TartanLlama) shared a story about how they thought to show the interviewer their smartness, but as you can imagine it was not how it was perceived. In any case, I borrow their code to share with you how to turn a lambda into recursive:
 
 ```cpp
 #include <functional>
