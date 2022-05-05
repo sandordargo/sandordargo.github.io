@@ -9,7 +9,7 @@ excerpt_separator: <!--more-->
 I think I'm better in time management than the average, so to further improve this skill, I went to a time management training of [John B. May](https://www.linkedin.com/in/john-b-may-b7b6821/). It was a one-day training about how we should reconquer our own job, how we should make sure that not others control our daily work through constant interruptions.
 <!--more-->
 
-We were encouraged to leave the training with an action plan that we want to put in place so that we can do our best in our jobs.
+We were encouraged to leave the training with an action plan that we want to put in place so that we can do our best [in our jobs](https://jooble.org/).
 
 Here is mine, I divided the actions into three topics.
 
@@ -112,6 +112,6 @@ According to John, using the words "sorry" and "please" might be submissive, bet
 
 ## Conclusion
 
-These days many knowledge workers try to do their job in an interruption-driven environment that can suck up even 50 per cent of their productivity. In order to keep or regain our mental health and become better in our jobs, we must take actions to limit the interruptions we face from day to day.
+These days many knowledge workers try to do their job in an interruption-driven environment that can suck up even 50 per cent of their productivity. In order to keep or regain our mental health and become better [in our jobs](https://jooble.org/), we must take actions to limit the interruptions we face from day to day.
 
 In this article, I've shared the points I'm trying to implement to take control over my job. I encourage that you do the same!
