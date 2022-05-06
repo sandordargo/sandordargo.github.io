@@ -41,6 +41,6 @@ I think I'm the only responsible for my failures and I'm mostly - but not solely
 
 ## It is easy for you to change a job
 
-It is as easy as finding a job. Except that we should mention that hopping to another job too frequently is not considered a great thing, but staying for too much time also hurts your career. What to do? I'm not sure, I'm more the loyal staying one so far. It's not necessarily an easy choice, but it's my choice, so I have nothing to complain about.
+It is as easy as [finding a job](https://jooble.org/). Except that we should mention that hopping to another job too frequently is not considered a great thing, but staying for too much time also hurts your career. What to do? I'm not sure, I'm more the loyal staying one so far. It's not necessarily an easy choice, but it's my choice, so I have nothing to complain about.
 
 There is nothing black and white - except for the chess board maybe... Being a developer brought me a lot of possibilities and a pleasant lifestyle, but it's not all unicorns with rainbow dust. With more possibilities, more decisions and responsibility came and besides it's me who is responsible for where I am. Either if I like it or not.
