@@ -117,3 +117,10 @@ I haven't finished with my experiments with [Tipi](https://tipi.build/), but I a
 If the initial time needed for cloud builds could be shortened a bit, that would be just great.
 
 Feel free to play around with it and let me know what you think.
+
+## Connect deeper
+
+If you liked this article, please 
+- hit on the like button,  
+- [subscribe to my newsletter](http://eepurl.com/gvcv1j) 
+- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
