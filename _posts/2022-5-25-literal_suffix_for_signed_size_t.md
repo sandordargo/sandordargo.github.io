@@ -22,7 +22,7 @@ While [we can define our own user-defined literals](https://www.sandordargo.com/
 - `ULL` (or `LLU`) turns `int`s into `unsigned long long int`s
 
 And C++23 is going to add one, or if combined with `U` then 2 elements to this list:
-- `Z` turns an `int` into the sized version of `std::size_t`
+- `Z` turns an `int` into the signed version of `std::size_t`
 - `UZ` turns an `int` into `std::size_t`
 
 ## But why do we need this new `Z` literal suffix?
