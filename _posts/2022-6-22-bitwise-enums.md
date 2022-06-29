@@ -235,13 +235,13 @@ CarOptions operator|(CarOptions lhs, CarOptions rhs) {
     }
     using CarOptionsType = std::underlying_type<CarOptions>::type;
     std::array<CarOptions, 2> mxs {CarOptions::hasAutomaticACFlag, CarOptions::hasManualACFlag};
-    const bool isLhsSet = std::any_of(mxs.begin(), mxs.end(), [lhs](CarOptions option) {
+    const bool isLhsSetWithMxOption = std::any_of(mxs.begin(), mxs.end(), [lhs](CarOptions option) {
         return static_cast<bool>(lhs & option);
     });
-    const bool isRhsSet = std::any_of(mxs.begin(), mxs.end(), [lhs](CarOptions option) {
-        return static_cast<bool>(lhs & option);
+    const bool isRhsSetWithMxOption = std::any_of(mxs.begin(), mxs.end(), [rhs](CarOptions option) {
+        return static_cast<bool>(rhs & option);
     });
-    if (isLhsSet && isRhsSet) {
+    if (isLhsSetWithMxOption && isRhsSetWithMxOption) {
         throw std::invalid_argument("mutually exclusive values");
     }
         
