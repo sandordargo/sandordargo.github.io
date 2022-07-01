@@ -10,7 +10,7 @@ In this article, let's step back from coding a little bit. We are going to discu
 
 ## Non-standard C++
 
-The language started out as an extension of the C programming language which itself was an improved version of [B](https://en.wikipedia.org/wiki/B_(programming_language). In 1979, the Danish computer scientist, [Bjarne Stroustrup](https://www.stroustrup.com/) started to work on an extension that was called *"C with classes"*.
+The language started out as an extension of the C programming language which itself was an improved version of <a href="https://en.wikipedia.org/wiki/B_(programming_language)">B</a>. In 1979, the Danish computer scientist, [Bjarne Stroustrup](https://www.stroustrup.com/) started to work on an extension that was called *"C with classes"*.
 
 Yet, we cannot tell that C++, or at the moment *"C with classes"* is simply based on C. While Stroustrup was working on his PhD thesis, among other languages he learnt Simula. Simula is considered the first object-oriented programming language. One could create classes and organize them into hierarchical models.
 
