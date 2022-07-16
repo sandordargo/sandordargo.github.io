@@ -27,14 +27,14 @@ Enough is enough. Let's go back to our topic.
 
 Functors, that's right. Functors, or by their maiden name, function objects are instances of classes where the `operator()` is overridden. So you can call them like this:
 
-```
+```cpp
 FunctorClass aFunctor;
 aFunctor();
 ```
 
 Or if it takes a parameter:
 
-```
+```cpp
 FunctorClass aFunctor;
 aFunctor(42);
 ```
@@ -43,7 +43,7 @@ Defining them is pretty easy. They are normal classes, they just override `opera
 
 Let's sketch up quickly a functor that will decide if a given number is between 0 and 10.
 
-```
+```cpp
 class IsBetweenZeroAndTen {
   public:
   bool operator()(int value) {
@@ -66,7 +66,7 @@ Let's learn a bit about C++ lambda syntax. First, we are going to have a small o
 
 It's that simple. So let's rewrite our functor as a lambda expression:
 
-```
+```cpp
 [](int value) {
   return 0 < value && value < 10;
 }
@@ -74,7 +74,7 @@ It's that simple. So let's rewrite our functor as a lambda expression:
 
 As it's something very simple, just looking at the code, you can easily understand it without a name. You don't have to place a class somewhere, you just declare it on the fly. Yet, you might think that adding a name to it might help you increase code readability. That's fine, there are such cases, still, you don't need to write a class, you can save it in a variable:
 
-```
+```cpp
 auto isBetweenZeroAndTen = [](int value) {
   return 0 < value && value < 10;
 }
@@ -92,7 +92,7 @@ In the scope of lambda expressions, they are called a capture. So far you only s
 
 Let's go back to our example of `isBetweenZeroAndTen`. Let's say we want to upper bound to vary.
 
-```
+```cpp
 auto upperBound = 42;
 [](int value) {
   return 0 < value && value < upperBound; // doesn't compile, WTF is upperBound?
@@ -109,7 +109,7 @@ Well, when they are empty (`[]`), they capture nothing. That's stupid simple.
 
 Write `[upperBound]` and our lambda will have the value of it.
 
-```
+```cpp
 auto upperBound = 42;
 [upperBound](int value) {
   return 0 < value && value < upperBound;
@@ -120,7 +120,7 @@ auto upperBound = 42;
 
 With the [well-known ampersand]() you can capture the variable by its reference, instead of the value.
 
-```
+```cpp
 auto upperBound = 42;
 [&upperBound](int value) {
   return 0 < value && value < upperBound;
@@ -134,7 +134,7 @@ This implies - at least - two important things:
 
 `[=]` will save "all" the variables needed in the body of the lambda by value. Sounds fun? Have you noticed that I wrote _all_ between double quotes? I did so because we have to understand what "_all_" variables mean. All means all the non-static local variables. So for example, if you reference a member variable in the lambda, even if you used it just next to the lambda declaration, it will not work.
 
-```
+```cpp
 m_upperBound = 42;
 [=](int value) {
   return 0 < value && value < m_upperBound; // doesn't compile, m_upperBound is not a non-static local
@@ -143,7 +143,7 @@ m_upperBound = 42;
 
 How to fix this? There are two simple ways. One is that you make a local copy and capture that.
 
-```
+```cpp
 m_upperBound = 42;
 auto upperBound = m_upperBound;
 [=](int value) {
@@ -168,7 +168,7 @@ With using `[&, divisor]` as a capture, everything will be captured by value exc
 As we previously said, an only non-static local variable can be saved with the capture block. But as so frequently in life, there is a difference. You can also save the surrounding object like this: `[this]`. `this` is a pointer to the enclosing object, so if you capture `this`, you'll have access to the members for example:
 
 
-```
+```cpp
 
 [this](int value) {
   return 0 < value && value < this->m_upperBound;
@@ -195,7 +195,7 @@ As such, in practice most of the time the return type is omitted. In fact, in pr
 
 If you do have to or want to declare them, you must use the [trailing return type syntax] meaning that you will declare the type between the parameter list and the body, putting the type after an arrow like this:
 
-```
+```cpp
 [](int value) -> bool {
   return 0 < value && value < 10;
 }
@@ -234,17 +234,17 @@ Let's say we have a list of `Widget`s and you want to call their `resize()` meth
 
 Non-lambda way:
 
-```
+```cpp
 auto widgets = std::vector<Widget> { … }; // a bunch of widgets
 for (auto& widget : widgets) {
-  widgets.resize();
+  widget.resize();
 }
 ```
 
 Lambda way:
 
 
-```
+```cpp
 #include <algorithm>
 // ...
 
@@ -252,7 +252,7 @@ auto widgets = std::vector<Widget> { … }; // a bunch of widgets
 
 std::for_each(std::begin(widgets), std::end(widgets), 
   [](Widget& widget) {
-  widgets.resize();
+  widget.resize();
 } );
 ```
 
@@ -260,10 +260,10 @@ In this case, it's debatable if you really want to use lambdas. The syntax is a 
 
 If we'd take the good old C++0x way, we can see even a readability advatage:
 
-```
+```cpp
 for(std::vector<Widget>::iterator it = widgets.begin(); it != widgets.end() ; ++it)
 {
-   widgets.resize();
+   widget.resize();
 }
 ```
 Those iterators are just ugly to manage.
@@ -274,7 +274,7 @@ But with this example, we might already get the idea, that among the STL algorit
 
 I know, I know, you could easily do this with a regular expression. But let's say you don't want to.
 
-```
+```cpp
 #include <string>
 #include <algorithm>
 #include <cctype>
@@ -297,7 +297,7 @@ In the last parameter, we defined a lambda expression. It gets a character as a 
 
 Again this could be done with a regex, but it's more fun to do it with a lambda (or not...). If it's faster or not that should be measured.
 
-```
+```cpp
 #include <string>
 #include <cctype>
 #include <algorithm>
@@ -323,7 +323,7 @@ In the case of some extra work needed, we have to define a deleter for the smart
 
 You can either define a deleter class, a functor, or as you might have guessed, you can just pass a lambda like this:
 
-```
+```cpp
 std::shared_ptr<Widget> pw1(new Widget, [](Widget *w){ ... });
 ```
 The downside is that you cannot use `make_shared`, but that's another story and not the fault of lambdas.
@@ -335,3 +335,10 @@ I hope you enjoyed this short journey to the - not so - new world of C++ lambdas
 If you only learned C++0x, you should keep in mind that C++ got a lot of features "recently" and it's getting more and more expressive just like lambdas show us.
 
 Happy coding!
+
+## Connect deeper
+
+If you liked this article, please 
+- hit on the like button,  
+- [subscribe to my newsletter](http://eepurl.com/gvcv1j) 
+- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
