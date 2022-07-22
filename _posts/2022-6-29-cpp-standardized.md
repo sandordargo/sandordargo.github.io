@@ -16,7 +16,7 @@ Yet, we cannot tell that C++, or at the moment *"C with classes"* is simply base
 
 Bjarne loved its expressiveness.
 
-If you think about the history of innovation, great things are rarely born out of the blue. Great things are born when ideas have sex with each other. Stroustrup wanted to combine the humanly understandable relationships introduced by Simula with the sheer power of a low-level language, which was C. That's how the idea of *"C with classes"* was born.
+If you think about the history of innovation, great things are rarely born out of the blue. Great things are born when ideas have sex with each other. Stroustrup wanted to combine the humanly understandable relationships introduced by Simula with the sheer power of a low-level language, such as C. That's how the idea of *"C with classes"* was born.
 
 It was delivered as a preprocessor of the C compiler, called *Cpre*. It already included classes and inheritance, public and private access levels, friends, constructors and destructors, assignment operator overloading, inlining and default arguments.
 
@@ -66,7 +66,7 @@ The benefits of standardizing a language are
 
 ## How does the committee work?
 
-It would be too simple for us to stop at the level of _WG21_.
+It would be too simple for us to stop at the level of *WG21*.
 
 Let's jump into the details.
 
@@ -84,7 +84,7 @@ Once the proposal is approved at stage 2, it advances to stage 3 where the Core 
 
 Once a proposal went through all these stages, it can be accepted or actually declined by the full plenary C++ Committee, by _WG21_. A recent such proposal is [P0847R7](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2021/p0847r7.html), which is going to be part of C++23 and it's usually just referred to as [deducing this](https://www.sandordargo.com/blog/2022/02/16/deducing-this-cpp23). With this new language feature, we get *"a way to tell from within a member function whether the expression it’s invoked on is an lvalue or an rvalue; whether it is `const` or `volatile`; and the expression’s type”*. If you are interested in further details, [follow this link](https://www.sandordargo.com/blog/2022/02/16/deducing-this-cpp23).
 
-A proposal might be sent back to previous stages several times or can be rejected completely. For example, [P2012R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/p2012r0.pdf) is having a hard time. Their authors want to address a long-known and quite serious issue with range-based `for` loops ([check the details here](https://www.sandordargo.com/blog/2022/04/20/range-base-p2012)) and while they had quite some support, in the end the *EWG* rejected it still hoping for a future *"perfect"* solution...
+A proposal might be sent back to previous stages several times or can be rejected completely. For example, [P2012R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/p2012r0.pdf) is having a hard time. Their authors want to address a long-known and quite serious issue with range-based `for` loops ([check the details here](https://www.sandordargo.com/blog/2022/04/20/range-base-p2012)) and while they had quite some support, in the end, the *EWG* rejected it still hoping for a future *"perfect"* solution...
 
 But who can vote and who can work on these standards and proposals?
 
@@ -98,7 +98,7 @@ It's worth emphasizing the fact that while voting is possible only for the natio
 
 ## Standards are released on a schedule
 
-Since the release of C++11, the committee is dedicated to following a predictable train-like model. The analogy is - luckily - not about [SAFe](https://www.scaledagileframework.com/). It refers to the timetable of trains. Every three years there is a new version to be released. It does not matter how much a fix or a new feature is expected. If it's not ready when the next train departs, the feature will not be on the next train. The train doesn't wait. The feature missing its train will wait for the next one. It'll come in 3 years. The original idea was to have every second version packed with new features and the others to include mostly minor additions and bug fixes. The reality hasn't met this expectation yet as after C+11 the next major release was C++20. It's still to see if C++26 can be a major release. Nevertheless, the train-like model is respected, we have a new release every 3 years. C++11, C++14, C++17, C++20...
+Since the release of C++11, the committee is dedicated to following a predictable train-like model. The analogy is - luckily - not about [SAFe](https://www.scaledagileframework.com/). It refers to the timetable of trains. Every three years there is a new version to be released. It does not matter how much a fix or a new feature is expected. If it's not ready when the next train departs, the feature will not be on that train. The train doesn't wait. The feature missing its train will wait for the next one. It'll come in 3 years. The original idea was to have every second version packed with new features and the others to include mostly minor additions and bug fixes. The reality hasn't met this expectation yet as after C+11 the next "major" release was C++20. It's still to see if C++26 can be a major release. Nevertheless, the train-like model is respected, we have a new release every 3 years. C++11, C++14, C++17, C++20...
 
 Setting a predictable schedule of release dates into stone is useful to avoid special treatment for certain features that are either highly waited for or that are supported by people with bigger authority over the committee.
 

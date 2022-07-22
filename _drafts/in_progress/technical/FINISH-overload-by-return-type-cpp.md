@@ -9,9 +9,9 @@ excerpt_separator: <!--more-->
 A friend of mine asked me if it's posible to return different types from a function depending on the value (and not the type!) of an input parameter.
 <!--more-->
 
-My gut asnwer was that it's not possible to overload a function based on its return type. But as this friend of mine is teaching C++ at a university, I was cautious. He must have something going on in his mind.
+My gut asnwer was that it's not possible to overload a function based on its return type. But as this friend of mine is teaching C++ at a university, I was cautious. There must be something going on in his mind.
 
-But the definition is crystal clear. The return type is not considered when you overload functions.
+Still, the definition is crystal clear. The return type is not considered when you overload functions.
 
 You can overload functions  based on:
 - the type and number of parameters
@@ -25,7 +25,7 @@ He told me he knows, but there must be a way around. Maybe with some generic fun
 
 ## Using non-type template arguments
 
-Let's make our first steps. In this next example, we have the same function parameter (none, in fact), but we also take a template parameter and specialize based on that:
+Let's make our first steps. In the next example, we have the same function parameter (none, in fact), but we also take a template parameter and specialize based on that:
 
 ```cpp
 #include <iostream>
@@ -225,3 +225,10 @@ If you work with at least C++17, you can benefit from `std::variant` and `std::v
 In order to handle the different types, you can rely on compile-time values either in the form of indexes or types; or you can use a visitor that will take care of extracting and using the run-time value of the variant.
 
 Do you see any other way? Use the comments section below to share your ideas!
+
+## Connect deeper
+
+If you liked this article, please 
+- hit on the like button,  
+- [subscribe to my newsletter](http://eepurl.com/gvcv1j) 
+- and let's connect on [Twitter](https://twitter.com/SandorDargo)!

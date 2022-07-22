@@ -1,1 +1,0 @@
-- clean code not norm + responsiblilites => how communication is one of the most important task of a senior developer
