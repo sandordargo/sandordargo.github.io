@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Hands-On Design Patterns with C++ by Fedor Pikus"
-date: 2022-XX-XX
+date: 2022-7-23
 category: books
 tags: [books, c++, designpatterns, architecture]
 excerpt_separator: <!--more-->
