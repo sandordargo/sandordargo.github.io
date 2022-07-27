@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Trip report: C++ On Sea 2022"
-date: 2022-5-4
+date: 2022-7-27
 category: dev
-tags: [cpp, cpp23, stacktrace]
+tags: [cpp, conference, cpponsea, tripreport]
 excerpt_separator: <!--more-->
 ---
 It was the first time for me to go abroad for a conference and the first time to travel to a C++ conference as a speaker. I was so excited! I'm grateful to the organizers, my employer and of course my family to make this happen.
@@ -14,7 +14,8 @@ The conference was in Folkestone, UK. Right on the coast where the Eurostar trai
 
 Folkestone is exactly how I imagine a typical English town in the countryside with its architecture and overly kind people who greet each other on the streets. It's so easy to feel at home in such a place.
 
-![The view of Folkstone]({ site.baseurl }}/assets/img/folkestone-2022.jpg "The view of Folkstone")
+![The view of Folkestone]({{ site.baseurl }}/assets/img/folkestone-2022.jpg "The view of Folkestone")
+_The view of Folkestone_
 
 In addition to the typical architecture, a part of Folkestone is also a bit more bourgeois neighbourhood. It seemed that the rich people used to come here if they wanted to spend time at the seaside.
 
@@ -26,19 +27,19 @@ I'm not sure why I felt better this time. Maybe because of the past COVIDious ye
 
 Speaking of a kickstart. I stayed in a hotel just across the street from the venue with several other speakers. When I got down the first morning to get some breakfast, I was not seated alone, but the waiter gave me a place at a table with a bunch of other speakers who I didn't know or at least not by face. The socialization started there quite early.
 
-And despite I'm an introvert, I try to grab each opportunity to go on stage and present so that I can practice, I can get better at it. It was a no-brainer for me to submit a lightning talk. Due to [a recent very annoying bug](https://www.sandordargo.com/blog/2022/07/06/lifetime-extension-bughunt), I had a topic at my hands. It was an honour to go on the main stage at Folkestone and speak in from of so many smart people.
-
-![]( "The main stage")
+And despite I'm an introvert, I try to grab each opportunity to go on stage and present so that I can practice, I can get better at it. It was a no-brainer for me to submit a lightning talk. Due to [a recent very annoying bug](https://www.sandordargo.com/blog/2022/07/06/lifetime-extension-bughunt), I had a topic at my hands. It was an honour to go on the main stage at Folkestone and speak in front of so many smart people.
 
 The second night we had a speakers' dinner with once again a great view of the sea and delicious food.
 
-![The dinner]({ site.baseurl }}/assets/img/dinner.jpg "The dinner")
+![The dinner]({{ site.baseurl }}/assets/img/dinner.jpg "The dinner")
+_The dinner_
 
 Due to the discussions at the tables, the room became quite noisy, so many of us continued to share some stories on the terrace. I know that later many continued at pubs, but I wanted to get to bed early because I had the first slot the next morning.
 
 I was speaking about [strongly typed containers](https://cpponsea.uk/2022/sessions/strongly-typed-containers.html) and this time I was satisfied with my talk. Probably for the first time since started to present at conferences. I got some nice feedback and a very important remark about the inherited comparison operators, so I also learned something. [Check out slide 33 here](https://cpponsea.digital-medium.co.uk/wp-content/uploads/2022/07/COnSea2022-Strongly-typed-containers-C.pptx) for the details!
 
-![Me during my talk, thanks for @hniemeye for the photo]({ site.baseurl }}/assets/img/sandor-cpp-on-see.jpeg "Me at my talk, thanks for the photo, @hniemeye!")
+![Me during my talk, thanks for @hniemeye for the photo]({{ site.baseurl }}/assets/img/sandor-cpp-on-see.jpeg "Me at my talk, thanks for the photo, @hniemeye!")
+_Me at my talk, thanks for the photo, @hniemeye!_
 
 Now let's talk about other talks!
 
@@ -76,9 +77,9 @@ First, it was truly interesting. But what I enjoyed the most was the ease with [
 
 ### [Midnote: For the Sake of Complexity by Kevlin Henney](https://cpponsea.uk/2022/sessions/midnote-for-the-sake-of-complexity.html)
 
-[Kevlin](https://twitter.com/KevlinHenney)'s stage presence, his smile and the enthusiasm he talks with makes it very difficult not to mention his talks anytime when you think about what you liked best.
+[Kevlin](https://twitter.com/KevlinHenney)'s stage presence, his smile and the enthusiasm he talks with make it very difficult not to mention his talks anytime when you think about what you liked best.
 
-This is the first time that I heard/seen him live and indeed it was a strong experience.
+This is the first time that I heard/saw him live and indeed it was a strong experience.
 
 But what did he talk about?
 
@@ -86,7 +87,8 @@ Complexity!
 
 He showed an image of a magnificent Swiss watch. It's the most complex watch ever made. And that increases its value!
 
-![The world's most complex watch from https://newatlas.com/vacheron-constantin-57260-worlds-most-complicated-watch/39462]({ site.baseurl }}/assets/img/complex-watch.png "The world's most complex watch, image from newatlas.com") 
+![The world's most complex watch from https://newatlas.com/vacheron-constantin-57260-worlds-most-complicated-watch/39462]({{ site.baseurl }}/assets/img/complex-watch.png "The world's most complex watch, image from newatlas.com") 
+_The world's most complex watch, image from newatlas.com_
 
 Now imagine that you write an overly and selfishly complex piece of software.
 
@@ -110,7 +112,7 @@ As I usually do with trip reports, I don't only want to share some of my thought
 
 On my badge there was a quote:
 
-> *"Your function is longer than 10 lines? Extract till you drop."*
+> *"Your function is longer than 10 lines? [Extract till you drop.](https://sites.google.com/site/unclebobconsultingllc/one-thing-extract-till-you-drop)"*
 
 I don't believe in extremes. Nothing is black and white. Although I do believe that in most situations, following strict rules is better than following no rules at all. It still doesn't make them true in every situation.
 
@@ -130,7 +132,7 @@ But as the *usually* word implies, it's not always a problem.
 
 In any case, it's impossible to name a number for the maximum function length. Is it 100 lines? 20? 10? A hundred seems too big number, but what about 10? Sometimes even that would be too long, but sometimes 20 is acceptable.
 
-Often here are some indicators that suggest to factorize a function, such as comments of code block.
+Often, there are some indicators that suggest factorizing a function, such as comments of code blocks.
 
 ```cpp
 // Create the left paddle
@@ -158,7 +160,7 @@ ball.setFillColor(sf::Color::White);
 ball.setOrigin({ballRadius / 2.f, ballRadius / 2.f});
 ```
 
-In this case, it's evident that we should extract functions for creating the paddles and the ball. But imagine an algorithm, like the Sieve of Eratosthenes. [It will be longer tha 10 lines](https://github.com/sandordargo/KnuthPrimeGeneratorCpp/blob/master/src/PrimePrinter.cpp#L30-L50).
+In this case, it's evident that we should extract functions for creating the paddles and the ball. But imagine an algorithm, like the Sieve of Eratosthenes. [It will be longer than 10 lines](https://github.com/sandordargo/KnuthPrimeGeneratorCpp/blob/master/src/PrimePrinter.cpp#L30-L50).
 
 Is that a problem?
 
@@ -172,7 +174,7 @@ Victor Ciura's [C++ MythBuster](https://cpponsea.uk/2022/sessions/plenary-cpp-my
 
 We all learned that we should pass non-POD input arguments by `const&`. And I still think that it's an easy way to follow, an easy rule of thumb that will be good enough in the majority of the cases.
 
-At the same time, there is a new pattern emerged with the appearance of move semantics. When a class takes ownership of a variable you should consider taking the variable by value and move it.
+At the same time, there is a new pattern emerged with the appearance of move semantics. When a class takes ownership of a variable you should consider taking the variable by value and moving it.
 
 ```cpp
 class Widget {
@@ -192,7 +194,7 @@ When a class should take ownership of input variables, think about the sink patt
 
 ### Singleton is not a design pattern
 
-[Klaus Igleberger](https://de.linkedin.com/in/klaus-iglberger-2133694), the main organizer of the [Munich C++ user group](https://www.meetup.com/en-AU/mucplusplus/) dedicated his talk to [the Singleton (anti)pattern](https://cpponsea.uk/2022/sessions/the-singleton-pattern-anti-pattern-or-solution.html). But what is the problem with it? Apart from that it represent a global state...
+[Klaus Igleberger](https://de.linkedin.com/in/klaus-iglberger-2133694), the main organizer of the [Munich C++ user group](https://www.meetup.com/en-AU/mucplusplus/) dedicated his talk to [the Singleton (anti)pattern](https://cpponsea.uk/2022/sessions/the-singleton-pattern-anti-pattern-or-solution.html). But what is the problem with it? Apart from that, it represents a global state...
 
 The problem comes from a bad classification that also brings unmet expectations.
 
@@ -204,9 +206,9 @@ In general, we expect two things:
 1. They should provide an abstraction
 2. They should decrease dependencies
 
-The Singleton patterns does not offer any of those. Therefore it's not a design, but an implementation pattern.
+The Singleton pattern does not offer any of those. Therefore it's not a design, but an implementation pattern.
 
-That observation gives way to combine it with other techniques and use it in a way that doesn't make the application more complex to test, but actually helps simulating real-world relationships without making the software less testable.
+That observation gives way to combine it with other techniques and use it in a way that doesn't make the application more complex to test but actually helps simulate real-world relationships without making the software less testable.
 
 For the rest, check out the talk!
 
@@ -214,17 +216,17 @@ For the rest, check out the talk!
 
 I keep writing in all my trip reports, that mentioning only the good parts would be very unbalanced and you'd probably think that I do this because I was paid to do so. While it's true that as a speaker most of my expenses were covered, I still think that providing gentle, constructive feedback is useful and shouldn't hurt feelings. So, let me mention a couple of ideas.
 
-The first lunch seemed a little bit chaotic. Like everyone else, the caterers also suffer from the lack of human resources. The situation greatly improved for the next two days. On the third day, they were a few minutes late which is not an issue, but I couldn't wait. I had to make a long phone call. I came back about 40 minutes later and most people finished feasting and there was still more than enough food for me. That's something I didn't expect after the first day, I wish I could improve as fast as the catering service adapted!
+The first lunch seemed a little bit chaotic. Like everyone else, the caterers also suffer from the lack of human resources. The situation greatly improved over the next two days. On the third day, they were a few minutes late which is not an issue, but I couldn't wait. I had to make a long phone call. I came back about 40 minutes later and most people finished feasting and there was still more than enough food for me. That's something I didn't expect after the first day, I wish I could improve as fast as the catering service adapted!
 
 The only thing about food and refreshments that could have still improved a bit was the situation with the water.
 
-I like that there was no bottled water all around. It's better to avoid all that plastic. At the same time a few jugs of water, not even in all the breaks, was clearly not enough. Probably some simple, but big bottled water dispensers would have been fine, or maybe just some ducktaped indications mentioning that the tap water is good to drink.
+I like that there was no bottled water all around. It's better to avoid all that plastic. At the same time a few jugs of water, not even in all the breaks, was clearly not enough. Probably some simple, but big bottled water dispensers would have been fine, or maybe just some duck-taped indications mentioning that the tap water is good to drink.
 
-One last thing to mention. The sponsors were great. Besides financially supporting the event, some of them brought cool and useful swags (in particular [Roku](https://www.roku.com/en-gb/) and [Optiver](https://www.optiver.com/)), and all of them were available for very interesting conversations. The only thing that saddened me was how some of them left the event. It's understandandable if they cannot make it for the last afternoon, especially with the current airtraffic situations, but probably all of them could have avoided diassembling and packing up their stuff during talks ongoing. That was a bit disturbing. But in any case, a big thanks for them.
+One last thing to mention. The sponsors were great. Besides financially supporting the event, some of them brought cool and useful swags (in particular [Roku](https://www.roku.com/) and [Optiver](https://www.optiver.com/)), and all of them were available for very interesting conversations. The only thing that saddened me was how some of them left the event. It's understandable if they cannot make it for the last afternoon, especially with the current air-traffic situation, but probably all of them could have avoided disassembling and packing up their stuff during the talks ongoing. That was a bit disturbing. But in any case, a big thanks to them.
 
 ## Conclusion
 
-[C++ On Sea](https://cpponsea.uk/) was my first in-person C++ conference as a speaker and I truly enjoyed it. Even tough even as a speaker and an attendee it felt hard work and study, it was almost like being on a vacation. I met very nice people who knew only on-line or not-at-all. I listened to great talks and learnt a lot.
+[C++ On Sea](https://cpponsea.uk/) was my first in-person C++ conference as a speaker and I truly enjoyed it. Even though even as a speaker and an attendee it felt like hard work and study, it was almost like being on a vacation. I met very nice people who knew only online or not-at-all. I listened to great talks and learnt a lot.
 
 With this trip report, I hope I managed to give you back something from the vibe and I hope to see you at a future event!
 
