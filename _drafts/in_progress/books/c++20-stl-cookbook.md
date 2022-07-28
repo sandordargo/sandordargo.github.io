@@ -83,3 +83,11 @@ quick delete is an interesting concept
 emplace vs try_emplace
 
 Use set to sort and filter user input
+
+p93? namespace with you initials? what are these school projects?
+is it worth moving from a map to a vector?
+why not unordered map?
+
+
+
+A ToDo list using multimap

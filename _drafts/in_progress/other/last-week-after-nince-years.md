@@ -1,4 +1,12 @@
-This is my last week with Amadeus.
+---
+layout: post
+title: "I'm leaving after 9 years"
+date: 2022-7-27
+category: dev
+tags: [career, farewell, watercooler, progress]
+excerpt_separator: <!--more-->
+---
+This is my last week with Amadeus. I leave the compnany on the 20th October 2022.
 
 I'm 37 years old and I spent 9 years with Amadeus. I spent the quarter of life so far here.
 
