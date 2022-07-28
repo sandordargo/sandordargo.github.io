@@ -77,4 +77,9 @@ contiguous storage.
 
 map, unordered map, could be more precise
 
-Container adapters
+
+quick delete is an interesting concept
+
+emplace vs try_emplace
+
+Use set to sort and filter user input
