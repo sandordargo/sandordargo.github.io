@@ -50,9 +50,9 @@ What often happens is that the assignment is performed from member to member.
 ```cpp
 class MyClass {
  public:
-  MyClass(int x, int y) : m_x(x), m_y(y) {}
+  MyClass(int x, int y) noexcept : m_x(x), m_y(y) {}
 
-  MyClass& operator=(const MyClass& other) {
+  MyClass& operator=(const MyClass& other) noexcept {
 
     if (this != &other)
     {
@@ -96,7 +96,7 @@ We need three things to implement the copy and swap idiom. We need a copy constr
 We want our copy assignment operator to look like this:
 
 ```cpp
-MyClass& MyClass::operator=(const MyClass& other) {
+MyClass& MyClass::operator=(const MyClass& other) noexcept {
 
   if (this != &other)
   {
@@ -112,7 +112,7 @@ The swap function should swap, or in other words, exchange the content of two ob
 
 
 ```cpp
-friend void swap(MyClass& iLhs, MyClass& iRhs) {
+friend void swap(MyClass& iLhs, MyClass& iRhs) noexcept {
     using std::swap;
     swap(iLhs.m_x, iRhs.m_x);
     swap(iLhs.m_y, iRhs.m_y);
@@ -136,14 +136,14 @@ It's better to follow the rule of five and simply write all the special function
 
 class MyClass {
  public:
-  MyClass(int x, int y) : m_x(x), m_y(y) {}
+  MyClass(int x, int y) noexcept : m_x(x), m_y(y) {}
   
-  ~MyClass() = default;
-  MyClass(const MyClass&) = default;
-  MyClass(MyClass&&) = default;
-  MyClass& operator=(MyClass&& other) = default;
+  ~MyClass() noexcept = default;
+  MyClass(const MyClass&) noexcept = default;
+  MyClass(MyClass&&) noexcept = default;
+  MyClass& operator=(MyClass&& other) noexcept = default;
 
-  MyClass& operator=(const MyClass& other) {
+  MyClass& operator=(const MyClass& other) noexcept {
 
     if (this != &other)
     {
@@ -154,7 +154,7 @@ class MyClass {
     return *this;
   }
   
-  friend void swap(MyClass& iLhs, MyClass& iRhs) {
+  friend void swap(MyClass& iLhs, MyClass& iRhs) noexcept {
       using std::swap;
       swap(iLhs.m_x, iRhs.m_x);
       swap(iLhs.m_y, iRhs.m_y);
@@ -176,14 +176,14 @@ Let's have a small example here, I simply changed the `int` members to `unique_p
 ```cpp
 class MyClass {
  public:
-  MyClass(int x, int y) : m_x(std::make_unique<int>(x)), m_y(std::make_unique<int>(y)) {}
+  MyClass(int x, int y) noexcept : m_x(std::make_unique<int>(x)), m_y(std::make_unique<int>(y)) {}
   
-  ~MyClass() = default;
-  MyClass(const MyClass& other) : m_x(std::make_unique<int>(*other.m_x)), m_y(std::make_unique<int>(*other.m_y)) {}
-  MyClass(MyClass&&) = default;
-  MyClass& operator=(MyClass&& other) = default;
+  ~MyClass() noexcept = default;
+  MyClass(const MyClass& other) noexcept : m_x(std::make_unique<int>(*other.m_x)), m_y(std::make_unique<int>(*other.m_y)) {}
+  MyClass(MyClass&&) noexcept = default;
+  MyClass& operator=(MyClass&& other)  = default;
 
-  MyClass& operator=(const MyClass& other) {
+  MyClass& operator=(const MyClass& other) noexcept {
 
     if (this != &other)
     {
@@ -194,7 +194,7 @@ class MyClass {
     return *this;
   }
   
-  friend void swap(MyClass& iLhs, MyClass& iRhs) {
+  friend void swap(MyClass& iLhs, MyClass& iRhs) noexcept {
       using std::swap;
       swap(iLhs.m_x, iRhs.m_x);
       swap(iLhs.m_y, iRhs.m_y);
