@@ -94,7 +94,7 @@ msc::Class foo() {
   // ...
 }
 ```
-As such, I don't pollute the global namespace. What you have to keep in find is that when you introduce a `using`-directive into a header file at the global namespace header, you don't just mess things up in the current scope.
+As such, I don't pollute the global namespace. What you have to keep in mind is that when you introduce a `using`-directive into a header file at the global namespace header, you don't just mess things up in the current scope.
 
 If you include the header file in other files, you'll also bring the inclusion of all those introduced symbols. If you introduce different header files with different global levels `using`-directives, the situation becomes even worse and the results of name lookup might depend on the order of inclusion.
 
