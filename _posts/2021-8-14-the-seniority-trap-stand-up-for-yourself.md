@@ -6,7 +6,7 @@ category: dev
 tags: [writing, career, growth, thesenioritytrap]
 excerpt_separator: <!--more-->
 ---
-*As you might know, I'm writing a book, its working title is "[The Seniority Trap](https://www.sandordargo.com/blog/2020/03/18/seniority-trap)". From time to time, I'll post some parts of it, before it gets released. If you are interested in the updates, please [subscribe to my personal blog](http://eepurl.com/gvcv1j) and let's connect on [Twitter](https://twitter.com/SandorDargo)!*
+*This is an excerpt from by book called [The Seniority Trap](https://leanpub.com/thesenioritytrap). I'm sharing some parts from each chapter. Check out the [#thesenioritytrap](https://www.sandordargo.com/tags/thesenioritytrap/) for more parts.*
 <!--more-->
 ---
 
@@ -177,7 +177,10 @@ It is hard, but we have to accept that we are not perfect and we made mistakes. 
 It's you and you have to find what to do. Sometimes you'll have to act on your own. Other times, you'll have to stand up for your values.
 
 You'll be seen more and more as a leader and not just a senior professional. Especially if you don't only stand up for yourself, but for others as well. At the same time, make sure that you don't navigate yourself into a position where you cannot do on a day to day basis what makes you tick. In short, don't get trapped.
+
 ---
+
+***Are you interested? Check out [The Seniority Trap](https://leanpub.com/thesenioritytrap) on Leanpub!***
 
 ## Connect deeper
 

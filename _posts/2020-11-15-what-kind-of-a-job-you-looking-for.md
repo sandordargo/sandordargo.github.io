@@ -6,7 +6,7 @@ category: dev
 tags: [writing, career, books, thesenioritytrap]
 excerpt_separator: <!--more-->
 ---
-_As you might know, I'm writing a book, its working title is "[The Seniority Trap](https://dev.to/sandordargo/the-seniority-trap-20bn)". From time to time, I'll post some parts of it, before it gets released. If you are interested in the updates, please [subscribe to my personal blog](http://eepurl.com/gvcv1j) and let's connect on [Twitter](https://twitter.com/SandorDargo)!_
+*This is an excerpt from by book called [The Seniority Trap](https://leanpub.com/thesenioritytrap). I'm sharing some parts from each chapter. Check out the [#thesenioritytrap](https://www.sandordargo.com/tags/thesenioritytrap/) for more parts.*
 
 <!--more-->
 
@@ -63,6 +63,8 @@ This has two messages. Time and timing matters, plus you need an opening. In oth
 Don’t be discouraged! We already discussed that most of us still have decades of work in front of us!
 
 ---
+
+***Are you interested? Check out [The Seniority Trap](https://leanpub.com/thesenioritytrap) on Leanpub!***
 
 ## Connect deeper
 

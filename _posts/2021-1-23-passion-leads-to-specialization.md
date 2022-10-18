@@ -6,7 +6,7 @@ category: dev
 tags: [writing, career, specialization, thesenioritytrap]
 excerpt_separator: <!--more-->
 ---
-_As you might know, I'm writing a book, its working title is "[The Seniority Trap](https://dev.to/sandordargo/the-seniority-trap-20bn)". From time to time, I'll post some parts of it, before it gets released. If you are interested in the updates, please [subscribe to my personal blog](http://eepurl.com/gvcv1j) and let's connect on [Twitter](https://twitter.com/SandorDargo)!_
+*This is an excerpt from by book called [The Seniority Trap](https://leanpub.com/thesenioritytrap). I'm sharing some parts from each chapter. Check out the [#thesenioritytrap](https://www.sandordargo.com/tags/thesenioritytrap/) for more parts.*
 <!--more-->
 ---
 
@@ -94,6 +94,8 @@ For me, the beginning of the road to expertise was that I was given a book from 
 Whatever will be your road, whatever big an expert you’ll become there is one thing for sure that will walk you with. Failures, inevitable failures and possible setbacks that you should never make you sour, but should rather inspire you.
 
 ---
+
+***Are you interested? Check out [The Seniority Trap](https://leanpub.com/thesenioritytrap) on Leanpub!***
 
 ## Connect deeper
 

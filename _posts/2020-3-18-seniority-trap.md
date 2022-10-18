@@ -6,6 +6,11 @@ category: dev
 tags: [watercooler, career]
 excerpt_separator: <!--more-->
 ---
+
+*This is an excerpt from by book called [The Seniority Trap](https://leanpub.com/thesenioritytrap). I'm sharing some parts from each chapter. Check out the [#thesenioritytrap](https://www.sandordargo.com/tags/thesenioritytrap/) for more parts.*
+<!--more-->
+---
+
 Maybe you have been there, maybe you'll get into a similar situation soon. Maybe you don't work for the type of company where this could ever happen. Yet, most of us at least heard about highly knowledgeable, so-called senior developers who spend most of their time outside coding. Let's put it in another way, they go to the office and they don't do what they are best in.
 <!--more-->
 
@@ -149,3 +154,11 @@ Think about what you want. Then change your official position if that's what you
 After all, we speak about your goals and time, not about your boss’. You are the one responsible for your career, not anyone else. You will have to accept some trade-offs, that’s fine. But things should not just happen to you. You should understand what’s going on and what is under your control. 
 
 Do everything that you can, share your thoughts and needs, work hard and accept whatever you cannot change.
+
+---
+
+***Are you interested? Check out [The Seniority Trap](https://leanpub.com/thesenioritytrap) on Leanpub!***
+
+## Connect deeper
+
+If you resonated with this chapter, if you want to get udpates, please [subscribe to my personal blog](http://eepurl.com/gvcv1j) and let's connect on [Twitter](https://twitter.com/SandorDargo)!

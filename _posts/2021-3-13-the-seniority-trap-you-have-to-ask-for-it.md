@@ -6,7 +6,7 @@ category: dev
 tags: [writing, career, growth, thesenioritytrap]
 excerpt_separator: <!--more-->
 ---
-*As you might know, I'm writing a book, its working title is "[The Seniority Trap](https://dev.to/sandordargo/the-seniority-trap-20bn)". From time to time, I'll post some parts of it, before it gets released. If you are interested in the updates, please [subscribe to my personal blog](http://eepurl.com/gvcv1j) and let's connect on [Twitter](https://twitter.com/SandorDargo)!*
+*This is an excerpt from by book called [The Seniority Trap](https://leanpub.com/thesenioritytrap). I'm sharing some parts from each chapter. Check out the [#thesenioritytrap](https://www.sandordargo.com/tags/thesenioritytrap/) for more parts.*
 <!--more-->
 ---
 
@@ -146,6 +146,8 @@ Maybe yes, but I don't think so. By asking, I made them think, probably I made t
 Why don't we all do the same?
 
 ---
+
+***Are you interested? Check out [The Seniority Trap](https://leanpub.com/thesenioritytrap) on Leanpub!***
 
 ## Connect deeper
 
