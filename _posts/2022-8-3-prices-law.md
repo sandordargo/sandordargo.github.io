@@ -152,4 +152,3 @@ If you liked this article, please
 - hit on the like button,  
 - [subscribe to my newsletter](http://eepurl.com/gvcv1j) 
 - and let's connect on [Twitter](https://twitter.com/SandorDargo)!
-
