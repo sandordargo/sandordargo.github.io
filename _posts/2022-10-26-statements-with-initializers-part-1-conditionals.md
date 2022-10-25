@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "The evolution of statements with initializers in C++"
-date: 2022-5-4
+date: 2022-10-26
 category: dev
-tags: [cpp, ...]
+tags: [cpp, if, switch, initialization]
 excerpt_separator: <!--more-->
 ---
 In the coming two articles, we'll see how C++ evolved in terms of writing different statements that include initializers. Simple? Boring? I don't think so, it just shows how far we got in C++ and in programming in general in terms of readability and maintainability of code.
