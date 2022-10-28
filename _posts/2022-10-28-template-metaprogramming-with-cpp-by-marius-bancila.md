@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Template Metaprogramming with C++ by Marius Bancila"
-date: 2022-10-22
+date: 2022-10-28
 category: books
 tags: [books, watercooler, templates, concepts]
 excerpt_separator: <!--more-->
