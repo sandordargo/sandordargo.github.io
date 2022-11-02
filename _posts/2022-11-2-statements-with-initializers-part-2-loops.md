@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "The evolution of statements with initializers in C++"
-date: 2022-5-4
+title: "The evolution of statements with initializers in C++ - part 2"
+date: 2022-11-2
 category: dev
-tags: [cpp, ...]
+tags: [cpp, loops, initialization, algorithms]
 excerpt_separator: <!--more-->
 ---
 In these two articles, we see how C++ evolved in terms of writing different statements that include initializers. Simple? Boring? I don't think so, it just shows how far we got in C++ and in programming in general in terms of readability and maintainability of code.
 
-[In this previous article](), we saw see how C++ evolved in terms of writing different statements that include initializers. Today, we discuss loops.
+[In this previous article](https://www.sandordargo.com/blog/2022/10/26/statements-with-initializers-part-1-conditionals), we saw see how C++ evolved in terms of writing different statements that include initializers. Today, we discuss loops.
 
 If you haven't read the first article, or if you don't remember, let me remind you wnat a statement is.
 
