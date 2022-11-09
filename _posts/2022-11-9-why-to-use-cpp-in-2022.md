@@ -122,9 +122,9 @@ As I wrote several times earlier, C++ is evolving. It gets more and more feature
 
 What used to be a raw loop today can be written in such a functional way:
 ```cpp
-// instead of
 const std::vector<int> numbers = {1, 2, 3, 4, 5};
 
+// instead of
 auto count = 0;
 for (const auto& n : numbers) {
   if ( n % 2 == 0) {
