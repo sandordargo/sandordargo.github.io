@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Non-coding roles or something you like?"
-date: 2021-3-13
+date: 2022-11-19
 category: dev
 tags: [writing, career, growth, thesenioritytrap]
 excerpt_separator: <!--more-->
