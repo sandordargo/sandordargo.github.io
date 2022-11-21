@@ -323,9 +323,7 @@ TEST_F(LeapYearTestFixtureToBeParameterized, 1600_IsDivisibleBy400_ShouldBeALeap
 
 class LeapYearParameterizedTestFixture :
         public LeapYearTestFixtureToBeParameterized,
-        public ::testing::WithParamInterface<int> {
-protected:
-    LeapYear leapYearCalendar;            
+        public ::testing::WithParamInterface<int> {         
 };
 
 TEST_P(LeapYearParameterizedTestFixture, OddYearsAreNotLeapYears) {
