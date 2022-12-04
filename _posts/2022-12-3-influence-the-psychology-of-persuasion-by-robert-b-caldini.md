@@ -22,7 +22,7 @@ Let me pick three of them to explain a little bit more in detail.
 
 ## Reciprocation: The Old Give and Take... and Take
 
-I included this rule because it's so evident and at the same time I already wrote about a similar effect, but the other way around. In [The Seniority Trap](https://leanpub.com/thesenioritytrap/overview) I wrote that if you ask for something small and people give it to you, they will find you more likeable. They will do so because they want to stay consistent with themselves, they want to justify the help they provided.
+I included this rule because it's so evident and at the same time I already wrote about a similar effect, but the other way around. In [The Seniority Trap](https://leanpub.com/thesenioritytrap) I wrote that if you ask for something small and people give it to you, they will find you more likeable. They will do so because they want to stay consistent with themselves, they want to justify the help they provided.
 
 This rule approaches giving and taking from the other direction. Give something so you can take back - a lot more. We all know that *there is no free lunch*. This expression has many slightly different meanings, but they essentially all boil down to this: if someone gives you something seemingly for free, you can rest assured that you'll be expected to give something in return.
 
