@@ -73,8 +73,9 @@ void limiter(float* data, size_t size) {
     }
 }
 ```
+I first overlooked the first assumption, but Thief in the comments and Julien in an e-mail gently pointed out my mistake. The first assumption is that the parameter `size` will never be zero, but it will always be a positive number!
 
-Personally, I find the first assumption strange as `size_t` is an unsigned type, but the second is a great example! It hints to the compiler that the passed in size will always be the multiple of 32 and with the last assumption, we even tell that the data is not *NaN* or *infinity*.
+The second example hints to the compiler that the passed in size will always be the multiple of 32 and with the last assumption, we even tell that the data is not *NaN* or *infinity*.
 
 In another example, the copy constructor of a reference counting shared pointer got the assumption, that the refcount is already at least one. Makes sense, it's a copy constructor. This could also help the compiler to ignore some increments and decrements and avoid destroying the owned resource when the passed in smart pointer's lifecycle ends. Interestingly, it didn't lead to great optimizations on some of the compilers.
 
@@ -88,7 +89,7 @@ It's important to emphasize that assumptions are not evaluated! They are not che
 
 ## Conclusion
 
-C++23 brings 3 changes to attributes. The restriction that an attribute cannot be duplicated is removed now. Attributes can be used with lambdas in a way that it belongs to the function call operator from now on, not to the lambda itself. Last but least, we get a new standard lambda `[[assume]]` to ease compiler optimizations.
+C++23 brings 3 changes to attributes. The restriction that an attribute cannot be duplicated is removed now. Attributes can be used with lambdas in a way that it belongs to the function call operator from now on, not to the lambda itself. Last but least, we get a new standard attribute `[[assume]]` to ease compiler optimizations.
 
 Do you often use attributes?
 
