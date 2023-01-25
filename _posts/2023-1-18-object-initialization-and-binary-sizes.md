@@ -47,7 +47,7 @@ So in practice, c-style arrays and `std::array`s can significantly increase your
 Let's see a few examples of binary sizes and compile times.
 
 The above code with `std::array` generated a binary of 99K and it took 2.8 seconds to compile it 100 times.
-The same with a vector generated a binary of 33-40K depending on the optimization settings (it made no difference for `std::array`) and the compile time was roughly the same. The runtime for this very simple code doubled. Running it a 100 times took 0.75 seconds instead of 0.39. It makes sense as the initialization is now completely part of the runtime.
+The same with a `std::vector` generated a binary of 33-40K depending on the optimization settings (it made no difference for `std::array`) and the compile time was roughly the same. The runtime for this very simple code doubled. Running it a 100 times took 0.75 seconds instead of 0.39. It makes sense as the initialization is now completely part of the runtime.
 
 Using a c-style array resulted in the very same binary size and had essentially the same runtime, but the compile time is much faster than with the other two options. My assumption is that it's basically because we don't have to include and link any headers. So what took 2.8 seconds with `std::array` and with `std::vector`, it only took 0.75 with a c-style array.
 
@@ -56,8 +56,8 @@ It's interesting, but I wouldn't replace `std::array` with c-style arrays.
 |   Container   | Binary size  | Compile-time  | Run-time  |
 |---------------|--------------|---------------|-----------|
 |  std::array   | 99K          |   2.8         | 0.39      |
-| c-style array | 33-40K       |   0.75        | 0.39      |
-|  std::vector  | 99K          |   2.8         | 0.75      |
+| c-style array | 99K          |   0.75        | 0.39      |
+|  std::vector  | 33-40K       |   2.8         | 0.75      |
 
 ### Storage duration
 
@@ -67,13 +67,13 @@ If you declare the `std::array` as a local variable, it'll be created on the go.
 
 Let's see some numbers.
 
-|   Container        | Binary size  | Compile-time  | Run-time  |
-|--------------------|--------------|---------------|-----------|
-|  global            | 99K          |   2.2         | 0.25      |
-| localc-style       | 33K          |   2.2         | 0.87      |
-|  local static      | 16-99K       |   2.2         | 0.89      |
-| local static const | 16-82K       |   2.2         | 0.84      |
-|  local constexpr   | 16-99K       |   2.8         | 0.93      |
+|   Container         | Binary size  | Compile-time  | Run-time  |
+|---------------------|--------------|---------------|-----------|
+|  global             | 99K          |   2.2         | 0.25      |
+|  local              | 33K          |   2.2         | 0.87      |
+|  local static       | 16-99K       |   2.2         | 0.89      |
+|  local static const | 16-82K       |   2.2         | 0.84      |
+|  local constexpr    | 16-99K       |   2.8         | 0.93      |
 
 ## The initialization
 
