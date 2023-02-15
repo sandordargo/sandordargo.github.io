@@ -47,7 +47,9 @@ Why can it be necessary? It gives us two reasons.
 enum Direction : char { north, south, east, west,
      northeast, northwest, southeast, southwest }; 
 ```
-- Or if you happen to forward declare an `enum` then you also must declare the type;
+
+- Or if you happen to forward declare an `enum` then you also must declare the type:
+
 ```cpp
 enum Direction : char;
 void navigate(Direction d);
