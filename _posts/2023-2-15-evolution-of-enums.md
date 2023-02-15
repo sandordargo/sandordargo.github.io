@@ -8,7 +8,6 @@ excerpt_separator: <!--more-->
 ---
 Constants are great. Types are great. Constants of a specific type are really great. This is why `enum class`es are just fantastic.
 
-
 Last year, we talked about [why we should avoid using boolean function parameters](https://www.sandordargo.com/blog/2022/04/06/use-strong-types-instead-booleans). One of the solutions proposed uses strong types, in particular using `enum`s instead of raw booleans. This time, let's see how `enum`s and the related support evolved during the course of the years.
 
 ## Unscoped enumerations
