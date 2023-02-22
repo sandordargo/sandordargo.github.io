@@ -106,3 +106,10 @@ This might be uncomfortable, especially if you are an introvert. But I still thi
 In this post, I shared with you the four different stages of my remote working journey. It started like for most of us, everyone in my whole team suddenly found themselves at home, then little by little everything changed around me and I found myself in a new company where you can work from - almost - anywhere.
 
 While in this setting, I have to be a bit more mindful about spending enough time socializing with my remote teammates, I still think it's totally worth it. Today's technologies make online collaboration easy, almost as if we were in the same place. At the same time, the money I gain by not having to commute to the office is not negligible and the time I gain makes it possible to have a better work-life balance.
+
+## Connect deeper
+
+If you liked this article, please 
+- hit on the like button,  
+- [subscribe to my newsletter](http://eepurl.com/gvcv1j) 
+- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
