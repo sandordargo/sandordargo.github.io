@@ -23,7 +23,7 @@ Let's have a look at an example. As I'm learning nowadays about wine tasting and
 #include <vector>
 
 class Wine {};
-class Bottle{};
+class Bottle {};
 void storeTemporarily(Bottle bottle) {}
 void moveToCellar(Bottle bottle) {}
 void uploadToStore(Bottle bottle) {}
