@@ -105,11 +105,7 @@ My next point is a small, yet important one. Often when you ask inexperienced C+
 
 Even a `std::string` is a template! It's just an alias for `std::basic_string<char>` where `std::basic_string` is `template<class CharT, class Traits = std::char_traits<CharT>, class Allocator = std::allocator<CharT>> class basic_string;`. So keep in mind that instantiating templates has a cost. How much? It depends on your use case.
 
-But there are two more things I want you not to forget. Whenever you see `auto` in a function signature, don't forget that you're dealing with a template with all its advantages and costs.
-
-For example `auto add(int, int)` is a template. It can indeed be instantiated in only one way. Even if you pass in a `long`, first that will be converted to an `int`. On the other hand, if we add another `auto`, such as `auto add(int, auto)` then depending on the arguments, different instantiations are possible.
-
-But I don't want to go in a different direction. My point is that if you see `auto` in a signature, you deal with a template.
+But there are two more things I want you not to forget. Whenever you see `auto` in the function parameter list, don't forget that you're dealing with a template with all its advantages and costs. For example `auto add(auto, int)` is a template.
 
 And it's worth mentioning that `std::function` is also a template and a costly one as we saw in [The observer pattern and binary sizes
 ](https://www.sandordargo.com/blog/2023/03/15/binary-sizes-and-observer-pattern#in-comparison).
@@ -230,7 +226,7 @@ You have to keep those in mind. But if your templates are small and the number o
 
 ## Conclusion
 
-In this article, we discussed about how templates might bloat the size of a binary. It's worth keeping in mind that each template instantiation adds to our binary. It's also important to remember that we use more templates than we'd often think to. Containers are templates, including strings! Don't forget, if you see `auto` in a function signature, you see a function template!
+In this article, we discussed about how templates might bloat the size of a binary. It's worth keeping in mind that each template instantiation adds to our binary. It's also important to remember that we use more templates than we'd often think to. Containers are templates, including strings! Don't forget, if you see `auto` in function parameter list, you see a function template!
 
 Speaking about functions, let's not forget that `std::function` is also a template, one of the more costliers! If you want to pass a callable and amy kind of efficieny matter for you, think about other options such creating a constrained template or just using function pointers!
 
