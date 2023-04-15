@@ -22,7 +22,7 @@ class Resource {
 struct Wrapper {
   std::string name;
   std::unique_ptr<Resource> resource;
-}
+};
 
 // somewhere in a function
 std::vector<std::unique_ptr<Wrapper>> v{
