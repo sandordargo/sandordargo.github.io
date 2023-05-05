@@ -241,7 +241,8 @@ if (typeid(*p1) == typeMap.at("B")) {
 ```
 
 There is a couple of things to note:
-- `typeMap` is `const`. It's necessary, because `std::type_index` is a copyable wrapper around the non-copyable `std::type_info`. It is not default constructible. In other words, if the `map` is not `const`, then the code wouldn't compile as a mutable map's value type must be default constructible.
+~~- `typeMap` is `const`. It's necessary, because `std::type_index` is a copyable wrapper around the non-copyable `std::type_info`. It is not default constructible. In other words, if the `map` is not `const`, then the code wouldn't compile as a mutable map's value type must be default constructible.~~
+- `std::type_index` is a copyable wrapper around the non-copyable `std::type_info`. As `std::type_index` does not have a default constructor, you cannot use `operator=()` to add new items to the map. You either initialize it at declaration (which is preferable), or you use the `insert()` method.
 - We use `map::at()` and cannot use `map::operator[]`. The reason is that `map::operator[]` is not `const` whereas `map::at()` has a `const` overload.
 
 Overall, the best is still avoiding both using `typeid` and `dynamic_cast`.
