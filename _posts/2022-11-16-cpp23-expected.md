@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "C++23: The `&lt;expected&gt;` header; expect the unexpected"
+title: "C++23: The &lt;expected&gt; header; expect the unexpected"
 date: 2022-11-16
 category: dev
 tags: [cpp, cpp23, errors, expected]

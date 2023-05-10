@@ -23,7 +23,7 @@ It can be either the function itself or a function pointer, a function object or
 
 Let's have all of them in the next example:
 
-```
+```cpp
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -72,7 +72,7 @@ You might remember that `for_each` is a non-modifying sequence operation. Does i
 
 Let's give it a try!
 
-```
+```cpp
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -115,7 +115,7 @@ We've seen what `for_each` is used for, we've seen how to use it, but why should
 
 The good old way of iterating over a container. Sooooo uncool, isn't it?
 
-```
+```cpp
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -140,7 +140,7 @@ Well, coolness is not the issue. But handling the index in a for loop is tedious
 
 You can use iterators to walk through a list. You don't have to take care of the index anymore!
 
-```
+```cpp
 #include <iostream>
 #include <vector>
 #include <string>
@@ -163,7 +163,7 @@ Initializing the iterator is simply awful, isn't it? They have a long type, that
 
 Since C++11, we can easily get rid off that awful iterator declaration by using the `auto` keyword.
 
-```
+```cpp
 #include <iostream>
 #include <vector>
 #include <string>
@@ -187,7 +187,7 @@ You see, it's not inconvenient anymore. But we have better.
 
 We used the `auto` keyword to omit the iterator's type at declaration time. But we can use that `auto` for an even better purpose.
 
-```
+```cpp
 #include <iostream>
 #include <vector>
 #include <string>
@@ -212,7 +212,7 @@ To me, the range based for loop is the _go to_ solution. On the other hand, it c
 
 If you want to abstract out the logic that the loop has to perform on each element than using a `for_each` might be more elegant.
 
-```
+```cpp
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -239,7 +239,7 @@ int main () {
 
 Which one reads better? Probably the first one. But it would not be worthwhile to use the `for_each` with a lambda.
 
-```
+```cpp
 std::for_each(strings.begin(), strings.end(), [](const std::string& i_element) {
     std::cout << i_element << "\n";
 }]);
@@ -252,3 +252,10 @@ This doesn't read well. So the choice is mainly a question of abstraction. [Here
 Today, we've seen the `for_each` algorithm which was a cool enhancement in the pre-C++11 times when we didn't have range-based `for` loops around. In comparison with it, it's not a default solution for looping over containers, but we still have its fair usage. And don't forget the pearls of wisdom of Marcus Aurelius and Seneca hidden in this post.
 
 Keep tuned, in the next episode we'll discuss how to find items in a container.
+
+## Connect deeper
+
+If you liked this article, please 
+- hit on the like button,  
+- [subscribe to my newsletter](http://eepurl.com/gvcv1j) 
+- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
