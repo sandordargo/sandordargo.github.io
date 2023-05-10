@@ -124,7 +124,7 @@ void printAllImpl(T item, Args ... args) {
 }
 
 template <typename... Args>
-void printAll(Args... args) {
+void printAll(Args&&... args) {
   printAllImpl(std::forward<Args>(args) ...);
   std::cout << '\n';
 }
