@@ -193,8 +193,8 @@ I was on the phone with my wife and I told her that I got a baseball cap as a sw
 
 By the end, I got a signature from almost anyone. And mine is just next to the signature of the Explorer of Compilers! How cool is that!
 
-![The conference T-Shirt signed my most of the speakers]({{ site.baseurl }}/assets/img/cpponsea2023-tshirt.jpg "The conference T-Shirt signed my most of the speakers")
-_The conference T-Shirt signed my most of the speakers_
+![The conference T-Shirt signed by most of the speakers]({{ site.baseurl }}/assets/img/cpponsea2023-tshirt.jpg "The conference T-Shirt signed by most of the speakers")
+_The conference T-Shirt signed by most of the speakers_
 
 ### My two talks
 
