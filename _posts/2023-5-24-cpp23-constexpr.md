@@ -111,7 +111,7 @@ char xdigit(int n) {
 }
 ```
 
-Its `constexpr` version wouldn't compile without some workarounds presented in the [paper](https://wg21.link/P2647R1:
+Its `constexpr` version wouldn't compile without some workarounds presented in the [paper](https://wg21.link/P2647R1):
 
 ```cpp
 constexpr char xdigit(int n) {
