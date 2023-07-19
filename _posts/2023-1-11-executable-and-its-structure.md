@@ -6,7 +6,7 @@ category: dev
 tags: [cpp, binarysizes, executables, compilation]
 excerpt_separator: <!--more-->
 ---
-In this example, let's have a look at how executables are generated, what are the most important executable formats and how they are structured.
+In this post, let's have a look at how executables are generated, what are the most important executable formats and how they are structured.
 
 ## How executables are generated?
 
