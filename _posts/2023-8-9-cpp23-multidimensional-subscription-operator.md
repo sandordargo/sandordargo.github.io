@@ -78,7 +78,8 @@ On the other hand, new types such as [`mdspan`](https://www.open-std.org/jtc1/sc
 
 For existing types, the new meaning might get adopted starting from C++26.
 
-For the time being, it's hard to showcase this example. The following code, [doesn't produce the intended output](https://godbolt.org/z/6WvxjqxnW) which should be `8`.
+For the time being, it's not so easy to showcase this example. One solution is to use the `mdspan` library from *kokkos* ([Godbolt](https://godbolt.org/#g:!((g:!((g:!((h:codeEditor,i:(filename:'1',fontScale:14,fontUsePx:'0',j:1,lang:c%2B%2B,selection:(endColumn:27,endLineNumber:11,positionColumn:27,positionLineNumber:11,selectionStartColumn:27,selectionStartLineNumber:11,startColumn:27,startLineNumber:11),source:'%23include+%3Cvector%3E%0A%23include+%3Chttps://raw.githubusercontent.com/kokkos/mdspan/single-header/mdspan.hpp%3E%0A%23include+%3Ciostream%3E%0A%0Aint+main()%0A%7B%0A++std::vector+v+%3D+%7B1,2,3,4,5,6,7,8,9,10,11,12%7D%3B%0A%0A++//+View+data+as+contiguous+memory+representing+2+rows+of+6+ints+each%0A++auto+multispan+%3D+std::experimental::mdspan(v.data(),+2,+6)%3B%0A++std::cout+%3C%3C+multispan%5B1,+1%5D+%3C%3C+!'%5Cn!'%3B%0A%7D%0A'),l:'5',n:'0',o:'C%2B%2B+source+%231',t:'0')),k:50,l:'4',n:'0',o:'',s:0,t:'0'),(g:!((g:!((h:compiler,i:(compiler:clang_trunk,deviceViewOpen:'1',filters:(b:'0',binary:'1',binaryObject:'1',commentOnly:'0',debugCalls:'1',demangle:'0',directives:'0',execute:'0',intel:'0',libraryCode:'0',trim:'1'),flagsViewOpen:'1',fontScale:14,fontUsePx:'0',j:1,lang:c%2B%2B,libs:!((name:fmt,ver:trunk)),options:'-std%3Dc%2B%2B2b',overrides:!(),selection:(endColumn:1,endLineNumber:1,positionColumn:1,positionLineNumber:1,selectionStartColumn:1,selectionStartLineNumber:1,startColumn:1,startLineNumber:1),source:1),l:'5',n:'0',o:'+x86-64+clang+(trunk)+(Editor+%231)',t:'0')),k:50,l:'4',m:50,n:'0',o:'',s:0,t:'0'),(g:!((h:output,i:(editorid:1,fontScale:14,fontUsePx:'0',j:1,wrap:'1'),l:'5',n:'0',o:'Output+of+x86-64+clang+(trunk)+(Compiler+%231)',t:'0')),header:(),l:'4',m:50,n:'0',o:'',s:0,t:'0')),k:50,l:'3',n:'0',o:'',t:'0')),l:'2',n:'0',o:'',t:'0')),version:4)):
+
 
 ```cpp
 #include <vector>
@@ -91,11 +92,11 @@ int main()
 
   // View data as contiguous memory representing 2 rows of 6 ints each
   auto multispan = std::experimental::mdspan(v.data(), 2, 6);
-  std::cout << multispan[0, 1] << '\n';
+  std::cout << multispan[1, 1] << '\n';
 }
 
 /*
-2
+8
 */
 ```
 
