@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C++23: compatibility with C"
-date: 2023-5-24
+date: 2023-8-23
 category: dev
 tags: [cpp, cpp23, labels, atomics]
 excerpt_separator: <!--more-->
