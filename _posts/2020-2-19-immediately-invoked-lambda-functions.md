@@ -19,9 +19,9 @@ Let's start with a simple example.
 // Bad Idea
 std::string someValue;
 if (caseA) {
-    return std::string{"Value A"};
+  return std::string{"Value A"};
 } else {
-    return std::string{"Value B"};
+  return std::string{"Value B"};
 }
 ```
 
@@ -39,11 +39,11 @@ But what to do if there are 3 different possibilities or even more?
 // Bad Idea
 std::string someValue;
 if (caseA) {
-    return std::string{"Value A"};
+  return std::string{"Value A"};
 } else if (caseB) {
-    return std::string{"Value B"};
+  return std::string{"Value B"};
 } else {
-    return std::string{"Value C"};
+  return std::string{"Value C"};
 }
 ```
 
@@ -53,13 +53,13 @@ Another option is to create a helper function.
 
 ```cpp
 std::string makeSomeValue() const {
-    if (caseA) {
-        return std::string{"Value A"};
-    } else if (caseB) {
-        return std::string{"Value B"};
-    } else {
-        return std::string{"Value C"};
-    }
+  if (caseA) {
+    return std::string{"Value A"};
+  } else if (caseB) {
+    return std::string{"Value B"};
+  } else {
+    return std::string{"Value C"};
+  }
 }
 
 const std::string someValue = makeSomeValue();
@@ -79,14 +79,14 @@ Since C++11, there is another option. You can use a lambda function that you don
 
 ```cpp
 const std::string someValue = [caseA, caseB] () {
-        if (caseA) {
-            return std::string{"Value A"};
-        } else if (caseB) {
-            return std::string{"Value B"};
-        } else {
-            return std::string{"Value C"};
-        }
-    }();
+    if (caseA) {
+      return std::string{"Value A"};
+    } else if (caseB) {
+      return std::string{"Value B"};
+    } else {
+      return std::string{"Value C"};
+    }
+  }();
 ```
 
 Is this a magic bullet? Of course not. If the logic is something that you'd have to call any many places, you'd still better think about where to put that helper function. But if it's a one-timer, you have this option now and no problem.
