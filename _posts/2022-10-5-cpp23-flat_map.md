@@ -63,7 +63,7 @@ But beware! If you use a `sorted_unique_t` overload with unsorted data, the beha
 
 `flat_map` stores separately the keys and values, and the storage for those can be of different types. Because of that, there is a bunch of new constructors available. In addition, there are several new overloads for the constructor and the `insert` method taking the previously explained `sorted_unique_t` tag so that we don't resort to already sorted items.
 
-The `extract` member method moves out both underlying storage containers. The `extract` function is overloaded with `&&` showing that the original object should be used anymore.
+The `extract` member method moves out both underlying storage containers. The `extract` function is overloaded with `&&` showing that the original object should not be used anymore.
 
 The other direction of moving data is also possible through the `replace` function. It takes containers as *rvalue* references and replaces the underlying containers with what was passed in.
 
