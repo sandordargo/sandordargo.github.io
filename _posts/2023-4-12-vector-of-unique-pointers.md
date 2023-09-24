@@ -175,7 +175,7 @@ struct Wrapper {
     std::cout << "Wrapper (std::string name, std::unique_ptr<Resource> resource)\n";
   }
 
-  Wrapper(const Wrapper& other) : m_name(other.m_name), m_resource(std::make_unique<Resource>()) {
+  Wrapper(const Wrapper& other) : m_name(other.m_name), m_resource(std::make_unique<Resource>(*other.m_resource)) {
     std::cout << "Wrapper (const Wrapper& other)\n";
   }
 
