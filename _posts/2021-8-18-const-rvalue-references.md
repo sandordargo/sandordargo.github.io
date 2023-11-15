@@ -142,6 +142,11 @@ int main() {
 
 *By the way, don't return `const` values from a function, because you make it impossible to use move semantics. [Find more info here.](https://www.sandordargo.com/blog/2020/11/18/when-use-const-3-return-types)*
 
+> As a reader pointed out, if `g()` returned `const int` instead of `const T`, the output would be different. The call would bind to `f(int&&)`
+>
+> After some investigation and [help from the community](https://twitter.com/SandorDargo/status/1723294485252104366), here is the answer:
+> - if a prvalue initally has the type `cv T` where `T` is a cv-unqualified non-class, non-array type, the type of the expression is adjusted to `T` prior to any further investigation
+
 ## When to use const rvalue references?
 
 Let's turn it around a bit. A lvalue overload can accept both lvalues and rvalues, but an rvalue overload can only accept rvalues. 
