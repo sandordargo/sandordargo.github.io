@@ -6,7 +6,7 @@ category: dev
 tags: [cpp, showdev, career, tutorial]
 excerpt_separator: <!--more-->
 ---
-I've got something to share. Something I've been building for the last few weeks has gone live today: [Daily Cpp Interview](https://www.dailycppinterview.com/).
+I've got something to share. Something I've been building for the last few weeks has gone live today: [Daily Cpp Interview](https://www.dailycppinterview.dev/).
 <!--more-->
 
 ## What is Daily Cpp Interview about?
@@ -51,10 +51,10 @@ As you can see, it's fairly simple. For the "backend part" I mostly use free or 
 
 ## Conclusion
 
-I built [DailyCppInterview](https://www.dailycppinterview.com/) in about a month during my mornings and evenings with great enthusiasm.
+I built [DailyCppInterview](https://www.dailycppinterview.dev/) in about a month during my mornings and evenings with great enthusiasm.
 
 There are still things to better on the page, in the integrations, but I think that the most important thing is to go out and deliver. Deliver iteratively, otherwise, I'd just stuck in a "still not good enough" state and would never publish.
 
 I'm sure that some people will find it helpful and some will maybe even subscribe which will be great. If not, I already learned a lot about AWS, different tools, and integrations that was already worth it.
 
-If you are a C++ developer, please go ahead and [subscribe for the free daily newsletter](https://www.dailycppinterview.com/).
+If you are a C++ developer, please go ahead and [subscribe for the free daily newsletter](https://www.dailycppinterview.dev/).

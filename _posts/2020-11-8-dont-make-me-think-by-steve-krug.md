@@ -8,7 +8,7 @@ excerpt_separator: <!--more-->
 ---
 Sandor, are you posting a book about web development? What are you having in mind? Are you changing from C++ to something else?
 
-No. Not at all. While it's true that I've built some sites, such as [Daily C++ Interview](https://www.dailycppinterview.com/), I simply think that all developers should be familiar with some basic concepts of usability. I thought that I'll get some concepts that can easily be interpreted in other areas as well. Plus I liked the title. Let's see if it was worth the time!
+No. Not at all. While it's true that I've built some sites, such as [Daily C++ Interview](https://www.dailycppinterview.dev/), I simply think that all developers should be familiar with some basic concepts of usability. I thought that I'll get some concepts that can easily be interpreted in other areas as well. Plus I liked the title. Let's see if it was worth the time!
 <!--more-->
 
 Although I read the third revision of [the book](https://amzn.to/3ir9MrQ), it's already old as it is from the end of 2013. Almost 7 years old, 49 dog-years and in web development, it's rather something like 343.

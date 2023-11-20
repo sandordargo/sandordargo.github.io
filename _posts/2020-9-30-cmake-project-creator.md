@@ -6,7 +6,7 @@ category: dev
 tags: [cpp, cmake, showdev, hacktoberfest]
 excerpt_separator: <!--more-->
 ---
-After [Daily C++ Interview](https://www.dailycppinterview.com/) that I introduced in early September, let me share with you another project I have been working on for in my learning time for the last couple of months. [Cmake Project Creator](https://github.com/sandordargo/cmake-project-creator) is fully open source, and if you are looking forward to [Hacktoberfest](https://hacktoberfest.digitalocean.com/), this might be interesting for you in case you speak Python and interested in C++.
+After [Daily C++ Interview](https://www.dailycppinterview.dev/) that I introduced in early September, let me share with you another project I have been working on for in my learning time for the last couple of months. [Cmake Project Creator](https://github.com/sandordargo/cmake-project-creator) is fully open source, and if you are looking forward to [Hacktoberfest](https://hacktoberfest.digitalocean.com/), this might be interesting for you in case you speak Python and interested in C++.
 <!--more-->
 
 ## What is Cmake Project Creator about?

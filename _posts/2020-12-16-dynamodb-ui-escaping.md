@@ -6,7 +6,7 @@ category: dev
 tags: [aws, cpp, database, python]
 excerpt_separator: <!--more-->
 ---
-Recently, I've built [Daily C++ Interview](https://www.dailycppinterview.com/) and since the beginning, I kept something important in mind. I need to provide value, and I don't need a perfect implementation for that. I don't need to automate a process if I barely have to perform it, especially if it's simple and doesn't take many efforts.
+Recently, I've built [Daily C++ Interview](https://www.dailycppinterview.dev/) and since the beginning, I kept something important in mind. I need to provide value, and I don't need a perfect implementation for that. I don't need to automate a process if I barely have to perform it, especially if it's simple and doesn't take many efforts.
 <!--more-->
 
 It's different when your purpose is practising automation or just practising building tools. Then you might want to automate everything just for the sake of automation. It's _l'art pour l'art_. But in this case, I just want to deliver valuable content to my audience.
@@ -19,7 +19,7 @@ One of the activities I have to perform every day is adding a new question (and 
 
 One thing, I'm really prudent of is that I only share valid information and that my code examples compile out of the box. Hence usually even if takes more space, I include the header inclusions and the `main()` function to my C++ sample code.
 
-I also have a friend who is - among his other activities - teaching C++ at a university and he free access to my [Pro membership](https://www.dailycppinterview.com/checkout/) and when he has time, he reviews the mails I'm sending out.
+I also have a friend who is - among his other activities - teaching C++ at a university and he free access to my [Pro membership](https://www.dailycppinterview.dev/checkout/) and when he has time, he reviews the mails I'm sending out.
 
 One evening he contacted me saying that it's strange that when I share the original and the desired output of a code sample, both are the very same.
 
