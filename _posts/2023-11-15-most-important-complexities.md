@@ -85,7 +85,7 @@ First, let's see what are the most important containers you'll likely deal with 
 
 ### `std::vector`
 
-`std::array` is a dynamically sized sequence container, where the elements are stored contiguously. Random access is cheap, as well as operations at the end, unless reallocation is required. 
+`std::vector` is a dynamically sized sequence container, where the elements are stored contiguously. Random access is cheap, as well as operations at the end, unless reallocation is required. 
 
 - **accessing the first element**: with `front()` which has a complexity of `O(1)`
 - **accessing the last element**: with `back()` which has a complexity of `O(1)`
