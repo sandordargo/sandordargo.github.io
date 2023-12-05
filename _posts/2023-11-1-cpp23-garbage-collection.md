@@ -12,11 +12,11 @@ The first surprise this paper might give you is the fact that it talks about Gar
 
 As it turns out, in 2008 a [minimal support for garbage collection and reachability-based leak detection](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2670.htm) was added to C++0x. This paper was based on two earlier ones, you'll find the reference for those in the previously referenced one. Standard-conform garbage collectors should take into account *strict pointer safety*. In fact, there is no such garbage collectors in major standard libraries.
 
-> [N2670](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2670.htm)) introduced the `std::pointer_safety` enumeration with three enumerators: `relaxed`, `preferred`, `strict`. When `std::get_pointer_safety()` is called, an implementation will return a value indicating how it treats pointers that are not safely derived (see below).
+> [N2670](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2670.htm) introduced the `std::pointer_safety` enumeration with three enumerators: `relaxed`, `preferred`, `strict`. When `std::get_pointer_safety()` is called, an implementation will return a value indicating how it treats pointers that are not safely derived (see below).
 > - `pointer_safety::relaxed` is returned if non-safely-derived pointers will be treated the same as pointers that are safely derived for the duration of the program
 > - `pointer_safety::preferred` is returned if non-safely-derived pointers will be treated also the same as safely-derived pointers, but at the same time, the implementation is allowed to hint that it's desirable to avoid dereferencing such pointers
 > - `pointer_safety::strict` is returned if non-safely-derived pointers might be treated differently than pointers that are safely derived.
-
+>
 > A pointer value is a *safely-derived pointer* to a dynamic object only if it has pointer-to-object type and it is:
 >
 > - the value returned by a call to the C++ standard library implementation of ::operator new(std::size_t);
