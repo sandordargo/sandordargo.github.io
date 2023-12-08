@@ -36,7 +36,7 @@ Somewhat accidentally, it introduced allocator-aware construction. I'm using the
 
 At the same time, `basic_stringbuf` is also benefiting from new constructor overloads taking an initial value by rvalue-reference which again is about avoiding unnecessary copies.
 
-`basic_stringbug::str()` went through several changes. First, we must remind ourselves that `basic_stringbug::str()` is both a getter and a setter depending on its return type and parameters.
+`basic_stringbuf::str()` went through several changes. First, we must remind ourselves that `basic_stringbuf::str()` is both a getter and a setter depending on its return type and parameters.
 
 The getter `str()` now has an overload that is used when the underlying object is an lvalue and another form rvalues. When `str()` is [called on an rvalue reference](https://www.sandordargo.com/blog/2018/11/25/override-r-and-l0-values#use--for-declaring-rvalue-references), it returns the underlying string by moving it away from the internal buffer. According to the author, this is probably the first ref-qualified member function in the standard library. Moreover, in this case, the standard clearly specifies how the moved-from object should look like. Its buffer becomes empty.
 
