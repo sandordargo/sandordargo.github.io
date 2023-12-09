@@ -10,7 +10,7 @@ In my quest towards a smaller binary size, someone asked me if I considered exte
 
 ## What are they?
 
-You can use the `extern` keyword with template specializations and it means that no local object code will be generated for the template specialization in the local object code. With the `extern` keyword you show that the code will be generated elsewhere which the linker should find.
+You can use the `extern` keyword with template specializations and it means that no local object code will be generated for the template specialization in the local translation unit. With the `extern` keyword you show that the code will be generated elsewhere which the linker should find.
 
 ```cpp
 template <typename T>
