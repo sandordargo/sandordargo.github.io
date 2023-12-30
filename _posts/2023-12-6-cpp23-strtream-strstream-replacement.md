@@ -85,7 +85,7 @@ int main() {
     std::cout << "bufview: " << bufview << '\n';
 
     // no copy is needed to access the internal buffer which still contains the data we put in it
-    std::string_view anotherView = buf.str();
+    std::string_view anotherView = buf.view();
     std::cout << "anotherView: " << anotherView << '\n';
 
     // still no copy, buf is used as an rvalue-reference, the internal buffer is moved out
@@ -93,7 +93,7 @@ int main() {
     std::cout << "internalBufferMoved: " << internalBufferMoved << '\n';
 
     // now buf is moved away from, who knows what's inside
-    std::string_view viewOnMovedObject = buf.str();
+    std::string_view viewOnMovedObject = buf.view();
     std::cout << "viewOnMovedObject: " << viewOnMovedObject << '\n';
     
     return 0;
