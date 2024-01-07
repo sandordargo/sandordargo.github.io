@@ -111,13 +111,13 @@ In the beginning, a third of the projects broke, but it was below 8% by the end.
 
 Based on these experiments that you can follow in the details in [§1.3 of P2468R2](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2022/p2468r2.html#existing-code-impact), the proposed and accepted solution is the following.
 
-If you want the compiler to automatically reverse `operator==` and therefore generate `operator!=`, make sure that you write **only** an `operator==` that returns a `bool`. (Yes, it might return an `int`...)
+__If you want the compiler to automatically reverse `operator==` and therefore generate `operator!=`, make sure that you write **only** an `operator==` that returns a `bool`. (Yes, it might return an `int`...)__
 
-If you don't want your `operator==` to be used for rewrites, make sure that you write a matching `operator!=`.
+__If you don't want your `operator==` to be used for rewrites, make sure that you write a matching `operator!=`.__
 
 No matter what, `operator<=>` will be used for rewrites, that's an essential part of the feature.
 
-With all that considered, if you're migrating from C++17 and you want to keep behaviour the same as it was, make sure that every `operator==` has a matching `operator!=`. And once you think that you'd like to benefit from rewrites, remove the `operator!=` and the compiler will provide that for you.
+With all that considered, __if you're migrating from C++17 and you want to keep behaviour the same as it was, make sure that every `operator==` has a matching `operator!=`__. And once you think that you'd like to benefit from rewrites, remove the `operator!=` and the compiler will provide that for you.
 
 ## Conclusion
 
