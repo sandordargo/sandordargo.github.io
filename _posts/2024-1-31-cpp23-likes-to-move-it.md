@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "C++23: Even more constepxr"
+title: "C++23 likes to move it!"
 date: 2024-1-31
 category: dev
 tags: [cpp, cpp23, movesemantics, moveoperations]
