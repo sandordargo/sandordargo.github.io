@@ -150,7 +150,7 @@ int main() {
 //   printSquareSame(IntWithLongSquare{2}); // long not same as int
 //   printSquareSame(IntWithVoidSquare{3}); // void not same as int
   printSquareConvertible(IntWithIntSquare{4}); // int convertible to int
-  printSquareConvertible(IntWithLongSquare{5}); // int convertible to int
+  printSquareConvertible(IntWithLongSquare{5}); // long convertible to int
 //   printSquareConvertible(IntWithVoidSquare{6}); // void not convertible to int
 }
 /*
