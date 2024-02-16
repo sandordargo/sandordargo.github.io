@@ -113,7 +113,13 @@ Given all that, what output do we expect from the above example?
 
 On the other hand, `Wrapper<std::string> wrappedString` should use the constrained destructor and therefore print *"Not trivial"* on the console, as `std::string` is not a trivially destructible type.
 
-The above example [works fine with gcc](godbolt.org/z/rKeETW5jE). We receive the expected output. On the other hand, if you try to compile it [with the latest clang](godbolt.org/z/rqME8W1rn) (as of June 2021, when this article was written), you get a swift compilation error.
+The above example [works fine with gcc](https://godbolt.org/z/rKeETW5jE). We receive the expected output.
+
+## An already fixed compiler bug
+
+> *The bug I'm going to explain was fixed with Clang 15.0.0. I still kept this section for two reason. 1) If you happen to use an older version and you run into the same error, you know you're not alone. 2) It's a nice memento that even compilers might contain errors and compiler engineers work hard to eliminate them.* 
+
+As of June 2021, when this article was written, if you tried to compile it [with the latest clang](https://godbolt.org/z/rqME8W1rn), you got a a compilation error.
 
 ```
 <source>:19:18: error: invalid reference to function '~Wrapper': constraints not satisfied
@@ -132,7 +138,7 @@ ASM generation compiler returned: 1
                          ^
 1 error generated.
 ```
-Basically, the error message says that the code is not compilable, because `int` is trivially destructible, therefore it doesn't satisfy the requirements of the first destructor which requires a not trivially destructible type.
+Basically, the error message said that the code is not ill-formed, because `int` is trivially destructible, therefore it doesn't satisfy the requirements of the first destructor which requires a not trivially destructible type.
 
 It's sad because `int` should use the other destructor as we discussed earlier...
 
@@ -168,14 +174,12 @@ Lo and behold! It compiles with clang! But it doesn't produce the expected outpu
 
 We can draw the conclusion that clang doesn't support - yet - multiple destructors and cannot handle concepts well in the context of destructors. [Mr. K.](https://twitter.com/GeekyMrK) - who we were experimenting with - [filed a bug for LLVM](https://bugs.llvm.org/show_bug.cgi?id=50570).
 
-*Just for the note, I asked a colleague who was access to MSVCC, the above examples work fine not only with gcc but with the MS compiler too.*
+*Just for the note, I asked a colleague who has access to MSVC, the above examples work fine not only with GCC but with the MS compiler too.*
 
 # Conclusion
 
 Today we learned that while in general, a class should always have one destructor, for class templates there have been ways to provide different implementations for that destructor based on the characteristics of template arguments.
 
-The old way of doing this is using `std::conditional`, but it's not as readable as using C++20 concepts.
-
-We have also seen that while C++20 provides an extremely readable way to do this, it's not yet fully supported not even by all the major compilers. gcc and msvcc provide a correct implementation, but clang is a bit behind on this.
+The old way of doing this is using `std::conditional`, but it's not as readable as using C++20 concepts. With a new enough compiler you won't run into any troubles using C++20's concepts.
 
 **If you want to learn more details about C++ concepts, [check out my book on Leanpub](https://leanpub.com/cppconcepts)!**
