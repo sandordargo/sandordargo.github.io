@@ -12,12 +12,12 @@ Yet, these are all important to have code that works as expected and that is por
 
 ## Trimming whitespaces before line splicing
 
-As of C++20, what's the output of the below piece of code ([Godbolt](https://godbolt.org/z/bTf3Go949))?
+As of C++20, what's the output of the below piece of code ([Godbolt](https://godbolt.org/z/qq378vvKM))?
 
 ```cpp
 int main() {
 int i = 1
-// \
+// \ 
 + 42
 ;
 return i;
