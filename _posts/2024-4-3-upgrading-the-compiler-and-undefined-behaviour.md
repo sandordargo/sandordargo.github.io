@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Upgrading the compiler: undefined behaviour uncovered"
-date: 2024-x-x
+date: 2024-4-3
 category: dev
 tags: [cpp, fundamental, initialization, undefinedbehaviour]
 excerpt_separator: <!--more-->
