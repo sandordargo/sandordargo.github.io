@@ -8,7 +8,7 @@ excerpt_separator: <!--more-->
 ---
 In the previous article on binary sizes, we discussed how the decorator pattern's classic and modern implementation fares in terms of binary size. We saw that the modern implementation had a smaller size, but the difference was not great and it's not always evident how it scales.
 
-Today, let's talk about a different pattern, the observer. Once again, I borrow the examples from Klaus Igleberger's book, C++ Software Design](https://www.amazon.com/Software-Design-Principles-Patterns-High-Quality/dp/1098113160?&_encoding=UTF8&tag=sandordargo-20&linkCode=ur2&linkId=e9b6f64671aac55ff52ecfd91e137d6e&camp=1789&creative=9325).
+Today, let's talk about a different pattern, the observer. Once again, I borrow the examples from Klaus Igleberger's book, [C++ Software Design](https://www.amazon.com/Software-Design-Principles-Patterns-High-Quality/dp/1098113160?&_encoding=UTF8&tag=sandordargo-20&linkCode=ur2&linkId=e9b6f64671aac55ff52ecfd91e137d6e&camp=1789&creative=9325).
 
 ## The Observer pattern
 
