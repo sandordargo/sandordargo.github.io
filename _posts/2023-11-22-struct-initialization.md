@@ -225,7 +225,7 @@ Let's make two remarks:
 If you want to make the code not just warning free, but more readable as well, you can use [designated initializers](https://en.cppreference.com/w/cpp/language/aggregate_initialization#Designated_initializers) to show explicitly what members you are initializing:
 
 ```cpp
-S s{.m_num{42}};
+S s{.m_num = 42};
 ```
 This makes the code way more readable.
 
