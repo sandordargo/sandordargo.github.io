@@ -57,6 +57,19 @@ Constness is such an important idea that in certain languages entities are `cons
 
 ***[You can get the book on LeanPub](https://leanpub.com/cppconst/)***
 
+
+### [How to reduce binary size in C++](https://leanpub.com/cppbinarysize/)
+
+![How to use const in C++ cover]({{ site.baseurl }}/assets/img/cppbinary.jpg){:height="66%" width="66%"}
+
+By reading this book you will learn how you will learn about different factors influencing the size of your C++ binaries:
+
+- different ways of programming, including runtime polymorphism, templates, inlining, etc
+- various compiler and linker settings
+- the intersection of the above two, such as RTTI and exceptions
+
+***[You can get the book on LeanPub](https://leanpub.com/cppbinarysize//)***
+
 ## Books I recommend
 
 I consider reading as a primary necessity of humans, just like eating. I'd like to help you to choose the good reads easier.
