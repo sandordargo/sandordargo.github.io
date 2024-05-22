@@ -60,7 +60,7 @@ Constness is such an important idea that in certain languages entities are `cons
 
 ### [How to reduce binary size in C++](https://leanpub.com/cppbinarysize/)
 
-![How to use const in C++ cover]({{ site.baseurl }}/assets/img/cppbinary.jpg){:height="66%" width="66%"}
+![How to reduce binary size in C++ cover]({{ site.baseurl }}/assets/img/cppbinary.jpg){:height="66%" width="66%"}
 
 By reading this book you will learn how you will learn about different factors influencing the size of your C++ binaries:
 
