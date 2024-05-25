@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Are engineering teams really resemble sports teams?"
+title: "Do engineering teams really resemble sports teams?"
 date: 2024-5-22
 category: dev
 tags: [watercooler, meta, thinking, writing]
