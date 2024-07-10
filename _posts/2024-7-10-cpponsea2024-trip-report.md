@@ -180,7 +180,7 @@ There was a fun buzzword bingo for some C++ books. The idea was that we had C++ 
 
 On the second morning, I had two consecutive slots to deliver a half-day workshop about how to keep your binaries small. During the pandemic, I already delivered a half-day workshop online, but obviously, that was a vastly different experience. 
 
-Last year, I forgot my clicker home. This year I had it, but for some strange reason, it stopped working properly. So in the end, I was very static on stage, as I had to stay close to my laptop and its space button. Apart from that, it went quite well.
+Last year, I left my clicker at home. This year I had it, but for some strange reason, it stopped working properly. So in the end, I was very static on stage, as I had to stay close to my laptop and its space button. Apart from that, it went quite well.
 
 ![Me at C++ On See - photo by C++ On Sea]({{ site.baseurl }}/assets/img/cpponsea2024-sandor.jpeg)
 
@@ -188,7 +188,7 @@ The first part of the first session was about binary formats. I was afraid that 
 
 Overall, I received good feedback from some attendees and also some follow-up questions, such as how dynamic linkage affects binary sizes.
 
-I had a second commitment as well. I someone feel obligated to share a lightning talk if there is a possibility. I feel obligated to go on stage and practice whenever there is an opportunity. So did I, to speak about [whether engineering teams really resemble sports teams](https://www.sandordargo.com/blog/2024/05/22/are-we-a-sports-team). I ran a few seconds over time, but I could still finish what I wanted to share.
+I had a second commitment as well. I am someone who feels obligated to share a lightning talk if there is a possibility. I feel obligated to go on stage and practice whenever there is an opportunity. So did I, to speak about [whether engineering teams really resemble sports teams](https://www.sandordargo.com/blog/2024/05/22/are-we-a-sports-team). I ran a few seconds over time, but I could still finish what I wanted to share.
 
 ## Conclusion
 
