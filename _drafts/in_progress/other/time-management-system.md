@@ -1,4 +1,0 @@
-pomodoro
-projects
-lists
-spreadhseet
