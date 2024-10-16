@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "C++ Brain Teasers by Anders Schau Katten"
+title: "C++ Brain Teasers by Anders Schau Knatten"
 date: 2024-10-16
 category: books
 tags: [cpp, brainteasers, watercooler, books]
@@ -27,4 +27,4 @@ So I quickly tried Clang's `-Wstring-conversion` on some codebases I work on, an
 
 Sometimes an esoteric example from a puzzle book turns out to be something that can either give you a lot of work or at least strange code to think about.
 
-If you're interested in what is going on under the hood of C++, [C++ Brain Teasers by Anders Schau Katten](https://amzn.to/3Nuj5bG) is a must-read.
+If you're interested in what is going on under the hood of C++, [C++ Brain Teasers by Anders Schau Knatten](https://amzn.to/3Nuj5bG) is a must-read.
