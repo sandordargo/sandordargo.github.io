@@ -3,7 +3,7 @@ layout: post
 title: "Why clean code is not the norm?"
 date: 2019-8-28
 category: dev
-tags: [clean code, discuss, craftsmanship, technical debt]
+tags: [cleancode, discuss, craftsmanship, technical debt]
 excerpt_separator: <!--more-->
 ---
 Why is it that #CleanCode is still the exception and not the norm in so many companies?

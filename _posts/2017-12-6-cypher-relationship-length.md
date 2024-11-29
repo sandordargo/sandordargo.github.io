@@ -3,7 +3,7 @@ layout: post
 title: "Cypher tutorial: Relationships with a varying length"
 date: 2017-12-6
 category: dev
-tags: [database, graphs, cypher, neo4j]
+tags: [databases, graphs, cypher, neo4j]
 header: "<a href=\"/blog/2017/11/22/cypher-optional-match\">In one of my previous posts</a> I wrote about the OPTIONAL MATCH clause in Cypher. I briefly mentioned that in your queries you can match paths with a varying length. Let's see how."
 ---
 Let's suppose we have a data model where we store all the winners of wine competitions. I mean virtually. There are nodes with the type of `:COMPETITION` and for each competition, we store the winning `:WINE`s in a linked list as such:

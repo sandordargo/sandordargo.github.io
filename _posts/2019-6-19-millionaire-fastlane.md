@@ -3,7 +3,7 @@ layout: post
 title: "The Millionaire Fastlane by MJ DeMarco"
 date: 2019-6-19
 category: books
-tags: [books, finance, self-improvement]
+tags: [books, finances, self-improvement]
 excerpt_separator: <!--more-->
 ---
 [MJ DeMarco](https://www.mjdemarco.com/) in [his book](https://amzn.to/2XHPsZ7) offers to _"crack the code to wealth"_ so that you can _"live rich for a lifetime"_. It sounds like a clickbait, doesn't it?

@@ -3,7 +3,7 @@ layout: post
 title: "3 Things MongoDB Can Help You With"
 date: 2022-11-5
 category: dev
-tags: [mongodb, db, remote]
+tags: [mongodb, databases, remote]
 excerpt_separator: <!--more-->
 ---
 ![Cover image for Mongodb article]({{ site.baseurl }}/assets/img/mongodb.jpeg)

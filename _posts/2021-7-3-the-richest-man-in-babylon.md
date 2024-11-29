@@ -3,7 +3,7 @@ layout: post
 title: "The Richest Man in Babylon by George S Clason"
 date: 2021-7-3
 category: books
-tags: [books, watercooler, history, finance]
+tags: [books, watercooler, history, finances]
 excerpt_separator: <!--more-->
 ---
 [The Richest Man in Babylon](https://www.amazon.com/gp/product/1939438632/ref=as_li_qf_asin_il_tl?ie=UTF8&tag=sandordargo-20&creative=9325&linkCode=as2&creativeASIN=1939438632&linkId=f075962475cbe35d1a89d6e11310dd09) was first published in 1926, almost one hundred years ago. We might think about it as the father of all modern personal finance advice books.

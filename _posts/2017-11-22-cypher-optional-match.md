@@ -3,7 +3,7 @@ layout: post
 title: "Cypher tutorial: OPTIONAL MATCH"
 date: 2017-11-22
 category: dev
-tags: [database, graphs, cypher, neo4j]
+tags: [databases, graphs, cypher, neo4j]
 header: "After <a href=\"/blog/2017/10/25/cypher-match\">having discussed about Cyper's `MATCH` keyword</a>, let's talk a bit about its variant, the `OPTIONAL MATCH`."
 ---
 I discovered `OPTIONAL MATCH` when I was preparing [the code kata of Test Driven Development with Neo4j](https://github.com/sandordargo/neo-wine-services).

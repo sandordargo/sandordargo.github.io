@@ -3,7 +3,7 @@ layout: post
 title: "Introduction to cypher"
 date: 2017-10-4
 category: dev
-tags: [database, graphs, cypher, neo4j]
+tags: [databases, graphs, cypher, neo4j]
 header: "When you start working with a database for the first time, maybe one of the most important things is the ability to query it."
 ---
 Put it differently, there are many ways to start exploring a database. You can learn about the paradigms behind that I think is the most important. It is essential to understand it on a high level how your data is stored and organized. For [Neo4j](https://neo4j.com/) I already covered this in [the introduction to graph databases](/blog/2017/09/06/intro-to-graph-databases). 

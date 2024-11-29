@@ -3,7 +3,7 @@ layout: post
 title: "Cypher tutorial: the RETURN keyword"
 date: 2017-11-8
 category: dev
-tags: [database, graphs, cypher, neo4j]
+tags: [databases, graphs, cypher, neo4j]
 header: "After <a href=\"/blog/2017/10/25/cypher-match\">having mentioned RETURN in the tutorial on Cyper's MATCH</a>, let's see what exactly it can do for us. This will not be a long post."
 ---
 As usual, let's examine what its counterpart can be in SQL. In this case it is definitely `SELECT`, however `RETURN` is a bit simpler. Putting that aside, the most important visual difference between them is that in Cypher you end a query with `RETURN` while in SQL you start one with `SELECT`. But in both cases, you use them to define what you want to return from your query. In its simplest form you can return everything:

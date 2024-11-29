@@ -3,7 +3,7 @@ layout: post
 title: "Joining a new project soon"
 date: 2017-4-25
 category: management
-tags: [career, assignments, projects]
+tags: [career, projects]
 header: "I'm going to join a new project next month where I will learn a bunch of interesting technologies or at least I hope so!
 "
 ---

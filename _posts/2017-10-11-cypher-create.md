@@ -3,7 +3,7 @@ layout: post
 title: "Cypher tutorial: the CREATE keyword"
 date: 2017-10-11
 category: dev
-tags: [database, graphs, cypher, neo4j]
+tags: [databases, graphs, cypher, neo4j]
 header: "In the first article of <a href=\"/blog/2017/10/04/cypher-introduction\">my series about Cypher</a> I introduce you the CREATE keyword."
 ---
 The aim of this keyword is to add nodes or relationships to your graph database. As you are going to see you can add one simple node without any useful data, but you can also add multiple well-characterized nodes with relationships connecting them together. Let's dive deep! 

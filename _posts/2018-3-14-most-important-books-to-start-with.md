@@ -3,7 +3,7 @@ layout: post
 title: "8 books every junior developer should read"
 date: 2018-3-14
 category: books
-tags: [books, clean code, architecture]
+tags: [books, cleancode, architecture]
 header: "Just like seniors but most probably they already read at least a few of them...\n\nI like reading. I wouldn't say I always liked to, even though I had some peaks already in elementary school when in a short amount of time I read long novels that I found interesting. Later I had such a period during high school too, but between these times I barely read books - I did read a lot of car magazines nonetheless. But since about university second grade I have read a lot and I have bought a lot of books - I've been investing in myself."
 ---
 When I started to earn a stable revenue I started to buy books every month. Soon I was in the highest tier of the fidelity program of the biggest Hungarian bookselling chain, so I bought even more. I had to get rid of staff in my room to be able to store the books. Soon it was not enough and I needed a new shelf, my dad crafted one for me.

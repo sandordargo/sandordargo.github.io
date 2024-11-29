@@ -3,7 +3,7 @@ layout: post
 title: "The Psychology of Money: Timeless lessons on wealth, greed, and happiness by Morgan Housel"
 date: 2023-12-16
 category: books
-tags: [books, money, finance, psychology]
+tags: [books, money, finances, psychology]
 excerpt_separator: <!--more-->
 ---
 As the title suggests, [The Psychology of Money](https://www.amazon.com/Psychology-Money-Timeless-lessons-happiness/dp/0857197681?&_encoding=UTF8&tag=sandordargo-20&linkCode=ur2&linkId=4671f6f8058f58c86ad73480babf28d6&camp=1789&creative=9325) approaches our financial matters from a bit different angle. If you consider personal finances and saving money from a purely mathematical standpoint, then it's easy to come up with black-and-white, absolute recommendations.

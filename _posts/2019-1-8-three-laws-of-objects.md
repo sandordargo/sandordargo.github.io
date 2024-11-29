@@ -3,7 +3,7 @@ layout: post
 title: "The Three Laws of Objects"
 date: 2019-1-8
 category: dev
-tags: [ood, oop, design, clean-code]
+tags: [ood, oop, design, cleancode]
 excerpt_separator: <!--more-->
 ---
 Three laws of objects. Sounds catchy enough? To me, it did. I read about these laws in [Ken Pugh's Prefactoring](https://amzn.to/2VoCO0k).

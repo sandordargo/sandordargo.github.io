@@ -3,7 +3,7 @@ layout: post
 title: "How to automatically format your C++ code regardless the IDE you use"
 date: 2018-5-30
 category: dev
-tags: [cpp, coding guidelines, clean code]
+tags: [cpp, coding guidelines, cleancode]
 excerpt_separator: <!--more-->
 ---
 If you follow me, you might already have noticed that [I'm a big fan of coding guidelines](/blog/2018/03/28/codereview-guidelines). Yet, I don't particularly enjoy commenting on formatting, such as indentation, [tabs vs spaces](https://www.youtube.com/watch?v=SsoOG6ZeyUI), whitespacing, etc... But I do and I keep doing it because it's an important part of readability.

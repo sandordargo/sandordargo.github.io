@@ -3,7 +3,7 @@ layout: post
 title: "6 C++23 features improving string and string_view"
 date: 2022-7-20
 category: dev
-tags: [cpp, cpp23, string, stringview]
+tags: [cpp, cpp23, string, string_view]
 excerpt_separator: <!--more-->
 ---
 In this blog post, let's collect a couple of changes that are going to be shipped with C++23 and are all related to `string`s or `string_view`s.

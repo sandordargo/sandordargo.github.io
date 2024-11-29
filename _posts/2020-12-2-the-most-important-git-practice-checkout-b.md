@@ -3,7 +3,7 @@ layout: post
 title: "The most important git practice"
 date: 2020-12-2
 category: dev
-tags: [git, bestpractice, productivity]
+tags: [git, bestpractices, productivity]
 excerpt_separator: <!--more-->
 ---
 What do you think the most important git practice is?

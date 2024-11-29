@@ -3,7 +3,7 @@ layout: post
 title: "Structs and constructors"
 date: 2024-9-4
 category: dev
-tags: [cpp, structs, binarysize, constructors]
+tags: [cpp, structs, binarysizes, constructors]
 excerpt_separator: <!--more-->
 ---
 Today, we are going to talk about when and why structs should have constructors if they should have them at all. We are also going to see once again that generic best practices and best practices to reduce binary size do not always go hand in hand.

@@ -3,7 +3,7 @@ layout: post
 title: "Cypher tutorial: the MATCH keyword"
 date: 2017-10-25
 category: dev
-tags: [database, graphs, cypher, neo4j]
+tags: [databases, graphs, cypher, neo4j]
 header: "After <a href=\"/blog/2017/10/11/cypher-create\">having discussed what one can do using CREATE and slightly mentioning MATCH</a>, let's explore what that MATCH can do for you in Cypher"
 ---
 Luckily on a basic level both `CREATE` and `MATCH` are quite self-explanatory. So with `MATCH` you'll be able to look for certain elements in your database. In short, you can match patterns. Often you will you use `MATCH` together with `WHERE`, but not necessarily as I will show you. 

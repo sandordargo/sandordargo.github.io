@@ -3,7 +3,7 @@ layout: post
 title: "Sane office environment with code review guidelines"
 date: 2018-3-28
 category: dev
-tags: [guidelines, code reviews, rules, efficiency]
+tags: [guidelines, codereviews, rules, efficiency]
 header: "In my new team we are working on several guidelines, rules and process improvements. Why do we think these are so important? If things are well documented, it's easier for a newcomer to start delivering value. It reduces the possibilities to err for everyone. It removes lots of possibilities for arguments. And we all know that <a href=\"http://lesswrong.com/lw/j6o/according_to_dale_carnegie_you_cant_win_an/\">one cannot win an argument</a>, we should avoid them at all costs."
 ---
 For a more detail vision about the importance of guidelines, please check out [this article](https://medium.com/@SandorDargo/zuckerbergs-gray-t-shirt-and-coding-guidelines-caef9079ba7e), that I'll revisit soon by the way.

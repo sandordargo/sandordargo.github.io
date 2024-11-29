@@ -3,7 +3,7 @@ layout: post
 title: "Hands-On Design Patterns with C++ by Fedor Pikus"
 date: 2022-7-23
 category: books
-tags: [books, c++, designpatterns, architecture]
+tags: [books, cpp, designpatterns, architecture]
 excerpt_separator: <!--more-->
 ---
 In [Hands-On Design Patterns with C++](https://www.amazon.com/Hands-Design-Patterns-reusable-maintainable/dp/1788832566?&_encoding=UTF8&tag=sandordargo-20&linkCode=ur2&linkId=30b0f28f6d2b14f4979cee40a2d91f43&camp=1789&creative=9325), the author [Fedor Pikus](http://www.pikus.net/~pikus/physres.html) shares the most common design patterns used in modern C++. In fact, not only design patterns but also some best practices and idioms. He doesn't end the stories simply where the [Gang of Four Design Patterns book](https://amzn.to/36VKyO2) ends, but he looks deeply into the specialities of C++ implementations.

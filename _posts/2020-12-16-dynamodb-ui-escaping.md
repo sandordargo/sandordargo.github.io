@@ -3,7 +3,7 @@ layout: post
 title: "A story of nasty a bug: AWS DynamoDB UI special character escaping"
 date: 2020-12-16
 category: dev
-tags: [aws, cpp, database, python]
+tags: [aws, cpp, databases, python]
 excerpt_separator: <!--more-->
 ---
 Recently, I've built [Daily C++ Interview](https://www.dailycppinterview.dev/) and since the beginning, I kept something important in mind. I need to provide value, and I don't need a perfect implementation for that. I don't need to automate a process if I barely have to perform it, especially if it's simple and doesn't take many efforts.

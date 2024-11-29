@@ -3,7 +3,7 @@ layout: post
 title: "Reconquering my job in 15 steps"
 date: 2018-12-5
 category: dev
-tags: [training, time-management]
+tags: [training, timemanagement]
 excerpt_separator: <!--more-->
 ---
 I think I'm better in time management than the average, so to further improve this skill, I went to a time management training of [John B. May](https://www.linkedin.com/in/john-b-may-b7b6821/). It was a one-day training about how we should reconquer our own job, how we should make sure that not others control our daily work through constant interruptions.

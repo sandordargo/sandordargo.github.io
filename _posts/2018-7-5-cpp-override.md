@@ -3,7 +3,7 @@ layout: post
 title: "Why to use the override specifier in C++ 11?"
 date: 2018-7-5
 category: dev
-tags: [cpp, tutorial, clean code, override, virtual]
+tags: [cpp, tutorial, cleancode, override, virtual]
 excerpt_separator: <!--more-->
 ---
 The `override` specifier was introduced to the language with C++11 and it is one of the easiest tool to significantly improve the maintainability of our codebases.

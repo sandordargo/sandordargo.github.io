@@ -3,7 +3,7 @@ layout: post
 title: "Do it right or do the right thing: The Alignment Trap"
 date: 2024-9-18
 category: dev
-tags: [aglie, cleancode, projectmanagement, bestpractices]
+tags: [agile, cleancode, projectmanagement, bestpractices]
 excerpt_separator: <!--more-->
 ---
 You might remember [one of my trip reports where I mentioned The Alignment Trap](https://www.sandordargo.com/blog/2021/11/17/trip-rerport-meetingcpp-2021). In this post, I'll dig a bit deeper in preparation for my future talk at [Meeting C++ 2024](https://meetingcpp.com/2024/).

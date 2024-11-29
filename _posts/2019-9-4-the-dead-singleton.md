@@ -3,7 +3,7 @@ layout: post
 title: "The dead singleton and three ways to overcome it"
 date: 2019-9-4
 category: dev
-tags: [clean code, cpp, craftsmanship, technical debt]
+tags: [cleancode, cpp, craftsmanship, technical debt]
 excerpt_separator: <!--more-->
 ---
 Oh, singletons... We can't live with them, we can't live without them.

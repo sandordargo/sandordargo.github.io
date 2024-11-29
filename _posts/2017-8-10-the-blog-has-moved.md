@@ -3,7 +3,7 @@ layout: post
 title: "The blog has moved to a new address"
 date: 2017-8-10
 category: meta
-tags: [blog]
+tags: [meta]
 header: "I decided to move the blog to a nice new domain."
 ---
 Yes, from now on my blog is accessible at [sandordargo.com](http://sandordargo.com).

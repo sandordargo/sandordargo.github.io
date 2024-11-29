@@ -3,7 +3,7 @@ layout: post
 title: "How to use ampersands in C++"
 date: 2018-11-25
 category: dev
-tags: [cpp, tutorial, c++11]
+tags: [cpp, tutorial, cpp11]
 excerpt_separator: <!--more-->
 ---
 In one of my previous articles, I wrote about Scott Meyer's [Effective Modern C++](https://amzn.to/2Rbh5pI) and that with its focus on C++11/14 it's like discovering a completely new language. I already wrote about [trailing return type declaration](/blog/2018/11/07/trailing-return-type). Now it's time to review what usages you might have in C++ for ampersands (`&`).

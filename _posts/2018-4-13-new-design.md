@@ -3,7 +3,7 @@ layout: post
 title: "New design - just keep it simple"
 date: 2018-4-13
 category: books
-tags: [blog, design]
+tags: [meta, design]
 header: "If you have been reading my posts for some time, I'm sure you noticed that I completely redesigned it and I gave my blog a more fresh look."
 ---
 My blog is powered by [Jekyll](https://jekyllrb.com/) and hosted on [GitHub Pages](https://pages.github.com/). To build it I learnt a lot about HTML, CSS, Javascript and the Jekyll framework itself. It's been a great experience. Although, I'm neither a web designer nor a front-end developer. It's not my speciality to build a sexy site from scratch. However, by now I learnt the listed technologies well enough so that I can pick a theme, understand how it works under the hood and customize it to match my needs.
