@@ -3,7 +3,7 @@ layout: post
 title: "Try-catch everything without macros"
 date: 2020-6-24
 category: dev
-tags: [cpp, template, bestpractices, cleancode]
+tags: [cpp, templates, bestpractices, cleancode]
 excerpt_separator: <!--more-->
 ---
 We all have our vices. One of mine is that I tend to jump in code reviews quickly, without considering how much time will be taken if I find something I don't like.

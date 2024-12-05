@@ -3,7 +3,7 @@ layout: post
 title: "If I can't be my own, I'd feel better dead"
 date: 2018-6-19
 category: stoic
-tags: [philosophy, stoic developer]
+tags: [philosophy, stoic]
 header: "I like classic rock music. In fact, I like rock music in general and even though from time to time I listen to some Alice In Chains songs, I had never come by the one called <a href=\"https://youtu.be/g_ihXlWKC7g\">Nutshell</a>. It was <a href=\"https://dailystoic.com/\">The Daily Stoic</a> newsletter which led me to it."
 ---
 This song has a verse that captures the essence of the Stoic battle with a dreadful efficiency:

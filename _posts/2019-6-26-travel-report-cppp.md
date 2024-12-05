@@ -3,7 +3,7 @@ layout: post
 title: "Travel report: CPPP 2019"
 date: 2019-6-26
 category: dev
-tags: [trip report, travel report, cpp, conference]
+tags: [tripreport, cpp, conference]
 excerpt_separator: <!--more-->
 ---
 Right after I was returning from a three and a half weeks long road trip with destinations in 5 countries, then attending an advanced presentation skills workshop, I was finally heading to the airport to catch a plane to Paris in order to attend the very first [CPPP](https://cppp.fr/) conference.

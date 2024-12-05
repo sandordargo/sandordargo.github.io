@@ -3,7 +3,7 @@ layout: post
 title: "Meetings as a waste of money"
 date: 2017-7-20
 category: office
-tags: [meetings, tips, time wasting, office practices]
+tags: [meetings, tips, timemanagement, office practices]
 header: "I become more and more skeptical about meetings. Each year I spend in work make me more suspicious about meeting invitations.
 "
 ---

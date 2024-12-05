@@ -3,7 +3,7 @@ layout: post
 title: "Courage Is Calling: Fortune Favors The Brave by Ryan Holiday"
 date: 2021-11-27
 category: books
-tags: [books, stoicism, courage]
+tags: [books, stoic, courage]
 excerpt_separator: <!--more-->
 ---
 [Courage Is Calling](https://www.amazon.com/gp/product/0593191676/ref=as_li_qf_asin_il_tl?ie=UTF8&tag=sandordargo-20&creative=9325&linkCode=as2&creativeASIN=0593191676&linkId=4492558bd50195bf6ebbdc4d74c83ed4) is dedicated to discussing courage which is one of the four most important stoic virtues:

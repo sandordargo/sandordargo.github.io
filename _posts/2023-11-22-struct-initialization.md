@@ -3,7 +3,7 @@ layout: post
 title: "Struct initialization"
 date: 2023-11-22
 category: dev
-tags: [cpp, struct, initialization, warnings]
+tags: [cpp, structs, initialization, warnings]
 excerpt_separator: <!--more-->
 ---
 This article is inspired by a compiler warning that I fixed recently. The warning is `-Wmissing-field-initializers`. This flag will report you potentially uninitialized fields. Sometimes it's overly paranoid, but nevertheless, you'll end up with more readable code if you follow what the compiler tells you.

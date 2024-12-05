@@ -3,7 +3,7 @@ layout: post
 title: "Use strong types instead of bool parameters"
 date: 2022-4-6
 category: dev
-tags: [cpp, bestpractices, strongtyping]
+tags: [cpp, bestpractices, strongtypes]
 excerpt_separator: <!--more-->
 ---
 There are some recurring themes in code reviews. Experienced reviewers often already have a template of comments somewhere for such recurring patterns. Sometimes only in the back of their minds, but often written somewhere. Probably they also have some reference materials that they refer to, they are [crucial parts of good code review comments](https://www.sandordargo.com/blog/2021/10/06/airy-code-reviews).

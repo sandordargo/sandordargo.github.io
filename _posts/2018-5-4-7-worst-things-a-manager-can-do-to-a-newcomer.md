@@ -3,7 +3,7 @@ layout: post
 title: "The 7 worst things a manager can do to a newcomer"
 date: 2018-5-4
 category: dev
-tags: [management, team]
+tags: [management, teams]
 header: "One of our roundtable topics of our last <a href=\"https://www.meetup.com/Riviera-SCC/\">French Riviera Craftsmanship Meetup</a> was about collecting things that you shouldn't do to your newcomers as a manager. If you are <i>just</i> a developer, still, you shouldn't do them, but it is less likely anyway."
 ---
 During our careers, we will be newcomers again and again from time to time when we change teams or jobs. This fact means that most of us will have a long list of what our manager should have done differently. Or in case we are managers ourselves, we should have done differently with the newcomers.

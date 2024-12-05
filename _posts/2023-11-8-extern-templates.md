@@ -3,7 +3,7 @@ layout: post
 title: "Extern templates to reduce binary size"
 date: 2023-11-8
 category: dev
-tags: [cpp, binarysizes, extern, template]
+tags: [cpp, binarysizes, extern, templates]
 excerpt_separator: <!--more-->
 ---
 In my quest towards a smaller binary size, someone asked me if I considered extern templates. I did not. I didn't even know about them. But I was more than happy for the suggestion and now here I am to share what learned about extern templates.
