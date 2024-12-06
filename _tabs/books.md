@@ -10,6 +10,15 @@ tags: [Books]
 
 ## Books I wrote
 
+Here is a list of books I wrote. Follow the links for more information.
+
+- [The Seniority Trap: Become a senior engineer without losing your soul]({{ site.baseurl }}/books/seniority_trap)
+- [C++ Concepts: Validate your templates compile-time](https://leanpub.com/cppconcepts/)
+- [How to use const in C++: On the virtues of constness](https://leanpub.com/cppconst/)
+- [How to reduce binary size in C++](https://leanpub.com/cppbinarysize/)
+
+***[You can get all these books on LeanPub](https://leanpub.com/u/sandordargo)***
+
 ### [The Seniority Trap: Become a senior engineer without losing your soul](https://leanpub.com/thesenioritytrap/)
 
 ![The Seniority Trap cover]({{ site.baseurl }}/assets/img/seniority-trap-cover.jpg){:height="66%" width="66%"}

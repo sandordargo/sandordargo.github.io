@@ -112,6 +112,8 @@ collections:
   tabs:
     output: true
     sort_by: order
+  books:
+    output: true
 
 
 defaults:
@@ -135,6 +137,15 @@ defaults:
     values:
       layout: page
       permalink: /:title/
+      dynamic_title: true    # Hide title in mobile screens.
+
+  -
+    scope:
+      path: ''
+      type: books
+    values:
+      layout: page
+      permalink: /books/:title/
       dynamic_title: true    # Hide title in mobile screens.
 
 sass:
