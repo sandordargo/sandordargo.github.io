@@ -16,3 +16,5 @@ While nobody's career can serve as a concrete recipe for success - and in any ca
 - Define your own definition of success
 - Don't be afraid and learn to ask
 - Speak up for your team and for yourself
+
+***[Get the book on LeanPub](https://leanpub.com/thesenioritytrap/)***
