@@ -3,7 +3,7 @@ layout: post
 title: "Class templates versus constructor templates"
 date: 2022-12-21
 category: dev
-tags: [cpp, templates, metaprogramming]
+tags: [cpp, templates, tmp]
 excerpt_separator: <!--more-->
 ---
 I realized that this simple but important difference should be covered twice during the last year. Once when I wrote about [how shared and unique pointers take their deleters](https://www.sandordargo.com/blog/2022/06/08/smart-pointers-and-deleters), and once when I read [Template Metaprogramming with C++ by Marius Bancila](https://www.sandordargo.com/blog/2022/10/28/template-metaprogramming-with-cpp-by-marius-bancila).

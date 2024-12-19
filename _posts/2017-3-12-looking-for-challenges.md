@@ -3,7 +3,7 @@ layout: post
 title: "Looking for challenges in open source"
 date: 2017-3-12
 category: dev
-tags: [contributions, open source]
+tags: [contributions, opensource]
 header: "In order to boost my resumé and to gain more experience with various codebases, I'm looking for an open source project to contribute to."
 ---
 

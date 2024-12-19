@@ -3,7 +3,7 @@ layout: post
 title: "How Wine-Disco is progressing?"
 date: 2018-1-25
 category: dev
-tags: [open-source, wine-disco, neo4j, graphs]
+tags: [opensource, wine-disco, neo4j, graphs]
 header: "As <a href=\"/blog/2017/07/11/meet-neo4j-again\">I wrote in July</a> I had plans to write an application to browse information collected about Hungarian wines."
 ---
 At the time I was building a Neo4j database including the wine regions and sub regions in Hungary, just like rhe different types of grapes grown at each. Now I kind of done with this and each week I dedicate a one or two pomodori to gather Hungarian wineries.

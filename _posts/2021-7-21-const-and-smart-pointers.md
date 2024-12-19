@@ -3,7 +3,7 @@ layout: post
 title: "const and smart pointers"
 date: 2021-7-21
 category: dev
-tags: [cpp, tutorial, const, smart pointers]
+tags: [cpp, tutorial, const, smartpointers]
 excerpt_separator: <!--more-->
 ---
 What does `const` have to do with smart pointers?

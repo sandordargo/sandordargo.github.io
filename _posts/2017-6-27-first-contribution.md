@@ -3,7 +3,7 @@ layout: post
 title: "I made my first open source contribution"
 date: 2017-6-27
 category: dev
-tags: [open source, contributions, protocol buffer]
+tags: [opensource, contributions, protocol buffer]
 header: "I've been <strike>agonizing</strike> looking for a while for the possibility to make my first contribution to an open source repository other than mine."
 ---
 Finally I got it!

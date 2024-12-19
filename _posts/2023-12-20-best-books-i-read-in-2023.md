@@ -3,7 +3,7 @@ layout: post
 title: "The 3 best books I read in 2023"
 date: 2023-12-20
 category: books
-tags: [books, watercooler, selfimprovement, hobby]
+tags: [books, watercooler, self-improvement, hobby]
 excerpt_separator: <!--more-->
 ---
 Though I haven't published a lot of book reviews this year and I didn't even finish reading as many books as in other years, I didn't spend less time on reading.
