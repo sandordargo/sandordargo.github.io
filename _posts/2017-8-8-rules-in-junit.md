@@ -9,7 +9,7 @@ header: "Have you ever wondered what JUnit rules are? No, because you have never
 
 Let's start from the beginning. How do you recognize rules? You'll see some public variables annotated with `@Rule` in your test class. Here is an example:
 
-```
+```java
 public class MyTest {
 
   @Rule
@@ -34,7 +34,7 @@ __How to create a custom rule?__
 
 As I mentioned your rule class will have to implement the `TestRule` interface, you have to implement one method:
 
-```
+```java
 @Override
   public Statement apply(Statement base, Description description) {
     //...
@@ -51,7 +51,7 @@ public abstract void evaluate() throws Throwable;
 
 A dummy example would be:
 
-```
+```java
 @Override
 public Statement apply(Statement base, Description desc) {
     return new Statement() {
@@ -84,7 +84,7 @@ __What if a rule depends on another one?__
 As I mentioned just before, rules can be executed in any order, you cannot and should not take the order of declaration as an order of execution. Instead, you can chain your rules! With the `@RuleChain` annotation it is straightforward. Let's look at the example taken from the [official documentation](http://junit.org/junit4/javadoc/4.12/org/junit/rules/RuleChain.html):
 
 
-```
+```java
 public static class UseRuleChain {
     @Rule
     public final TestRule chain = RuleChain

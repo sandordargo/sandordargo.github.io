@@ -19,7 +19,7 @@ Return the result to the user
 ```
 
 Then either because of some discovered bugs or because you just did think about it, you start adding some error handling. First returning a status here...
-```
+```java
 ...
 boolean isFormatValid = validateRequest(request);
 if (!isFormatValid) {
@@ -30,7 +30,7 @@ if (!isFormatValid) {
 
 Then adding a try-catch block there...
 
-```
+```java
 try {
   updateStatus = db.updateRecordFor(request)
 } catch(DBError error) {
@@ -53,19 +53,19 @@ What you want is a block that can be responsible for holding and handling the ac
 
 Now think about Java's `Optional<>`. It's a similar concept. You have an object which might hold something, or it might hold a `null`. In other languages maybe it is called `Maybe` - people hate me because of puns. You can define the behaviour in any case easily as such:
 
-```
+```java
 Optional<Record> record = db.findRecordBy(key);
 return record.orElseThrow(throw new RecordNotFound());
 ```
 
 So it can be just:
-```
+```java
 return db.findRecordBy(key).orElseThrow(throw new RecordNotFound());
 ```
 
 Instead of having:
 
-```
+```java
 Record record = db.findRecordBy(key);
 if (record == null) {
   throw new RecordNotFound();
@@ -75,7 +75,7 @@ return record;
 
 Let's call our new object `Try<>`. It exists in other languages such as `Result` or `Try` as well, etc... It has two members, one for the happy path and one for the unhappy path. The happy member is generic, while the other one is an `Exception`. So in Java it'd look somehow like this:
 
-```
+```java
 public final class Try<T> {
 
   private final Exception exception;
@@ -102,7 +102,7 @@ So as we mentioned there, can be switches on rails or better to say on a track. 
   
 A map will keep you on track, there is no switch in it. This element will keep you on the happy path, whatever happens. (Put unexpected exceptions aside). As an input it will take an object implementing the [Function interface](https://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html) (referred simply as a function from now on) which will transform the happy variable into another happy variable - their type can change: imagine a juicer which will take an orange and will give you orange juice on the other side, it cannot really give you a rotten orange.
 
-```
+```java
   public <S> Try<S> map(Function<T, S> transform) {
     if (isError()) {
       return castError();
@@ -116,7 +116,7 @@ A map will keep you on track, there is no switch in it. This element will keep y
 
 Now this is a railway switch. It might lead you to the unhappy path but it can also keep you on the happy path depending on the outcome of the transformation it performs. Even if staying on the happy path, the types can change. Imagine that orange juicer in a worse edition. You give it an orange and normally it will give you its juice. But if something goes, wrong it will cut in your juice some of the skin too. That latter one is the unhappy path.
 
-```
+```java
   public <S> Try<S> flatMap(Function<T, Try<S>> transform) {
     if (isError()) {
       return castError();
@@ -131,7 +131,7 @@ Now this is a railway switch. It might lead you to the unhappy path but it can a
 
 This can also be considered as a kind of a switch, but it's rather a join. It will take you from the unhappy path if you are there and join you in the happy path. Otherwise it just keeps you on the happy path. At the end of your juicer you have a filter, so the skin won't end up in yout juice - but the fibers will, this is a great filter!
 
-```
+```java
   public T orElse(Function<Exception, T> restore) {
     if (isError()) {
       return restore.apply(exception);

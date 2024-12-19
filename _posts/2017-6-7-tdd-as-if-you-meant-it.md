@@ -23,7 +23,7 @@ I forgot to mention I paired with a highly experienced architect of our company.
 
 So the prodcution code was still dead stupid as that was the least amount of code necessary to past the test.
 
-```
+```cpp
 std::string diamond(size_t size) {
     if (size == 1)
         return "A\n";
@@ -40,7 +40,7 @@ Well... Why not...
 
 `ASSERT_EQ("  A  \n B B \nC   C\n B B \n  A  \n", diamond(3));`
 
-```
+```cpp
 std::string diamond(size_t size) {
     if (size == 1)
         return "A\n";
@@ -53,7 +53,7 @@ std::string diamond(size_t size) {
 
 Okay, not let's change a bit the outline of this function:
 
-```
+```cpp
 std::string diamond(size_t iSize) {
     if (iSize == 1)
         return "A\n";
@@ -74,7 +74,7 @@ Do you see it now, Luke? To be frank, I would have already implemented the algor
 
 We started to implement functions such as:
 
-```
+```cpp
 std::string makeALineSizeOf1() {
     return "A\n"
 }
@@ -90,7 +90,7 @@ std::string makeBLineSizeOf2() {
 
 So at that time our diamond function would have been something like this:
 
-```
+```cpp
 std::string diamond(size_t size) {
     if (size == 1)
         return makeALineSizeOf1();
@@ -109,7 +109,7 @@ std::string diamond(size_t size) {
 
 Time to generalize it a bit. But don't move too fast!
 
-```
+```cpp
 std::string makeALineSizeOf(size_t size) {
     std::stringstream ss;
     ss << std::string(size - 1, ' ') << 'A' << std::string(size - 1, ' ');
@@ -131,7 +131,7 @@ std::string makeCLineSizeOf(size_t size) {
 
 Then our diamond function looks like:
 
-```
+```cpp
 std::string diamond(size_t size) {
     if (size == 1)
         return makeALineSizeOf(1);
@@ -151,7 +151,7 @@ std::string diamond(size_t size) {
 
 You start to see how it goes. By the time we reached this point our time was up, we had to return to our offices. So now it is time to finish up the algorithm:
 
-```
+```cpp
 std::string makeLineOfCharacterSizeOf(char character, size_t size) {
     std::stringstream ss;
     ss << std::string(size - (character - 'A' + 1), ' ') << character << std::string(1 + 2*int(character - 'B')) << character <<  std::string(size - (character - 'A' + 1), ' ');
@@ -161,7 +161,7 @@ std::string makeLineOfCharacterSizeOf(char character, size_t size) {
 
 Then the diamond is:
 
-```
+```cpp
 std::string diamond(size_t size) {
     if (size == 1)
         return makeALineSizeOf(1);
@@ -180,7 +180,7 @@ std::string diamond(size_t size) {
 
 We still have a problem with 'A'-s. But that's fine, we can have an if in our makeLineOfCharacterSizeOf():
 
-```
+```cpp
 std::string makeLineOfCharacterSizeOf(char character, size_t size) {
     std::stringstream ss;
     if (character == 'A') {
@@ -195,7 +195,7 @@ There are some duplications but we'll get back to that later.
 
 Let's go back to diamond which looks like this now:
 
-```
+```cpp
 std::string diamond(size_t size) {
     if (size == 1)
         return makeLineOfCharacterSizeOf('A', 1);
@@ -220,7 +220,7 @@ Add a new failing test case:
 
 If you understand the pattern, you can see that first you have to add some lines starting from A. Then you add the middle line of the diamond which will appear only once. Then you add the lines you already added in the first phase, but now in reverse order.
 
-```
+```cpp
 std::string diamond(size_t size) {
     std::stringstream ss;
     for(int i=0; i<size-1; ++i) {
@@ -238,7 +238,7 @@ We are almost done! Let's put on that blue hat again and start refactoring! Firs
 
 A bit simpler now:
 
-```
+```cpp
 std::string diamond(size_t size) {
     std::stringstream ss;
     for(int i=0; i<size-1; ++i) {
@@ -263,7 +263,7 @@ void makeLineOfCharacterSizeOf(char character, size_t size, std::stringstream& s
 There are still some duplications though, and makeLineOfCharacterSizeOf is not so readable. So let's improve it!
 
 
-```
+```cpp
 void makeLineOfCharacterSizeOf(char character, size_t size, std::stringstream& ss) {
     ss  << std::string(size - (character - 'A' + 1), ' ');
     if (character == 'A') {
@@ -277,7 +277,7 @@ void makeLineOfCharacterSizeOf(char character, size_t size, std::stringstream& s
 
 Seems better, right? I think so. Let's move forward and even change some function names.
 
-```
+```cpp
 std::string drawSizeOf(size_t size) {
     std::stringstream ss;
     for(int i=0; i<size-1; ++i) {

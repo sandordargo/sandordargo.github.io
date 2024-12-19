@@ -17,7 +17,7 @@ I extended a bit what we did yesterday and upload it to [this repository](https:
 
 When you just want a unit test it is fairly easy. In Java you just inject your dependency (in this case a `PrintStream`) in the constructor. I think you'd do something similar in other languages too.
 
-```
+```java
   @Test
   public void controllerPrintedGreetingToOutput() throws UnsupportedEncodingException {
     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -36,7 +36,7 @@ What you have to take care of is that your class under test accepts a custom `Pr
 
 The conventional way would be to simply use multiple constructors:
 
-```
+```java
 class HelloService {
 	PrintStream outputStream;
 
@@ -58,7 +58,7 @@ It also means that you have to specify your configuration, otherwise you will ge
 
 So let's turn `BootstrapRun` from simply your main class into a configuration, by adding `@Configuration` annotation to the class and also to declare a getter for `PrintStream` with the `@Bean` annotation.
 
-```
+```java
 @SpringBootApplication
 @Configuration
 public class BootstrapRun {
@@ -82,7 +82,7 @@ In the integration test we wanted to instatiate our server and cell the service 
 
 We can do it directly in our integration test by creating a nested static class.
 
-```
+```java
 @Configuration
 @Import(BootstrapRun.class)
 public static class TestBootstrap {
@@ -107,7 +107,7 @@ In order to be explicit and clear about my intentions I prefer to use `@Primary`
 
 The only thing left is to use these new configurations when we start up our server. It's really easy:
 
-```
+```java
   //...
   private static ConfigurableApplicationContext context;
   //...
