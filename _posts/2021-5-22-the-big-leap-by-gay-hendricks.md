@@ -3,7 +3,7 @@ layout: post
 title: "The Big Leap: Conquer Your Hidden Fear and Take Life to the Next Level by Gay Hendricks"
 date: 2021-5-22
 category: books
-tags: [books, watercooler, selfdevelopment, psychology]
+tags: [books, watercooler, self-improvement, psychology]
 excerpt_separator: <!--more-->
 ---
 [The Big Leap](https://amzn.to/3fzGsB9)! Who doesn't want to take the big leap? I bet there are many. Stepping up always involve some risks and humans, in general, are more afraid of loss and therefore they are more risk-averse than thrill-seeking.

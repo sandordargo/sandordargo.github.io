@@ -3,7 +3,7 @@ layout: post
 title: "The value of boring tasks"
 date: 2023-8-30
 category: books
-tags: [watercooler, career, dailywork, selfimprovement]
+tags: [watercooler, career, dailywork, self-improvement]
 excerpt_separator: <!--more-->
 ---
 Has it ever happened to you that you had a job at a cool company but your daily tasks were somewhat meh?

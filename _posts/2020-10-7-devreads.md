@@ -3,7 +3,7 @@ layout: post
 title: "DevReads to fill up your reading list"
 date: 2020-10-7
 category: dev
-tags: [learning, books, showdev, selfimprovement]
+tags: [learning, books, showdev, self-improvement]
 excerpt_separator: <!--more-->
 ---
 I've been running my personal blog since the end of 2016 and starting from mid-2017, I've been posting at least one article almost every week. My blog has not and does not have one single topic, I mostly write about C++, sometimes about career development, management or how Stoicism can be applied to our craft and I write about books.

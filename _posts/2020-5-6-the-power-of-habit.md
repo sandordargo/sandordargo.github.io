@@ -3,7 +3,7 @@ layout: post
 title: "The Power of Habit by Charles Duhigg"
 date: 2020-5-6
 category: books
-tags: [books, habits, watercooler, selfimprovement]
+tags: [books, habits, watercooler, self-improvement]
 excerpt_separator: <!--more-->
 ---
 Books on habits can be extremely popular as we all, of course, want to create ones that can help us in our life. They help is both in our careers and in our everyday lives. Though maybe it's easier to see that in our professional path. That's why [The 7 Habits of Highly Effective People](https://amzn.to/2UwCH4y) can be so influencing. Corporations organize training around that book and hand out copies to their employees.

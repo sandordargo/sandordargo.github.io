@@ -3,7 +3,7 @@ layout: post
 title: "The Gift: 12 Lessons to Save Your Life by Dr. Edith Eva Eger"
 date: 2022-2-5
 category: books
-tags: [books, history, selfimprovement, psychology]
+tags: [books, history, self-improvement, psychology]
 excerpt_separator: <!--more-->
 ---
 A few weeks ago, I posted a review on [The Choice](https://devreads.sandordargo.com/the-choice-by-edith-eger/), the first book for Dr. Edith Eger. It's a book that is mostly an autobiography of a Holocaust survivor, but it's much more than a recital of what happened to her during the year that she spent at death camps. 

@@ -3,7 +3,7 @@ layout: post
 title: "See You At The Top by Zig Ziglar"
 date: 2020-8-5
 category: books
-tags: [books, selfimprovement, watercooler]
+tags: [books, self-improvement, watercooler]
 excerpt_separator: <!--more-->
 ---
 If you have spent some time reading modern self-improvement books, it's almost for sure that you came across the name [Zig Ziglar](https://en.wikipedia.org/wiki/Zig_Ziglar) and his book called [See You At The Top](https://amzn.to/3fozoUp).

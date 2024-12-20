@@ -3,7 +3,7 @@ layout: post
 title: "Beyond Order: 12 more rules for life by Jordan B. Peterson"
 date: 2022-3-26
 category: books
-tags: [books, watercooler, selfimprovement, psychology]
+tags: [books, watercooler, self-improvement, psychology]
 excerpt_separator: <!--more-->
 ---
 In his first book, *[12 Rules for Life: An Antidote to Chaos](https://devreads.sandordargo.com/12-rules-for-life/)*, Jordan B Peterson focused on the consequences of too much chaos in our lives and how to make it better, how to bring our lives more into order. But we cannot simply say that order is preferable over chaos, nor the other way around. It's the wrong way to look at it, as chaos has its merits. It also brings novelty, transformation, disruption.

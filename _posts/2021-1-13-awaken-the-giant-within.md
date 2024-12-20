@@ -3,7 +3,7 @@ layout: post
 title: "Awaken the giant within by Tony Robbins"
 date: 2021-1-13
 category: books
-tags: [books, watercooler, selfimprovement, selfhelp]
+tags: [books, watercooler, self-improvement, selfhelp]
 excerpt_separator: <!--more-->
 ---
 When I decided to read [Awken the Giant Within](https://amzn.to/37IpgFb), I was a bit surprised. I thought it's much newer, but in fact, it's from the very beginning of the 1990s. It doesn't make it less relevant and this book is still very popular. Kind of a good sign.

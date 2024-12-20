@@ -3,7 +3,7 @@ layout: post
 title: "Skin in the Game: Hidden Asymmetries in Daily Life by Nassim Taleb"
 date: 2021-3-20
 category: books
-tags: [books, watercooler, personaldevelopment, riskmanagement]
+tags: [books, watercooler, self-improvement, riskmanagement]
 excerpt_separator: <!--more-->
 ---
 I read once again a very interesting book by [Nassim Taleb](https://www.sandordargo.com/blog/2018/10/31/nassim-taleb-the-black-swan). I realized that I don't just like his books, but I sympathize with the author, with his style, with his sarcasm. More than that, I like that someone without social sciences background writes about philosophy, about life. He is a former options trader and risk analyst, a statistician with quite some experience in real life. I think about him as I think about stoics, about Ryan Holiday. For these people, philosophy is not something they think about in their ivory towers far away from people. No, for them, philosophy is a way to conduct their lives. To me, they are more credible.

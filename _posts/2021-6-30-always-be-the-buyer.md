@@ -3,7 +3,7 @@ layout: post
 title: "Always the Buyer"
 date: 2021-6-30
 category: career
-tags: [career, psychology, watercooler, selfmanagement]
+tags: [career, psychology, watercooler, self-management]
 excerpt_separator: <!--more-->
 ---
 [Always the Buyer](https://resources.strategiccoach.com/quarterly-books/always-be-the-buyer) is the title of another free e-book of Dan Sullivan (I recently reviewed [The 4C's formula](https://devreads.sandordargo.com/4c-formula-by-dan-sullivan/)). But this article now is not a book review. I haven't read the book - yet.

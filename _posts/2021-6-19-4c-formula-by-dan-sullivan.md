@@ -3,7 +3,7 @@ layout: post
 title: "The 4 C's formula by Dan Sullivan"
 date: 2021-6-19
 category: books
-tags: [books, watercooler, selfdevelopment]
+tags: [books, watercooler, self-improvement]
 excerpt_separator: <!--more-->
 ---
 I rarely review shortish free e-books, but when I thought about it, I realized there is no real reason behind. In fact, is that a problem that a book is shorter than a 100 pages? Value should not be tied to length. If you think about my book on [How to use consts in C++](https://leanpub.com/cppconst/), it's less than 50 and... Ok, I'm kidding here, but even [Jason Turner's C++ Best Practices is about 130 pages](https://devreads.sandordargo.com/cpp-best-practices-by-jason-turner/).

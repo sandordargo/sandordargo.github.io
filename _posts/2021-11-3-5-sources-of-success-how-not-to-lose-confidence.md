@@ -3,7 +3,7 @@ layout: post
 title: "5 sources of success: how not to lose confidence after a promotion?"
 date: 2021-11-3
 category: dev
-tags: [beginners, career, confidence, selfimprovement]
+tags: [beginners, career, confidence, self-improvement]
 excerpt_separator: <!--more-->
 ---
 When you're promoted you feel you're the king of the world. You worked your ass off. You deserved it, you deserved your new title, your hopefully hefty raise. Of course, you'd have deserved just any raise, right?!

@@ -3,7 +3,7 @@ layout: post
 title: "The best 8 books I read in 2021"
 date: 2021-12-25
 category: books
-tags: [books, watercooler, selfimprovement, hobby]
+tags: [books, watercooler, self-improvement, hobby]
 excerpt_separator: <!--more-->
 ---
 Like each December, I share with you the best books I read this year. They represent a considerable chunk of my book reviews, but I don't post reviews in all the books I read. And in any case, it's nice to remind me and probably you as well on good books.

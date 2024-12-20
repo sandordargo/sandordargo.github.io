@@ -3,7 +3,7 @@ layout: post
 title: "We are always late"
 date: 2023-4-19
 category: other
-tags: [watercooler, career, selfmanagement, timemanagement]
+tags: [watercooler, career, self-management, timemanagement]
 excerpt_separator: <!--more-->
 ---
 I recently read a post on social media about modern people who are always chasing themselves as they are always late. It also reminded me of what one of my first bosses told me. According to the mentioned post, we all live as if we were late all the time. We keep complaining that we have no time and wherever we are, whatever we are doing, we just keep thinking about the next thing to do. Therefore we are not present even in our own lives.

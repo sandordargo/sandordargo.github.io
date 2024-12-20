@@ -3,7 +3,7 @@ layout: post
 title: "The Choice: Embrace the Possible by Dr. Edith Eva Eger"
 date: 2022-1-22
 category: books
-tags: [books, history, selfimprovement, psychology]
+tags: [books, history, self-improvement, psychology]
 excerpt_separator: <!--more-->
 ---
 I learnt about [The Choice](https://www.amazon.com/gp/product/150113079X/ref=as_li_qf_asin_il_tl?ie=UTF8&tag=sandordargo-20&creative=9325&linkCode=as2&creativeASIN=150113079X&linkId=a7b9e9295249853ae13c7855c51483fb) from [Ryan Holiday's newsletter](https://ryanholiday.net/the-reading-list/), like about so many other books. As I've been always interested in history and in psychology, I decided that this book can completely jump my queue and I started to read it almost immediately.

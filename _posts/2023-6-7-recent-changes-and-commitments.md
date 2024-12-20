@@ -3,7 +3,7 @@ layout: post
 title: "Recent changes and personal commitments"
 date: 2023-6-7
 category: books
-tags: [meta, personalgrowth, watercooler, timemanagement]
+tags: [meta, self-improvement, watercooler, timemanagement]
 excerpt_separator: <!--more-->
 ---
 Life is change. Such a cliché.

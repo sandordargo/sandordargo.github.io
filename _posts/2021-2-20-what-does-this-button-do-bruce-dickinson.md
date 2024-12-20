@@ -3,7 +3,7 @@ layout: post
 title: "What Does This Button Do?: An Autobiography by Bruce Dickinson"
 date: 2021-2-20
 category: books
-tags: [books, watercooler, rocknroll, personalgrowth]
+tags: [books, watercooler, rocknroll, self-improvement]
 excerpt_separator: <!--more-->
 ---
 What a great title, what a good way to live a meaningful life! Ask questions and be curious all the time!

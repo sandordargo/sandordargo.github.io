@@ -3,7 +3,7 @@ layout: post
 title: "The 3 best books to level up your C++"
 date: 2023-6-21
 category: books
-tags: [cpp, books, selfimprovement, bestpractices]
+tags: [cpp, books, self-improvement, bestpractices]
 excerpt_separator: <!--more-->
 ---
 In this article, I'll present you 3 books that can level up your C++. For this article, I'm assuming that you have little or medium experience with C++ and you're looking for ways to reach the next level.

@@ -3,7 +3,7 @@ layout: post
 title: "Good to Great: Why Some Companies Make the Leap...and Others Don't by Jim Collins"
 date: 2020-12-26
 category: books
-tags: [books, business, selfimprovement, watercooler]
+tags: [books, business, self-improvement, watercooler]
 excerpt_separator: <!--more-->
 ---
 The first thing that is important to clarify about this book is that it's not about self-development. It's not about how to become better as an individual. It's about companies. [This book](https://amzn.to/3q1nJBh) is the summary of a long research on why some companies who used to be average make the leap to become great. I won't go into details on the definition of great, but the bottom line that great companies outperform the market for a long time and with different CEOs.
