@@ -15,7 +15,7 @@ Have you ever wondered about a derived class whose base has access to the derive
 
 Some curiosity in the form of the Curiously Recurring Template Pattern. The CRTP is an idiom in C++ in which [a class let's call it X derives from a class template instantiation using X itself as template argument](https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern). 
 
-```
+```cpp
 // The Curiously Recurring Template Pattern (CRTP)
 template<class X>
 class Base
@@ -55,7 +55,7 @@ The base class uses the derived class as a template parameter.
 
 In the base class, we can get the underlying Derived object with a static cast:
 
-```
+```cpp
 class Base {
   void foo() {
     X& underlying = static_cast<X&>(*this);  
@@ -70,7 +70,7 @@ In practice, this brings us the possibility of enriching our Derived class' inte
 
 Here is the full example:
 
-```
+```cpp
 template <typename T>
 struct NumericalFunctions
 {
@@ -114,7 +114,7 @@ Another example of adding functionality is implementing object counters.
 
 You can create a counter base class:
 
-```
+```cpp
 template <typename T>
 class Counter
 {
@@ -145,7 +145,7 @@ template <typename T> int Counter<T>::_aliveObjects( 0 );
 
 Then even though you have one pair of static counters tracking the created and alive objects, you can have separate counters for separate types. All this, because the Counter is a template base class, that you specialize with the derived class as such:
 
-```
+```cpp
 class X : counter<X>
 {
     // ...
@@ -167,7 +167,7 @@ You can avoid virtuals, so you can avoid the runt0time cost of virtual tables in
 
 Let's take an example. We want to model vehicles and in the example, the interface will have one method, `getNumberOfWheels`:
 
-```
+```cpp
 template <typename T>
 class Vehicle
 {
@@ -181,7 +181,7 @@ public:
 
 Then we can create the derived class as such:
 
-```
+```cpp
 class Bus : public Vehicle<Bus>
 {
 public:
@@ -192,7 +192,7 @@ private:
 };
 ```
 
-```
+```cpp
 class Scooter : public Vehicle<Scooter>
 {
 public:

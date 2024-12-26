@@ -33,7 +33,7 @@ The error message simply said that it is too early to apply for a visa, so I did
 
 As the need for a visa depends on your nationality - which doesn't change very frequently -, to me it would make more sense to have some form of validation like this one:
 
-```
+```cpp
 if (travellerNeedsVisa()) {
   if (isTimeWindowForVisaApplicationOpen) {
     // ...
@@ -48,7 +48,7 @@ if (travellerNeedsVisa()) {
 
 Instead, they probably had something more like this:
 
-```
+```cpp
 if (isTimeWindowForVisaApplicationOpen) {
   if (travellerNeedsVisa()) {
     // ...
