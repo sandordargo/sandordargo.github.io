@@ -39,7 +39,7 @@ This step is quite evident. I also changed how the iteration happens, so instead
 
 And here it comes, the branching-by-abstraction. We introduce a big `if-else`.
 
-```
+```cpp
 if (item.name != "Ragnaroos" ...) {
   // freshly implemented behaviour
 } else {
@@ -57,7 +57,7 @@ As `quality` and `sellIn` are attributes of an item, it makes sense to maintain 
 
 According to the specs, _Sulfuras_ does not age and its quality rests the same. There is nothing to do with their attributes! If you run forward, there is already a chance here to refactor, but it's not really needed at this moment. So the code is as simple as that:
 
-```
+```cpp
 if (item.name != "Sulfuras...") {
   
 }
@@ -87,7 +87,7 @@ In order not to violate the Liskov principle, we shall not use inheritance. In t
 
 As in C++, there is no built-in concept for interfaces, I created an abstract base class that contains only pure virtual functions - apart from the constructor/destructor. Then I created the first three Updater classes, namely DefaultUpdater, RagnarosUpdater and AgedBrieUpdater.
 
-```
+```cpp
 class Updater {
  public:
   Updater(int& sellIn, int& quality) : _quality(quality), _sellIn(sellIn) {}
@@ -112,7 +112,7 @@ At this point, I still had to implement two updater classes. One for the backsta
 
 You might have noticed that up until this step, my big if-else was just growing in `GildedRose::processItem` which was not necessary, but I didn't want to touch in. Instead, I remove it completely now. As such, the whole function will be only two lines long.
 
-```
+```cpp
 void GildedRose::processItem(Item& item)
 {
   item.updateSellIn();

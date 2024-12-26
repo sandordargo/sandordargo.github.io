@@ -26,7 +26,7 @@ Our first function for today is `find` and it can be used to find an element a c
 
 It is as simple as that. It returns an iterator to the first element that matches the value we are looking for. In case of no elements matched, the iterator points at the end (after the last element) of the container.
 
-```
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -52,7 +52,7 @@ It will return an iterator pointing at the first element for which the predicate
 
 A unary predicate can be a function object, a pointer to a function or a lambda function. [It depends on your use-case which one you should use.](http://sandordargo.com/blog/2018/12/19/c++-lambda-expressions)
 
-```
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -77,7 +77,7 @@ Almost the same as `find_if`. But instead of the first match of the predicate in
 For demonstration purposes, let take our previous example and modify it only by adding a single _not_:
 
 
-```
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -101,7 +101,7 @@ While the previous example with `find_if` returned all the even numbers, `find_i
 ## `find_end`
 You can use `find_end` to look for a subsequence in a container. As the `end` suffix implies, it will return something related to the last match. That something will be an iterator to the first element of the matching subsequence (which is the last matching subsequence). You can use it in two different ways. In the first example, the items are compared by values.
 
-```
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -124,7 +124,7 @@ int main () {
 
 The other possibily is to pass in a predicate as comparision function. Apart from using that one instead a _by value_ comparision, there is no difference:
 
-```
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -158,7 +158,7 @@ It will return an iterator to the first pair of iterators and to the first eleme
 
 Take the following example:
 
-```
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -194,7 +194,7 @@ Just like the previous two presented functions `find_end` and `find_first_of`, i
 
 Here you have it in action.
 
-```
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -220,7 +220,7 @@ int main () {
 
 What it will return is an iterator pointing at the first matching element. If there is no match, as usual, the returned iterator will point right after the last element.
 
-```
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -261,7 +261,7 @@ _As usual_, it returns an iterator to the first matching element, in case of no 
 
 We are going to see two examples on the same container. With the first call, we are going to return the first two adjacent matching elements and with the next call the first two neighbouring elements that are even.
 
-```
+```cpp
 #include <iostream>
 #include <algorithm>
 #include <vector>

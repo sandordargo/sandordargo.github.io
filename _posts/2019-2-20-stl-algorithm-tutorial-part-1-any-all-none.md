@@ -19,28 +19,24 @@ After the two iterators, you pass in a predicate. That predicate can be a functi
 
 It means that the next code does NOT even compile:
 
-```
+```cpp
 #include <iostream>
 #include <vector>
 #include <algorithm>
 
-int main()
-{
-
+int main() {
   auto nums = {1,2,3,4,5,3};
   if (std::any_of(std::begin(nums), std::end(nums), 3) {
       std::cout << "there is a 3 in the list" << std::endl;
   } else {
       std::cout << "there is NOT ANY 3 in the list" << std::endl;
   }
-    
 }
-
 ```
 
 Instead, let's see two implementation that works. The first one will use a function object:
 
-```
+```cpp
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -57,16 +53,14 @@ private:
     int m_num;
 };
 
-int main()
-{
+int main() {
 
-auto nums = {1,2,3,4,5,3};
-if (std::any_of(std::begin(nums), std::end(nums), IsEqualTo(3))) {
-      std::cout << "there is a 3 in the list" << std::endl;
-  } else {
-      std::cout << "there is NOT ANY 3 in the list" << std::endl;
-}
-    
+  auto nums = {1,2,3,4,5,3};
+  if (std::any_of(std::begin(nums), std::end(nums), IsEqualTo(3))) {
+        std::cout << "there is a 3 in the list" << std::endl;
+    } else {
+        std::cout << "there is NOT ANY 3 in the list" << std::endl;
+  }   
 }
 ```
 
@@ -74,7 +68,7 @@ It's a bit long, but thanks to the well-named functor (function object) it is ea
 
 Now let's have a look at bersion with a lambda expression:
 
-```
+```cpp
 #include <iostream>
 #include <vector>
 #include <algorithm>

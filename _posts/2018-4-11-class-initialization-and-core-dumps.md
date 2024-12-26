@@ -14,7 +14,7 @@ It turned out that the erroneous code was there for quite a significant amount o
 
 Here is a simplified version of the code:
 
-```
+```cpp
 class Member {
 public:
   int getANumber() const {
@@ -45,7 +45,6 @@ public:
 private:
   Member* _member;
 };
-
 ```
 
 Can you already see the error? If yes, you have great eyes! If not, don't worry. It took some time for my colleague. For me, even more. In fact, that's why I'm writing this article. To help others as well as me to recognize such issues more easily.
@@ -54,11 +53,10 @@ Now I'm convinced that even if you wouldn't write such a code, it's more difficu
 
 Here are the three lines where the last one will actually produce undefined behaviour but in a more realistic class, it would core.
 
-```
+```cpp
 CoringClass notYetCoring;
 CoringClass coring(notYetCoring);
 int whatHappens = coring.accessMember()->getANumber();
-
 ```
 
 The biggest problem with the above code is that `CoringClass` in certain conditions fails to initialize its member variable.
@@ -77,9 +75,9 @@ Check what happens if you print `coring.accessMember()`. This is a possible outp
 In order to fix the code, there are several options, but the copy constructor must be fixed. When you use the copy constructor, you must take care of the initialization of the new object. The default constructor is not called, so `_member` should be initialized in the copy constructor.
 
 One way is that you explicitely initialize the `_member` to 0.
-```
+```cpp
 CoringClass(const CoringClass& other) : _member(0) {
-  ...
+  // ...
 }
 ```
 
@@ -87,7 +85,7 @@ If you print `coring.accessMember()` now, you'll get a predictable `0`. That's g
 
 It is an option now to change the `accessMember()` function so that in case it points to `0`, it initializes itself.
 
-```
+```cpp
 Member* accessMember() {
    if (_member == nullptr) {
        _member = new Member();

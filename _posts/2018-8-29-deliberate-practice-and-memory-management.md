@@ -15,7 +15,7 @@ Now, I want to go into details regarding one part of the refactoring, the part I
 
 At that point, I've already created and implemented an `Updater` interface, to manage the `sellIn` and `quality` properties of an `Item`. But I didn't like the solution, as it didn't update directly the corresponding properties of the `Item`, instead just those of the `Updater`. Right after, it copied back the values of the `Updater` to the `Item` class.
 
-```
+```cpp
 class Updater {
  public:
   Updater(int sellIn, int quality) : _quality(quality), _sellIn(sellIn) {}
@@ -74,7 +74,7 @@ Sounds good?
 
 It definitely did sound better to me than the existing solution, until I implemented it.
 
-```
+```cpp
 class Updater {
  public:
   Updater(int& sellIn, int& quality) : _quality(quality), _sellIn(sellIn) {}
@@ -111,7 +111,7 @@ It was quite late in the evening. I said I leave it like that for that night, I'
 
 When I had a look at my test and I knew I got it.
 
-```
+```cpp
 //GildedRoseTextTests.cc
 int main()
 {
@@ -136,7 +136,7 @@ What happened, in fact, is that a new copy of Item was created, a copy of the `s
 
 The fix was easy, I just had to implement the copy constructor and the assignment operator:
 
-```
+```cpp
 Item& Item::operator=(const Item& i){
   this->name = i.name;
   this->quality = i.quality;

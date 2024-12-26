@@ -22,7 +22,7 @@ These are not new, but "repetition is the mother of learning".
 
 If you use `&` in the left-hand side of a variable declaration, it means that you expect to have a [reference](https://www.tutorialspoint.com/cplusplus/cpp_references.htm) to the declared type. It can be used in any type of declarations (local variables, class members, method parameters).
 
-```
+```cpp
 std::string mrSamberg("Andy");
 std::string& theBoss = mrSamberg;
 ```
@@ -36,12 +36,11 @@ The meaning of `&` changes if you use it in the right-hand side of an expression
 When using it on the right-hand side of a variable, it's also known as the "address-of operator". Not surprisingly if you put it in front of a variable, it'll return its address in the memory instead of the variable's value itself. It is useful for pointer declarations.
 
 
-```
+```cpp
 std::string mrSamberg("Andy");
 std::string* theBoss;
 
 theBoss = &mrSamberg;
-
 ```
 
 The end result of the previous snippet is the same as previously. Although the type of `theBoss` is different. Previously it was a reference, now it's a pointer. The main difference is that a pointer can be null, while a reference must point to a valid value. (Well... There are shortcuts... But that's beyond our scope in this article.). More on this topic [here](https://stackoverflow.com/questions/57483/what-are-the-differences-between-a-pointer-variable-and-a-reference-variable-in).
@@ -73,7 +72,7 @@ According to [Eli Bendersky](https://eli.thegreenplace.net/):
 
 Let's take one example to show both an lvalue and an rvalue.
 
-```
+```cpp
 auto mrSamberg = std::string{"Andy"};
 ```
 
@@ -89,7 +88,7 @@ The bad news is that `&&` after a type might or might not mean that you are decl
 
 What are those circumstances? Briefly, if type deduction takes place, you declare a universal reference, if not an rvalue reference.
 
-```
+```cpp
 Vehicle car;
 auto&& car2 = car; // type deduction! this is a universal reference!
 Vehicle&& car3 = car; // no type deduction, so it's an rvalue reference
@@ -97,7 +96,7 @@ Vehicle&& car3 = car; // no type deduction, so it's an rvalue reference
 
 There is another possibility, it's in case of templates. Taking the example from [Effective Modern C++](https://amzn.to/2Rbh5pI):
 
-```
+```cpp
 template<typename T>
 void f(std::vector<T>&& param);     // rvalue reference
 
@@ -113,7 +112,7 @@ We are not finished yet.
 
 Since C++11 you can use both the single and double ampersands as part of the function signature, but not part of the parameter list. If I'm not clear enough, let me give the examples:
 
-```
+```cpp
 void doSomething() &;
 void doSomething() &&;
 auto doSomethingElse() & -> int;
@@ -123,7 +122,7 @@ auto doSomethingElse() && -> int;
 What this means is that you can limit the use of a member function based on whether `*this` is a lvalue or an rvalue.  So you can only use this feature within classes, of course. Let's expand our example.
 
 
-```
+```cpp
 class Tool {
 public:
   // ...

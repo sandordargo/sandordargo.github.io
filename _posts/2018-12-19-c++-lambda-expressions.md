@@ -235,7 +235,7 @@ Let's say we have a list of `Widget`s and you want to call their `resize()` meth
 Non-lambda way:
 
 ```cpp
-auto widgets = std::vector<Widget> { … }; // a bunch of widgets
+auto widgets = std::vector<Widget> { /* ... */ }; // a bunch of widgets
 for (auto& widget : widgets) {
   widget.resize();
 }
@@ -248,7 +248,7 @@ Lambda way:
 #include <algorithm>
 // ...
 
-auto widgets = std::vector<Widget> { … }; // a bunch of widgets
+auto widgets = std::vector<Widget> { /* ... */ }; // a bunch of widgets
 
 std::for_each(std::begin(widgets), std::end(widgets), 
   [](Widget& widget) {
@@ -324,7 +324,7 @@ In the case of some extra work needed, we have to define a deleter for the smart
 You can either define a deleter class, a functor, or as you might have guessed, you can just pass a lambda like this:
 
 ```cpp
-std::shared_ptr<Widget> pw1(new Widget, [](Widget *w){ ... });
+std::shared_ptr<Widget> pw1(new Widget, [](Widget *w){ /* ... */ });
 ```
 The downside is that you cannot use `make_shared`, but that's another story and not the fault of lambdas.
 

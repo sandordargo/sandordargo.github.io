@@ -13,13 +13,13 @@ One of the things that made my eyes open was how function declarations evolved.
 
 If you've been around for a long time in the C++ ecosystem, probably you'd reply something similar to this:
 
-```
+```cpp
 int getElement(const std::vector<int>& container, int index) const;
 ```
 
 But if you started only lately or if you're experienced with newer versions of C++ (>=C++11), you might have another answer, like:
 
-```
+```cpp
 auto getElement(const std::vector<int>& container, int index) const -> int;
 ```
 
@@ -39,7 +39,7 @@ Even though we saw that by using trailing return types our code became longer, t
 
 Let's have a look at our class that represents wines.
 
-```
+```cpp
 class Wine {
  public:
  enum WineType { WHITE, RED, ROSE, ORANGE };
@@ -59,7 +59,7 @@ Now let's check the implementations.
 
 The setter's look quite obvious, does it?
 
-```
+```cpp
 void Wine::setWineType(WineType wine_type) {
   _wine_type = wine_type;
 }
@@ -67,7 +67,7 @@ void Wine::setWineType(WineType wine_type) {
 
 On the other hand, our first approach for the getter might not work:
 
-```
+```cpp
 WineType Wine::getWineType() {
   return _wine_type;
 }
@@ -75,7 +75,7 @@ WineType Wine::getWineType() {
 
 The above code will just not compile, because WineType is unknown to the compiler. It looks for it in the global scope. You have to explicitly declare that it's part of the Wine class.
 
-```
+```cpp
 Wine::WineType Wine::getWineType() {
   return _wine_type;
 }
@@ -83,7 +83,7 @@ Wine::WineType Wine::getWineType() {
 
 It seems like a duplication, but it's necessary. Necessary, yet avoidable since trailing return type declarations are available. Have a look at this:
 
-```
+```cpp
 auto Wine::getWineType() -> WineType {
   return _wine_type;
 }
@@ -100,7 +100,7 @@ Probably a more compelling reason to use trailing return type declaration is the
 
 Let's see the good old example:
 
-```
+```cpp
 template<class L, class R>
 auto multiply(L const& lhs, R const& rhs) -> decltype(lhs * rhs) {
   return lhs * rhs;
@@ -111,7 +111,7 @@ It is possible to create such a function template by using `std::declval`, but i
 
 On the other hand, it's even simpler in C++14 where the scope of return type deduction was extended:
 
-```
+```cpp
 template<class L, class R>
 auto multiply(L const& lhs, R const& rhs) {
   return lhs * rhs;
