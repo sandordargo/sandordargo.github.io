@@ -27,9 +27,9 @@ It means that the next code does NOT even compile:
 int main() {
   auto nums = {1,2,3,4,5,3};
   if (std::any_of(std::begin(nums), std::end(nums), 3) {
-      std::cout << "there is a 3 in the list" << std::endl;
+      std::cout << "there is a 3 in the list" << '\n';
   } else {
-      std::cout << "there is NOT ANY 3 in the list" << std::endl;
+      std::cout << "there is NOT ANY 3 in the list" << '\n';
   }
 }
 ```
@@ -57,9 +57,9 @@ int main() {
 
   auto nums = {1,2,3,4,5,3};
   if (std::any_of(std::begin(nums), std::end(nums), IsEqualTo(3))) {
-        std::cout << "there is a 3 in the list" << std::endl;
+        std::cout << "there is a 3 in the list" << '\n';
     } else {
-        std::cout << "there is NOT ANY 3 in the list" << std::endl;
+        std::cout << "there is NOT ANY 3 in the list" << '\n';
   }   
 }
 ```
@@ -78,9 +78,9 @@ int main()
 
   auto nums = {1,2,3,4,5,3};
   if (std::any_of(std::begin(nums), std::end(nums), [](int i){return i == 3;})) {
-      std::cout << "there is a 3 in the list" << std::endl;
+      std::cout << "there is a 3 in the list" << '\n';
   } else {
-      std::cout << "there is NOT ANY 3 in the list" << std::endl;
+      std::cout << "there is NOT ANY 3 in the list" << '\n';
   }
     
 }

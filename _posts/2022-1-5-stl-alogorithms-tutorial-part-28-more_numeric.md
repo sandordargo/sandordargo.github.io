@@ -132,7 +132,7 @@ int main() {
     for (auto ps: partial_sums) {
         std::cout << ps << " ";;
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 }
 /*
 1 3 6 10 15 21 28 36 45 55
@@ -161,7 +161,7 @@ int main() {
     for (auto diff: diffs) {
         std::cout << diff << " ";;
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 }
 /*
 1 2 3 4 5 6 7 8 9 10 
@@ -186,7 +186,7 @@ int main() {
     for (auto diff: diffs) {
         std::cout << diff << " ";;
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 }
 ```
 

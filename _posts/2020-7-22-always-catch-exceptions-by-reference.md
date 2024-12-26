@@ -33,7 +33,7 @@ void a() {
     try {
         throw SpecialException(); // 2
     } catch (std::exception e) { // 3
-        // std::cout << "exception caught in a(): " << e.what() << std::endl;
+        // std::cout << "exception caught in a(): " << e.what() << '\n';
         throw; // 4
     }
 }
@@ -42,7 +42,7 @@ int main () {
     try {
         a();
     } catch (SpecialException& e) { //5
-        // std::cout << "exception caught in main(): " << e.what() << std::endl;
+        // std::cout << "exception caught in main(): " << e.what() << '\n';
     }
 }
 ```

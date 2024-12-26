@@ -52,7 +52,7 @@ public:
 
 int main() {
     Base* p = new Derived();
-    std::cout << p->x() << std::endl;
+    std::cout << p->x() << '\n';
 }
 ```
 
@@ -136,7 +136,7 @@ public:
 
 int main() {
     SoDerived* p = new SoDerived();
-    std::cout << p->x() << std::endl;
+    std::cout << p->x() << '\n';
 }
 ```
 

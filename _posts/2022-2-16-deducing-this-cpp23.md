@@ -205,7 +205,7 @@ decltype(auto) y_combinator(Fun &&fun) {
 auto gcd = y_combinator([](auto gcd, int a, int b) -> int {
   return b == 0 ? a : gcd(b, a % b);
 });
-std::cout << gcd(20, 30) << std::endl;
+std::cout << gcd(20, 30) << '\n';
 ```
 
 By using the explicit object parameter, referring to the self is not a problem anymore. If the proposal of deducing this will be accepted, writing recursive lambdas will be greatly simplified:
@@ -214,7 +214,7 @@ By using the explicit object parameter, referring to the self is not a problem a
 auto gcd = [](this auto self, int a, int b) -> int {
     return b == 0 ? a : self(b, a % b);
 }
-std::cout << gcd(20, 30) << std::endl;
+std::cout << gcd(20, 30) << '\n';
 ```
 
 ## Conclusion

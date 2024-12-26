@@ -32,7 +32,7 @@ int main () {
   for (auto number : numbers) {
     std::cout << ' ' << number;
   }
-  std::cout << std::endl;
+  std::cout << '\n';
 
   return 0;
 }
@@ -61,13 +61,13 @@ int main () {
   for (auto number : numbers) {
     std::cout << ' ' << number;
   }
-  std::cout << std::endl;
+  std::cout << '\n';
 
   std::cout << "numbers in reversedNumbers are reversed: ";
   for (auto number : reversedNumbers) {
     std::cout << ' ' << number;
   }
-  std::cout << std::endl;
+  std::cout << '\n';
 
   return 0;
 }
@@ -102,13 +102,13 @@ int main () {
   for (auto number : numbers) {
     std::cout << ' ' << number;
   }
-  std::cout << std::endl;
+  std::cout << '\n';
 
   std::cout << "numbers in reversedNumbers are reversed: ";
   for (auto number : reversedNumbers) {
     std::cout << ' ' << number;
   }
-  std::cout << std::endl;
+  std::cout << '\n';
 
   return 0;
 }

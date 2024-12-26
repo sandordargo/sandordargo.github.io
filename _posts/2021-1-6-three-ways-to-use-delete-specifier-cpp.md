@@ -68,7 +68,7 @@ So what happens if the client call still passes a float?
 #include <iostream>
 
 void foo(int numberOfSeats) {
-    std::cout << "Number of seats: " << numberOfSeats << std::endl;
+    std::cout << "Number of seats: " << numberOfSeats << '\n';
     // ...
 }
 
@@ -98,7 +98,7 @@ If you don't want to allow implicit conversions from floating-point numbers, you
 #include <iostream>
 
 void foo(int numberOfSeats) {
-    std::cout << "Number of seats: " << numberOfSeats << std::endl;
+    std::cout << "Number of seats: " << numberOfSeats << '\n';
     // ...
 }
 

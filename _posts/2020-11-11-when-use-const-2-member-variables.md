@@ -106,10 +106,10 @@ private:
 int main() {
   MyClassWithConstMember o1{666};
   MyClassWithConstMember o2{42};
-  std::cout << "o1.a: " << o1.getA() << std::endl;
-  std::cout << "o2.a: " << o2.getA() << std::endl;
+  std::cout << "o1.a: " << o1.getA() << '\n';
+  std::cout << "o2.a: " << o2.getA() << '\n';
   o1 = o2;
-  std::cout << "o1.a: " << o1.getA() << std::endl;
+  std::cout << "o1.a: " << o1.getA() << '\n';
 
 ```
 

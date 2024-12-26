@@ -92,10 +92,10 @@ int main() {
   std::vector numbers {1, 2, 2, 3, 4, 5, 5, 5, 7};
   std::cout << "Size of numbers: " << numbers.size() << '\n';
   const auto [first, last] = std::equal_range(numbers.begin(), numbers.end(), 8);
-  std::cout << "First distance from numbers.begin(): " << std::distance(numbers.begin(), first) << std::endl;
-  std::cout << "Value of first: " << *first << std::endl;
-  std::cout << "First distance from numbers.last(): " << std::distance(numbers.begin(), last) << std::endl;
-  std::cout << "Value of last: " << *last << std::endl;
+  std::cout << "First distance from numbers.begin(): " << std::distance(numbers.begin(), first) << '\n';
+  std::cout << "Value of first: " << *first << '\n';
+  std::cout << "First distance from numbers.last(): " << std::distance(numbers.begin(), last) << '\n';
+  std::cout << "Value of last: " << *last << '\n';
 }
 /*
 Size of numbers: 9
@@ -119,10 +119,10 @@ int main() {
   std::vector numbers {1, 2, 2, 3, 4, 5, 5, 5, 7};
   std::cout << "Size of numbers: " << numbers.size() << '\n';
   const auto [first, last] = std::equal_range(numbers.begin(), numbers.end(), 0);
-  std::cout << "First distance from numbers.begin(): " << std::distance(numbers.begin(), first) << std::endl;
-  std::cout << "Value of first: " << *first << std::endl;
-  std::cout << "First distance from numbers.last(): " << std::distance(numbers.begin(), last) << std::endl;
-  std::cout << "Value of last: " << *last << std::endl;
+  std::cout << "First distance from numbers.begin(): " << std::distance(numbers.begin(), first) << '\n';
+  std::cout << "Value of first: " << *first << '\n';
+  std::cout << "First distance from numbers.last(): " << std::distance(numbers.begin(), last) << '\n';
+  std::cout << "Value of last: " << *last << '\n';
 }
 /*
 Size of numbers: 9
@@ -147,10 +147,10 @@ int main() {
   std::vector numbers {1, 2, 2, 3, 4, 5, 5, 5, 7};
   std::cout << "Size of numbers: " << numbers.size() << '\n';
   const auto [first, last] = std::equal_range(numbers.begin(), numbers.end(), 6);
-  std::cout << "First distance from numbers.begin(): " << std::distance(numbers.begin(), first) << std::endl;
-  std::cout << "Value of first: " << *first << std::endl;
-  std::cout << "First distance from numbers.last(): " << std::distance(numbers.begin(), last) << std::endl;
-  std::cout << "Value of last: " << *last << std::endl;
+  std::cout << "First distance from numbers.begin(): " << std::distance(numbers.begin(), first) << '\n';
+  std::cout << "Value of first: " << *first << '\n';
+  std::cout << "First distance from numbers.last(): " << std::distance(numbers.begin(), last) << '\n';
+  std::cout << "Value of last: " << *last << '\n';
 }
 /*
 Size of numbers: 9
@@ -172,10 +172,10 @@ int main() {
   std::vector numbers {1, 2, 2, 3, 4, 5, 5, 5, 7};
   std::cout << "Size of numbers: " << numbers.size() << '\n';
   const auto [first, last] = std::equal_range(numbers.begin(), numbers.end(), 5);
-  std::cout << "First distance from numbers.begin(): " << std::distance(numbers.begin(), first) << std::endl;
-  std::cout << "Value of first: " << *first << std::endl;
-  std::cout << "First distance from numbers.last(): " << std::distance(numbers.begin(), last) << std::endl;
-  std::cout << "Value of last: " << *last << std::endl;
+  std::cout << "First distance from numbers.begin(): " << std::distance(numbers.begin(), first) << '\n';
+  std::cout << "Value of first: " << *first << '\n';
+  std::cout << "First distance from numbers.last(): " << std::distance(numbers.begin(), last) << '\n';
+  std::cout << "Value of last: " << *last << '\n';
 }
 /*
 Size of numbers: 9
@@ -217,10 +217,10 @@ int main() {
       std::cout << "Looking for " << value << ", that is inside the container\n";
       auto lower = std::lower_bound(numbers.begin(), numbers.end(), value);
       auto upper = std::upper_bound(numbers.begin(), numbers.end(), value);
-      std::cout << "lower's distance from numbers.begin(): " << std::distance(numbers.begin(), lower) << std::endl;
-      std::cout << "Value of lower: " << *lower << std::endl;
-      std::cout << "upper's distance from numbers.begin(): " << std::distance(numbers.begin(), upper) << std::endl;
-      std::cout << "Value of upper: " << *upper << std::endl;
+      std::cout << "lower's distance from numbers.begin(): " << std::distance(numbers.begin(), lower) << '\n';
+      std::cout << "Value of lower: " << *lower << '\n';
+      std::cout << "upper's distance from numbers.begin(): " << std::distance(numbers.begin(), upper) << '\n';
+      std::cout << "Value of upper: " << *upper << '\n';
   }
   {
       std::cout << "========\n";
@@ -228,10 +228,10 @@ int main() {
       std::cout << "Looking for " << value << ", that is smaller than the smallest item of the container\n";
       const auto lower = std::lower_bound(numbers.begin(), numbers.end(), value);
       const auto upper = std::upper_bound(numbers.begin(), numbers.end(), value);
-      std::cout << "lower's distance from numbers.begin(): " << std::distance(numbers.begin(), lower) << std::endl;
-      std::cout << "Value of lower: " << *lower << std::endl;
-      std::cout << "upper's distance from numbers.begin(): " << std::distance(numbers.begin(), upper) << std::endl;
-      std::cout << "Value of upper: " << *upper << std::endl;
+      std::cout << "lower's distance from numbers.begin(): " << std::distance(numbers.begin(), lower) << '\n';
+      std::cout << "Value of lower: " << *lower << '\n';
+      std::cout << "upper's distance from numbers.begin(): " << std::distance(numbers.begin(), upper) << '\n';
+      std::cout << "Value of upper: " << *upper << '\n';
   }
   {
       std::cout << "========\n";
@@ -239,10 +239,10 @@ int main() {
       std::cout << "Looking for " << value << ", that is larger than the largest item of the container\n";
       const auto lower = std::lower_bound(numbers.begin(), numbers.end(), value);
       const auto upper = std::upper_bound(numbers.begin(), numbers.end(), value);
-      std::cout << "lower's distance from numbers.begin(): " << std::distance(numbers.begin(), lower) << std::endl;
-      std::cout << "Value of lower: " << *lower << std::endl;
-      std::cout << "upper's distance from numbers.begin(): " << std::distance(numbers.begin(), upper) << std::endl;
-      std::cout << "Value of upper: " << *upper << std::endl;
+      std::cout << "lower's distance from numbers.begin(): " << std::distance(numbers.begin(), lower) << '\n';
+      std::cout << "Value of lower: " << *lower << '\n';
+      std::cout << "upper's distance from numbers.begin(): " << std::distance(numbers.begin(), upper) << '\n';
+      std::cout << "Value of upper: " << *upper << '\n';
   }
   {
       std::cout << "========\n";
@@ -250,10 +250,10 @@ int main() {
       std::cout << "Looking for " << value << ", that is not in the container that contains both smaller and larger values than " << value << '\n';
       const auto lower = std::lower_bound(numbers.begin(), numbers.end(), value);
       const auto upper = std::upper_bound(numbers.begin(), numbers.end(), value);
-      std::cout << "lower's distance from numbers.begin(): " << std::distance(numbers.begin(), lower) << std::endl;
-      std::cout << "Value of lower: " << *lower << std::endl;
-      std::cout << "upper's distance from numbers.begin(): " << std::distance(numbers.begin(), upper) << std::endl;
-      std::cout << "Value of upper: " << *upper << std::endl;
+      std::cout << "lower's distance from numbers.begin(): " << std::distance(numbers.begin(), lower) << '\n';
+      std::cout << "Value of lower: " << *lower << '\n';
+      std::cout << "upper's distance from numbers.begin(): " << std::distance(numbers.begin(), upper) << '\n';
+      std::cout << "Value of upper: " << *upper << '\n';
   }
 }
 /*

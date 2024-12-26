@@ -144,11 +144,11 @@ As a first step, I tried to do something that works with one only parameter of a
 class Logger {
 public:
   void logA(std::string s) {
-    std::cout << "A: " << s << std::endl;
+    std::cout << "A: " << s << '\n';
   }
   
   void logB(std::string s) {
-    std::cout << "B: " << s << std::endl;
+    std::cout << "B: " << s << '\n';
   }
       
 };
@@ -156,11 +156,11 @@ public:
 template <typename Function>
 auto safeLog(Function f, Logger* l, std::string s) -> decltype((l->*f)(s)) {
   try {
-    std::cout << "Logging s safely..." << std::endl;
+    std::cout << "Logging s safely..." << '\n';
     return (l->*f)(s);
   }
   catch(...) {
-    std::cout << "s is not logged, we have an exception" << std::endl;
+    std::cout << "s is not logged, we have an exception" << '\n';
     throw;
   }
 }
@@ -203,11 +203,11 @@ You want to be able to deal with any number/type of parameters? Easy-peasy, just
 template <typename Function, typename ... Args>
 auto safeLog(Function f, Logger* l, Args&& ... args) {
   try {
-    std::cout << "Logging s safely..." << std::endl;
+    std::cout << "Logging s safely..." << '\n';
     return (l->*f)(std::forward<Args>(args)...);
   }
   catch(...) {
-    std::cout << "s is not logged, we have an exception" << std::endl;
+    std::cout << "s is not logged, we have an exception" << '\n';
     throw;
   }
 }
@@ -233,21 +233,21 @@ If we reorganize our code and push `safeLog()` to be a member of `class Logger` 
 class Logger {
 public:
   void logA(std::string s) {
-    std::cout << "A: " << s << std::endl;
+    std::cout << "A: " << s << '\n';
   }
   
   void logB(std::string s, int n) {
-    std::cout << "B: " << s << " " << n << std::endl;
+    std::cout << "B: " << s << " " << n << '\n';
   }
 
   template <typename Function, typename ... Args>
   auto safeLog(Function f, Args&& ... args) {
     try {
-      std::cout << "Logging s safely..." << std::endl;
+      std::cout << "Logging s safely..." << '\n';
       return (this->*f)(std::forward<Args>(args)...);
     }
     catch(...) {
-      std::cout << "s is not logged, we have an exception" << std::endl;
+      std::cout << "s is not logged, we have an exception" << '\n';
       throw;
     }
   }
@@ -302,11 +302,11 @@ class Logger {
   template <typename Function, typename ... Args>
   auto safeLog(Function f, Args&& ... args) {
     try {
-      std::cout << "Logging safely..." << std::endl;
+      std::cout << "Logging safely..." << '\n';
       return (this->*f)(std::forward<Args>(args)...);
     }
     catch(...) {
-      std::cout << "s is not logged, we have an exception" << std::endl;
+      std::cout << "s is not logged, we have an exception" << '\n';
         
     }
   }
@@ -320,15 +320,15 @@ class Logger {
   // void logOtherKindOfData(...);
  private:
   void logA(const DataAccessor& data) {
-    std::cout << "A: " << data.getA() << std::endl;
+    std::cout << "A: " << data.getA() << '\n';
   }
   
   void logB(const DataAccessor& data) {
-    std::cout << "B: " << data.getB() << std::endl;
+    std::cout << "B: " << data.getB() << '\n';
   }
   
   void logC(const DataAccessor& data) {
-    std::cout << "C: " << data.getC() << std::endl;
+    std::cout << "C: " << data.getC() << '\n';
   }
   // ...
 };

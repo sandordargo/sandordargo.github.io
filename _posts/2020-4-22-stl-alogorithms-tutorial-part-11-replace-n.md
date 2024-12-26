@@ -44,7 +44,7 @@ try {
         return number == 4 && i++ < 2;
     }, 42);
 } catch (const std::exception& ex) {
-    std::cout << "Done with replacing: " << ex.what() << std::endl;
+    std::cout << "Done with replacing: " << ex.what() << '\n';
 }
 ```
 

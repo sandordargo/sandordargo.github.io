@@ -35,21 +35,21 @@ Let's see an example:
 class Base {
 public:
   virtual void fun(int p = 42) {
-    std::cout << p << std::endl;
+    std::cout << p << '\n';
   }
 };
 
 class DerivedLeft : public Base {
 public:
   void fun(int p = 13) override {
-    std::cout << p << std::endl;
+    std::cout << p << '\n';
   }
 };
 
 class DerivedRight : public Base {
 public:
   void fun(int p) override {
-    std::cout << p << std::endl;
+    std::cout << p << '\n';
   }
 };
 ```
@@ -111,14 +111,14 @@ In order to understand better what is happening behind the scenes, let's take a 
 class Base {
 public:
   virtual void fun(int p = 42) {
-    std::cout << "Base::fun " << p << std::endl;
+    std::cout << "Base::fun " << p << '\n';
   }
 };
 
 class Derived : public Base {
 public:
   void fun(int p = 13) override {
-    std::cout << "Derived::fun " << p << std::endl;
+    std::cout << "Derived::fun " << p << '\n';
   }
 };
 
@@ -163,21 +163,21 @@ public:
   }
 protected:
   virtual void fun_impl(int p) {
-    std::cout << "Base::fun " << p << std::endl;
+    std::cout << "Base::fun " << p << '\n';
   }
 };
 
 class DerivedLeft : public Base {
 protected:
   void fun_impl(int p) override {
-    std::cout << "DerivedLeft::fun " << p << std::endl;
+    std::cout << "DerivedLeft::fun " << p << '\n';
   }
 };
 
 class DerivedRight : public Base {
 protected:
   void fun_impl(int p) override {
-    std::cout << "DerivedRight::fun " << p << std::endl;
+    std::cout << "DerivedRight::fun " << p << '\n';
   }
 };
 

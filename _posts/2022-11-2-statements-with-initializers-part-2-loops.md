@@ -307,15 +307,15 @@ int main()
   for (auto w: createStrings()) {
       std::cout << w << " "; // this works fine
   }
-  std::cout << std::endl;
+  std::cout << '\n';
   for (auto c: createStrings()[0]) {
       std::cout << c << " "; // this is UB
   }
-  std::cout << std::endl;
+  std::cout << '\n';
   for (auto strings = createStrings(); auto c: strings[0]) {
       std::cout << c << " "; // this now works fine again
   }
-  std::cout << std::endl;
+  std::cout << '\n';
 }
 ```
 

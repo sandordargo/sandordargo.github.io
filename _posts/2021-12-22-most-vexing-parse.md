@@ -60,7 +60,7 @@ private:
 int main() {
     int i=5;
     Doubler d(MyInt(i)); // most vexing parse here!
-    std::cout << d.doubleIt() << std::endl;
+    std::cout << d.doubleIt() << '\n';
 }
 ```
 
@@ -71,7 +71,7 @@ Hence the error message:
 ```
 main.cpp: In function 'int main()':
 main.cpp:25:20: error: request for member 'doubleIt' in 'd', which is of non-class type 'Doubler(MyInt)'
-   25 |     std::cout << d.doubleIt() << std::endl;
+   25 |     std::cout << d.doubleIt() << '\n';
       |                    ^~~~~~~~
 ```
 

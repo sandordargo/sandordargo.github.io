@@ -156,7 +156,7 @@ int main () {
   auto resutls = std::vector<int>{};
   std::transform(values.begin(), values.end(), otherValues.begin(), 
   std::back_inserter(resutls), [](T* number, T* otherNumber) {
-    std::cout << "number: " << number->getNumber() << ", another number: " << otherNumber->getNumber() << std::endl;
+    std::cout << "number: " << number->getNumber() << ", another number: " << otherNumber->getNumber() << '\n';
     return number->getNumber() + otherNumber->getNumber();
   });
 

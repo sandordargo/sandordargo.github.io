@@ -112,7 +112,7 @@ long double operator"" _celsius_to_fahrenheit(long double celsius) {
 }
 
 int main() {
-  std::cout << "100 Celsius is " << 100.0_celsius_to_fahrenheit << std::endl;
+  std::cout << "100 Celsius is " << 100.0_celsius_to_fahrenheit << '\n';
 }
 ```
 

@@ -39,12 +39,12 @@ int main() {
     for (auto ps: partial_sums) {
         std::cout << ps << " ";;
     }
-    std::cout << std::endl;
+    std::cout << '\n';
     std::cout << "exclusive_scan results:";
     for (auto ps: exclusion_scan_results) {
         std::cout << ps << " ";;
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 }
 /*
 partial_sum results   :1 3 6 10 15 21 28 36 45 55 
@@ -79,17 +79,17 @@ int main() {
     for (auto ps: partial_sums) {
         std::cout << ps << " ";
     }
-    std::cout << std::endl;
+    std::cout << '\n';
     std::cout << "exclusive_scan results:";
     for (auto ps: exclusion_scan_results) {
         std::cout << ps << " ";
     }
-    std::cout << std::endl;
+    std::cout << '\n';
     std::cout << "inclusive_scan results:";
     for (auto ps: inclusive_scan_results) {
         std::cout << ps << " ";
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 }
 /*
 partial_sum results   :1 3 6 10 15 21 28 36 45 55 
@@ -129,7 +129,7 @@ int main() {
     for (auto r: results) {
         std::cout << r << " ";;
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 }
 /*
 0 10 30 60 100 150 210 280 360 450 
@@ -161,7 +161,7 @@ int main() {
     for (auto r: results) {
         std::cout << r << " ";;
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 }
 /*
 10 30 60 100 150 210 280 360 450 550 

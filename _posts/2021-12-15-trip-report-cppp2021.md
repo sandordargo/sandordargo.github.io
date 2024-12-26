@@ -197,7 +197,7 @@ Here is a simple example:
 auto gcd = y_combinator([](auto gcd, int a, int b) -> int {
   return b == 0 ? a : gcd(b, a % b);
 });
-std::cout << gcd(20, 30) << std::endl;
+std::cout << gcd(20, 30) << '\n';
 ```
 
 To go into details on how and why the y-combinator works is way beyond the scope of a trip report. If you want to learn more about it (you'll also find more references) [click here](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0200r0.html).
