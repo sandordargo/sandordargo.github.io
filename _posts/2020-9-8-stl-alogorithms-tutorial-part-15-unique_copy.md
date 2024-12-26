@@ -37,32 +37,32 @@ The return value is the same in both cases, it points at the new `end()` of the 
 
 int main()
 {
-    std::vector<int> numbers{9, 1, 3, 3, 3, 5, 1, 6, 1};
-    std::cout << "Original values: " << '\n';
-    std::for_each(numbers.begin(), numbers.end(), [](auto i) {std::cout << i << " ";});
-    std::cout << '\n';
-    std::cout << '\n';
-    
-    std::cout << "size: " << numbers.size() << ", capacity: " << numbers.capacity() << '\n';
-    auto oldEnd = numbers.end();
-    auto newEnd = std::unique(numbers.begin(), numbers.end());
-    std::cout << "same values are only removed if they are next to each other:" << '\n';
-    std::for_each(numbers.begin(), newEnd, [](auto i) {std::cout << i << " ";});
-    std::cout << '\n';
-    std::cout << '\n';
-    
-    std::cout << std::boolalpha << "oldEnd == newEnd? :" << (oldEnd == newEnd) << '\n';
-    std::cout << "In fact, the end hasn't changed. oldEnd == numbers.end(): " << (oldEnd == numbers.end()) << '\n';
-    std::cout << "number of elements removed: " << std::distance(newEnd, oldEnd) << '\n';
-    std::cout << "Though if you use the end, stranfe results are there..." << '\n';
-    std::for_each(numbers.begin(), oldEnd, [](auto i) {std::cout << i << " ";});
-    std::cout << '\n';
-    std::cout << '\n';
-    
-    std::cout << "size: " << numbers.size() << ", capacity: " << numbers.capacity() << ", these values haven't changed" << '\n';
-    numbers.erase(newEnd, oldEnd);
-    numbers.shrink_to_fit();
-    std::cout << "size: " << numbers.size() << ", capacity: " << numbers.capacity() << ", we should erase what is between the return value of unique() and the old end" << '\n';
+    std::vector<int> numbers{9, 1, 3, 3, 3, 5, 1, 6, 1};
+    std::cout << "Original values: " << '\n';
+    std::for_each(numbers.begin(), numbers.end(), [](auto i) {std::cout << i << " ";});
+    std::cout << '\n';
+    std::cout << '\n';
+    
+    std::cout << "size: " << numbers.size() << ", capacity: " << numbers.capacity() << '\n';
+    auto oldEnd = numbers.end();
+    auto newEnd = std::unique(numbers.begin(), numbers.end());
+    std::cout << "same values are only removed if they are next to each other:" << '\n';
+    std::for_each(numbers.begin(), newEnd, [](auto i) {std::cout << i << " ";});
+    std::cout << '\n';
+    std::cout << '\n';
+    
+    std::cout << std::boolalpha << "oldEnd == newEnd? :" << (oldEnd == newEnd) << '\n';
+    std::cout << "In fact, the end hasn't changed. oldEnd == numbers.end(): " << (oldEnd == numbers.end()) << '\n';
+    std::cout << "number of elements removed: " << std::distance(newEnd, oldEnd) << '\n';
+    std::cout << "Though if you use the end, stranfe results are there..." << '\n';
+    std::for_each(numbers.begin(), oldEnd, [](auto i) {std::cout << i << " ";});
+    std::cout << '\n';
+    std::cout << '\n';
+    
+    std::cout << "size: " << numbers.size() << ", capacity: " << numbers.capacity() << ", these values haven't changed" << '\n';
+    numbers.erase(newEnd, oldEnd);
+    numbers.shrink_to_fit();
+    std::cout << "size: " << numbers.size() << ", capacity: " << numbers.capacity() << ", we should erase what is between the return value of unique() and the old end" << '\n';
 }
 ```
 
@@ -84,16 +84,16 @@ Here is a short example.
 #include <vector>
 
 struct Person {
-    long id;
-    std::string name;
-    std::string phoneNumber;
+    long id;
+    std::string name;
+    std::string phoneNumber;
 };
 
 int main()
 {
-    std::vector<Person> people { {1, "John D Smith", "555-1234"}, {1, "John David Smith", "784-1234"}, {2, "Adam Jones", "555-7894"} };
-    auto it = std::unique(people.begin(), people.end(), [](auto lhs, auto rhs){ return lhs.id == rhs.id; });
-    std::for_each(people.begin(), it, [](auto i) {std::cout << i.name << " " << '\n';});
+    std::vector<Person> people { {1, "John D Smith", "555-1234"}, {1, "John David Smith", "784-1234"}, {2, "Adam Jones", "555-7894"} };
+    auto it = std::unique(people.begin(), people.end(), [](auto lhs, auto rhs){ return lhs.id == rhs.id; });
+    std::for_each(people.begin(), it, [](auto i) {std::cout << i.name << " " << '\n';});
 }
 ```
 
@@ -118,18 +118,18 @@ Let's see an example of this case.
 
 int main()
 {
-    std::vector<int> numbers{9, 1, 3, 3, 3, 5, 1, 6, 1};
-    std::vector<int> uniqueNumbers(numbers.size());
-    
-    auto it = std::unique_copy(numbers.begin(), numbers.end(), uniqueNumbers.begin());
+    std::vector<int> numbers{9, 1, 3, 3, 3, 5, 1, 6, 1};
+    std::vector<int> uniqueNumbers(numbers.size());
+    
+    auto it = std::unique_copy(numbers.begin(), numbers.end(), uniqueNumbers.begin());
 
-    std::cout << "Content of uniqueNumbers: " << '\n';
-    std::for_each(uniqueNumbers.begin(), uniqueNumbers.end(), [](auto i) {std::cout << i << " ";});
-    std::cout << '\n' << '\n';
-    
-    std::cout << "Content of uniqueNumbers until the returned iterator: " << '\n';
-    std::for_each(uniqueNumbers.begin(), it, [](auto i) {std::cout << i << " ";});
-    std::cout << '\n';
+    std::cout << "Content of uniqueNumbers: " << '\n';
+    std::for_each(uniqueNumbers.begin(), uniqueNumbers.end(), [](auto i) {std::cout << i << " ";});
+    std::cout << '\n' << '\n';
+    
+    std::cout << "Content of uniqueNumbers until the returned iterator: " << '\n';
+    std::for_each(uniqueNumbers.begin(), it, [](auto i) {std::cout << i << " ";});
+    std::cout << '\n';
 }
 ```
 

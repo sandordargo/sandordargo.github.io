@@ -62,7 +62,7 @@ _Maybe that’s why she’s not a developer anymore._
 
 He tried his best to hide his smile and told me that he got the point. He won’t transmit what I said, he will just take care of her.
 
-To me, she is the perfect example of someone who thinks she was too good but actually wasn't.  The whole team had similar problems with her. She was always looking for fast solutions, letting our codebase down. Our developers were too young and shy to push back. Looking at her code written years ago... You know, git never forgets... It was her way of delivering code. Luckily she changed positions.
+To me, she is the perfect example of someone who thinks she was too good but actually wasn't.  The whole team had similar problems with her. She was always looking for fast solutions, letting our codebase down. Our developers were too young and shy to push back. Looking at her code written years ago... You know, git never forgets... It was her way of delivering code. Luckily she changed positions.
 
 ## You were told that this is the way to get promoted
 
@@ -132,7 +132,7 @@ In my case, helpful side-activities were things like organizing coding-dojos, kn
 
 If certain activities you would be interested in are not ongoing yet, you have to check if they would be welcome. If so, go for them. If you’ll be the one who will start those activities in your department or in the whole corporation, the possible rewards are even higher.
 
-Keep one thing in mind. Whatever you do, you have to communicate your priorities to your boss. You have to say no. Frequently. That will be your most important skill. To refuse opportunities gently, but firmly. Focus on your essentials. 
+Keep one thing in mind. Whatever you do, you have to communicate your priorities to your boss. You have to say no. Frequently. That will be your most important skill. To refuse opportunities gently, but firmly. Focus on your essentials. 
 
 If your priority is, for example, to keep C++ coding in at least half of your time, don’t accept a project with an undefined length where you’d be writing Ansible scripts, even if you find it interesting.
 
@@ -148,7 +148,7 @@ Is it worth it? It is, but maybe sooner or later you’ll have to change jobs. W
 
 ## Conclusion
 Today we saw a few different ways to end up in a senior developer position where you barely code. I call this the seniority trap.
-What to do if you are in a trap? 
+What to do if you are in a trap? 
 Think about what you want. Then change your official position if that's what you want, keep doing it to get the promotion or just simply tell your management what you like and what you don't like, what are your goals and dreams.
 
 After all, we speak about your goals and time, not about your boss’. You are the one responsible for your career, not anyone else. You will have to accept some trade-offs, that’s fine. But things should not just happen to you. You should understand what’s going on and what is under your control. 

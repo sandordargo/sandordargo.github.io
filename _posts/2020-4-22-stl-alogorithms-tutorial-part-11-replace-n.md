@@ -37,14 +37,14 @@ But let's see how it would be used.
 
 ```cpp
 try {
-    std::replace_if(numbers.begin(), numbers.end(), [i = 0](auto number) mutable {
-        if (i == 2) {
-            throw std::invalid_argument{"Already replaced " + std::to_string(i) + " elements"};
-        }
-        return number == 4 && i++ < 2;
-    }, 42);
+    std::replace_if(numbers.begin(), numbers.end(), [i = 0](auto number) mutable {
+        if (i == 2) {
+            throw std::invalid_argument{"Already replaced " + std::to_string(i) + " elements"};
+        }
+        return number == 4 && i++ < 2;
+    }, 42);
 } catch (const std::exception& ex) {
-    std::cout << "Done with replacing: " << ex.what() << '\n';
+    std::cout << "Done with replacing: " << ex.what() << '\n';
 }
 ```
 
@@ -59,9 +59,9 @@ Now, let's look for another solution.
 If we wanted to use only algorithms we could do something similar:
 
 ```cpp
-  std::vector<int> numbers { 1, 2, 3, 4, 5, 4, 7, 4, 9, 10 };
-  auto pos = std::find(numbers.begin(), numbers.end(), 4);
-  std::replace(pos, pos+1, 4, 42);
+  std::vector<int> numbers { 1, 2, 3, 4, 5, 4, 7, 4, 9, 10 };
+  auto pos = std::find(numbers.begin(), numbers.end(), 4);
+  std::replace(pos, pos+1, 4, 42);
 ```
 
 First, we find the first occurrence of 4, which is the element we look for and then we call the replace algorithm on that exact position.
@@ -69,9 +69,9 @@ First, we find the first occurrence of 4, which is the element we look for and t
 The good parts are that we use only STL algorithms, so we stay on the same level of abstraction and in the same style. On the other hand, we have that small, but still existing overhead that comes with calling an algorithm, plus we make an extra comparison whereas we could write only this:
 
 ```cpp
-  std::vector<int> numbers { 1, 2, 3, 4, 5, 4, 7, 4, 9, 10 };
-  auto pos = std::find(numbers.begin(), numbers.end(), 4);
-  *pos=42;
+  std::vector<int> numbers { 1, 2, 3, 4, 5, 4, 7, 4, 9, 10 };
+  auto pos = std::find(numbers.begin(), numbers.end(), 4);
+  *pos=42;
 ```
 
 If we want to replace the `n` first elements, we have to repeat the same block n times.
@@ -79,12 +79,12 @@ If we want to replace the `n` first elements, we have to repeat the same block n
 In C++, there is nothing like `n.times` in Ruby, so we have to use a for loop here.
 
 ```cpp
-  std::vector<int> numbers { 1, 2, 3, 4, 5, 4, 7, 4, 9, 10 };
-  size_t n = 2;
-  for (size_t i = 0; i < n; ++i) {
-    auto pos = std::find(numbers.begin(), numbers.end(), 4);
-    *pos=42;
-  }
+  std::vector<int> numbers { 1, 2, 3, 4, 5, 4, 7, 4, 9, 10 };
+  size_t n = 2;
+  for (size_t i = 0; i < n; ++i) {
+    auto pos = std::find(numbers.begin(), numbers.end(), 4);
+    *pos=42;
+  }
 ```
 
 Each time we look for an element that matches our predicate, then we replace it by 42.
@@ -99,22 +99,22 @@ To overcome this deficiency, we can create a variable `begin` that will mark the
 #include <vector>
 
 int main() {
-  std::vector<int> numbers { 1, 2, 3, 4, 5, 4, 7, 4, 9, 10 };
-  size_t n = 2;
-  auto begin = numbers.begin();
-  for (size_t i = 0; i < n; ++i) {
-    begin = std::find(begin, numbers.end(), 4);
-    std::replace(begin, begin+1, 4, 42);
-    std::advance(begin, 1);
-  }
-  
-  std::cout << " copied numbers: ";
-  for (const auto& number : numbers) {
-    std::cout << ' ' << number;
-  }
-  std::cout << '\n';
+  std::vector<int> numbers { 1, 2, 3, 4, 5, 4, 7, 4, 9, 10 };
+  size_t n = 2;
+  auto begin = numbers.begin();
+  for (size_t i = 0; i < n; ++i) {
+    begin = std::find(begin, numbers.end(), 4);
+    std::replace(begin, begin+1, 4, 42);
+    std::advance(begin, 1);
+  }
+  
+  std::cout << " copied numbers: ";
+  for (const auto& number : numbers) {
+    std::cout << ' ' << number;
+  }
+  std::cout << '\n';
 
-  return 0;
+  return 0;
 }
 ```
 
@@ -122,17 +122,17 @@ At this point, it seems we have something useable, and readable. Let's move it t
 
 ```cpp
 std::vector<int>::iterator replace_n(std::vector<int>::iterator begin, std::vector<int>::iterator end, int oldValue, int newValue, size_t n) {
-   for (size_t i = 0; i < n; ++i) {
-    begin = std::find(begin, end, 4);
-    std::replace(begin, begin+1, 4, 42);
-    std::advance(begin,1);
-  }
-  return begin;
+   for (size_t i = 0; i < n; ++i) {
+    begin = std::find(begin, end, 4);
+    std::replace(begin, begin+1, 4, 42);
+    std::advance(begin,1);
+  }
+  return begin;
 }
 
 // ...
-  std::vector<int> numbers { 1, 2, 3, 4, 4, 5, 4, 7, 4, 9, 10 };
-  replace_n(numbers.begin(), numbers.end(), 4, 42, 2);
+  std::vector<int> numbers { 1, 2, 3, 4, 4, 5, 4, 7, 4, 9, 10 };
+  replace_n(numbers.begin(), numbers.end(), 4, 42, 2);
 
 ```
 
@@ -143,12 +143,12 @@ The only problem is that this function is not at all reusable. Both the containe
 ```cpp
 template <typename T, typename Iter>
 Iter replace_n(Iter begin, Iter end, T oldValue, T newValue, size_t n) {
-   for (size_t i = 0; i < n; ++i) {
-    begin = std::find(begin, end, 4);
-    std::replace(begin, begin+1, 4, 42);
-    std::advance(begin,1);
-  }
-  return begin;
+   for (size_t i = 0; i < n; ++i) {
+    begin = std::find(begin, end, 4);
+    std::replace(begin, begin+1, 4, 42);
+    std::advance(begin,1);
+  }
+  return begin;
 }
 ```
 

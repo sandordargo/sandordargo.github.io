@@ -33,7 +33,7 @@ Starting from the second half of the '90s, this guy had a full-time job in betwe
 
 Another thing I found remarkable is how boredom can be devastating during a tour. After concerts, many just drink heavily (or take drugs) in order to make it somehow until the next evening. I never thought that boredom might be one of the reasons for the different addictions of rock stars. 
 
-There are others who try to read, try to exercise or educate themselves during those idle times. The author chose to fence whenever he could - for decades he had a Hungarian coach, Zsolt Vadaszffy who escaped Hungary after the Revolution in 1956 -, he practised with local clubs and entered local competitions. And later he learnt to fly. He has led quite a prolific life.
+There are others who try to read, try to exercise or educate themselves during those idle times. The author chose to fence whenever he could - for decades he had a Hungarian coach, Zsolt Vadaszffy who escaped Hungary after the Revolution in 1956 -, he practised with local clubs and entered local competitions. And later he learnt to fly. He has led quite a prolific life.
 
 ## What did I find impactful?
 

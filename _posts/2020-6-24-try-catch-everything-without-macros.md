@@ -17,7 +17,7 @@ To me, that's an automatic no-no. It's not a definitive no as there might be som
 
 ## So what was the problem?
 
-We have been introducing a new data logging framework to allow us to have more detailed insights on the requests we process. In turned out that some data that we wanted to add to our logs were not always available. While we tried to access them in their absence, exceptions were thrown. After taking into account several possibilities, the team decided to wrap the calls with try-catch blocks.
+We have been introducing a new data logging framework to allow us to have more detailed insights on the requests we process. In turned out that some data that we wanted to add to our logs were not always available. While we tried to access them in their absence, exceptions were thrown. After taking into account several possibilities, the team decided to wrap the calls with try-catch blocks.
 
 But how do that?
 
@@ -143,33 +143,33 @@ As a first step, I tried to do something that works with one only parameter of a
 
 class Logger {
 public:
-  void logA(std::string s) {
-    std::cout << "A: " << s << '\n';
-  }
-  
-  void logB(std::string s) {
-    std::cout << "B: " << s << '\n';
-  }
-      
+  void logA(std::string s) {
+    std::cout << "A: " << s << '\n';
+  }
+  
+  void logB(std::string s) {
+    std::cout << "B: " << s << '\n';
+  }
+      
 };
 
 template <typename Function>
 auto safeLog(Function f, Logger* l, std::string s) -> decltype((l->*f)(s)) {
   try {
-    std::cout << "Logging s safely..." << '\n';
-    return (l->*f)(s);
+    std::cout << "Logging s safely..." << '\n';
+    return (l->*f)(s);
   }
   catch(...) {
-    std::cout << "s is not logged, we have an exception" << '\n';
-    throw;
+    std::cout << "s is not logged, we have an exception" << '\n';
+    throw;
   }
 }
 
 int main () {
-  Logger l;
-  std::string s("bla");
-  safeLog(&Logger::logA, &l, s);
-  safeLog(&Logger::logB, &l, s);
+  Logger l;
+  std::string s("bla");
+  safeLog(&Logger::logA, &l, s);
+  safeLog(&Logger::logB, &l, s);
 }
 ```
 
@@ -203,12 +203,12 @@ You want to be able to deal with any number/type of parameters? Easy-peasy, just
 template <typename Function, typename ... Args>
 auto safeLog(Function f, Logger* l, Args&& ... args) {
   try {
-    std::cout << "Logging s safely..." << '\n';
-    return (l->*f)(std::forward<Args>(args)...);
+    std::cout << "Logging s safely..." << '\n';
+    return (l->*f)(std::forward<Args>(args)...);
   }
   catch(...) {
-    std::cout << "s is not logged, we have an exception" << '\n';
-    throw;
+    std::cout << "s is not logged, we have an exception" << '\n';
+    throw;
   }
 }
 ```
@@ -232,33 +232,33 @@ If we reorganize our code and push `safeLog()` to be a member of `class Logger` 
 
 class Logger {
 public:
-  void logA(std::string s) {
-    std::cout << "A: " << s << '\n';
-  }
-  
-  void logB(std::string s, int n) {
-    std::cout << "B: " << s << " " << n << '\n';
-  }
+  void logA(std::string s) {
+    std::cout << "A: " << s << '\n';
+  }
+  
+  void logB(std::string s, int n) {
+    std::cout << "B: " << s << " " << n << '\n';
+  }
 
-  template <typename Function, typename ... Args>
-  auto safeLog(Function f, Args&& ... args) {
-    try {
-      std::cout << "Logging s safely..." << '\n';
-      return (this->*f)(std::forward<Args>(args)...);
-    }
-    catch(...) {
-      std::cout << "s is not logged, we have an exception" << '\n';
-      throw;
-    }
-  }
-      
+  template <typename Function, typename ... Args>
+  auto safeLog(Function f, Args&& ... args) {
+    try {
+      std::cout << "Logging s safely..." << '\n';
+      return (this->*f)(std::forward<Args>(args)...);
+    }
+    catch(...) {
+      std::cout << "s is not logged, we have an exception" << '\n';
+      throw;
+    }
+  }
+      
 };
 
 int main () {
-  Logger l;
-  std::string s("bla");
-  l.safeLog(&Logger::logA, s);
-  l.safeLog(&Logger::logB, s, 42);
+  Logger l;
+  std::string s("bla");
+  l.safeLog(&Logger::logA, s);
+  l.safeLog(&Logger::logB, s, 42);
 }
 ```
 
@@ -276,67 +276,67 @@ Still it feels strange to use `safeLog` from the outside with some hardcoded var
 class DataAccessor {
 public:
 
-  std::string getA() const {
-    // normally in these functions there would be more comlpex computation
-    // or calls to the DB, etc
-    return a;
-  }
-  
-  int getB() const {
-    return b;
-  }
-  
-  float getC() const {
-    throw std::exception{};
-  }
+  std::string getA() const {
+    // normally in these functions there would be more comlpex computation
+    // or calls to the DB, etc
+    return a;
+  }
+  
+  int getB() const {
+    return b;
+  }
+  
+  float getC() const {
+    throw std::exception{};
+  }
 
 private:
-  std::string a{"this is a string"};
-  int b{42};
+  std::string a{"this is a string"};
+  int b{42};
 };
 
 class Logger {
- private:
-  // this has to come before we use it
-  // with a header file this is not an issue
-  template <typename Function, typename ... Args>
-  auto safeLog(Function f, Args&& ... args) {
-    try {
-      std::cout << "Logging safely..." << '\n';
-      return (this->*f)(std::forward<Args>(args)...);
-    }
-    catch(...) {
-      std::cout << "s is not logged, we have an exception" << '\n';
-        
-    }
-  }
+ private:
+  // this has to come before we use it
+  // with a header file this is not an issue
+  template <typename Function, typename ... Args>
+  auto safeLog(Function f, Args&& ... args) {
+    try {
+      std::cout << "Logging safely..." << '\n';
+      return (this->*f)(std::forward<Args>(args)...);
+    }
+    catch(...) {
+      std::cout << "s is not logged, we have an exception" << '\n';
+        
+    }
+  }
 
- public:
-  void logData(const DataAccessor& data) {
-    safeLog(&Logger::logA, data);
-    safeLog(&Logger::logB, data);
-    safeLog(&Logger::logC, data);
-  }
-  // void logOtherKindOfData(...);
- private:
-  void logA(const DataAccessor& data) {
-    std::cout << "A: " << data.getA() << '\n';
-  }
-  
-  void logB(const DataAccessor& data) {
-    std::cout << "B: " << data.getB() << '\n';
-  }
-  
-  void logC(const DataAccessor& data) {
-    std::cout << "C: " << data.getC() << '\n';
-  }
-  // ...
+ public:
+  void logData(const DataAccessor& data) {
+    safeLog(&Logger::logA, data);
+    safeLog(&Logger::logB, data);
+    safeLog(&Logger::logC, data);
+  }
+  // void logOtherKindOfData(...);
+ private:
+  void logA(const DataAccessor& data) {
+    std::cout << "A: " << data.getA() << '\n';
+  }
+  
+  void logB(const DataAccessor& data) {
+    std::cout << "B: " << data.getB() << '\n';
+  }
+  
+  void logC(const DataAccessor& data) {
+    std::cout << "C: " << data.getC() << '\n';
+  }
+  // ...
 };
 
 int main () {
-    DataAccessor d;
-    Logger l;
-    l.logData(d);
+    DataAccessor d;
+    Logger l;
+    l.logData(d);
 }
 ```
 

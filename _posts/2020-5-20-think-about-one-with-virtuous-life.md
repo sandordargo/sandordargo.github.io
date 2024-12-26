@@ -17,6 +17,6 @@ This will help you separate your ego from the situation. Then you can think abou
 
 This simple action will make things much easier. As soon as you think about what Luke would do, you stop thinking about excuses. You will only think about solutions instead. Whereas if you think about what you should do, your brain will immediately start to rationalize and to justify why it's totally fine to not do anything.
 
-As soon as you have the solutions at hand just by thinking what your hero would do, you made it much more difficult to opt-out. You cannot say anymore that it's not possible, because you actually know it is. Eventually, you will start implementing the winning solution. Thanks to your hero.
+As soon as you have the solutions at hand just by thinking what your hero would do, you made it much more difficult to opt-out. You cannot say anymore that it's not possible, because you actually know it is. Eventually, you will start implementing the winning solution. Thanks to your hero.
 
 Get yourself a virtuous hero and her unique perspectives! And the next time you feel lazy to write a unit test for a piece of legacy code, just because it seems complex, think about what your hero would do!

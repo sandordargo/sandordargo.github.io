@@ -36,7 +36,7 @@ I want to emphasize on the book with a purpose. Writing a book it's an immense w
 
 I still think the book has an added value and not only because the contents are aggregated. I'm totally aware of how much the content evolved, how it got a better shape, explanations were clarified and all those are impossible to backport to the blog posts.
 
-[C++ 20: Get the details](https://leanpub.com/c20) is exactly the book you need right now if you want to immerse yourself in the latest version of C++. It's a complete guide, the author doesn't only discuss the flagship features of C++20, but also every minor addition to the language. Luckily, the book includes tons of example code, so even if you don't have direct access yet to the latest compilers, you will have a very good idea of what you can expect from the different features. A highly recommended read!
+[C++ 20: Get the details](https://leanpub.com/c20) is exactly the book you need right now if you want to immerse yourself in the latest version of C++. It's a complete guide, the author doesn't only discuss the flagship features of C++20, but also every minor addition to the language. Luckily, the book includes tons of example code, so even if you don't have direct access yet to the latest compilers, you will have a very good idea of what you can expect from the different features. A highly recommended read!
 
 ## Connect deeper
 

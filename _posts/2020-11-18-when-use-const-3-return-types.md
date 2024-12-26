@@ -83,9 +83,9 @@ Maybe nothing, maybe you'll have a [dangling reference](https://en.wikipedia.org
 
 ```cpp
 void f() {
-  MyObject o;
-  const auto& aRef = o.getSomethingConstRef();
-  aRef.doSomething(); // will this work?
+  MyObject o;
+  const auto& aRef = o.getSomethingConstRef();
+  aRef.doSomething(); // will this work?
 }
 ```
 
@@ -93,9 +93,9 @@ Will that call work? It depends. If `MyObject::getSomethingConstRef()` returns a
 
 ```cpp
 const T& MyObject::getSomethingConstRef() {
-  T ret;
-  // ...
-  return ret; // ret gets destroyed right after, the returned reference points at its ashes
+  T ret;
+  // ...
+  return ret; // ret gets destroyed right after, the returned reference points at its ashes
 }
 ```
 
@@ -107,12 +107,12 @@ On the other hand, if we return a reference to a member of `MyObject`, there is 
 class MyObject 
 { 
 public:
-  // ...
-  const T& getSomethingConstRef() {
-    return m_t; // m_t lives as long as our MyObject instance is alive
-  }
+  // ...
+  const T& getSomethingConstRef() {
+    return m_t; // m_t lives as long as our MyObject instance is alive
+  }
 private:
-  T m_t;
+  T m_t;
 };
 ```
 

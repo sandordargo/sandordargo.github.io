@@ -16,17 +16,17 @@ Let's take this piece of code
 
 ```py
 def f(s):
-  result = s
-  # ... do some stuff
-  return result
+  result = s
+  # ... do some stuff
+  return result
 
 def g():
-  return True # for the sake of the example
+  return True # for the sake of the example
 
 t=input()
 if f(t) and g():
-   p = f(t)
-   # do something with p
+   p = f(t)
+   # do something with p
 ```
 
 Here we can identify at least two problems:
@@ -38,17 +38,17 @@ There is a solution, we can call f(s) once before the `if` block, and save the r
 
 ```py
 def f(s):
-  result = s
-  # ... do some stuff
-  return result
+  result = s
+  # ... do some stuff
+  return result
 
 def g():
-  return True # for the sake of the example
+  return True # for the sake of the example
 
 t=input()
 p = f(t)
 if p and g():
-   # do something with p
+   # do something with p
 ```
 
 Is that better? Well, it depends.
@@ -68,17 +68,17 @@ You can create a variable in the `if` expression whose scope is only the whole i
 
 ```py
 def f(s):
-  result = s
-  # ...
-  return result
+  result = s
+  # ...
+  return result
 
 def g():
-  return True # for the sake of the example
+  return True # for the sake of the example
 
 t=input()
 if p:=f(t) and g():
-   # do something with p
-   print(p)
+   # do something with p
+   print(p)
 ```
 
 By the "whole `if` block", I meant that `else` is also included. To generalize, we can say that the scope of the variable assigned in the assignment expression is just the current scope. If it's an if, then an if, if it's the whole function, it's the whole function.

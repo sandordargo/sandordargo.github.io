@@ -85,4 +85,4 @@ It will also provide you with very interesting ways to eliminate your limiting c
 
 You can use all these knowledge to finetune your mental operating system and start moving towards to your goals or to move into that direction faster if you're already on the good path.
 
-Happy reading! 
+Happy reading! 

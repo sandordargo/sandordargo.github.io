@@ -100,9 +100,9 @@ We cannot wait for perfect agreements, perfect moments, perfect ideas. Life is n
 
 ## Conclusion
 
-[Soft Skills: The Software Developer's Life Manual](https://amzn.to/3q2z7Mj) is still a book I'd recommend. It's a very reminder of what matters a lot in your life: your mindset, taking care of your health and personal finances. 
+[Soft Skills: The Software Developer's Life Manual](https://amzn.to/3q2z7Mj) is still a book I'd recommend. It's a very reminder of what matters a lot in your life: your mindset, taking care of your health and personal finances. 
 On the other hand, if you read the first edition and you have no plans to read the latest version, don't have a fear of missing out. Instead, just take a book on Stoicism like [this one](https://amzn.to/38veMsU) or subscribe to the [Daily Stoic](https://dailystoic.com/) to learn a bit about this ancient philosophy of the doers.
 
 Reading [Soft Skills](https://amzn.to/3q2z7Mj) will remind you of the importance of self-marketing, teach you the basics of creating wealth and maybe it will inspire you to live a healthier, fitter life.
 
-Can there be anything more important than that? 
+Can there be anything more important than that? 

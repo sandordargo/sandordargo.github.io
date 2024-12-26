@@ -28,31 +28,31 @@ We started to with a [simple example](http://coliru.stacked-crooked.com/a/a34a86
 
 class Base {
 public:
-    Base() = default;
-    virtual ~Base() = default;
-    virtual int x() { 
-        std::cout << "Base::x()\n";
-        return 41; 
-    }
+    Base() = default;
+    virtual ~Base() = default;
+    virtual int x() { 
+        std::cout << "Base::x()\n";
+        return 41; 
+    }
 
 protected:
-    virtual int y() { 
-        std::cout << "Base::y()\n";
-        return 42; 
-    }
+    virtual int y() { 
+        std::cout << "Base::y()\n";
+        return 42; 
+    }
 };
 
 class Derived : public Base {
 public:
-    int x() override { 
-        std::cout << "Derived::x()\n";
-        return Base::y(); 
-    }
+    int x() override { 
+        std::cout << "Derived::x()\n";
+        return Base::y(); 
+    }
 };
 
 int main() {
-    Base* p = new Derived();
-    std::cout << p->x() << '\n';
+    Base* p = new Derived();
+    std::cout << p->x() << '\n';
 }
 ```
 
@@ -64,7 +64,7 @@ This line didn't compile anymore.
 ```cpp
 Base* p = new Derived();
 // main.cpp:25:27: error: 'Base' is an inaccessible base of 'Derived'
-//   25 |     Base* p = new Derived();
+//   25 |     Base* p = new Derived();
 ```
 Seemed reasonable, no big surprise at first sight. So I just changed that line and [it compiled](http://coliru.stacked-crooked.com/a/1278c6cefa4d0e0a).
 
@@ -103,40 +103,40 @@ Just to make the point here is another example. You can play with it on [coliru]
 
 class Base {
 public:
-    Base() = default;
-    virtual ~Base() = default;
-    virtual int x() { 
-        std::cout << "Base::x()\n";
-        return 41; 
-    }
+    Base() = default;
+    virtual ~Base() = default;
+    virtual int x() { 
+        std::cout << "Base::x()\n";
+        return 41; 
+    }
 
 protected:
-    virtual int y() { 
-        std::cout << "Base::y()\n";
-        return 42; 
-    }
+    virtual int y() { 
+        std::cout << "Base::y()\n";
+        return 42; 
+    }
 
 };
 
 class Derived : private Base {
 public:
-    int x() override { 
-        std::cout << "Derived::x()\n";
-        return Base::y(); 
-    }
+    int x() override { 
+        std::cout << "Derived::x()\n";
+        return Base::y(); 
+    }
 };
 
 class SoDerived : public Derived {
 public:
-    int x() override { 
-        std::cout << "SoDerived::x()\n";
-        return Base::y(); 
-    }
+    int x() override { 
+        std::cout << "SoDerived::x()\n";
+        return Base::y(); 
+    }
 };
 
 int main() {
-    SoDerived* p = new SoDerived();
-    std::cout << p->x() << '\n';
+    SoDerived* p = new SoDerived();
+    std::cout << p->x() << '\n';
 }
 ```
 

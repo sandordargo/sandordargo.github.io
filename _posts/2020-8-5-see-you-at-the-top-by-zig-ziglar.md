@@ -23,7 +23,7 @@ I won't go into details on the steps, for that you can read the book, but I'm go
 
 First, you have to fix your self-image, with a poor self-image, you won't be able to achieve much. Or you can't even form healthy relationships with others which is the second step.
 
-While there are psychologists who claim that you don't need goals, you should just surf through life and wait for opportunities to appear and then seize them, he is clearly devoted to setting goals for yourself that will motivate you, your growth. That's the third step.
+While there are psychologists who claim that you don't need goals, you should just surf through life and wait for opportunities to appear and then seize them, he is clearly devoted to setting goals for yourself that will motivate you, your growth. That's the third step.
 
 We are halfway to the top, if we have a good self-image, healthy relationship with the others and motivating, stretching goals! All these are the prior steps to form the right attitude. So what does belong to there? Among others, it's important to feed your brain with the right inputs. "Your input determines your outlook. Your outlook determines your output, and your output determines your future." Consuming the daily madness from news channels and social media will not result in high-quality outputs, just stress, and depression. Instead, you should take educational and motivational content on a daily basis. If I just take my example, I know that I grew the most when I started to read motivational articles every day, when I started to read IT books every day and cut myself from Facebook and news sites. These good habits have the utmost importance.
 

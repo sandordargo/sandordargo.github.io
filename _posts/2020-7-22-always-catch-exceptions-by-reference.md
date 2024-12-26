@@ -24,26 +24,26 @@ Consider the following piece of code. There is a new exception type declared (1)
 
 class SpecialException : public std::exception { // 1
 public:
-    virtual const char* what() const throw() {
-       return "SpecialException";
-    }
+    virtual const char* what() const throw() {
+       return "SpecialException";
+    }
 };
 
 void a() {
-    try {
-        throw SpecialException(); // 2
-    } catch (std::exception e) { // 3
-        // std::cout << "exception caught in a(): " << e.what() << '\n';
-        throw; // 4
-    }
+    try {
+        throw SpecialException(); // 2
+    } catch (std::exception e) { // 3
+        // std::cout << "exception caught in a(): " << e.what() << '\n';
+        throw; // 4
+    }
 }
 
 int main () {
-    try {
-        a();
-    } catch (SpecialException& e) { //5
-        // std::cout << "exception caught in main(): " << e.what() << '\n';
-    }
+    try {
+        a();
+    } catch (SpecialException& e) { //5
+        // std::cout << "exception caught in main(): " << e.what() << '\n';
+    }
 }
 ```
 
@@ -82,8 +82,8 @@ Yes, but you must catch by reference and you have catch the type that has that `
 
 ```cpp
 catch(SpecialException& e) {
-    e.append("Some information");
-    throw;
+    e.append("Some information");
+    throw;
 }
 ```
 
@@ -91,7 +91,7 @@ As you caught by reference, you don't create a copy but you got a handle to the 
 
 ### Are there other ways to rethrow?
 
-As you could observe, we used a simple `throw;` but you might have encountered situations where - given that you caught an exception with the name `e` - `throw e;`  was written.
+As you could observe, we used a simple `throw;` but you might have encountered situations where - given that you caught an exception with the name `e` - `throw e;`  was written.
 
 The difference is that even if you caught `e` by reference if you `throw e;`, the rethrown exception will be copied from e. One potential issue with that is its cost - after all, we copy an object pretty much in vain. Then you might now rethrow the same type as was caught. To be more specific, if you caught `std::exception` by reference and you just simply use `throw;`, you will still rethrow the original `SpecialException`, while if you `throw e`, that `SpecialException` will be copied into `std::exception` so we lose information pretty much the same way as we lost information in the case of catching by value.
 

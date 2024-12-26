@@ -44,23 +44,23 @@ The first is that classes a const member are not assignable:
 ```cpp
 class MyClassWithConstMember {
 public:
-  MyClassWithConstMember(int a) : m_a(a) {}
+  MyClassWithConstMember(int a) : m_a(a) {}
 private:
-  const int m_a;
+  const int m_a;
 };
 
 int main() {
-  MyClassWithConstMember o1{666};
-  MyClassWithConstMember o2{42};
-  o1 = o2;
+  MyClassWithConstMember o1{666};
+  MyClassWithConstMember o2{42};
+  o1 = o2;
 }
 /*main.cpp: In function 'int main()':
 main.cpp:11:8: error: use of deleted function 'MyClassWithConstMember& MyClassWithConstMember::operator=(const MyClassWithConstMember&)'
-   11 |   o1 = o2;
-      |        ^~
+   11 |   o1 = o2;
+      |        ^~
 main.cpp:1:7: note: 'MyClassWithConstMember& MyClassWithConstMember::operator=(const MyClassWithConstMember&)' is implicitly deleted because the default definition would be ill-formed:
-    1 | class MyClassWithConstMember {
-      |       ^~~~~~~~~~~~~~~~~~~~~~
+    1 | class MyClassWithConstMember {
+      |       ^~~~~~~~~~~~~~~~~~~~~~
 main.cpp:1:7: error: non-static const member 'const int MyClassWithConstMember::m_a', cannot use default assignment operator
 */
 ```
@@ -74,8 +74,8 @@ Let's implement the assignment operator. It will compile, but what the heck woul
 
 ```cpp
 MyClassWithConstMember& operator=(const MyClassWithConstMember&) {
-  // ???
-  return *this;
+  // ???
+  return *this;
 }
 ```
 
@@ -89,27 +89,27 @@ And you cannot assign to a const variable, can you? For a matter of fact, you ca
 
 class MyClassWithConstMember {
 public:
-  MyClassWithConstMember(int a) : m_a(a) {}
-  MyClassWithConstMember& operator=(const MyClassWithConstMember& other) {
-    int* tmp = const_cast<int*>(&m_a);
-    *tmp = other.m_a; 
-    std::cout << "copy assignment \n";
-    return *this;
-  }
-  
+  MyClassWithConstMember(int a) : m_a(a) {}
+  MyClassWithConstMember& operator=(const MyClassWithConstMember& other) {
+    int* tmp = const_cast<int*>(&m_a);
+    *tmp = other.m_a; 
+    std::cout << "copy assignment \n";
+    return *this;
+  }
+  
 int getA() {return m_a;}
-  
+  
 private:
-  const int m_a;
+  const int m_a;
 };
 
 int main() {
-  MyClassWithConstMember o1{666};
-  MyClassWithConstMember o2{42};
-  std::cout << "o1.a: " << o1.getA() << '\n';
-  std::cout << "o2.a: " << o2.getA() << '\n';
-  o1 = o2;
-  std::cout << "o1.a: " << o1.getA() << '\n';
+  MyClassWithConstMember o1{666};
+  MyClassWithConstMember o2{42};
+  std::cout << "o1.a: " << o1.getA() << '\n';
+  std::cout << "o2.a: " << o2.getA() << '\n';
+  o1 = o2;
+  std::cout << "o1.a: " << o1.getA() << '\n';
 
 ```
 

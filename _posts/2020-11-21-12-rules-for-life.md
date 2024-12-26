@@ -18,7 +18,7 @@ The usefulness of a society that is based on rules is only questioned by anarchi
 
 The rest debates about the number of rules we need and the rules themselves, but not the necessity of them.
 
-[12 Rules for Life - An Antidote to Chaos](https://amzn.to/2IZj6GR) provides 12 maxims that the author, [Jordan Peterson](https://www.jordanbpeterson.com/), thinks everyone should know about.  12 recommendations that can bring a little order to the chaos of our lives. 12 rules that if followed can lead to a life of responsibility, a life of meaning.
+[12 Rules for Life - An Antidote to Chaos](https://amzn.to/2IZj6GR) provides 12 maxims that the author, [Jordan Peterson](https://www.jordanbpeterson.com/), thinks everyone should know about.  12 recommendations that can bring a little order to the chaos of our lives. 12 rules that if followed can lead to a life of responsibility, a life of meaning.
 A book from one of the most important thinkers on the world stage for many years as the Spectator wrote.
 
 The 12 rules are:
