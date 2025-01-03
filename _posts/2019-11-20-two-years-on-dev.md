@@ -19,7 +19,7 @@ If you are less interested in how I see my achievements on DEV.to and more excit
 
 I definitely made writing a habit. I do it almost every day. I know that some would say that it's bad, because quality is more important than quantity. While that's true, quality comes from practice and practice works only in big quantities.
 
-To me it's important to develop new and good habits. It's not really a decision whether I have something important to write about. If it's a given day and time I write for my blog. I keep a long list of ideas, so I just have to pick one and start working on it.
+To me it's important to develop new and good habits. It's not really a decision whether I have something important to write about. If it's a given day and time I write for my blog. I keep a long list of ideas, so I just have to pick one and start working on it.
 
 Also if you check important authors, composers, most likely they published a lot more than we remember to as pieces of great art.
 

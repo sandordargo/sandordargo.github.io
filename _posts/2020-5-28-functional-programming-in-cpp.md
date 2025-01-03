@@ -8,7 +8,7 @@ excerpt_separator: <!--more-->
 ---
 C++ is an Object-Oriented language, right?
 
-Well, it'd be better to say among others. It can be used as such, but in reality, it's a multiparadigm language, suitable to use as a procedural, object-oriented, generic, and functional programming language.
+Well, it'd be better to say among others. It can be used as such, but in reality, it's a multiparadigm language, suitable to use as a procedural, object-oriented, generic, and functional programming language.
 <!--more-->
 
 Today what I'd like to present to you is [Ivan Cukic](https://twitter.com/ivan_cukic)'s book called [Functional Programming in C++](https://amzn.to/2LeUiZ3). Obviously it mostly covers the functional parts of C++.
@@ -19,7 +19,7 @@ Why do I write "mostly"? There are 2 main reasons:
 ## What will you learn from this book?
 
 If you are someone who grew up eating OO paradigms for breakfast, notably in C++, this is an ideal book to learn about FP concepts. It starts at a very high level and then little by little goes into details. You might not even read it from cover to cover because you are not that much interested in template metaprogramming and functional design of a whole system, but still, I'd recommend reading it for curiosity.
-Besides universal FP concepts, you'll also learn a lot about the main ideas behind the STL implementation. In particular, you'll understand why you have to pass an input range by two iterators and why you have run into a concrete wall if you wanted to compose multiple STL algorithms.
+Besides universal FP concepts, you'll also learn a lot about the main ideas behind the STL implementation. In particular, you'll understand why you have to pass an input range by two iterators and why you have run into a concrete wall if you wanted to compose multiple STL algorithms.
 
 With C++20 we have something in the standard library that overcomes this issue of the STL and that was already available since C++14 through an external library: [`ranges`](https://en.cppreference.com/w/cpp/ranges). I don't say that [this book](https://amzn.to/2LeUiZ3) is a step-by-step tutorial for ranges and it shouldn't be. But it clearly expresses concepts behind and gives you enough examples so that you understand the basics and you want to discover more.
 

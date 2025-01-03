@@ -49,32 +49,32 @@ But how that `single` descriptor looks like. It looks like this:
 
 ```json
 {
-  "projectName": "MyTestProjectSingle",
-  "directories": [{
-      "name": "src",
-      "type": "source",
-      "library": null,
-      "executable": "true",
-      "include": "true",
-      "dependencies": [],
-      "subdirectories": []
-    },
-    {
-      "name": "include",
-      "type": "include",
-      "subdirectories": []
-    },
-    {
-      "name": "tests",
-      "type": "tests",
-      "dependencies": [{
-        "type": "conan",
-        "name": "gtest",
-        "version": "1.8.1"
-      }],
-      "subdirectories": []
-    }
-  ]
+  "projectName": "MyTestProjectSingle",
+  "directories": [{
+      "name": "src",
+      "type": "source",
+      "library": null,
+      "executable": "true",
+      "include": "true",
+      "dependencies": [],
+      "subdirectories": []
+    },
+    {
+      "name": "include",
+      "type": "include",
+      "subdirectories": []
+    },
+    {
+      "name": "tests",
+      "type": "tests",
+      "dependencies": [{
+        "type": "conan",
+        "name": "gtest",
+        "version": "1.8.1"
+      }],
+      "subdirectories": []
+    }
+  ]
 }
 ```
 

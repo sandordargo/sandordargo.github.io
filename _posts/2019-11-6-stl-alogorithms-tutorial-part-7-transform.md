@@ -26,7 +26,7 @@ As a unary operator, as usual, you can pass a function pointer, a functor or a l
 #include <vector>
 
 int main () { 
-    
+    
 auto values = std::vector<int>{1,2,3,4,5};
 auto doubleValues = std::vector<int>{};
 std::transform(values.begin(), values.end(), doubleValues.begin(), [](int number) {return 2*number;});
@@ -57,7 +57,7 @@ Here is a working example:
 #include <vector>
 
 int main () { 
-    
+    
 auto values = std::vector<int>{1,2,3,4,5};
 auto doubleValues = std::vector<int>{};
 std::transform(values.begin(), values.end(), std::back_inserter(doubleValues), [](int number) {return 2*number;});
@@ -89,7 +89,7 @@ Let's see an example respecting the rules:
 #include <vector>
 
 int main () { 
-    
+    
 auto values = std::vector<int>{1,2,3,4,5};
 auto otherValues = std::vector<int>{10,20,30,40,50};
 auto results = std::vector<int>{};
@@ -112,7 +112,7 @@ Of course, you can as long as you respect the types of the containers.
 #include <vector>
 
 int main () { 
-    
+    
 auto values = std::vector<int>{1,2,3,4,5};
 auto otherValues = std::vector<float>{10.1f,20.2f,30.3f,40.4f,50.5f};
 auto results = std::vector<std::string>{};

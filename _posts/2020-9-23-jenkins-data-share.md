@@ -45,7 +45,7 @@ Sharing the content of the generated as a (quite long) text parameter could have
 
 I was advised to use `stash`/`unstash`. First I was puzzled. What should I do with git here? But okay, let's give it a try. Then I realized that it's also [a pair of commands in Jenkins terminology](https://www.jenkins.io/doc/pipeline/steps/workflow-basic-steps/#stash-stash-some-files-to-be-used-later-in-the-build), it's simply not so widely known as its git counterpart. After all, fewer people configure Jenkins pipelines than work with git.
 
-The usage seemed fairly simple, an easy way to share jobs between jobs in the same pipeline. What is important is that we are in a node context, but it was granted in my case. The main thing to pay attention to is that somehow I still have to share the `stash` name with the other workflow which would call the `unstash` command with the same name. 
+The usage seemed fairly simple, an easy way to share jobs between jobs in the same pipeline. What is important is that we are in a node context, but it was granted in my case. The main thing to pay attention to is that somehow I still have to share the `stash` name with the other workflow which would call the `unstash` command with the same name. 
 
 This means, there is an observable difference compared to git un/stash, where you can simply `unstash` the lastly stashed items. In Jenkins, you must provide the name. And if you provide a wrong name, there is an exception thrown.
 
@@ -62,9 +62,9 @@ I needed to copy the within the scheduling workflow, or in fact, rename the file
 Again, I have to emphasize that I'm no way a Jenkins expert. So I went to Stackoverflow for copy-pasta and checked how to copy a text file:
 
 ```java
-  src = new File('src.txt')
-  dst = new File('dst.txt')
-  dst << src.text
+  src = new File('src.txt')
+  dst = new File('dst.txt')
+  dst << src.text
 ```
 
 It didn't work! In fact, an exception was thrown because the source file didn't exist. Why? I didn't understand at that point. I couldn't understand where it can be, where it disappeared.
@@ -76,7 +76,7 @@ After all, `unstash` was successful, but the file was nowhere. I tried to list t
 // I didn'have the rights to call the eachFileRecurse call
 local = new File('.')
 local.eachFile {
-    println(file)
+    println(file)
 }
 ```
 
@@ -85,7 +85,7 @@ Then I contacted my colleague once more. He told me that depending on whether I 
 Lo and behold, it worked right away. I could read in the file without a problem, and I could write into a new one without permission issues.
 
 ```java
- writeFile(file:fileName, text:readFile("unstashedFile"))
+ writeFile(file:fileName, text:readFile("unstashedFile"))
 ```
 
 ## Conclusion
@@ -94,6 +94,6 @@ The most important takeaway for me is that good cooperation is indispensable and
 
 Thinking about key learning from a technical aspect, I learned that I can share files in a Jenkins pipeline between different jobs, between different docker images trough `stash` and `unstash`, and I only have to make sure that the name is something that I can share between the different parts of the pipeline or something that we can compute or we know before.
 
-The most interesting I learned that when in Jenkins, I should use Jenkins verbs as much as I can and not mix them with native Java and Groovy classes unnecessarily, especially when it comes to the filesystem. Otherwise, I might end not being able to read files, or writing them to somewhere else compared to where intended them to write.
+The most interesting I learned that when in Jenkins, I should use Jenkins verbs as much as I can and not mix them with native Java and Groovy classes unnecessarily, especially when it comes to the filesystem. Otherwise, I might end not being able to read files, or writing them to somewhere else compared to where intended them to write.
 
 All in all, I've been enjoying this project and my understanding of what is possible within the realms of CI/CD reached the next - still not to high - level.

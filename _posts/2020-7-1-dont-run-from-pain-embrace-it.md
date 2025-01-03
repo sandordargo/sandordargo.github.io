@@ -11,7 +11,7 @@ How many times have you thought, oh I will find a way to get out of the way of t
 
 If you see a problem, you have to realize it will not solve itself.
 
-Even more, sweeping a problem under the carpet would only let it grow, like a snowball rolling down its way through the slope. If you take the lead right there, you can still solve it relatively easily - compared to what it will become -  and you can even benefit from it. If you let it grow big, it will bite you and the team. And you'll always feel ashamed - hopefully at least! If we keep doing the same repetitive task _like we used to do_, someone will eventually implement that automation and harvest the success. You will tell at the coffee machine, that yeah it's a brilliant idea that you also had, but you had to work too hard, there was no time to make things better. 
+Even more, sweeping a problem under the carpet would only let it grow, like a snowball rolling down its way through the slope. If you take the lead right there, you can still solve it relatively easily - compared to what it will become -  and you can even benefit from it. If you let it grow big, it will bite you and the team. And you'll always feel ashamed - hopefully at least! If we keep doing the same repetitive task _like we used to do_, someone will eventually implement that automation and harvest the success. You will tell at the coffee machine, that yeah it's a brilliant idea that you also had, but you had to work too hard, there was no time to make things better. 
 
 ![Busy to innovate]({{ site.baseurl }}/assets/img/busy-to-innovate.png)
 

@@ -29,16 +29,16 @@ Consider the following class hierarchy to represent the diamond problem, though 
 
 ```cpp
 struct Person {
-    virtual ~Person() = default;
-    virtual void speak() {}
+    virtual ~Person() = default;
+    virtual void speak() {}
 };
 
 struct Student: Person {
-    virtual void learn() {}
+    virtual void learn() {}
 };
 
 struct Worker: Person {
-    virtual void work() {}
+    virtual void work() {}
 };
 
 // A teaching assistant is both a worker and a student
@@ -53,8 +53,8 @@ An attempt to directly bind a reference to the `Person` subobject of a `Teaching
 
 ```cpp
 TeachingAssistant ta;
-Person& a = ta;  // error: which Person subobject should a TeachingAssistant cast into, 
-                // a Student::Person or a Worker::Person?
+Person& a = ta;  // error: which Person subobject should a TeachingAssistant cast into, 
+                // a Student::Person or a Worker::Person?
 ```
 To disambiguate, we would need to explicitly convert `ta` to any of the two base class subobjects:
 
@@ -77,17 +77,17 @@ If we introduce `virtual` to our inheritance in the following way, our problems 
 
 ```cpp
 struct Person {
-    virtual ~Person() = default;
-    virtual void speak() {}
+    virtual ~Person() = default;
+    virtual void speak() {}
 };
 
 // Two classes virtually inheriting Person:
 struct Student: virtual Person {
-    virtual void learn() {}
+    virtual void learn() {}
 };
 
 struct Worker: virtual Person {
-    virtual void work() {}
+    virtual void work() {}
 };
 
 // A teaching assistant is still a student and the worker

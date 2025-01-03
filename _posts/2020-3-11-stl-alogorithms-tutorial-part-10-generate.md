@@ -26,22 +26,22 @@ This is a fairly simple algorithm that takes two iterators defining a range and 
 #include <vector>
 
 int main() {
-  std::vector<int> numbers(8); // a vector of 8 elements zero initialized
-  std::cout << "numbers after the initialization of the vector: ";
-  for (const auto& number : numbers) {
-    std::cout << ' ' << number;
-  }
-  std::cout << '\n';
-  
-  std::fill(numbers.begin(), numbers.begin()+4, 42);
-  std::fill(numbers.begin()+4, numbers.end(), 51); 
+  std::vector<int> numbers(8); // a vector of 8 elements zero initialized
+  std::cout << "numbers after the initialization of the vector: ";
+  for (const auto& number : numbers) {
+    std::cout << ' ' << number;
+  }
+  std::cout << '\n';
+  
+  std::fill(numbers.begin(), numbers.begin()+4, 42);
+  std::fill(numbers.begin()+4, numbers.end(), 51); 
 
-  std::cout << "numbers after filling up the vector: ";
-  for (const auto& number : numbers) {
-    std::cout << ' ' << number;
-  }
+  std::cout << "numbers after filling up the vector: ";
+  for (const auto& number : numbers) {
+    std::cout << ' ' << number;
+  }
 
-  return 0;
+  return 0;
 }
 ```
 
@@ -65,22 +65,22 @@ Here is the example used for `fill` with the necessary changes:
 #include <vector>
 
 int main() {
-  std::vector<int> numbers(8); // a vector of 8 elements initialized to 42
-  std::cout << "numbers after the initialization of the vector: ";
-  for (const auto& number : numbers) {
-    std::cout << ' ' << number;
-  }
-  std::cout << '\n';
-  
-  std::fill_n(numbers.begin(), 4, 42);
-  std::fill_n(numbers.begin()+4, 4, 51); 
+  std::vector<int> numbers(8); // a vector of 8 elements initialized to 42
+  std::cout << "numbers after the initialization of the vector: ";
+  for (const auto& number : numbers) {
+    std::cout << ' ' << number;
+  }
+  std::cout << '\n';
+  
+  std::fill_n(numbers.begin(), 4, 42);
+  std::fill_n(numbers.begin()+4, 4, 51); 
 
-  std::cout << "numbers after filling up the vector: ";
-  for (const auto& number : numbers) {
-    std::cout << ' ' << number;
-  }
+  std::cout << "numbers after filling up the vector: ";
+  for (const auto& number : numbers) {
+    std::cout << ' ' << number;
+  }
 
-  return 0;
+  return 0;
 }
 ```
 
@@ -106,22 +106,22 @@ As it's the simplest example, it can be just a function always returning the sam
 #include <vector>
 
 int main() {
-  std::vector<int> numbers(8); // a vector of 8 elements initialized to 0
-  for (const auto& number : numbers) {
-    std::cout << ' ' << number;
-  }
-  std::cout << '\n';
-  
-  auto staticGenerator = [](){ return 42; };
-  
-  std::generate(numbers.begin(), numbers.end(), staticGenerator);
+  std::vector<int> numbers(8); // a vector of 8 elements initialized to 0
+  for (const auto& number : numbers) {
+    std::cout << ' ' << number;
+  }
+  std::cout << '\n';
+  
+  auto staticGenerator = [](){ return 42; };
+  
+  std::generate(numbers.begin(), numbers.end(), staticGenerator);
 
-  std::cout << "numbers after filling up the vector: ";
-  for (const auto& number : numbers) {
-    std::cout << ' ' << number;
-  }
+  std::cout << "numbers after filling up the vector: ";
+  for (const auto& number : numbers) {
+    std::cout << ' ' << number;
+  }
 
-  return 0;
+  return 0;
 }
 ```
 
@@ -136,28 +136,28 @@ To get random numbers, you have to use a random generator. How random generation
 #include <random>
 
 int main() {
-  std::vector<int> numbers(8); // a vector of 8 elements initialized to 0
-  for (const auto& number : numbers) {
-    std::cout << ' ' << number;
-  }
-  std::cout << '\n';
-  
-  // Random generator beginning
-  std::random_device rd;
-  std::mt19937 mt(rd());
-  std::uniform_real_distribution<double> distribution(1.0, 10.0);
-  
-  auto randomGenerator = [&distribution, &mt](){ return distribution(mt); };
-  // Random generator end
-  
-  std::generate(numbers.begin(), numbers.end(), randomGenerator);
+  std::vector<int> numbers(8); // a vector of 8 elements initialized to 0
+  for (const auto& number : numbers) {
+    std::cout << ' ' << number;
+  }
+  std::cout << '\n';
+  
+  // Random generator beginning
+  std::random_device rd;
+  std::mt19937 mt(rd());
+  std::uniform_real_distribution<double> distribution(1.0, 10.0);
+  
+  auto randomGenerator = [&distribution, &mt](){ return distribution(mt); };
+  // Random generator end
+  
+  std::generate(numbers.begin(), numbers.end(), randomGenerator);
 
-  std::cout << "numbers after filling up the vector: ";
-  for (const auto& number : numbers) {
-    std::cout << ' ' << number;
-  }
+  std::cout << "numbers after filling up the vector: ";
+  for (const auto& number : numbers) {
+    std::cout << ' ' << number;
+  }
 
-  return 0;
+  return 0;
 }
 ```
 
@@ -165,7 +165,7 @@ int main() {
 
 If you read the last three sections with care, this one will not give you any surprise at all.
 
-It works like `fill_n` in terms of passing in the values to be updated - a start iterator and a number of items -  and like `generate` in terms of generating the values to be assigned - a function not taking any parameter but returning a value that can be converted into to the target type.
+It works like `fill_n` in terms of passing in the values to be updated - a start iterator and a number of items -  and like `generate` in terms of generating the values to be assigned - a function not taking any parameter but returning a value that can be converted into to the target type.
 
 Which one to use, `generate` or `generate_n`? It should depend on your use-case to see which provides better readability. If you focus on a range, then use `generate`, but if the number of items to be filled/generated is more important, use the `_n` version.
 
@@ -176,28 +176,28 @@ Which one to use, `generate` or `generate_n`? It should depend on your use-case 
 #include <random>
 
 int main() {
-  std::vector<int> numbers(8); // a vector of 8 elements initialized to 0
-  for (const auto& number : numbers) {
-    std::cout << ' ' << number;
-  }
-  std::cout << '\n';
-  
-  // Random generator beginning
-  std::random_device rd;
-  std::mt19937 mt(rd());
-  std::uniform_real_distribution<double> distribution(1.0, 10.0);
-  
-  auto randomGenerator = [&distribution, &mt](){ return distribution(mt); };
-  // Random generator end
-  
-  std::generate_n(numbers.begin(), 8, randomGenerator);
+  std::vector<int> numbers(8); // a vector of 8 elements initialized to 0
+  for (const auto& number : numbers) {
+    std::cout << ' ' << number;
+  }
+  std::cout << '\n';
+  
+  // Random generator beginning
+  std::random_device rd;
+  std::mt19937 mt(rd());
+  std::uniform_real_distribution<double> distribution(1.0, 10.0);
+  
+  auto randomGenerator = [&distribution, &mt](){ return distribution(mt); };
+  // Random generator end
+  
+  std::generate_n(numbers.begin(), 8, randomGenerator);
 
-  std::cout << "numbers after filling up the vector: ";
-  for (const auto& number : numbers) {
-    std::cout << ' ' << number;
-  }
+  std::cout << "numbers after filling up the vector: ";
+  for (const auto& number : numbers) {
+    std::cout << ' ' << number;
+  }
 
-  return 0;
+  return 0;
 }
 ```
 

@@ -30,16 +30,16 @@ http://www.cplusplus.com/reference/algorithm/random_shuffle/
 #include <vector>
 
 int main () {
-  std::vector<int> numbers {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-  std::random_shuffle (numbers.begin(), numbers.end());
+  std::vector<int> numbers {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  std::random_shuffle (numbers.begin(), numbers.end());
 
-  std::cout << "numbers vector contains:";
-  for (const auto n: numbers) {
-    std::cout << ' ' << n;
-  }
-  std::cout << '\n';
+  std::cout << "numbers vector contains:";
+  for (const auto n: numbers) {
+    std::cout << ' ' << n;
+  }
+  std::cout << '\n';
 
-  return 0;
+  return 0;
 }
 ```
 
@@ -56,18 +56,18 @@ And here is the other when you pass in your RNG.
 int myrandom (int i) { return std::rand()%i;}
 
 int main () {
-  std::srand(unsigned(std::time(0))); // 1
-  std::vector<int> numbers {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  std::srand(unsigned(std::time(0))); // 1
+  std::vector<int> numbers {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
-  std::random_shuffle (numbers.begin(), numbers.end(), [](auto number){return std::rand()%number;}); // 2
+  std::random_shuffle (numbers.begin(), numbers.end(), [](auto number){return std::rand()%number;}); // 2
 
-  std::cout << "numbers vector contains:";
-  for (const auto n: numbers) {
-    std::cout << ' ' << n;
-  }
-  std::cout << '\n';
+  std::cout << "numbers vector contains:";
+  for (const auto n: numbers) {
+    std::cout << ' ' << n;
+  }
+  std::cout << '\n';
 
-  return 0;
+  return 0;
 }
 ```
 
@@ -82,23 +82,23 @@ A good API, a good library is easy to use and hard to misuse. As we saw, `std::r
 ```cpp
 #include <iostream>
 #include <algorithm>
-#include <std::vector>    
+#include <std::vector>    
 #include <random>
 #include <chrono>
 
 int main () {
-  std::vector<int> numbers {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  std::vector<int> numbers {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
-  unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+  unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
 
-  std::shuffle (numbers.begin(), numbers.end(), std::default_random_engine(seed));
+  std::shuffle (numbers.begin(), numbers.end(), std::default_random_engine(seed));
 
-  std::cout << "numbers vector contains:";
-  for (const auto n: numbers) {
-    std::cout << ' ' << n;
-  }
+  std::cout << "numbers vector contains:";
+  for (const auto n: numbers) {
+    std::cout << ' ' << n;
+  }
 
-  return 0;
+  return 0;
 }
 ```
 
@@ -108,7 +108,7 @@ You can observe that in this case instead of the C libraries, we `<random>` and 
 
 While the previous two algorithms randomly reordered the elements in their input ranges, `sample` - available since C++17 - leaves its input intact. The input doesn't change, but on the other hand, it will take a given (by you) number of elements randomly from its input and push it into its out container.
 
-Once you understand this concept, and you've seen a few STL algorithms -  and we did, this is the 15th episode of [this series] - you can guess it's signature with a quite high level on confidence.
+Once you understand this concept, and you've seen a few STL algorithms -  and we did, this is the 15th episode of [this series] - you can guess it's signature with a quite high level on confidence.
 
 First, you pass in two iterators denoting the input range, then one iterator for the output. At this point, you might think a bit, but the next one is the number of elements you want to pick and finally, you have to pick a random number generator.
 
@@ -122,25 +122,25 @@ Here is a simple example:
 ```cpp
 #include <iostream>
 #include <algorithm>
-#include <vector>    
+#include <vector>    
 #include <random>
 #include <chrono>
 
 
 int main () {
-  std::vector<int> numbers {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-  std::vector<int> out;
+  std::vector<int> numbers {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  std::vector<int> out;
 
-  unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+  unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
 
-  std::sample (numbers.begin(), numbers.end(), std::back_inserter(out), 3, std::default_random_engine(seed));
+  std::sample (numbers.begin(), numbers.end(), std::back_inserter(out), 3, std::default_random_engine(seed));
 
-  std::cout << "out vector contains:";
-  for (const auto n: out) {
-    std::cout << ' ' << n;
-  }
+  std::cout << "out vector contains:";
+  for (const auto n: out) {
+    std::cout << ' ' << n;
+  }
 
-  return 0;
+  return 0;
 }
 ```
 

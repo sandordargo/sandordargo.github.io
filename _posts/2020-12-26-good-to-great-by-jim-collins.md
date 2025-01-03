@@ -59,7 +59,7 @@ Even if a change looks dramatic from the outside, in reality, it's accumulated f
 
 Each small step adds up to the change, though they are not spectacular. The author used the flywheel as a metaphor. These small changes put the flywheel representing the company's momentum in motion. And with each small addition, the momentum builds up until the breakthrough from where very little efforts are actually needed to keep flywheel turning.
 
-The companies that succeeded, didn't try to jump to the breakthrough points. They continuously tried to get better and to build on their strengths. On the other hand, many companies feel the urge to jump to the breakthrough as they often seem one-night successes. Unfortunately, such companies miss the point and they fail. They soon find themselves in a downward spiral, in a doom loop that is very difficult to get out from.
+The companies that succeeded, didn't try to jump to the breakthrough points. They continuously tried to get better and to build on their strengths. On the other hand, many companies feel the urge to jump to the breakthrough as they often seem one-night successes. Unfortunately, such companies miss the point and they fail. They soon find themselves in a downward spiral, in a doom loop that is very difficult to get out from.
 
 ## Conclusion
 

@@ -23,7 +23,7 @@ We already covered the last but one topic. Today we finish by stating when we sh
 
 ## Const POD parameters
 
-In this section, we talk about the primitive data types, such as bools, ints, floats, chars and alike.
+In this section, we talk about the primitive data types, such as bools, ints, floats, chars and alike.
 
 Should they be taken as const parameters?
 
@@ -40,7 +40,7 @@ If we don't plan to modify its value, yes we should. For better readability, for
 ```cpp
 
 void setFoo(const int foo) {
-  this->m_foo = foo;
+  this->m_foo = foo;
 }
 ```
 

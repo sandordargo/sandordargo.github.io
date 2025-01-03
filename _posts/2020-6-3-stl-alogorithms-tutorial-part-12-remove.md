@@ -35,34 +35,34 @@ At the time of writing, [coliru](http://coliru.stacked-crooked.com/a/8df97662d3f
 #include <vector>
 
 int main() {
-  std::vector<int> numbers { 1, 2, 3, 4, 5, 4, 7, 4, 9, 10 };
+  std::vector<int> numbers { 1, 2, 3, 4, 5, 4, 7, 4, 9, 10 };
 
-  std::cout << "number of elements in vector: " << numbers.size() << "\n";
-  std::cout << "numbers before remove: ";
-  for (const auto& number : numbers) {
-    std::cout << ' ' << number;
-  }
-  std::cout << '\n';
-  std::cout << '\n';
-  
-  auto beginning_of_removed_items = std::remove(numbers.begin(), numbers.end(), 4); 
-  std::cout << "number of elements in vector after remove/before erase: " << numbers.size() << "\n";
-  std::cout << "numbers after after remove/before erase: ";
-  for (const auto& number : numbers) {
-    std::cout << ' ' << number;
-  }
-  std::cout << '\n';
-  std::cout << '\n';
-  numbers.erase(beginning_of_removed_items, numbers.end());
-  
-  std::cout << "number of elements in vector after erase: " << numbers.size() << "\n";
-  std::cout << "numbers after erase: ";
-  for (const auto& number : numbers) {
-    std::cout << ' ' << number;
-  }
-  std::cout << '\n';
+  std::cout << "number of elements in vector: " << numbers.size() << "\n";
+  std::cout << "numbers before remove: ";
+  for (const auto& number : numbers) {
+    std::cout << ' ' << number;
+  }
+  std::cout << '\n';
+  std::cout << '\n';
+  
+  auto beginning_of_removed_items = std::remove(numbers.begin(), numbers.end(), 4); 
+  std::cout << "number of elements in vector after remove/before erase: " << numbers.size() << "\n";
+  std::cout << "numbers after after remove/before erase: ";
+  for (const auto& number : numbers) {
+    std::cout << ' ' << number;
+  }
+  std::cout << '\n';
+  std::cout << '\n';
+  numbers.erase(beginning_of_removed_items, numbers.end());
+  
+  std::cout << "number of elements in vector after erase: " << numbers.size() << "\n";
+  std::cout << "numbers after erase: ";
+  for (const auto& number : numbers) {
+    std::cout << ' ' << number;
+  }
+  std::cout << '\n';
 
-  return 0;
+  return 0;
 }
 ```
 
@@ -89,24 +89,24 @@ Just like for `remove`, as a return value you get back an iterator pointing to t
 #include <vector>
 
 int main() {
-  std::vector<int> numbers { 1, 2, 3, 4, 5, 4, 7, 4, 9, 10 };
+  std::vector<int> numbers { 1, 2, 3, 4, 5, 4, 7, 4, 9, 10 };
 
-  std::cout << "original numbers: ";
-  for (const auto& number : numbers) {
-    std::cout << ' ' << number;
-  }
-  std::cout << '\n';
-  std::cout << '\n';
-  
-  numbers.erase(std::remove_if(numbers.begin(), numbers.end(), [](auto number) {return number % 2 == 0;}), numbers.end());
-  
-  std::cout << "numbers after removing/erasing the even ones: ";
-  for (const auto& number : numbers) {
-    std::cout << ' ' << number;
-  }
-  std::cout << '\n';
+  std::cout << "original numbers: ";
+  for (const auto& number : numbers) {
+    std::cout << ' ' << number;
+  }
+  std::cout << '\n';
+  std::cout << '\n';
+  
+  numbers.erase(std::remove_if(numbers.begin(), numbers.end(), [](auto number) {return number % 2 == 0;}), numbers.end());
+  
+  std::cout << "numbers after removing/erasing the even ones: ";
+  for (const auto& number : numbers) {
+    std::cout << ' ' << number;
+  }
+  std::cout << '\n';
 
-  return 0;
+  return 0;
 }
 ```
 
@@ -124,18 +124,18 @@ Here is an example.
 #include <vector>
 
 int main() {
-  std::vector<int> numbers { 1, 2, 3, 4, 5, 4, 7, 4, 9, 10 };
-  std::vector<int> copiedNumbers;
+  std::vector<int> numbers { 1, 2, 3, 4, 5, 4, 7, 4, 9, 10 };
+  std::vector<int> copiedNumbers;
 
-  std::remove_copy(numbers.begin(), numbers.end(), std::back_inserter(copiedNumbers), 4);
-  
-  std::cout << "copied numbers: ";
-  for (const auto& number : copiedNumbers) {
-    std::cout << ' ' << number;
-  }
-  std::cout << '\n';
+  std::remove_copy(numbers.begin(), numbers.end(), std::back_inserter(copiedNumbers), 4);
+  
+  std::cout << "copied numbers: ";
+  for (const auto& number : copiedNumbers) {
+    std::cout << ' ' << number;
+  }
+  std::cout << '\n';
 
-  return 0;
+  return 0;
 }
 ```
 
@@ -146,25 +146,25 @@ As we learned for the [`std::copy` algorithms](https://dev.to/sandordargo/the-bi
 
 `remove_copy_if` is the combination of `remove_copy` and `remove_if`. It takes an input range defined by the usual two parameters, then just like `remove_copy`, it takes the third one to define the beginning of the output range - where elements will be copied to - and as `remove_if`, it takes a predicate as the last parameter that helps to decide whether an element should be removed, in other words not copied, or kept, a.k.a. copied.
 
-I'm sure that by now you know that the predicate can be a [lambda expression](http://sandordargo.com/blog/2018/12/19/c++-lambda-expressions), a functor or a function pointer. 
+I'm sure that by now you know that the predicate can be a [lambda expression](http://sandordargo.com/blog/2018/12/19/c++-lambda-expressions), a functor or a function pointer. 
 ```cpp
 #include <algorithm>
 #include <iostream>
 #include <vector>
 
 int main() {
-  std::vector<int> numbers { 1, 2, 3, 4, 5, 4, 7, 4, 9, 10 };
-  std::vector<int> copiedNumbers;
+  std::vector<int> numbers { 1, 2, 3, 4, 5, 4, 7, 4, 9, 10 };
+  std::vector<int> copiedNumbers;
 
-  std::remove_copy_if(numbers.begin(), numbers.end(), std::back_inserter(copiedNumbers), [](auto number) {return number % 2 == 0;});
-  
-  std::cout << "copied numbers: ";
-  for (const auto& number : copiedNumbers) {
-    std::cout << ' ' << number;
-  }
-  std::cout << '\n';
+  std::remove_copy_if(numbers.begin(), numbers.end(), std::back_inserter(copiedNumbers), [](auto number) {return number % 2 == 0;});
+  
+  std::cout << "copied numbers: ";
+  for (const auto& number : copiedNumbers) {
+    std::cout << ' ' << number;
+  }
+  std::cout << '\n';
 
-  return 0;
+  return 0;
 }
 ```
 

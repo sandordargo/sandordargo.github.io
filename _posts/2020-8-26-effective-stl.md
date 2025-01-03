@@ -69,7 +69,7 @@ Have you read the [Software Craftsman by Sandro Mancuso](https://amzn.to/2QdYzOT
 
 His boss walked by and deleted all of it.
 
-Remember, you don't write code to impress people. You write code to deliver solutions, solutions that can be maintained. Keep it stupid simple. Don't use techniques that no one else will understand. Don't use obscure libraries. 
+Remember, you don't write code to impress people. You write code to deliver solutions, solutions that can be maintained. Keep it stupid simple. Don't use techniques that no one else will understand. Don't use obscure libraries. 
 
 Write easy to understand, easy to maintain, yet correct code. That's your job.
 

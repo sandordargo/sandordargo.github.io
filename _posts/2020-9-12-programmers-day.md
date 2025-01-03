@@ -12,7 +12,7 @@ If there is one day in the year when we can stop a bit and reflect on the import
 <!--more-->
 I strongly believe that all jobs, all work is valuable. I never looked down with a stiff nose on anyone because they did something lesser paid or something that - according to people more clever than me - delivers less added value.
 
-Work itself has a tremendous value compared to sitting on the couch and doing nothing. 
+Work itself has a tremendous value compared to sitting on the couch and doing nothing. 
 
 But I digressed. Or did I?
 

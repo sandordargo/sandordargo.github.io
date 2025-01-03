@@ -6,7 +6,7 @@ category: books
 tags: [books, hacking, security]
 excerpt_separator: <!--more-->
 ---
-I hold the role of a White Hat in an organization where being a white-hat doesn't imply that you an expert in security matters. It's more about coordinating software security-related matters.  It's a bit like being a manager - as far as I understand what it is like being a manager - you should understand what your team does, but you don't have to be an expert yourself. There might be teams where it's definitely not the case, but I know about other corporations where they nominate managers in a way that they can't even help with the daily job even if they wanted to.
+I hold the role of a White Hat in an organization where being a white-hat doesn't imply that you an expert in security matters. It's more about coordinating software security-related matters.  It's a bit like being a manager - as far as I understand what it is like being a manager - you should understand what your team does, but you don't have to be an expert yourself. There might be teams where it's definitely not the case, but I know about other corporations where they nominate managers in a way that they can't even help with the daily job even if they wanted to.
 <!--more-->
 
 That's the situation I got into almost two years ago and it's not really for my taste. So little by little with the activities, I coordinate and preparing knowledge sharing sessions, I'm educating myself on how to find, recognize and exploit vulnerabilities.

@@ -38,24 +38,24 @@ You can declare a non-static member function `const` if it doesn't change the va
 #include <iostream>
 
 class A {
-  public:
-  void bar() {
-  // ...
-  } 
+  public:
+  void bar() {
+  // ...
+  } 
 };
 
 class B {
 public:
-  void foo() const {
-    a.bar(); // A::bar() is not const, so this call generates a compilation error!
-  }
+  void foo() const {
+    a.bar(); // A::bar() is not const, so this call generates a compilation error!
+  }
 private:
- A a{};
+ A a{};
 };
 
 int main() {
-  auto b{B{}};
-  b.foo();
+  auto b{B{}};
+  b.foo();
 }
 ```
 On the other hand, we can call non-const functions on locally initialized objects or on function parameters.

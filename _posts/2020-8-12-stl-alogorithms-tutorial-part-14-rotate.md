@@ -37,7 +37,7 @@ In the STL we got used to defining the input container by two iterators, denotin
 
 It's also an iterator! It should point to the element that you want to be the new first element. So for example if you want to rotate by one, you could call it like this:
 ```cpp
- std::rotate(numbers.begin(), numbers.begin()+1, numbers.end());
+ std::rotate(numbers.begin(), numbers.begin()+1, numbers.end());
 ```
 
 This also means that by using `rotate`, you don't define how many rotations you want to perform, but rather that you want to rotate until that middle parameter shows up at the beginning of the container.
@@ -49,17 +49,17 @@ Here is a complete example:
 #include <vector>
 
 int main() {
-  std::vector<int> numbers {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-  
-  std::rotate(numbers.begin(), numbers.begin()+5, numbers.end());
-  
-  std::cout << "numbers after rotation: ";
-  for (const auto& number : numbers) {
-    std::cout << ' ' << number;
-  }
-  std::cout << '\n';
-  // numbers after rotation:  5 6 7 8 9 0 1 2 3 4
-  return 0;
+  std::vector<int> numbers {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  
+  std::rotate(numbers.begin(), numbers.begin()+5, numbers.end());
+  
+  std::cout << "numbers after rotation: ";
+  for (const auto& number : numbers) {
+    std::cout << ' ' << number;
+  }
+  std::cout << '\n';
+  // numbers after rotation:  5 6 7 8 9 0 1 2 3 4
+  return 0;
 }
 ```
 
@@ -86,19 +86,19 @@ Here is an example:
 #include <vector>
 
 int main() {
-  const std::vector<int> numbers {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-  std::vector<int> rotatedNumbers;
-  rotatedNumbers.reserve(numbers.size());
-  
-  std::rotate_copy(numbers.begin(), numbers.begin()+5, numbers.end(), std::back_inserter(rotatedNumbers));
-  
-  std::cout << "rotatedNumbers: ";
-  for (const auto& number : rotatedNumbers) {
-    std::cout << ' ' << number;
-  }
-  std::cout << '\n';
-  // rotatedNumbers:  5 6 7 8 9 0 1 2 3 4
-  return 0;
+  const std::vector<int> numbers {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  std::vector<int> rotatedNumbers;
+  rotatedNumbers.reserve(numbers.size());
+  
+  std::rotate_copy(numbers.begin(), numbers.begin()+5, numbers.end(), std::back_inserter(rotatedNumbers));
+  
+  std::cout << "rotatedNumbers: ";
+  for (const auto& number : rotatedNumbers) {
+    std::cout << ' ' << number;
+  }
+  std::cout << '\n';
+  // rotatedNumbers:  5 6 7 8 9 0 1 2 3 4
+  return 0;
 }
 ```
 
@@ -120,7 +120,7 @@ std::shift_left(numbers.begin(), numbers.end(), 1); // {1, 2, 3, 4, 5, 6, 7, 8, 
 std::shift_right(numbers.begin(), numbers.end(), 1); // {1, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 ```
 
-That's the difference with rotate. What is taken from the beginning of the end is not put to the other end of the container, but it's just discarded.
+That's the difference with rotate. What is taken from the beginning of the end is not put to the other end of the container, but it's just discarded.
 
 But are the items copied or moved? I'd encourage you to try it. You can simply wrap the above integers into a small class and log in the special functions when they are called.
 
@@ -130,6 +130,6 @@ I made this experiment, and if your type supports move semantics, they will be u
 
 Today, we learned about 4 algorithms that help us to rotate/shift the elements around in a container. Probably rotating is more interesting. Elements are moved to the left and what we would drop, it gets pushed_back to the end. Probably the most readable way to use it is by expressing the second parameter with the beginning of the input container + the number of shifts/rotations by one you want to perform. But the most readable way might depend on your use case. 
 
-For some interesting real-life use cases, I'd invite you to watch [Sean Parent's talk from GoingNative 2013](http://channel9.msdn.com/Events/GoingNative/2013/Cpp-Seasoning).
+For some interesting real-life use cases, I'd invite you to watch [Sean Parent's talk from GoingNative 2013](http://channel9.msdn.com/Events/GoingNative/2013/Cpp-Seasoning).
 
 Next time we’ll learn about `shuffle`, `random_shuffle`, and `sample` algorithms. Stay tuned!
