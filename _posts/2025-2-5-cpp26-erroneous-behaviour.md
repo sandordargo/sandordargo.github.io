@@ -8,7 +8,7 @@ excerpt_separator: <!--more-->
 ---
 If you pick a random talk at a C++ conference these days, there is a fair chance that the speaker will mention safety at least a couple of times. It's probably fine like that. The committee and the community must think about improving both the safety situation and the reputation of C++.
 
-If you follow what's going on in this space, you are probably aware that different people see the question of safety in different ways. I think almost everybody finds it important, but they would solve the problem in different ways.
+If you follow what's going on in this space, you are probably aware that people have different perspectives on safety. I think almost everybody finds it important, but they would solve the problem in their own way.
 
 A big source of issues is certain manifestations of undefined behaviour. It affects both the safety and the stability of software. I remember that a few years ago when I was working on some services which had to support a 10x growth, one of the important points was to eliminate undefined behaviour as much as possible. One main point for us was to remove uninitialized variables which often lead to crashing services. 
 
