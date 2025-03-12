@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "C++26: attributes in structured bindings"
+title: "C++26: Removing language features"
 date: 2025-3-12
 category: dev
-tags: [cpp, cpp26, structuredbindings, attributes]
+tags: [cpp, cpp26, remove, deprecate]
 excerpt_separator: <!--more-->
 ---
 Probably you all heard that C++ is an ever-growing language - I wrote so many times as well. Each standard indeed comes with a great bunch of highly-anticipated features. At the same time, due to binary compatibility considerations, very few old features are removed. This has several implications:
