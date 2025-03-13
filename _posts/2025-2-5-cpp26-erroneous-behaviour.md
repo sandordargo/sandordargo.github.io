@@ -44,24 +44,29 @@ void foo() {
 
 We must notice in the example, that `d` doesn't have an erroneous value anymore. Now its value is simply [indeterminate](https://en.cppreference.com/w/cpp/language/attributes/indeterminate). On the other hand, if we later use that variable still without initialization, it's undefined behaviour!
 
-Above, we've only talked about variables with automatic storage duration. That's not the only way to have uninitialized variables. Moreover, probably it's not even the main way, think about dynamic storage duration, think about pointers! Also, if any member variable has an indeterminate or erroneous value, that's propageted for the whole parent object.
+Above, we've only talked about variables with automatic storage duration. That's not the only way to have uninitialized variables. Moreover, probably it's not even the main way, think about dynamic storage duration, think about pointers! Also, if any member is left uninitialized, the parent object's value will be considered either indeterminate or erroneous.
 
 
 ```cpp
 struct S {
   S() {}
-  int num [[indeterminate]];
+  int num;
   std::string text;
 };
 
-S s; // indeterminate value as s.num is indeterminate!
+int main() {
+  [[indeterminate]] S s1; // indeterminate value
+  std::cout << s1.num << '\n' // this is UB as s1.num is indeterminate
+  S s2;
+  std::cout << s2.num << '\n' // this is still UB, s2.num is an erroneous value
+}
 ```
 Not only variables variables but function parameters can also be marked `[[indeterminate]]`.
 
 ```cpp
 struct S {
   S() {}
-  int num [[indeterminate]];
+  int num;
   std::string text;
 };
 
