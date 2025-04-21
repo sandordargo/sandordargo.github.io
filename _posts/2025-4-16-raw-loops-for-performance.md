@@ -222,7 +222,7 @@ title: c, amount 42
 ```
 In the for loop, we construct `ToData` and move it, and there is also a copy construction. Before actually copying the data.
 
-On the other hand, [for the version using ranges, the outpout is shorter and different](https://godbolt.org/z/Mbhr7xhx7)!
+On the other hand, [for the version using ranges, the output is shorter and different](https://godbolt.org/z/Mbhr7xhx7)!
 
 ```
 filling response.data
