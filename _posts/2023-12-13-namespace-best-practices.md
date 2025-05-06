@@ -305,7 +305,7 @@ Oh, and I hope you didn't even have the idea, but don't use macros to create nam
 #define NS MyNamespace  // Avoid using macros for this purpose
 ```
 
-### Use internal linkage only in source files ([SF.21](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#sf21-dont-use-an-unnamed-anonymous-namespace-in-a-header), [SF.22(https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#sf22-use-an-unnamed-anonymous-namespace-for-all-internalnon-exported-entities)])
+### Use internal linkage only in source files ([SF.21](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#sf21-dont-use-an-unnamed-anonymous-namespace-in-a-header), [SF.22](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#sf22-use-an-unnamed-anonymous-namespace-for-all-internalnon-exported-entities))
 
 When you have functions or variables that are not supposed to be used outside of a source file, give them internal linkage either by placing them in unnamed namespaces or [by declaring them `static`](https://www.sandordargo.com/blog/2021/07/07/2-ways-to-use-static-with-functions-cpp).
 
