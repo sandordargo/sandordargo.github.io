@@ -17,6 +17,7 @@ Here is a list of books I wrote. Follow the links for more information.
 - [Daily C++ Interview]({{ site.baseurl }}/books/cpp_interview)
 - [How to use const in C++: On the virtues of constness]({{ site.baseurl }}/books/cpp_const)
 - [How to reduce binary size in C++]({{ site.baseurl }}/books/cpp_binary_size)
+- [Time Management for Software Developers]({{ site.baseurl }}/books/time_management)
 
 ***[Find my books on LeanPub](https://leanpub.com/u/sandordargo)***
 
