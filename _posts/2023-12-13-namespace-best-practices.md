@@ -3,7 +3,7 @@ layout: post
 title: "How to use your namespaces to their best"
 date: 2023-12-13
 category: dev
-tags: [cpp, cpp23, namespace, codeorganization]
+tags: [cpp, cpp23, namespaces, codeorganization]
 excerpt_separator: <!--more-->
 ---
 Today, we are not going to discuss any novelty of the language. Instead, we are going to discuss something old, something that we take for granted and probably something we don't even think about a lot. We are going to discuss namespaces, what they are and what are the related best practices, including *some* of the recommendations of the [Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines).

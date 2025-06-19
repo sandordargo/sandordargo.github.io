@@ -3,7 +3,7 @@ layout: post
 title: "Member ordering and binary sizes"
 date: 2024-6-26
 category: dev
-tags: [cpp, cpp23, namespace, codeorganization]
+tags: [cpp, cpp23, binarysizes]
 excerpt_separator: <!--more-->
 ---
 While I have been preparing my presentation for [C++ On Sea](https://cpponsea.uk/), I realized that something is missing from [How to keep your binaries small](https://cpponsea.uk/2024/session/how-to-keep-your-binaries-small). The importance of member ordering!
