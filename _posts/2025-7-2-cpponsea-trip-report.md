@@ -118,7 +118,7 @@ One cannot justify using plain C because of worse performance and bigger binarie
 
 ### Compile-time debugging (Mateusz Pusz)
 
-Mateusz Pusz gave a talk on features that help us write great C++ libraries — both existing ones and those coming with C++26. While the talk was informative and full of useful insights, I want to focus on one specific feature that really stood out to me and that I'd love to explore further: **compile-time debugging**.
+Mateusz Pusz gave a talk on features that help us write great C++ libraries — both existing ones and those coming with C++26 or later. While the talk was informative and full of useful insights, I want to focus on one specific feature that really stood out to me and that I'd love to explore further: **compile-time debugging** which will be part of C++29.
 
 Debugging `constexpr` — let alone `consteval` — functions can be quite a challenge. Traditional debugging tools are mostly useless in this domain, making issues hard to trace and fix.
 
