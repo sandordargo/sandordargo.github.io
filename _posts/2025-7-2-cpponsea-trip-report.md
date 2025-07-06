@@ -110,7 +110,7 @@ Now let me share three interesting ideas from three different talks.
 Marcell Juhasz gave a talk with the title [*"Balancing Efficiency and Flexibility: Cost of Abstractions in Embedded Systems
 "*](https://cpponsea.uk/2025/session/balancing-efficiency-and-flexibility-cost-of-abstractions-in-embedded-systems). He essentially took an embedded project written in good-old C and started to add layers of abstractions in C++, making the code more readable, testable and maintainable. Goals that I deeply care about.
 
-But Marcell didn't only made the code better, but after each step he made some measurements. Mostly about binary size as that's what mattered him the most. If he found any increase, he checked where it comes from and tried to get rid off the increase while keeping the benefits of the new layer of abstraction.
+But Marcell not only improved the code, he also took measurements after each step. Mostly about binary size as that's what mattered to him the most. If he found any increase, he checked where it comes from and tried to get rid off the increase while keeping the benefits of the new layer of abstraction.
 
 The outcome?
 
