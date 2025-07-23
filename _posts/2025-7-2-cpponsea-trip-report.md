@@ -156,7 +156,7 @@ I was even more surprised — and humbled — to see Jason Turner attending my t
 
 It's no secret that I talked about **namespaces**. What they are, how they work, and what best practices you should follow when using them. I've already covered some of these topics [on the blog](https://www.sandordargo.com/tags/namespaces/), and more may come. Of course, I'll share the video once it becomes available.
 
-While I had my talk on the first morning, a lightning talk awaited me later that evening. I try to grab these opportunities to speak — it's a great way to fight stage fright! I presented a technique for **designing your workweek**, something I've written about on [The Dev Ladder]().
+While I had my talk on the first morning, a lightning talk awaited me later that evening. I try to grab these opportunities to speak — it's a great way to fight stage fright! I presented a technique for **designing your workweek**, something I've written about on [The Dev Ladder](https://devladder.substack.com/p/where-pomodoro-meets-a-spreadhseet).
 
 And finally — no clicker issues this time! After [Meeting C++ last year](), I bought a [Logitech Spotlight](https://amzn.to/44pbmUy) and it was one of my best conference decisions. No glitches, just smooth transitions. Same goes for my presentation overall — though next time, I'll aim to highlight key points in code examples more clearly.
 
