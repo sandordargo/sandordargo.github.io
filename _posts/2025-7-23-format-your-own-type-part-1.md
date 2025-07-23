@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Format your own type - part 1"
+title: "Format your own type (Part 1)"
 date: 2025-7-23
 category: dev
 tags: [cpp, format]
