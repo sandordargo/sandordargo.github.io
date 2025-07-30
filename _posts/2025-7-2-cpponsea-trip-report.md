@@ -158,7 +158,7 @@ It's no secret that I talked about **namespaces**. What they are, how they work,
 
 While I had my talk on the first morning, a lightning talk awaited me later that evening. I try to grab these opportunities to speak — it's a great way to fight stage fright! I presented a technique for **designing your workweek**, something I've written about on [The Dev Ladder](https://devladder.substack.com/p/where-pomodoro-meets-a-spreadhseet).
 
-And finally — no clicker issues this time! After [Meeting C++ last year](), I bought a [Logitech Spotlight](https://amzn.to/44pbmUy) and it was one of my best conference decisions. No glitches, just smooth transitions. Same goes for my presentation overall — though next time, I'll aim to highlight key points in code examples more clearly.
+And finally — no clicker issues this time! After [Meeting C++ last year](https://www.sandordargo.com/blog/2024/11/20/trip-report-meeting-cpp2024), I bought a [Logitech Spotlight](https://amzn.to/44pbmUy) and it was one of my best conference decisions. No glitches, just smooth transitions. Same goes for my presentation overall — though next time, I'll aim to highlight key points in code examples more clearly.
 
 ## Conclusion
 
