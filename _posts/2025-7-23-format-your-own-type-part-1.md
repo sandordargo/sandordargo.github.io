@@ -6,7 +6,7 @@ category: dev
 tags: [cpp, format]
 excerpt_separator: <!--more-->
 ---
-I recently published two posts about how C++26 improves `std::format` and the related facilities. (If you missed them, here are [Part 1](https://www.sandordargo.com/blog/2025/07/09/cpp26-format-part-1) and [Part 2]()https://www.sandordargo.com/blog/2025/07/16/cpp26-format-part-2) Now it's time to explore how you can **format your own types** using `std::format`.
+I recently published two posts about how C++26 improves `std::format` and the related facilities. (If you missed them, here are [Part 1](https://www.sandordargo.com/blog/2025/07/09/cpp26-format-part-1) and [Part 2](https://www.sandordargo.com/blog/2025/07/16/cpp26-format-part-2)). Now it's time to explore how you can **format your own types** using `std::format`.
 
 But let's start from the beginning.
 
