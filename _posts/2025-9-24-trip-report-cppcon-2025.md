@@ -179,6 +179,10 @@ So, how did my talk go — and what was it about in the first place?
 
 Once again, I came to a C++ conference to talk about clean code and performance without showing a single line of code or a performance benchmark on the slides. My main message was simple: **prioritize maintainability first**. It took some courage to say this one day after [Vittorio Romeo delivered a keynote](https://cppcon2025.sched.com/event/27bNZ/more-speed-simplicity-practical-data-oriented-design-in-c++) arguing that we should think about performance first. In my view, that's rarely the case. If you're writing a program for the long term, maintainability has to come first.
 
+> *Edit: after discussing with Vittorio and having re-watched the [pre-release](https://www.youtube.com/watch?v=SzjJfKHygaQ&t=4920s), I must admit that I just frowned when Vittorio said that design for performance from the start. After, there was a big "if".* 
+>
+>*If speed is such a requirement that requires up-front design. Certain performance requirements cannot be afterthoughts!*
+
 > ![Me at CppCon]({{ site.baseurl }}/assets/img/me_at_cppcon2025.jpg "Me at CppCon")  
 > _Me at CppCon_
 
