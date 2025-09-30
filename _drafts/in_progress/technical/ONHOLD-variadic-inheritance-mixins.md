@@ -6,15 +6,83 @@ category: dev
 tags: [career, portfoliojob, watercooler, business]
 excerpt_separator: <!--more-->
 ---
-Last week, we were talking about variadic class template arguments and we saw a couple of interesting examples of usage. We saw how to implement easily a visitor, we saw how we can create a storage that can take elements of different types. We also mentioned that we can implement mixings with the help of variadic template arguments.
+Last week, we were talking about variadic class template arguments and we saw a couple of interesting examples of usage. We saw how to implement easily a visitor, we saw how we can create a storage that can take elements of different types. We also mentioned that we can implement mixins with the help of variadic template arguments.
 
 ## What are mixins?
 
 Mixins are a design pattern used to "mix" additional functionality into a class through inheritance or composition. The primary goal of a mixin is to provide reusable and modular functionality that can be added to multiple classes without forming deep or complex inheritance hierarchies.
 
-Mixins are commonly used to achieve multiple inheritance-like behavior, but with more focused and reusable pieces of code. The key idea is to separate out small, reusable components of functionality into classes (mixins) and then combine them as needed to create more complex behavior in derived classes.
+We can implement mixins in different ways. I'll show two of them. First we'll see mixins implemented with inheritance, then with the help of templates. That's where variadic class template arguments will come into picutre.
 
-## An old-school mixin implementation
+## Mixins with inheritance
+
+First, we are going to implement mixins with the help of inheritance. There are two parts we have to implement. First, we need the mixin class that will provide the additional functionality and then we need a target class that "mixes" in that functionality.
+
+In our first example, we're going to have a mixin that provides the funcionality of some very basic logging used by an application.
+
+```cpp
+#include <iostream>
+
+class LoggerMixin {
+public:
+    void log(const std::string& message) {
+        std::cout << "[Log]: " << message << std::endl;
+    }
+};
+
+class Application : public LoggerMixin {
+public:
+    void run() {
+        log("Application is running...");
+        // Other functionality
+    }
+};
+
+int main() {
+    Application app;
+    app.run();  // The class Application has access to the Logger's log() function
+    return 0;
+}
+```
+
+But what's the advantage of having a mixin? One is that you can reuse it at several places. The other is that you can combine several mixins in one target! Let's add another mixin to our previous example that will provide us with the functionality of timing.
+
+```cpp
+#include <iostream>
+
+class LoggerMixin {
+public:
+    void log(const std::string& message) {
+        std::cout << "[Log]: " << message << std::endl;
+    }
+};
+
+class TimerMixin {
+public:
+    void startTimer() {
+        std::cout << "Timer started!" << std::endl;
+    }
+};
+
+class Application : public LoggerMixin, public TimerMixin {
+public:
+    void run() {
+        log("Application is running...");
+        startTimer();
+        // Other functionality
+    }
+};
+
+int main() {
+    Application app;
+    app.run();  // Application has both logging and timing functionality
+    return 0;
+}
+```
+
+This seems fine and easy to implement. But what if the mixins need access to some 
+
+As I mentioned, there are other ways to implement mixins. Let's have a look at another solution.
 
 ## Mixins with variadic class template arguments
 
@@ -33,8 +101,7 @@ MultiInheritance mh1b(S2{"two"});
 MultiInheritance mh2(S1{}, S2{"two"});
 ```
 
-With the pack expansion, we call all the specific class copy or move constructors. 
-
+With the pack expansion, we call all the specific class copy or move constructors.  
 
 
 ## Conclusion

@@ -3,7 +3,7 @@ layout: post
 title: "Railway oriented programming with C++"
 date: 2019-X-X
 category: dev
-tags: [clean code, functional programming, craftsmanship, showmethecode]
+tags: [cleancode, functional programming, craftsmanship, showmethecode]
 excerpt_separator: <!--more-->
 ---
 In 2017, I already wrote about [Railway Oriented Programming](http://sandordargo.com/blog/2017/09/27/railway_oriented_programming). You can read the details in that article, but let me give you a recap on it.

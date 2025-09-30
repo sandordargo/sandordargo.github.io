@@ -1,1 +1,0 @@
-why we use one in cpp and not the other that much in java
