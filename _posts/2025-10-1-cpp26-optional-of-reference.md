@@ -50,7 +50,7 @@ What should these assignments do? Should they copy objects or rebind references?
 If they were true assignments, `maybeCat2 = loki;` would copy `loki` into `fynn`. That would have been surprising and error-prone.
 
 Instead, the committee decided that `operator=` for `optional<T&>` always rebinds the reference. At the end of the snippet:
-- `maybeCat1` still refers to `fynn` (the `= fynn` was redundant).
+- `maybeCat1` refers to `fynn`
 - `maybeCat2` now refers to `loki`, not `fynn`.
 
 This design makes the behavior consistent and avoids accidental copies.
