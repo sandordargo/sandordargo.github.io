@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "C++26: std::optional<T&>"
+title: "C++26: std::optional&lt;T&amp;&gt;"
 date: 2025-10-1
 category: dev
 tags: [cpp, cpp26, optional, reference]
