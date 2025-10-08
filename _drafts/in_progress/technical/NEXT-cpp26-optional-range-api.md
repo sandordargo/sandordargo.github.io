@@ -1,1 +1,0 @@
-https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2024/p3168r2.html
