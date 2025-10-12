@@ -61,8 +61,6 @@ This design makes the behavior consistent and avoids accidental copies.
 
 In practice, `make_optional<T&>` was mostly used in test cases. With C++26, you’ll need to construct `optional<T&>` directly if you want an optional reference.
 
-*It's also worth noting that the main usage of `make_optional<T&>` are tests cases.*
-
 ### The question of constness
 
 Should `optional<T&>` model shallow or deep const?
