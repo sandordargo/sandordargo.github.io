@@ -12,6 +12,9 @@ More than a hundred people registered, and the room quickly filled up with local
 
 The evening began with Jonathan Müller's talk, **Cache-Friendly C++**, followed by my own session on **Strongly Typed Containers**. Finally, Marcell Juhász closed the event with an insightful and hands-on presentation on **Hacking and Securing C++**.
 
+![Budapest C++ Group (photo by Balázs Bondici)]({{ site.baseurl }}/assets/img/c++meetup_1022.jpeg)
+*Budapest C++ Group (photo by Balázs Bondici)*
+
 Let’s dive into some more details.
 
 ## Cache-Friendly C++ by Jonathan Müller
@@ -27,6 +30,9 @@ The talk closed on a pragmatic note that summed up the spirit of his message: "*
 ## Strongly Typed Containers by Sándor Dargó
 
 I guess it's always a special feeling to speak in your hometown. For me it was the first time, and it felt great. In my talk, we explored one of my favorite topics: how far we can take type safety in C++ before the language — or our sanity — starts to push back. Strong typing is easy to advocate for in theory: it reduces ambiguity, improves readability, and catches a whole class of bugs at compile time. But in practice, it raises important design questions — especially when our goal is to make containers not just generic, but also semantically strong.
+
+![Me at Budapest C++ (photo by Balázs Bondici)]({{ site.baseurl }}/assets/img/me-at-budapest-cpp-2025.jpg)
+*Me at Budapest C++ (photo by Balázs Bondici)*
 
 I began by examining why we'd even want strongly typed containers in the first place. It's not just about avoiding accidental mix-ups between units or IDs — it's about making code self-documenting and harder to misuse. From there, I walked through different implementation strategies: inheritance (and the pitfalls of both `public` and `private` forms), composition as a safer and clearer alternative, and how to use C++'s type system to wrap `std::vector` or other STL containers without losing their familiar interface. We discussed when it's acceptable to *"bend"* STL design rules, and when it's better to keep them intact.
 
