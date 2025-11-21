@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Time in C++: Understanding <chrono> and the Concept of Clocks"
+title: "Time in C++: Understanding &lt;chrono&gt; and the Concept of Clocks"
 date: 2025-11-19
 category: dev
 tags: [cpp, chrono, clocks, time]
