@@ -85,8 +85,9 @@ If your goal is to measure durations — like how long a function call takes, or
 
 The reasong behind is that wall-clock time can jump backwards or forwards:
 - The user changes the system clock manually.
-- Daylight Saving Time (DST) begins or ends.
 - The Network Time Protocol (NTP) adjusts the system time slightly to stay in sync.
+
+*As Ingo Van Lil pointed out at the comments section, DST changes do not affect `system_clock`*
 
 In such cases, your measurements won't be precise, they might suddenly show negative durations or too big results. For accurate timing, you should use `std::chrono::steady_clock` instead — it never goes backward. More about that in the next part of this series.
 
@@ -128,7 +129,7 @@ This kind of abstraction makes your tests stable, reproducible, and fast — no 
 
 ## Conclusion
 
-Today, we looked into probably the most widely used standard clock, `std::chrono::system_clock`. It returns the *real-world* time. It's the best for timestamps and also to interact with old C APIs. On the other hand, it's not good for measurements because this clock can jump due to DST or manual adjustments and even for NTP syncs. For testing purposes, it's the best wrap it so that we can fake the *current* time.
+Today, we looked into probably the most widely used standard clock, `std::chrono::system_clock`. It returns the *real-world* time. It's the best for timestamps and also to interact with old C APIs. On the other hand, it's not good for measurements because this clock can jump due to manual adjustments and for NTP syncs. For testing purposes, it's the best wrap it so that we can fake the *current* time.
 
 Next week, we will explore `steady_clock` which is more sutable for measuring durations.
 
