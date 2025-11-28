@@ -6,7 +6,7 @@ category: dev
 tags: [cpp, chrono, clocks, time]
 excerpt_separator: <!--more-->
 ---
-Last week, we started a series on clocks, by introducing the `<chono>` library in general. We saw the three pillars of the library: `time_point`s, `duration`s and clocks from a birds-eye view. As a next step, let's talk about one of its most commonly used clocks: `std::chrono::system_clock`. 
+Last week, we started a series on clocks, by introducing the `<chrono>` library in general. We saw the three pillars of the library: `time_point`s, `duration`s and clocks from a birds-eye view. As a next step, let's talk about one of its most commonly used clocks: `std::chrono::system_clock`. 
 
 If you've ever logged timestamps or printed the current time, there is a fair chance that you've already used it. But let's take a closer look at what this clock really represents and where its limitations lie.
 
