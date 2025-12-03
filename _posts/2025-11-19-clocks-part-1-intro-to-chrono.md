@@ -35,13 +35,13 @@ Since C++11, the `<chrono>` library has made working with time simpler, but we c
 - **Lack of composability**: It was hard to build higher-level abstractions on top of raw time values.
 
 The `<chrono>` library was built around 3 pillars:
-- Durations (`std::chorno::duration`)
+- Durations (`std::chrono::duration`)
 - Timepoints (`std::chrono::time_point`)
 - Clocks (`std::chrono::clock`)
 
 Later, C++20 introduced calendar dates and time zones, but we won't cover those here — this series focuses on clocks.
 
-## `std::chorno::duration`
+## `std::chrono::duration`
 
 Durations — unsurprisingly — represent time intervals.
 They are defined as:
@@ -64,7 +64,7 @@ Let's look into some other ratios to understand better their meaning:
 Now let's look at some common durations:
 
 - `std::duration<long long, std::nano>` (or `std::duration<long long, std::ratio<1, 1'000'000'000>>`) represents durations in nanoseconds, it's aliased as `std::chrono::nanoseconds`
-- `std::duration<long long, std milli>` represents durations in milliseconds (`std::chrono::milliseconds`)
+- `std::duration<long long, std::milli>` represents durations in milliseconds (`std::chrono::milliseconds`)
 - `std::duration<long long>` represents durations in seconds (`std::chrono::seconds`)
 
 As a fraction doesn't have to be smaller than one, we can represent durations in coarser granularitly.
