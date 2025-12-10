@@ -117,7 +117,13 @@ As you cannot cast the constness away from value, you have to turn the member va
 
 Is this worth it?
 
-You have your const member, fine. You have the assignment working, fine. Then if anyone comes later and wants to do the same "magic" outside of the special functions, for sure, it would be a red flag in a code review.
+You have your `const` member, fine. You have the assignment working, fine. Then if anyone comes later and wants to do the same "magic" outside of the special functions, for sure, it would be a red flag in a code review. 
+
+Let's not commit this code so fast.
+
+Having this *"magic"* in the special functions is already a red flag! Especially as `const_cast` might lead to *undefined behaviour*:
+
+> *$5.2.11/7 - Note: Depending on the type of the object, a write operation through the pointer, lvalue or pointer to data member resulting from a const_cast that casts away a const-qualifier may produce undefined behaviour (7.1.5.1).*
 
 Speaking of special functions. Would move semantics work? Well, replace the assignment with this:
 
@@ -125,24 +131,23 @@ Speaking of special functions. Would move semantics work? Well, replace the assi
 o1 = std::move(o2);
 ```
 
-You'll see that it's still a copy assignment taking place as the [the rule of 5](https://www.fluentcpp.com/2019/04/19/compiler-generated-functions-rule-of-three-and-rule-of-five/) applies. If you implement one special function, you have to implement all of them. The rest is not generated.
+You'll see that it's still a copy assignment taking place as. We ignored the [the rule of 5](https://www.fluentcpp.com/2019/04/19/compiler-generated-functions-rule-of-three-and-rule-of-five/). If we implement one special function, we have to implement all of them. The rest is not generated.
 
-In fact, what we have seen is rather dangerous. You think, you have a move and you're efficient due to having a const member as using move semantics, but in fact, you are using the old copy assignment.
+In fact, what we have seen is rather dangerous. We might think, we have a move and we're efficient, but in fact, we are just using copy assignment.
 
-Yet, performance-wise, it seems hard to make a verdict. I ran a couple of tests in [QuickBench](https://quick-bench.com/q/58tnSzx0Hjm6t3KyIX9OcSHe9WE) and there is no significant difference between the above version and the one with non-const member and generated special assignment operator. On low optimization levels (None-O1) it depends on the compiler and its version. With higher optimization levels set there seems to be no difference.
+Performance-wise, it would be hard to make a verdict. Running a couple of tests in [QuickBench](https://quick-bench.com/q/58tnSzx0Hjm6t3KyIX9OcSHe9WE) doesn't show us significant differences between the above version and the one with non-`const` member and generated special assignment operator. On low optimization levels (None-O1) it depends on the compiler and its version. With higher optimization levels set there seems to be no difference. *But all this, doesn't matter. We cannot allow such undefined behaviour in our code.*
 
 ## Conclusions
 
-Having const local variables is good. Having const members... It's not so obvious. We lose the copy assignment and the move semantics as const members cannot be changed anymore.
+Having `const` local variables is good. Having `const` members... It's not so obvious. We lose the copy assignment and the move semantics as `const` members cannot be changed anymore.
 
 With "clever" code, we can run a circle around the problem, but then we have to implement all the special functions. For what?
 
-No performance gain. Less readability in the special functions and for slightly higher confidence that nobody will change the value of that member.
+No performance gain. Less readability and undefined behaviour in the special functions and for slightly higher confidence that nobody will change the value of that member.
 
 Do you think it's worth it?
 
 Stay tuned, next time we'll discuss `const` return types.
-
 
 **If you want to learn more details about _How to use const in C++_, [check out my book on Leanpub](https://leanpub.com/cppconst)!**
 
