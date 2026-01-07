@@ -6,7 +6,7 @@ category: dev
 tags: [cpp, chrono, clocks, time]
 excerpt_separator: <!--more-->
 ---
-By now in this series, we've spent time looking at the major standard clocks and their behavior. We've talked about [wall-clock time](), [monotonic clocks](), and the myths around "[high resolution]()". Today, we are going to talk about a subtle area: how clocks relate to each other, how epochs differ, and what happens when you - need to - convert durations.
+By now in this series, we've spent time looking at the major standard clocks and their behavior. We've talked about [wall-clock time](https://www.sandordargo.com/blog/2025/11/26/clocks-part-2-system_clock), [monotonic clocks](https://www.sandordargo.com/blog/2025/12/03/clocks-part-3-steady_clock), and the myths around "[high resolution](https://www.sandordargo.com/blog/2025/12/10/clocks-part-4-high_resolution_clock)". Today, we are going to talk about a subtle area: how clocks relate to each other, how epochs differ, and what happens when you - need to - convert durations.
 
 It sounds simple, right? A timestamp is a timestamp, and a duration is just a number of seconds - or other time units. But `<chrono>` is designed to be type-safe, and it enforces some rules that prevent accidental misuse. Once you understand why those rules exist, time handling in C++ starts to feel much safer — and your tests get more reliable too. And 
 
