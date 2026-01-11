@@ -103,7 +103,7 @@ A `time_point` represents a point in time relative to a clock's epoch (its zero 
 int main() {
     using namespace std::chrono_literals;
     std::chrono::time_point now = std::chrono::system_clock::now();
-    std::cout << now << '\n'
+    std::cout << now << '\n';
 }
 /*
 2025-11-05 04:49:07.802540469
@@ -122,7 +122,7 @@ int main() {
     std::chrono::time_point now2 = std::chrono::system_clock::now();
     auto d = now2 - now;
     auto d2 = now - now2;
-    std::cout << d << ' ' << d2 <<  '\n';
+    std::cout << d << ' ' << d2 << '\n';
     return 0;
 }
 /*
