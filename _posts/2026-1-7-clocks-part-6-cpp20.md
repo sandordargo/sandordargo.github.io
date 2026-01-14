@@ -56,7 +56,7 @@ Use it for scientific computing, simulation and satellite calculations or anytim
 
 As you probably guessed, `gps_clock` represents **Global Positioning System (GPS) time**.
 
-Its epoch is 6th January 1980, and it has no leap seconds. Therefore, just like `tai_clock`, `gps_clock` drifts from `utc_clock` as new leap seconds are added. Since 2018, the difference between `utc_clock` and `gps_clock` is 18 seconds. The constant difference betweem `tai_clock` and `utc_clock` is 19 seconds (GPS is behind TAI),
+Its epoch is 6th January 1980, and it has no leap seconds. Therefore, just like `tai_clock`, `gps_clock` drifts from `utc_clock` as new leap seconds are added. Since 2018, the difference between `utc_clock` and `gps_clock` is 18 seconds. The constant difference between `gps_clock` and `tai_clock` is 19 seconds (GPS is behind TAI),
 
 Like `tai_clock`, `gps_clock` satisfies the `Clock` requirements, but it's short of `TrivialClock` with a non-throwing `now()` implementation.
 
