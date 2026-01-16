@@ -3,7 +3,7 @@ layout: post
 title: "Bring some fresh AIR and write effective code review comments"
 date: 2021-10-6
 category: dev
-tags: [codereview, teaching, knowledgesharing]
+tags: [code reviews, teaching, knowledgesharing]
 excerpt_separator: <!--more-->
 ---
 A few years ago, I shared some [guidelines about how not to ruin the team mojo with code reviews](https://www.sandordargo.com/blog/2018/03/28/codereview-guidelines), what practices should the different involved people follow to avoid feeling bad about each other, yet to fulfil the aims of a code review.

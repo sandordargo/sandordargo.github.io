@@ -3,7 +3,7 @@ layout: post
 title: "The copy and swap idiom in C++"
 date: 2022-8-10
 category: dev
-tags: [cpp, designpatterns, architecture, copyandswap]
+tags: [cpp, design patterns, architecture, copyandswap]
 excerpt_separator: <!--more-->
 ---
 Last year, as the usage of our services grew sometimes by 20 times, we had to spend significant efforts on optimizing our application. Although these are C++-backed services, our focus was not on optimizing the code. We had to change certain things, but removing not needed database connections I wouldn't call performance optimization. It was rather fixing a bug.

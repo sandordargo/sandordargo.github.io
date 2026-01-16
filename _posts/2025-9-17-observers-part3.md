@@ -3,7 +3,7 @@ layout: post
 title: "Discovering observers - part 3"
 date: 2025-9-17
 category: dev
-tags: [cpp, designpatterns, observer]
+tags: [cpp, design patterns, observer]
 excerpt_separator: <!--more-->
 ---
 Over the last two weeks, we explored different implementations of the **observer pattern** in C++. [We began with a very simple example](https://www.sandordargo.com/blog/2025/09/03/observers-part1), then [evolved toward a more flexible, template- and inheritance-based design](https://www.sandordargo.com/blog/2025/09/10/observers-part2).

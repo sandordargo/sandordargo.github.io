@@ -3,7 +3,7 @@ layout: post
 title: "Discovering observers - part 2"
 date: 2025-9-10
 category: dev
-tags: [cpp, designpatterns, observer]
+tags: [cpp, design patterns, observer]
 excerpt_separator: <!--more-->
 ---
 [Last week](https://www.sandordargo.com/blog/2025/09/03/observers-part1), we took the observer pattern from a very simple example and evolved it into a more flexible, template-based implementation in C++. We ended up with abstracted publishers and subscribers, a templated message type for flexibility, and publishers controlling when and how updates are pushed.

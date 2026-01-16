@@ -3,7 +3,7 @@ layout: post
 title: "Discovering observers - part 1"
 date: 2025-9-3
 category: dev
-tags: [cpp, designpatterns, observer]
+tags: [cpp, design patterns, observer]
 excerpt_separator: <!--more-->
 ---
 The goal of this mini-series is to explore the **Observer Design Pattern** in C++, walking through different implementations and weighing their pros and cons.

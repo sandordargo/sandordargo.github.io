@@ -3,7 +3,7 @@ layout: post
 title: "Emergent Design: The Evolutionary Nature of Professional Software Development by Scott Bain"
 date: 2020-11-28
 category: dev
-tags: [architecture, design, books, patterns, designpatterns]
+tags: [architecture, design, books, patterns, design patterns]
 excerpt_separator: <!--more-->
 ---
 [Emergent Design](https://amzn.to/3pSFGSf) was published in 2008, but even after 12 years, I still found it extremely relevant in 2020. In the first part of the book, the author Scott Bain discusses about software development as a profession and what an occupation needs in order to be considered as a profession.

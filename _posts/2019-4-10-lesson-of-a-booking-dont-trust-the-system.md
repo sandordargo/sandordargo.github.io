@@ -3,7 +3,7 @@ layout: post
 title: "Lesson of a booking: Don't trust the system!"
 date: 2019-4-10
 category: dev
-tags: [ux, error-handling, travelling, story]
+tags: [ux, error handling, travelling, story]
 excerpt_separator: <!--more-->
 ---
 We were going on holidays recently and we were going far away. We were travelling to Vietnam. The last time before my daughter would go pre-school and my son would start walking. In other terms, the last time before our schedule would become more fixed and the last time we can buy an infant ticket to my son and saving some money.

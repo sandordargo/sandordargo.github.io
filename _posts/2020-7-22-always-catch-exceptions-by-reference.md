@@ -3,7 +3,7 @@ layout: post
 title: "Why should we always catch exceptions by reference?"
 date: 2020-7-22
 category: dev
-tags: [cpp, errorhandling, exceptions, bestpractices]
+tags: [cpp, error handling, exceptions, bestpractices]
 excerpt_separator: <!--more-->
 ---
 Do you use exceptions in your code? Do you always catch the most generic one or do you write multiple catch blocks? Do you rethrow them or just swallow the exceptions right after they occur? Do you have an error-handling strategy after all?

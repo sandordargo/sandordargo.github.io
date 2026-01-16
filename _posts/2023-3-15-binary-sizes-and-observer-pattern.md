@@ -3,7 +3,7 @@ layout: post
 title: "The observer pattern and binary sizes"
 date: 2023-3-15
 category: dev
-tags: [cpp, binarysizes, designpatterns, observer]
+tags: [cpp, binarysizes, design patterns, observer]
 excerpt_separator: <!--more-->
 ---
 In the previous article on binary sizes, we discussed how the decorator pattern's classic and modern implementation fares in terms of binary size. We saw that the modern implementation had a smaller size, but the difference was not great and it's not always evident how it scales.

@@ -3,7 +3,7 @@ layout: post
 title: "The Template Method Pattern and the Non-Virtual Idiom"
 date: 2022-8-24
 category: dev
-tags: [cpp, designpatterns, tmp, nvi]
+tags: [cpp, design patterns, tmp, nvi]
 excerpt_separator: <!--more-->
 ---
 The above title is also one of the chapter titles from [Hands-On Design Patterns with C++ by Fedor Pikus](https://devreads.sandordargo.com/hands-on-design-patterns-by-fedor-pikus/). I liked the idea so much that I quickly started to use it and I wanted to share some more details about this pattern and idiom.

@@ -3,7 +3,7 @@ layout: post
 title: "C++ Software Design by Klaus Iglberger"
 date: 2022-12-17
 category: books
-tags: [cpp, architecture, designpatterns, books]
+tags: [cpp, architecture, design patterns, books]
 excerpt_separator: <!--more-->
 ---
 The first time I - virtually - met Klaus was at C++ On Sea, I think in 2020. He held a workshop about modern software design which I managed to partially attend. He spoke in a slow and friendly manner which both helped participants to follow along and it also encouraged us to ask questions.
