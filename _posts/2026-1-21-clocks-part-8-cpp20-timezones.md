@@ -13,7 +13,7 @@ But for many real-world applications, none of that solves the hardest time probl
 
 Until C++20, the standard library simply couldn't answer that question as it provided no support for timezones.
 
-C++20 changed that - and in doing so, it finally made `<chorno>` suitable for serious, user-facing time handling.
+C++20 changed that - and in doing so, it finally made `<chrono>` suitable for serious, user-facing time handling.
 
 ## Why Time Zones Are a Big Deal
 
