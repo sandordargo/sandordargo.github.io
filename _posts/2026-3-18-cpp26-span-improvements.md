@@ -14,7 +14,7 @@ Now let's see what additional improvements we are getting with C++26.
 
 ## [P2447R6](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2447r6.html): `std::span` over an initializer list
 
-Just like a `string_view` can be a drop-in replacement for `const string&`, `span<const int>` can replace `const vector<int>&` in most cases. However, there was one ergonomic gap: an initializer list - e.g. `{1, 2, 3}` - failed to bind to a `span` function parameter. You needed double braces to make it work:
+Just like a `string_view` can replace `const string&` in most cases — as long as null-termination is not required — `span<const int>` can similarly replace `const vector<int>&` in most cases. However, there was one ergonomic gap: an initializer list - e.g. `{1, 2, 3}` - failed to bind to a `span` function parameter. You needed double braces to make it work:
 
 ```cpp
 void take(std::span<const int> v);
