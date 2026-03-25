@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "C++26: A User-Friednly assert() macro"
+title: "C++26: A User-Friendly assert() macro"
 date: 2026-3-25
 category: dev
 tags: [cpp, cpp26, reflection, syntax]
