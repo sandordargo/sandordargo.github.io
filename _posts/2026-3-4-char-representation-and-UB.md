@@ -3,7 +3,7 @@ layout: post
 title: "Accessing inactive union members through char: the aliasing rule you didn't know about"
 date: 2026-3-4
 category: dev
-tags: [cpp, unions, ub, aliasing]
+tags: [cpp, unions, undefinedbehaviour, aliasing]
 excerpt_separator: <!--more-->
 ---
 [I recently published an article on a new C++26 standard library facility, `std::is_within_lifetime`](https://www.sandordargo.com/blog/2026/02/18/cpp26-std_is_within_lifetime). As one of my readers, Andrey, pointed out, one of the examples contains code that seems like undefined behavior. But it's also taken — almost directly — from [the original proposal](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2641r4.html), so it's probably not UB. And that's correct, it's not undefined behavior.
