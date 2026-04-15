@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C++26: Structured bindings in conditions"
-date: 2026-X-X
+date: 2026-4-15
 category: dev
 tags: [cpp, cpp26, structuredbindings]
 excerpt_separator: <!--more-->
@@ -51,7 +51,7 @@ struct MyStruct {
 };
 
 int main() {
-    std::vector<MyStruct> v{{42, "hello"}, {51, "there"}};
+    std::vector<MyStruct> v{ {42, "hello"}, {51, "there"} };
     for(const auto&[num, text] : v) {
         std::cout << "num: " << num << ", text: " << text << '\n';
     }
