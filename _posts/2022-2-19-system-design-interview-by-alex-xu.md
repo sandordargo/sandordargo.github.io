@@ -100,7 +100,7 @@ The larger applications you design, the more you have to think about horizontal 
 
 Probably these are the most basic fundamentals to learn when you start preparing for your interviews.
 
-### Back-of-the-envelope estimations 
+### Back-of-the-envelope estimations
 
 In system design interviews you'll often have to estimate either performance requirements or capacity limits. Many of us, developers, had to learn some complex math at the university. These interviews will not be the place to use that precious knowledge.
 
@@ -122,5 +122,5 @@ A highly recommended read.
 
 If you liked this article, please 
 - hit on the like button,  
-- [subscribe to my newsletter](http://eepurl.com/gvcv1j) 
+- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
 - and let's connect on [Twitter](https://twitter.com/SandorDargo)!

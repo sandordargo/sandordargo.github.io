@@ -33,7 +33,7 @@ This change has some effects on existing code. When `std::to_string` is used wit
 
 This change is already available in GCC 14.
 
-## Type checking format args 
+## Type checking format args
 
 While `std::format` already performs compile-time checks for format strings, certain errors — particularly those involving dynamic formatting specifications like width or precision — can still lead to runtime errors.
 
@@ -50,7 +50,7 @@ The `{fmt}` library already implements a similar feature through its compile_par
 
 This change is already available in GCC 15.
 
-## Formatting pointers	
+## Formatting pointers
 
 [P2510R3](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2022/p2510r3.pdf) makes pointer types compatible with `std::format`. There is nothing new under the sun in a sense that the options are already available for integer types.
 
@@ -127,5 +127,5 @@ Stay tuned for Part 2, where we'll explore runtime formatting improvements, fixe
 
 If you liked this article, please 
 - hit on the like button,  
-- [subscribe to my newsletter](http://eepurl.com/gvcv1j) 
+- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
 - and let's connect on [Twitter](https://twitter.com/SandorDargo)!

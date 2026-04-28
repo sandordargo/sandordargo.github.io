@@ -38,7 +38,7 @@ With that being said, executables which link binaries statically might have a pe
 
 But again, it's worth measuring in your own environment, besides, maybe the performance penalty you have to pay is totally acceptable in your use case.
 
-## Extensibililthy 
+## Extensibililthy
 
 This is going to be short and simple. If you need to use some plugins or extensions at runtime, you don't have a choice, you must go with dynamic linking.
 
@@ -54,5 +54,5 @@ Don't forget that when you have to use runtime extensions or plugins, dynamic li
 
 If you liked this article, please 
 - hit on the like button,  
-- [subscribe to my newsletter](http://eepurl.com/gvcv1j) 
+- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
 - and let's connect on [Twitter](https://twitter.com/SandorDargo)!

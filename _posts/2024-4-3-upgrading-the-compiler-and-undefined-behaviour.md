@@ -140,5 +140,5 @@ In the few articles, we are going to get deeper into that topic and we'll discus
 
 If you liked this article, please 
 - hit on the like button,  
-- [subscribe to my newsletter](http://eepurl.com/gvcv1j) 
+- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
 - and let's connect on [Twitter](https://twitter.com/SandorDargo)!

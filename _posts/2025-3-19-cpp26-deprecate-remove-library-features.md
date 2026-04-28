@@ -16,7 +16,7 @@ The `std::allocator` has a `typedef` that was deprecated in C++20 and now finall
 
 Classes deriving from `std::allocator` don't synthesise the `typedef` member correctly and the allocator authors have to add their own typedef to ensure correct behaviour. If they knew about it...
 
-## Removing function overload of `std::basic_string::reserve()` that takes no 
+## Removing function overload of `std::basic_string::reserve()` that takes no
 
 I just learned from [P2870R3](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2870r3.pdf) that `std::basic_string::reserve` had an overload taking no arguments. As it was a poor substitute for `std::basic_string::shrink_to_fit`, it was deprecated in C++20.
 
@@ -100,4 +100,4 @@ Deprecation is not always a one-way road. Next week, we'll cover a feature that 
 
 If you liked this article, please 
 - hit on the like button,  
-- [subscribe to my newsletter](http://eepurl.com/gvcv1j)
+- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)

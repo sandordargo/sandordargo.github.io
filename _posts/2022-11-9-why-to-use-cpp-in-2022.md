@@ -143,7 +143,7 @@ It's true that certain old best practices became antipatterns over time. But the
 
 I do think that such topics should not be taught in-depth, but from what I can see, most universities teach legacy C++ and people have to relearn modern C++ at companies. If the company happens to use a more modern version...
 
-### Intellectual neglige 
+### Intellectual neglige
 
 As [Marek Krajewski shared with me on Twitter](https://twitter.com/mrkkrj/status/1467798371670925315), some people would simply not use C++ out of intellectual laziness. Yes, it's more difficult to learn than Python or Javascript. Yes, you can build great things with the simpler-to-learn alternatives. And in fact, you don't always need the powers of C++. That's all true.
 
@@ -191,5 +191,5 @@ Still, the language, the ecosystem is growing, the community is strong and C++ i
 
 If you liked this article, please 
 - hit on the like button,  
-- [subscribe to my newsletter](http://eepurl.com/gvcv1j) 
+- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
 - and let's connect on [Twitter](https://twitter.com/SandorDargo)!

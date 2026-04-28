@@ -341,4 +341,4 @@ Today, we learned about partitioning algorithms. They allow us to separate eleme
 
 ## Connect deeper
 
-If you found interesting this article, please [subscribe to my personal blog](http://eepurl.com/gvcv1j) and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+If you found interesting this article, please [subscribe to my personal blog](https://sandor-dargo.kit.com/e19f29b0a1) and let's connect on [Twitter](https://twitter.com/SandorDargo)!

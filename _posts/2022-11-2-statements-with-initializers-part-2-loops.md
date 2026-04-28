@@ -213,7 +213,7 @@ int main () {
 
 These latter are kind of edge cases. Normally a simple `for` loop will suffice and you should strive not to use them. `for` loops give you safe updates and the limited scope of the loop index. So why would we need more?
 
-## Range based `for` loop with initializer 
+## Range based `for` loop with initializer
 
 In most of the above examples, we interacted with the container through a loop index. But in reality, you'd often use an iterator. Before C++11, you couldn't use `auto`, you had to scrupulously type the full type of the iterator. The below one is simpler, but with some other - possibly template - types and with a `std::map` it could grow really long.
 
@@ -331,5 +331,5 @@ Do you use `if`/`switch`/range based `for` loops with initializers? What do you 
 
 If you liked this article, please 
 - hit on the like button,  
-- [subscribe to my newsletter](http://eepurl.com/gvcv1j) 
+- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
 - and let's connect on [Twitter](https://twitter.com/SandorDargo)!

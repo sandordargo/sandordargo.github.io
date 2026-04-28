@@ -63,7 +63,7 @@ As of May 2022, when this article was originally published, [Tipi.build](https:/
 
 Let me share the two biggest concerns I faced.
 
-###  Installation
+### Installation
 
 First of all, I couldn't install it on Ubuntu 18.04. It requires at least 20.04. That's a pity, but [Tipi](https://tipi.build/) plans to make it available on older versions too. So I went on with [creating a docker image](https://github.com/sandordargo/tipi-container) that I can use. [Tipi also provides one](https://hub.docker.com/r/tipibuild/tipi-ubuntu), but I wanted to learn a bit more about docker too and this was a good excuse. I ran into some issues along the way and for the [Tipi](https://tipi.build/) related ones as I asked the team and they always helped me out with some deep technical explanations included.
 
@@ -122,5 +122,5 @@ Feel free to play around with it and let me know what you think.
 
 If you liked this article, please 
 - hit on the like button,  
-- [subscribe to my newsletter](http://eepurl.com/gvcv1j) 
+- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
 - and let's connect on [Twitter](https://twitter.com/SandorDargo)!

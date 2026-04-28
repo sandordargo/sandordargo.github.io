@@ -20,7 +20,7 @@ First, I'm going to write about the three talks that I liked the most during the
 
 Over these few days, I was pondering a lot over what makes a talk good and enjoyable. What makes a presenter good, at least for me? While my thoughts are not crystal clear yet, I definitely enjoyed talks that covered "beginner" topics in depth. Another feeling I have is that good presenters limit the amount of knowledge they want to share so they have enough time to explain and they don't talk with the speed of Eminem.
 
-### [Special member functions in C++ by Kris van Rens](https://cpponsea.uk/2023/sessions/special-member-functions-in-cpp.html) 
+### [Special member functions in C++ by Kris van Rens](https://cpponsea.uk/2023/sessions/special-member-functions-in-cpp.html)
 
 Kris' talk about special member functions in C++ is a good reminder of how difficult it can be to write a simple class in C++. Especially if you cannot follow the rule of 0. But do you know about the rule of 0? Or the rule of 5? Or the rule of four and a half? 🤯
 
@@ -61,7 +61,7 @@ While I think these also serve documentational reasons and they would look great
 
 One last thought! An explicit `=delete` is better than relying on that others know the Hinnant table just as well as you.
 
-### [Typical C++, but why? by Björn Fahller](https://cpponsea.uk/2023/sessions/typical-cpp-but-why.html) 
+### [Typical C++, but why? by Björn Fahller](https://cpponsea.uk/2023/sessions/typical-cpp-but-why.html)
 
 Björn Fahller spoke at C++ On Sea 3 times this year! He volunteered to replace one of the speakers who sadly couldn't make it to the conference and he also did a lighting talk.
 
@@ -214,6 +214,6 @@ C++ On Sea was once again an awesome experience! Great organization, a strong li
 
 If you liked this article, please 
 - hit on the like button,  
-- [subscribe to my newsletter](http://eepurl.com/gvcv1j) 
+- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
 - and let's connect on [Twitter](https://twitter.com/SandorDargo)!
   

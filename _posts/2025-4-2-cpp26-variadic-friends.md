@@ -215,4 +215,4 @@ Thanks to the acceptance of [P2893R3](https://www.open-std.org/jtc1/sc22/wg21/do
 
 If you liked this article, please 
 - hit on the like button,  
-- [subscribe to my newsletter](http://eepurl.com/gvcv1j)
+- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)

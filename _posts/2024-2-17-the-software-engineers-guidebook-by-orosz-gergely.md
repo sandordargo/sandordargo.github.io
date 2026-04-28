@@ -26,7 +26,7 @@ The fourth part covers the responsibilities of a tech lead. Of course not only t
 
 Before the conclusion, in the fifth and longest part of the book the role of staff or principal engineer is covered which is way beyond coding. While staying in touch with the code as a staff+ level engineer is important, you'll also have several tasks in the realm of architecture and strategic alignment.
 
-## Three key ideas 
+## Three key ideas
 
 This book is very diverse and dense. It tries to cover a bit so many different aspects of your job, such as how you should manage your career (and your manager), what to pay attention to when you write code or how to approach testing. Each of these topics could fill books. Moreover, it doesn't only cover one job, but at least two if not more. I think that the job of a junior and senior engineer is very similar, even though there are obvious differences. But in my opinion, there can be a bigger difference between the tasks of a senior and a staff+ engineer or a team lead.
 
@@ -76,5 +76,5 @@ By understanding these aspects, you can become the person who doesn't simply sol
 
 If you liked this article, please 
 - hit on the like button,  
-- [subscribe to my newsletter](http://eepurl.com/gvcv1j) 
+- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
 - and let's connect on [Twitter](https://twitter.com/SandorDargo)!

@@ -30,7 +30,7 @@ The problem is that the above list is full of cycles, only reference-initializat
 
 So let's use another approach, which is based on C++ reference's.
 
-## 3 initialization syntaxes 
+## 3 initialization syntaxes
 
 C++ reference lists 4 distinct syntaxes to perform initialization, but two forms use the same rules, the same list-initialization-syntax.
 
@@ -116,5 +116,5 @@ Next week, we'll continue with list- and direct-initialization. Stay tuned.
 
 If you liked this article, please 
 - hit on the like button,  
-- [subscribe to my newsletter](http://eepurl.com/gvcv1j) 
+- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
 - and let's connect on [Twitter](https://twitter.com/SandorDargo)!

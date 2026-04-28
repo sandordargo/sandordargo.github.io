@@ -13,4 +13,4 @@ When I'm not on the road with my family, or not baking something in the kitchen,
 
 Speaking about C++, if you think you'll ever have a C++ interview, visit [Daily C++ Interview](https://www.dailycppinterview.dev/) and sign up for the free daily content!
 
-Thanks for visiting my blog and if you like it, sign up for [my newsletter](http://eepurl.com/gvcv1j)!
+Thanks for visiting my blog and if you like it, sign up for [my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)!

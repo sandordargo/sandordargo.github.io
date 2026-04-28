@@ -103,7 +103,7 @@ But if you are too shy to bring it up, if you are afraid of rejection, you'll ne
 
 By asking, you will actually make people think, they will think about things they haven't even considered. And if it's so easy for them to give you something that means no effort on their sides, they will definitely say yes.
 
-## Ask to remove the burden of decision making 
+## Ask to remove the burden of decision making
 
 If you have to ask something from your boss, guess what, you might even help with this.
 
@@ -151,4 +151,4 @@ Why don't we all do the same?
 
 ## Connect deeper
 
-If you resonated with this chapter, if you want to get udpates, please [subscribe to my personal blog](http://eepurl.com/gvcv1j) and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+If you resonated with this chapter, if you want to get udpates, please [subscribe to my personal blog](https://sandor-dargo.kit.com/e19f29b0a1) and let's connect on [Twitter](https://twitter.com/SandorDargo)!

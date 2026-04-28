@@ -99,4 +99,4 @@ Whatever will be your road, whatever big an expert you’ll become there is one 
 
 ## Connect deeper
 
-If you resonated with this chapter, if you want to get udpates, please [subscribe to my personal blog](http://eepurl.com/gvcv1j) and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+If you resonated with this chapter, if you want to get udpates, please [subscribe to my personal blog](https://sandor-dargo.kit.com/e19f29b0a1) and let's connect on [Twitter](https://twitter.com/SandorDargo)!

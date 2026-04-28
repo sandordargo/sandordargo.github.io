@@ -56,4 +56,4 @@ I'm not saying that you must love all your tasks, but I do think that [out of th
 
 If you liked this article, please 
 - hit on the like button,  
-- [subscribe to my newsletter](http://eepurl.com/gvcv1j)
+- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)

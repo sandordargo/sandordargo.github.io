@@ -49,7 +49,7 @@ Unlike `a.out`, *COFF* supports large programs and debug information, but by tod
 
 *ELF* is supported on Linux, Solaris and many other Unix-like systems so it's a convenient choice for cross-platform projects. *ELF* supports shared libraries, and position-independent code, so it's well suited to use in dynamic environments when you have to run multiple instances of a program at the same time. It also supports debug information. *ELF* is designed both for performance and extensibility. It can be loaded quickly and it runs fast. Its extensible design makes it possible to add new features with relative ease so it can adapt and evolve following the new requirements over time.
 
-### Portable Executable format 
+### Portable Executable format
 
 *Portable Executable* format was developed for Windows systems. It was designed to be compact so that it's efficient to store it on disk and transmit over a network. It's also efficient to load the *PE* format into memory. Just like *ELF* it has also an extensible design and supports positivon independent code.
 
@@ -110,5 +110,5 @@ Today we had a brief look at the evolution of executable formats, and a deeper l
 
 If you liked this article, please 
 - hit on the like button,  
-- [subscribe to my newsletter](http://eepurl.com/gvcv1j) 
+- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
 - and let's connect on [Twitter](https://twitter.com/SandorDargo)!

@@ -283,4 +283,4 @@ Today, we learned about sorting algorithms. Some are pretty straightforward (suc
 
 ## Connect deeper
 
-If you found interesting this article, please [subscribe to my personal blog](http://eepurl.com/gvcv1j) and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+If you found interesting this article, please [subscribe to my personal blog](https://sandor-dargo.kit.com/e19f29b0a1) and let's connect on [Twitter](https://twitter.com/SandorDargo)!
