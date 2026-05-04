@@ -18,17 +18,19 @@ std::vformat(str, std::make_format_args(42));
 
 Using two different APIs is not a great user experience, moreover,  `std::vformat` was designed to be used by formatting function writers and not by end users. In addition, you might run into undefined behaviour, detailed in the next section.
 
-To overcome this situation, [P2918R2](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2918r2.html) adds [`std::runtime_format`](https://en.cppreference.com/w/cpp/utility/format/runtime_format.html) so you can mark format strings that are only available at run-time. As such you can opt out of compile-time format strings checks. This makes the API cleaner and the user code will read better as it shows better the intentions. 
+To overcome this situation, [P2918R2](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2918r2.html) adds [`std::runtime_format`](https://en.cppreference.com/w/cpp/utility/format/runtime_format.html) so you can mark format strings that are only available at run-time. As such you can opt out of compile-time format strings checks. This makes the API cleaner and the user code will read better as it shows better the intentions.
+
+Since then, [P3953R3](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2026/p3953r3.html) renamed `std::runtime_format` to `std::dynamic_format`. After P3391 made `std::format` usable at compile time, the name "runtime" became misleading — you could call `std::runtime_format` at compile time too. The new name better reflects that the format string is *dynamically provided*, regardless of evaluation context.
 
 ```cpp
 // Before:
 std::vformat(str, std::make_format_args(42));
 
-// After:
-std::format(std::runtime_format(str), 42);
+// After (originally std::runtime_format, renamed by P3953R3):
+std::format(std::dynamic_format(str), 42);
 ```
 
-This change is already available in GCC 14 and Clang 18.
+The original `std::runtime_format` is already available in GCC 14 and Clang 18.
 
 ## DR20: `std::make_format_args` now accepts only lvalue references instead of forwarding references
 
@@ -118,6 +120,10 @@ This change is not yet available in any of three major compilers.
 C++26 makes `std::format` more robust with safer, and cleaner API. The changes might look small in isolation, but together, they significantly improve the day-to-day developer experience.
 
 If you missed Part 1, check it out [here](https://www.sandordargo.com/blog/2025/07/09/cpp26-format-part-1).
+
+## Update
+
+As Harry Broeders highlighted in the comments (thank you, Harry!), [P3953R3](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2026/p3953r3.html) renamed `std::runtime_format` to `std::dynamic_format`. The rename was motivated by P3391 making `std::format` usable in constant evaluation contexts — calling something `runtime_format` when it can execute at compile time was misleading. The new name `std::dynamic_format` clarifies that it's about the format string being dynamically provided, not about runtime evaluation. As this landed before C++26 ships, there is no impact on existing standard code.
 
 ## Connect deeper
 
