@@ -1,7 +1,7 @@
 ---
 title: Hi...
 icon: fas fa-info
-order: 6
+order: 7
 image:
   src: assets/img/about-me.jpg
 ---
