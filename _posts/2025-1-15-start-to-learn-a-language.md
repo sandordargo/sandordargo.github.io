@@ -3,7 +3,7 @@ layout: post
 title: "Start learning a new language"
 date: 2025-1-15
 category: dev
-tags: [selfimprovement, learning, programminglanguages]
+tags: [self-improvement, learning, programminglanguages]
 excerpt_separator: <!--more-->
 ---
 I started to learn a new language, and you probably should too.

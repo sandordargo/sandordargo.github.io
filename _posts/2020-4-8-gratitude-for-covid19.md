@@ -3,7 +3,7 @@ layout: post
 title: "Gratitude for COVID-19"
 date: 2020-4-8
 category: stoic
-tags: [watercooler, gratitude, discuss, codid19]
+tags: [watercooler, gratitude, discuss, covid19]
 excerpt_separator: <!--more-->
 ---
 We hear about the importance of gratitude at almost every corner of the internet where there is the tiniest website dedicated to self-help. In order to be more satisfied, happier with your life, you must practice gratitude. You have to actively think about events, people, or even physical objects that you are grateful for.

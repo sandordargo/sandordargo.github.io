@@ -3,7 +3,7 @@ layout: post
 title: "Three Meanings of Reference"
 date: 2025-10-29
 category: dev
-tags: [cpp, conferences, watercooler]
+tags: [cpp, conference, watercooler]
 excerpt_separator: <!--more-->
 ---
 Conferences are a great source of inspiration, partly trought talks and partly trough the best track, the hallway track. I already mentioned that at CppCon one of my favourite talks was [the one by Steve Downey on `std::optional<T&>`](https://www.sandordargo.com/blog/2025/09/24/trip-report-cppcon-2025#my-favourite-talks). He also mentioned that there are three different uses of references in C++. I was thinking whether it's four and disucssed this the next day during the break between two talks.

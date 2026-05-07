@@ -3,7 +3,7 @@ layout: post
 title: "How to Pick Which Conference Talks to Attend"
 date: 2025-10-15
 category: dev
-tags: [cpp, conferences, watercooler]
+tags: [cpp, conference, watercooler]
 excerpt_separator: <!--more-->
 ---
 You might say that it’s already mid-October and the conference season is over. That’s far from true! Europe’s largest C++ conference is still ahead of us: [Meeting C++](https://meetingcpp.com/mcpp/schedule/).

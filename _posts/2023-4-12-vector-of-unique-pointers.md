@@ -3,7 +3,7 @@ layout: post
 title: "Vectors and unique pointers"
 date: 2023-4-12
 category: dev
-tags: [cpp, vector, movesemantics, unqiueptr]
+tags: [cpp, vector, movesemantics, uniqueptr]
 excerpt_separator: <!--more-->
 ---
 In this post, I want to share some struggles I had twice during the last few months. For one of my examples, I wanted to initialize a `std::vector` with `std::unique_ptr`. It didn't compile and I had little time, I didn't even think about it. I waved my hand and changed my example.
