@@ -102,7 +102,7 @@ During compile-time evaluation, we use `std::is_within_lifetime` to check if `b`
 
 ## Compiler support
 
-At the moment of writing (February 2026), none of the major compilers support this feature yet. As with many C++26 additions, we'll need to wait for implementations to catch up with the standard.
+**Update:** As Mikhail Svetkin pointed out in the comments section, Clang has already added support for this feature via the `__builtin_is_within_lifetime` builtin, and libc++ has wired up the corresponding `std::is_within_lifetime` guarded on that builtin. So the LLVM/Clang toolchain has early support now. Thanks, Mikhail!
 
 ## Conclusion
 
