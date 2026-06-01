@@ -20,7 +20,7 @@ Let's explore them in that order.
 
 The term *qualified* refers to symbols that are explicitly scoped using the `::` operator. In other words, these are names that appear to the right of a `::`, such as `x` in `a::b::x`.
 
-Before the compiler can perform a qualified name lookup, it must first resolve the left-hand side of the `::` operator. This identifies the namespace or class being referenced.
+Before the compiler can perform a qualified name lookup, it must first resolve the left-hand side of the `::` operator. The leftmost name — the one with no `::` to its left — is resolved via *unqualified* lookup. Once that scope is found, each subsequent name to the right is resolved via qualified lookup within it. So in `a::b::x`, first `a` is found by unqualified lookup, then `b` is looked up within `a`, and finally `x` within `a::b`. It's strictly left-to-right.
 
 Qualified name lookup is relatively simple: it only searches the explicitly named scope. It **does not** search enclosing or outer scopes.
 
