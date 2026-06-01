@@ -6,6 +6,8 @@ category: dev
 tags: [cpp, cpp20, cpp23, ranges, loops]
 excerpt_separator: <!--more-->
 ---
+*This article has been updated based on feedback from Matthieu Halard. The original version used `response.data = transformed_data` (a copy) instead of `std::move`. The outputs and analysis have been updated accordingly. A section about `noexcept` and `std::move_if_noexcept` has also been added to explain the copies during vector reallocation.*
+
 To my greatest satisfaction, I've recently joined a new project. I started to read through the codebase before joining and at that stage, whenever I saw a possibility for a minor improvement, I raised a tiny pull request. One of my pet peeves is rooted in Sean Parent's 2013 talk at GoingNative, [Seasoning C++](https://www.youtube.com/watch?v=W2tWOdzgXHA) where he advocated for ***no raw loops***.
 
 When I saw this loop, I started to think about how to replace it:
@@ -46,7 +48,7 @@ Response foo(Widget widget) {
     }
     Response response;
     // ...
-    response.data = transformed_data;
+    response.data = std::move(transformed_data);
 
     return response;
 }
@@ -212,15 +214,14 @@ ToData(ToData&& other)
 ToData(const ToData& other)
 ToData(const ToData& other)
 writing response.data
-ToData(const ToData& other)
-ToData(const ToData& other)
-ToData(const ToData& other)
 wrote response.data
 title: a, amount 42
 title: b, amount 84
 title: c, amount 42
 ```
-In the for loop, we construct `ToData` and move it, and there is also a copy construction. Before actually copying the data.
+In the for loop, we construct `ToData` and move it into the vector. The copies you see are from vector reallocations — when the vector runs out of capacity and needs to grow. Thanks to `std::move`, the final assignment to `response.data` transfers ownership of the entire buffer without any element-wise copies.
+
+You might wonder why the reallocations trigger copies instead of moves. The reason is that the move constructor of `ToData` is not marked `noexcept`. During reallocation, `std::vector` uses `std::move_if_noexcept` to maintain the strong exception safety guarantee. If a move could throw midway through reallocation, some elements would already be moved out and the vector would be left in an inconsistent state. So it falls back to copying. By marking your move operations `noexcept`, those reallocation copies would become moves as well — yet another reason to always mark your move operations `noexcept`!
 
 On the other hand, [for the version using ranges, the output is shorter and different](https://godbolt.org/z/Mbhr7xhx7)!
 
@@ -241,7 +242,7 @@ title: b, amount 84
 title: c, amount 42
 ```
 
-Nothing actually happens within the transformation pipeline! Everything is happening lazily when we use the results of the pipeline and actually construct a `vector`. Then we have fewer calls than we had in the original version. Seemingly, far the ranges version has an advantage!
+Nothing actually happens within the transformation pipeline! Everything is happening lazily when we use the results of the pipeline and actually construct a `vector`. Now that we use `std::move` in the original version, the number of special function calls is about the same — the laziness of ranges doesn't give us an edge here since both versions suffer from reallocation copies.
 
 But we all know that the original version is not optional even with a raw loop. Let's use `emplace_back`! Oh and we also forgot about calling `std::vector<T>::reserve` to avoid reallocations! [Here is the code producing the below output.](https://godbolt.org/z/WMEnE3drP)
 
@@ -250,16 +251,13 @@ ToData(std::string title, int amount)
 ToData(std::string title, int amount)
 ToData(std::string title, int amount)
 writing response.data
-ToData(const ToData& other)
-ToData(const ToData& other)
-ToData(const ToData& other)
 wrote response.data
 title: a, amount 42
 title: b, amount 84
 title: c, amount 42
 ```
 
-Now the raw loop version has an advantage! In this version, for each item, we have a constructor and a copy while in the ranges version, we also have an extra move!
+Now the raw loop version has a clear advantage! In this version, we only have a single constructor call per item — no copies, no moves — while in the ranges version, we have a constructor plus a move for each item and also copies from reallocations.
 
 > Note that since C++23, you can also use `std::ranges::to<std::vector<Todata>>` to construct the final `vector`, but it didn't result in any difference in terms of the number of special member function calls.
 
