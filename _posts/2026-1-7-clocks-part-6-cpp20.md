@@ -104,6 +104,19 @@ They let you choose the right time scale for your needs — whether you care abo
 
 In future articles, we'll look at how these clocks interact with time zones, calendars, and custom clock designs — and how to test all of these reliably.
 
+## The *Time in C++* series
+
+1. [Understanding `<chrono>` and the Concept of Clocks](https://www.sandordargo.com/blog/2025/11/19/clocks-part-1-intro-to-chrono)
+2. [`std::chrono::system_clock`](https://www.sandordargo.com/blog/2025/11/26/clocks-part-2-system_clock)
+3. [`std::chrono::steady_clock`](https://www.sandordargo.com/blog/2025/12/03/clocks-part-3-steady_clock)
+4. [`std::chrono::high_resolution_clock`](https://www.sandordargo.com/blog/2025/12/10/clocks-part-4-high_resolution_clock)
+5. [Inter-clock Conversions, Epochs, and Durations](https://www.sandordargo.com/blog/2025/12/24/clocks-part-5-conversions)
+6. **Additional Clocks in C++20 (this article)**
+7. [Creating Your Own Clocks](https://www.sandordargo.com/blog/2026/01/14/clocks-part-7-custom-clocks)
+8. [C++20 Time Zones](https://www.sandordargo.com/blog/2026/01/21/clocks-part-8-cpp20-timezones)
+9. [Once More About Testing](https://www.sandordargo.com/blog/2026/01/28/clocks-part-9-once-more-about-testing)
+10. [Closing Thoughts](https://www.sandordargo.com/blog/2026/02/04/clocks-part-10-conclusion)
+
 ## Connect deeper
 
 If you liked this article, please 

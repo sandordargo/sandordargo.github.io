@@ -134,6 +134,19 @@ Today, we looked into probably the most widely used standard clock, `std::chrono
 Next week, we will explore `steady_clock` which is more sutable for measuring durations.
 
 
+## The *Time in C++* series
+
+1. [Understanding `<chrono>` and the Concept of Clocks](https://www.sandordargo.com/blog/2025/11/19/clocks-part-1-intro-to-chrono)
+2. **`std::chrono::system_clock` (this article)**
+3. [`std::chrono::steady_clock`](https://www.sandordargo.com/blog/2025/12/03/clocks-part-3-steady_clock)
+4. [`std::chrono::high_resolution_clock`](https://www.sandordargo.com/blog/2025/12/10/clocks-part-4-high_resolution_clock)
+5. [Inter-clock Conversions, Epochs, and Durations](https://www.sandordargo.com/blog/2025/12/24/clocks-part-5-conversions)
+6. [Additional Clocks in C++20](https://www.sandordargo.com/blog/2026/01/07/clocks-part-6-cpp20)
+7. [Creating Your Own Clocks](https://www.sandordargo.com/blog/2026/01/14/clocks-part-7-custom-clocks)
+8. [C++20 Time Zones](https://www.sandordargo.com/blog/2026/01/21/clocks-part-8-cpp20-timezones)
+9. [Once More About Testing](https://www.sandordargo.com/blog/2026/01/28/clocks-part-9-once-more-about-testing)
+10. [Closing Thoughts](https://www.sandordargo.com/blog/2026/02/04/clocks-part-10-conclusion)
+
 ## Connect deeper
 
 If you liked this article, please 

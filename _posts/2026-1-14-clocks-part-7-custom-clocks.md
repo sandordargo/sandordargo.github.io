@@ -213,6 +213,19 @@ But sometimes real time isn't the right time. Custom clocks let you:
 
 They're surprisingly simple to implement and plug neatly into the `<chrono>` ecosystem with almost no plumbing. In the next part of this series, we'll continue exploring how to build robust time abstractions on top of `<chrono>`, including adapters, wrappers, and patterns for safer time handling. Stay tuned!
 
+## The *Time in C++* series
+
+1. [Understanding `<chrono>` and the Concept of Clocks](https://www.sandordargo.com/blog/2025/11/19/clocks-part-1-intro-to-chrono)
+2. [`std::chrono::system_clock`](https://www.sandordargo.com/blog/2025/11/26/clocks-part-2-system_clock)
+3. [`std::chrono::steady_clock`](https://www.sandordargo.com/blog/2025/12/03/clocks-part-3-steady_clock)
+4. [`std::chrono::high_resolution_clock`](https://www.sandordargo.com/blog/2025/12/10/clocks-part-4-high_resolution_clock)
+5. [Inter-clock Conversions, Epochs, and Durations](https://www.sandordargo.com/blog/2025/12/24/clocks-part-5-conversions)
+6. [Additional Clocks in C++20](https://www.sandordargo.com/blog/2026/01/07/clocks-part-6-cpp20)
+7. **Creating Your Own Clocks (this article)**
+8. [C++20 Time Zones](https://www.sandordargo.com/blog/2026/01/21/clocks-part-8-cpp20-timezones)
+9. [Once More About Testing](https://www.sandordargo.com/blog/2026/01/28/clocks-part-9-once-more-about-testing)
+10. [Closing Thoughts](https://www.sandordargo.com/blog/2026/02/04/clocks-part-10-conclusion)
+
 ## Connect deeper
 
 If you liked this article, please 
