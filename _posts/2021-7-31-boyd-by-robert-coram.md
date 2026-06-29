@@ -130,9 +130,4 @@ I got highly interested in some of his concepts, so you'll read about his name i
 
 [A highly recommended read!](https://www.amazon.com/gp/product/B000FA5UEG/ref=as_li_qf_asin_il_tl?ie=UTF8&tag=sandordargo-20&creative=9325&linkCode=as2&creativeASIN=B000FA5UEG&linkId=daed4d37e8c6b25dcf494239369ec82a)
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

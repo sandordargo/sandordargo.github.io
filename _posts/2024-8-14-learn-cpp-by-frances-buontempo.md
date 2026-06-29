@@ -36,9 +36,4 @@ Another thing I appreciate about the book is that it introduces some language-ag
 
 I recommend [Learn C++ by Example](https://amzn.to/3yDOGnC) not only to those who haven't used C++ for a long while but also to those who have been using it but didn't really keep up with the new standards and now feel it overwhelming to go through all the additions. This book will be a great start to immerse yourself in modern C++.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

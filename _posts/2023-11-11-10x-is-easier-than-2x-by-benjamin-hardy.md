@@ -60,9 +60,4 @@ You have to keep analyzing yourself and your results. What is the 20% that gives
 
 That's probably easier for managers and entrepreneurs than for individual contributors, though specialists can also go far and deep in those regards. While the book targets entrepreneurs, the processes can be applied by anyone. In order to succeed, we have to keep reinventing ourselves around our main purpose.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

@@ -137,10 +137,4 @@ In this mini-series I'm sharing a couple of code issues that reached production.
 
 Next time, I'll share other 2 bugs. Stay tuned.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
-
+{% include connect-deeper.html %}

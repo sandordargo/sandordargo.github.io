@@ -177,9 +177,4 @@ Otherwise, we can introduce strong types, in this case, `enum`s in order to get 
 
 For some other approaches and opinions, you might want to check out [C++ Stories](https://www.cppstories.com/2017/03/on-toggle-parameters/)
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

@@ -87,8 +87,4 @@ Also, if something is not initialized at a given moment on purpose, you can mark
 
 This new behaviour is a nice step forward in terms of C++'s safety.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
+{% include connect-deeper.html %}

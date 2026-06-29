@@ -98,9 +98,4 @@ Both P2361R6 and P1854R4 are about the same fundamental idea: string literals in
 
 These aren't flashy features. You won't rewrite any code to use them. But they close off subtle sources of bugs and portability issues that have existed since the earliest days of C++. Combined with related work like P2362R3 and P2621R3, they represent a steady effort to make the C++ lexer less surprising — and that's exactly the kind of improvement the language needs.
 
-## Connect deeper
-
-If you liked this article, please
-- hit on the like button,
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

@@ -106,9 +106,4 @@ But these books probably give more to your life. And after all, [The Phoenix Pro
 
 Please, do share in the comments section your favourite books.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

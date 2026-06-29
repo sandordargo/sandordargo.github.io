@@ -183,9 +183,4 @@ Today, I shared with you two small stories about when forward declarations were 
 
 The second case was about returning covariant types in overrides. It's not enough that we know that two types are related, the compiler also has to be able to infer it. Solely from forward declarations, that is impossible to do, you have to include the declaration of the derived type (which inevitably brings in the declaration of the base class as well).
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

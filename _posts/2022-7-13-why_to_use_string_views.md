@@ -217,9 +217,4 @@ In this post, we discussed what `string_view`s are and howthey simplify our live
 
 Have you started using more and more the `string_view` instead of `const string&` in your projects?
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

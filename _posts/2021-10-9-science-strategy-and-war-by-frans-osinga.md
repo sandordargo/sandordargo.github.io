@@ -81,9 +81,4 @@ We cannot know all the details, we are not aware of everything, therefore there 
 
 If you are looking for a deeper understanding of Boyd, if you are interested in war, strategy read [Science, Strategy and War](https://www.amazon.com/gp/product/0415459524/ref=as_li_qf_asin_il_tl?ie=UTF8&tag=sandordargo-20&creative=9325&linkCode=as2&creativeASIN=0415459524&linkId=30e5dcfca6ec8a448118123be8ea4705)! You'll not regret it! 
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

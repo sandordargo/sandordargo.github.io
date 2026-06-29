@@ -97,9 +97,4 @@ Definitely, you should admit when you don't the answer to a question!
 
 But I think the most important is to keep learning every day and start with concepts that will be useful for you wherever you go.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

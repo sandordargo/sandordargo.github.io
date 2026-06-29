@@ -165,9 +165,4 @@ I would like to thank once more the organizers of [Meeting C++](https://meetingc
 
 I shared here only a couple of talks and thoughts but I can assure you that there were many others that could have made it to this report. The talks are available at the [Youtube page of Meeting C++](https://www.youtube.com/c/MeetingCPP).
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

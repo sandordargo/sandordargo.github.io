@@ -70,9 +70,4 @@ No temporary container, no explicit pairs of iterators - just a pipeline ending 
 
 Starting from C++23, standard containers support a new set of constructor overloads. These constructors take a `std::from_range` tag, a range and an optional allocator. These `from_range` constructors make it easier to construct containers from ranges, helping make C++ code more concise, more expressive, and less error-prone.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

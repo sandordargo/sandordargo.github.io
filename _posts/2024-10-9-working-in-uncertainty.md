@@ -53,9 +53,4 @@ Instead of leaving a bad impression, do the opposite. Leave a good one. I'm not 
 
 Working while waiting for a decision on whether you have to look for another job is stressful. Don't even expect to feel the opposite way. But this is also a chance to do and learn things you always wanted to, but never did. Also, connect with your colleagues as human beings, everyone needs that up to a certain level. Take such difficult times as an opportunity and hope that it ends soon.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

@@ -50,9 +50,4 @@ When it comes to performance, you'll probably be better off with static linkage,
 
 Don't forget that when you have to use runtime extensions or plugins, dynamic linking is your only choice. 
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

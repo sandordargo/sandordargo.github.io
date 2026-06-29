@@ -210,10 +210,4 @@ In this article, I covered one way that can help you get closer not only to atte
 
 C++ On Sea was once again an awesome experience! Great organization, a strong line-up and awesome attendees! I hope I can be back in Folkestone in 2024.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
-  
+{% include connect-deeper.html %}

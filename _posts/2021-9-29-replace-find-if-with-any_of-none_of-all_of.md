@@ -135,9 +135,4 @@ In the vast majority of the cases I saw, it can be replaced either with `std::an
 
 Go and check in your codebases how `std::find_if` is used. Do you have similar findings?
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

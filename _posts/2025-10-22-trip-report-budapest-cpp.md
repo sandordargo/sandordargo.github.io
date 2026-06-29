@@ -58,9 +58,4 @@ The Budapest C++ Meetup was a great reminder of how strong and curious our local
 
 It was inspiring to see so many people gathered to learn, discuss, and share ideas about modern C++. Budapest clearly has a thriving developer scene, and I'm already looking forward my next visit to Budapest - hopefully at the same time with another meetup.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

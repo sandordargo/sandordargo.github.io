@@ -186,9 +186,4 @@ But let's come back to the creation of concepts. Only when I had a couple of rou
 In this article I shared my first experience with C++20 and production code. I didn't only introduce C++20 features, 
 in some cases, C++17 suffice - bear in mind structures mindings. C++20 introduced some great library features like `contains` for maps and sets, but also new the `ranges` library and concepts. All this require some learning, but they can greatly simplify your code.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

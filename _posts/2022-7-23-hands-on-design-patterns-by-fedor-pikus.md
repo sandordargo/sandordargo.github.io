@@ -26,9 +26,4 @@ I also enjoyed the chapter on policy-based design, which is just a fancy name of
 
 If you are looking for a book that will give you practical knowledge on how to design a modern C++ application, [this is the one you should read](https://www.amazon.com/Hands-Design-Patterns-reusable-maintainable/dp/1788832566?&_encoding=UTF8&tag=sandordargo-20&linkCode=ur2&linkId=30b0f28f6d2b14f4979cee40a2d91f43&camp=1789&creative=9325)! A highly recommended read!
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

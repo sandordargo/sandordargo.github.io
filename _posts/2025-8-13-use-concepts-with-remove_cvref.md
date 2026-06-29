@@ -104,9 +104,4 @@ C++26 will bring a solution to this readability downgrade, which we will discuss
 
 Using `std::remove_cvref_t` with concepts helps enforce constraints on the intended value types and avoids subtle failures due to cv - or reference qualifications. It's a small price to pay for correctness and cleaner concepts — at least until the language evolves to make this pattern more concise. We discuss the evolution next week.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

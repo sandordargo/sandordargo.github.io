@@ -72,9 +72,4 @@ By understanding these aspects, you can become the person who doesn't simply sol
 
 [The Software Engineer's Guidebook](https://www.amazon.com/Software-Engineers-Guidebook-Navigating-positions-ebook/dp/B0CV6ZNLLP?&_encoding=UTF8&tag=sandordargo-20&linkCode=ur2&linkId=6bbab92ee70ea18ac3ff968aeaa122ba&camp=1789&creative=9325) is a great asset to any engineers library. If you're a junior or medior engineer, I'm sure that you'll learn about many concepts that can accelerate your growth. If you are more of a senior person, you might think first that oh well, you know these things well. Still, I think there is value in the book. First of all, it helps to organize your knowledge. Second, it will probably make you think and revisit certain patterns you follow. But I'm almost 100% sure that you'll also read about ideas that are completely new to you. A recommended read.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

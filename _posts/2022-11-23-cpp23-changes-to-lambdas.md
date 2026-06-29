@@ -101,9 +101,4 @@ Please note that GCC and Clang already implemented this behaviour, GCC already i
 
 Lambdas were introduced in C++11 and each standard brought some new features. It's not going to be different with C++23. It will bring better attributes, a more reasonable trailing return type deduction and more consistent rules for omitting an empty parameter list. Stay tuned for more articles about the coming standard!
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

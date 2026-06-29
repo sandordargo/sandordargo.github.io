@@ -118,9 +118,4 @@ Library hardening is one of those features that makes you wonder why it wasn't s
 
 If you care about memory safety in your C++ code (and in 2026, you should), hardened standard library mode should be part of your build configuration.
 
-## Connect deeper
-
-If you liked this article, please
-- hit on the like button,
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

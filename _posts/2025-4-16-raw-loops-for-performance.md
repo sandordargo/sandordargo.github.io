@@ -285,8 +285,4 @@ That's up to you.
 
 Using ranges or algorithms has [several advantages over raw loops](https://www.sandordargo.com/blog/2020/05/13/loops-vs-algorithms), notably readability. On the other hand, as we've just seen, sheer performance is not necessarily among those advantages. Using ranges can be slightly slower than a raw loop version. But that's not necessarily a problem, it really depends on your use case. Most probably it won't make a bit difference.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
+{% include connect-deeper.html %}

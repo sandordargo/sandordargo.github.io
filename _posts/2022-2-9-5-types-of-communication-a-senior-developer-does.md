@@ -151,9 +151,4 @@ Also, the more expert you are, the more you know, the more you'll be expected to
 
 In future articles, we'll break down each form of these documentations and I'll share ideas on how to get better at each.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

@@ -127,9 +127,4 @@ Obviously, reference counting cannot be optimized away.
 
 In this article, after having a small recap on smart pointers, we discussed why unique pointers are cheaper than shared ones. We saw that it's not only about reference counting - which is probably the most well-known cause - but also about the erasure of the deleter type which might add even more to the differences.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

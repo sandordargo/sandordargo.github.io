@@ -94,9 +94,4 @@ So while the `MyType` is subject to member reordering up to C++20, starting from
 
 [P1847R4](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2021/p1847r4.pdf) explains how layouts could be reordered in C++ when the access control is mixed and it proposes to remove the possibility for that reordering. While it doesn't change what standard layout is, it removes a rule that was unused and seemed quite arbitrarily.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

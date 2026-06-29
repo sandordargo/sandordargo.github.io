@@ -123,9 +123,4 @@ With all that considered, __if you're migrating from C++17 and you want to keep 
 
 In this article, we very briefly reviewed what defect reports are in C++ and if a solution is proposed they become part of the standard version that introduced a defect. In this case, we saw how the equality operator's behaviour changed with C++20 and that different compilers went with a different approach. In the end, we saw how the situation is fixed, what rules laid down by the authors of [P2468R2](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2022/p2468r2.html). With this fix, it should be straightforward how to benefit form rewritten `operator==` and how to avoid it.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

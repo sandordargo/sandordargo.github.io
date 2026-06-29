@@ -93,9 +93,4 @@ int main()
 
 In this article, we had a look at C++23 changes affecting bit and byte manipulations. We had a reminder on `std::bitset` that received a full `constexpr` API. Then we learned about the new library function, `std::byteswap` that helps reversing the bytes - and not the bits - in an object.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

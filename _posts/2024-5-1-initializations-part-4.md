@@ -163,10 +163,4 @@ This also marks the end of this mini-series on initializations. We've seen 9 dif
 
 C++ has many nuances. In my opinion, the best we can do is to avoid relying on them and write code that is straithforward and works in all circumstances.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
-
+{% include connect-deeper.html %}

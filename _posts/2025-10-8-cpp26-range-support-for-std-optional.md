@@ -101,9 +101,4 @@ As a result, `std::optional` only defines `iterator` and `const_iterator`, both 
 
 Rather than introducing yet another view type, the committee went with keeping things simple and making existing abstractions more composable. It might take a while to feel natural, but once you start thinking of optional as "a range of at most one", it all clicks.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!  
+{% include connect-deeper.html %}

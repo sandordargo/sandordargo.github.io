@@ -93,10 +93,4 @@ We can keep using our good old `UNUSED` macro.
 
 In this article, we've seen that the `[[maybe_unused]]` label can help us suppress compiler warnings for variables (and other entities) that are only used in certain builds. Sadly, it doesn't work in all situations, you cannot use it with lambda captures. In those situations, we still need other solutions, such as plain cast to void or a macro.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
-
+{% include connect-deeper.html %}

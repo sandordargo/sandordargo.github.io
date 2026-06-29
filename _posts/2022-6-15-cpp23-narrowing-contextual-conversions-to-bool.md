@@ -117,9 +117,4 @@ There are 2 other cases where the standard speaks about *"contextually converted
 
 [P1401R5](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2021/p1401r5.html) will not change how we code, it will not or just slightly change how compilers work. But it makes the major compilers compliant with the standard. It aligns the standard with the implemented behaviour and will officially let the compilers perform a narrowing conversion to `bool` in the contexts of a `static_assert` or `if constexpr`. Now we can avoid explicitly casting expressions to bool in these contexts without guilt. Thank you, Andrzej!
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

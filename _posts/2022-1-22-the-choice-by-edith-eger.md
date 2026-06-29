@@ -67,9 +67,4 @@ Often, we only don't ask for things because we are afraid of rejection and we mi
 
 [The Choice](https://www.amazon.com/gp/product/150113079X/ref=as_li_qf_asin_il_tl?ie=UTF8&tag=sandordargo-20&creative=9325&linkCode=as2&creativeASIN=150113079X&linkId=a7b9e9295249853ae13c7855c51483fb) is much more than a book about the survival of the Holocaust. It's much more than a memoir. It's a book about practical advices of how to heal your soul, how not to live in fear, but to enjoy a full life. I highly recommend reading it.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

@@ -182,9 +182,4 @@ int main() {
 
 `<stacktrace>` library is a very useful addition to the C++ standard library that lets us query and print the backtrace. The compiler support is very limited for the time being, we can only use gcc and probably the implementation will still change here and there. Still, we can already experiment, we can already learn how to use it. I'm sure it will come in very handy for error handling in C++.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

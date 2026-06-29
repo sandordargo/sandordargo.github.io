@@ -622,9 +622,4 @@ Supporting multiple message types under one publisher sounds convenient, but in 
 
 A pragmatic, maintainable compromise is to use one small publisher per setting (or per channel). This keeps responsibilities tight, APIs simple, and subscriber lists accurate. From here, the natural next step is to replace inheritance-heavy designs with composition. That's where we'll pick up next time.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

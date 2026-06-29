@@ -110,9 +110,4 @@ C++26's `std::is_within_lifetime` is a focused addition that solves a real probl
 
 The function's design — taking a pointer, being consteval-only, and having a broad name — reflects careful consideration of both current needs and potential future applications. It's a small but well-designed piece that makes constexpr evaluation more practical and expressive.
 
-## Connect deeper
-
-If you liked this article, please
-- hit on the like button,
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

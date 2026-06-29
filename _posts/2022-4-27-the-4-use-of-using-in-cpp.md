@@ -239,9 +239,4 @@ Now we have less code and it's more understandable what's happening. As a bonus,
 
 In this article, we discussed the 4 different ways that we can use the `using` keyword. It's the right way to create aliases and import base class members in derived classes. At the same time, they can be also used to introduce whole namespaces into the current scope which can be particularly dangerous. Last but not least, `using` can also introduce single types to the current scope which is a less dangerous option than introducing whole namespaces, still, it should be used with care.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

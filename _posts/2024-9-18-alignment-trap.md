@@ -58,9 +58,4 @@ According to a study conducted by MIT Sloan and Alan Kelly, concerning mid-term 
 
 This is something that we can observe in other areas of life as well, for example directly in programming. It's easier to challenge someone about the functionality of their code than how it's engineered. If your plans are not only short-term, focus on small iterations and how you do things, instead of just trying to make something work at the first shot.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

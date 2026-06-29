@@ -470,9 +470,4 @@ This design makes it easy to plug in new subscribers, keep publishers lean, and 
 
 The observer pattern is a classic, but as we've seen, the implementation choices matter. By gradually refining, we moved from a rigid inheritance-based approach to a clean, modern C++ solution leveraging composition and lambdas.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

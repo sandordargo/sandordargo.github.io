@@ -142,9 +142,4 @@ This week, we checked what happens under the hood if we deal with virtual destru
 
 Therefore in derived classes we should not deal with destructors anyhow, they are generated and they are virtual given that a base class has a virtual destructor. On the other hand, in the base class, we should follow the rule of 5 to ensure the compiler can move objects instead of copying them whenever possible.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!  
+{% include connect-deeper.html %}

@@ -107,9 +107,4 @@ In my opinion, a `struct` barely needs a constructor. With the combination of ag
 
 At the same time, it's worth noting that sometimes a `struct` has constructors and special member functions to limit binary sizes. [By moving special member functions to implementation files, we can limit inlining and thus decrease binary sizes.](https://www.sandordargo.com/blog/2023/02/01/special-functions-and-binary-sizes)
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

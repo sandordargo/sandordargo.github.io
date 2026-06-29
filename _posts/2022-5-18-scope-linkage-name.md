@@ -168,9 +168,4 @@ In this article, we discussed a couple of ideas that are often used when people 
 
 I highly recommended you read through the linked materials to have a deeper understanding!
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

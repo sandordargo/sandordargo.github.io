@@ -186,8 +186,4 @@ As a next step, we added some assertions making sure that our class has the trai
 
 How would you do it?
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
+{% include connect-deeper.html %}

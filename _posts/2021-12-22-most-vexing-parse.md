@@ -108,9 +108,4 @@ You can fix it in different ways and if you use at least C++11, the `{}`-initial
 
 If you liked this article, I invite you to [read this one](https://www.sandordargo.com/blog/2019/11/27/does-this-string-declaration-compile) too.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

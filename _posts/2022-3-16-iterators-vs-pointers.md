@@ -364,9 +364,4 @@ With this piece, I'm a bit closer to understanding the basics of pointers and it
 - [Microsoft: Raw pointers (C++)](https://docs.microsoft.com/en-us/cpp/cpp/raw-pointers?view=msvc-160)
 - [Stackoverflow: Why should I use a pointer rather than the object itself?](https://stackoverflow.com/questions/22146094/why-should-i-use-a-pointer-rather-than-the-object-itself)
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

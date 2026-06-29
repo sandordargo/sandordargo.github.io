@@ -238,9 +238,4 @@ What more to say? As always, the On Sea conference was great — ACCU just as mu
 
 I walked away with new insights, fresh ideas, and a stronger sense of belonging in this community. Thanks for having me there. I hope to be back in 2027.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

@@ -146,9 +146,4 @@ If you're a top performer, make sure that you don't work for free. Invest your t
 
 And if you're not a top performer? Never mind, maybe you don't even want to become one. In any case, I highly recommend start investing some time in learning every single day. In the long run, [consistent learning will make you grow exponentially](https://devreads.sandordargo.com/the-compound-effect/).
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

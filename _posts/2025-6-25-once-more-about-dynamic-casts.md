@@ -344,9 +344,4 @@ At the same time, it's also worth remembering that RTTI incurs a bigger binary s
 
 Over the last years, I claimed a couple of times that if you give up RTTI and you restrict yourself from using `dynamic_cast` you'll have not only smaller but also more readable code. I still think that it's true in general, but we have been shown e a case where `dynamic_cast` makes things easier and probably even safer. Yet, if you cannot use RTTI, we saw some alternative solutions.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

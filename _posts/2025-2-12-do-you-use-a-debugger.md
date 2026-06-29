@@ -51,8 +51,4 @@ Thinking about those saying that they haven't used a debugger in decades, I have
 
 I don't know, but nowadays I have nobody around me without stepping through code with the debugger regularly.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
+{% include connect-deeper.html %}

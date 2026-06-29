@@ -52,8 +52,4 @@ I'm not saying that you must love all your tasks, but I do think that [out of th
 
 > *By the time I published this article, I got into a role that I like and where I contribute to the success of my team as much as I expect from myself. A big thanks to my management who helped me through this situation.*
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
+{% include connect-deeper.html %}

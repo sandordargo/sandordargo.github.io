@@ -235,9 +235,4 @@ Use it together with in-class member initialization and you'll get a warning-fre
 
 In this article, we looked into how member variables are initialized when they are not assigned to a value through a user-provided constructor. We saw the differences between zero- and value-initialization. Then we checked what `-Wmissing-field-initializers` is and how to get rid of the warnings while keeping our code both concise and readable. In-class member initialization and designated initializers for structs are great tools for such matters.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

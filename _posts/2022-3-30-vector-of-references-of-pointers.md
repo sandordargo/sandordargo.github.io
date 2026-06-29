@@ -327,9 +327,4 @@ Don't get me wrong, I'm far from advocating for this solution. But it might help
 
 In the coming weeks, we'll see how `boost::ptr_vector` might help us. And also what other kinds of issues do you have to deal with when you have a vector of pointers as class members.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

@@ -84,9 +84,4 @@ So `span(p, std::integral_constant<size_t, 5>{})` will now be deduced as `span<i
 
 C++26 brings four targeted improvements to `span` and its ecosystem. We get more ergonomic initialization via the new `initializer_list` constructor, a long-overdue `at()` for bounds-checked access, `span` (along with `expected`, `out_ptr`, `inout_ptr`, and `mdspan`) in freestanding environments, and smarter CTAD that preserves compile-time size information. None of these are groundbreaking changes, but they round off rough edges and make `span` a more complete and consistent tool in the standard library.
 
-## Connect deeper
-
-If you liked this article, please
-- hit on the like button,
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

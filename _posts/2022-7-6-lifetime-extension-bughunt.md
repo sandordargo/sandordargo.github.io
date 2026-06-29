@@ -167,9 +167,4 @@ I heartily recommend to run builds with multiple compilers, tons of warnings tur
 
 They might require a bit of time, but they can save you so much. 
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

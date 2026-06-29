@@ -97,8 +97,4 @@ Besides, this also means that you can compare arrays directly against nullptrs.
 
 Even though C++ is growing, from almost every new standard there are a couple of features that are removed. In C++26, two language features are being removed. One is arithmetic conversion from enumerations and the other is comparisons of C-style arrays. I think both these do not simply simplify the language, but also make affected code bases cleaner.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
+{% include connect-deeper.html %}

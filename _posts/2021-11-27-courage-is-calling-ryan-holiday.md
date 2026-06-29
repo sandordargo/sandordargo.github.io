@@ -67,9 +67,4 @@ You'll find the courage.
 
 [Courage Is Calling](https://www.amazon.com/gp/product/0593191676/ref=as_li_qf_asin_il_tl?ie=UTF8&tag=sandordargo-20&creative=9325&linkCode=as2&creativeASIN=0593191676&linkId=4492558bd50195bf6ebbdc4d74c83ed4) is another interesting book written by Ryan Holiday about Stoicism. While [his previous book](https://www.amazon.com/gp/product/052554187X/ref=as_li_qf_asin_il_tl?ie=UTF8&tag=sandordargo-20&creative=9325&linkCode=as2&creativeASIN=052554187X&linkId=aac17c677d517e2f33ff3263a4790a78) taught about Stoicism by showing the most important Stoic philosophers, this book approaches stoicism from the "value-side". Courage is one of the four most important stoic virtues and we get plenty of examples of how courageous people changed human history and how we can also find more courage in our life to make the world a bit better place. Even if we end up a bit more difficult to handle.
   
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

@@ -120,9 +120,4 @@ At the same, I think that the performance implications of "Clean Code" or clean 
 
 Software designed for decades to serve us usually has to deal with other problems, such as maintainability and managing dependencies. Even in terms of performance, network, DB, and I/O, in general, are more problematic than virtual function calls and the costs of OOP in general.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

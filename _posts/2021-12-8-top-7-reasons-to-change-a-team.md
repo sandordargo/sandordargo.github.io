@@ -145,9 +145,4 @@ In this article, we discussed 7 reasons to change teams in a company. Most of th
 
 When do you consider changing teams? What are your top reasons?
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

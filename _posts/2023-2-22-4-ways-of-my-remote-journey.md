@@ -107,9 +107,4 @@ In this post, I shared with you the four different stages of my remote working j
 
 While in this setting, I have to be a bit more mindful about spending enough time socializing with my remote teammates, I still think it's totally worth it. Today's technologies make online collaboration easy, almost as if we were in the same place. At the same time, the money I gain by not having to commute to the office is not negligible and the time I gain makes it possible to have a better work-life balance.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

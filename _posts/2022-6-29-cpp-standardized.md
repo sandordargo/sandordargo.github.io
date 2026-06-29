@@ -112,9 +112,4 @@ In this post, we discussed how the C++ programming language was born around 40 y
 
 Since the release of C++11, the C++ Committee is committed to following a predictable schedule. There are new features and bug fixes released every three years. Thanks to those, C++ is evolving, it is now considered a modern programming language and it's getting simpler to write correct code.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

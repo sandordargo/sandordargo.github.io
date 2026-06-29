@@ -102,9 +102,4 @@ In this article, we learned about `-Wstring-conversion`, something I learned fro
 
 I presented you with three different scenarios where I saw that developers relied on this kind of implicit conversion in production codebases. Two of them are related to assertions and one is about a chain of conversions, ultimately to integral numbers. None of them are difficult to get rid of.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

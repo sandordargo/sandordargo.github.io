@@ -93,9 +93,4 @@ C++23 brings 3 changes to attributes. The restriction that an attribute cannot b
 
 Do you often use attributes?
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

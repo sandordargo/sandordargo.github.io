@@ -119,9 +119,4 @@ While `if consteval` behaves exactly as `if (std::is_constant_evaluated)`, it's 
 
 In this article, we learnt about a new C++ feature, `if consteval` that will help us invoke `consteval` functions when the context is constant-evaluated, yet it's not explicitly declared so.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

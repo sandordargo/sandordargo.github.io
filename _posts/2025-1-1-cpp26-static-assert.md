@@ -106,8 +106,4 @@ We must admit that the excessive use of `static_cast`s is not very readable thou
 
 At the moment of publication, this feature is already supported by GCC 14 and Clang 17.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
+{% include connect-deeper.html %}

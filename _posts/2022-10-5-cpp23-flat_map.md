@@ -81,9 +81,4 @@ In C++23, we are going to get some exciting new container adaptors in the standa
 
 Although there is no compiler support for the time being, we can already learn about [both from the standard](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2022/p0429r9.pdf) or by using [the boost versions](https://www.boost.org/doc/libs/1_80_0/doc/html/boost_container_header_reference.html#header.boost.container.flat_map_hpp)!
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

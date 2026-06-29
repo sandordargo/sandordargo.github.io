@@ -108,9 +108,4 @@ With four callable wrappers now available, here's a quick guide:
 
 C++26 completes the type-erased callable wrapper picture. `std::copyable_function` gives us what `std::function` should have been from the start: a copyable wrapper with correct const semantics. `std::function_ref` fills the non-owning niche, offering a lightweight, zero-allocation alternative for callback parameters. Together with `std::move_only_function`, there's no longer a reason to reach for `std::function` in new code.
 
-## Connect deeper
-
-If you liked this article, please
-- hit the like button,
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

@@ -75,9 +75,4 @@ Imagine that you don’t have to go through [a stressing and sometimes depressin
 
 Imagine that your next task will not be to learn how to find new opportunities, but how to turn them down in a graceful way. If it has not happened to you yet, I hope you will also find a job where it’s worth staying for a long time. A job where you won't feel the FOMO and you can stay to experience all these benefits!
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

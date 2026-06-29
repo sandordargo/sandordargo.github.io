@@ -70,9 +70,4 @@ This change in C++26 tightens the rules around returning references to temporari
 
 You might see some legacy code break because of this change, but that's a small price to pay for eliminating a whole class of subtle lifetime bugs. And thanks to the carefully crafted exception for `std::is_convertible`, existing metaprogramming techniques remain safe and robust.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

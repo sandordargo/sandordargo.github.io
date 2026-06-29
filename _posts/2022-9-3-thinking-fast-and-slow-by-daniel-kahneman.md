@@ -61,9 +61,4 @@ That's the [Endowment Effect](https://en.wikipedia.org/wiki/Endowment_effect) in
 
 If you are interested in both psychology and economics, [Thinking, Fast and Slow](https://www.amazon.com/Thinking-Fast-Slow-Daniel-Kahneman-ebook/dp/B00555X8OA/?&_encoding=UTF8&tag=sandordargo-20&linkCode=ur2&linkId=9835c49cc136f50d67baaf9691dfc816&camp=1789&creative=9325) by [Daniel Kahneman](https://en.wikipedia.org/wiki/Daniel_Kahneman) is a must-read. If you have plenty of time! It's going to be long. But if you can dedicate the time, you can learn about the above phenomena in detail and much more. I have no regrets about reading it.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

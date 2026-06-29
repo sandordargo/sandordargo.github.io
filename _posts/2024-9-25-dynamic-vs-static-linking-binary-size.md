@@ -227,9 +227,4 @@ On systems with a very specific purpose, this might be worth considering.
 
 With this article, I tried to answer one of the questions I was asked at C++ On Sea. How does dynamic linking influence binary size? The short answer is *heavily*. The longer answer is that dynamic linking has a big cost, it increases the overall size of your executable combined with the necessary libraries. It's only worth paying if you share a library between several executables on the same device. If on one device you run only one executable and size is a concern for you for whatever reason, I'd go with static linking. 
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

@@ -132,9 +132,4 @@ Using *TMP* and *NVI* is widely accepted as it doesn't really have any specific 
 
 The Template Method Pattern can be used with any object-oriented language and despite its name, it has nothing to do with generics. The Non-Virtual Interface is a way of implementation specific to C++. It decouples the public interface by making it non-virtual, from functions that are providing customization points. It's all about making complex things simpler - that is our job as developers.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

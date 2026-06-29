@@ -211,8 +211,4 @@ private:
 Thanks to the acceptance of [P2893R3](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2024/p2893r3.html), friendship can also be granted to a *pack of types*. While you won't need this feature every day, as you can see from the examples, in the right circumstances, it can significantly simplify your code.
 
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
+{% include connect-deeper.html %}

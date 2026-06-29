@@ -87,9 +87,4 @@ It's a small detail buried in the fine print of the standard. But it's these kin
 
 Have you encountered other surprising exceptions in the C++ aliasing rules?
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

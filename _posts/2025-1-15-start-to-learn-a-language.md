@@ -55,8 +55,4 @@ You might even learn your primary language better or if your passion leads there
 
 What's going to be your new language?
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
+{% include connect-deeper.html %}

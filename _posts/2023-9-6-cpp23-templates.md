@@ -146,9 +146,4 @@ In the paper, you'll find the third use case showing why it's good to merge `con
 
 In this article, we reviewed how class template argument deduction is extended in C++23 in order to support inherited constructors. We also learned about `std::forward_like` which is a feature needed by [deducing this](https://www.sandordargo.com/blog/2022/02/16/deducing-this-cpp23).
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

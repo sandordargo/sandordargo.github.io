@@ -108,9 +108,4 @@ I'm not in the position to judge this approach, but it's definitely a reason why
 
 In this article, we reviewed some small changes in the standard. We've how printing volatile pointers is getting fixed, we've seen that marking unreachable parts of code is getting standardized and we've also had a look at the deprecation of some niche or not even used functions from the standard library. 
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

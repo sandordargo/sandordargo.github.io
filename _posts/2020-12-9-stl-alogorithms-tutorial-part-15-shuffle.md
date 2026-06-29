@@ -148,6 +148,4 @@ int main () {
 
 Today, we learned about our last modifying sequence algorithms, 3 functions involving some randomness in how they reorder or select items. We are far from finishing the exploration of the `<algorithm>` header, next time we will learn about partitioning operations. Stay tuned!
 
-## Connect deeper
-
-If you found interesting this article, please [subscribe to my personal blog](https://sandor-dargo.kit.com/e19f29b0a1) and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

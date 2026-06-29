@@ -294,6 +294,4 @@ This time, we learned about binary search algorithms. We saw how to check if an 
 
 Next time we'll discover merging algorithms.
 
-## Connect deeper
-
-If you found interesting this article, please [subscribe to my personal blog](https://sandor-dargo.kit.com/e19f29b0a1) and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

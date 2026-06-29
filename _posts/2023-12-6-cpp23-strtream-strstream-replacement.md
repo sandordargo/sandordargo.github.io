@@ -187,9 +187,4 @@ With the acceptance of [P0448R4](https://www.open-std.org/jtc1/sc22/wg21/docs/pa
 
 Special thanks to [Peter](https://sommerlad.ch/) who pointed out a couple of missing points and misunderstandings in the draft of this article and helped it become more informative.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

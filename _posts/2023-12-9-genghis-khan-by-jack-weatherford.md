@@ -90,10 +90,4 @@ If you are interested in history, I recommend reading [Genghis Khan And The Maki
 
 If you read the book, share in the comments section what was the most surprising learning for you.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)! 
-
+{% include connect-deeper.html %}

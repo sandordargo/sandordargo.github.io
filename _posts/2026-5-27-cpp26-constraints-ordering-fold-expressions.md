@@ -82,9 +82,4 @@ Constraint subsumption has always had sharp edges — negations wrapped in paren
 
 P2963R3 plugs that gap by making fold expanded constraints proper participants in subsumption. You can now write variadic overloads constrained by fold expressions, and the compiler will correctly order them by how constrained they are — the way you'd expect it to work all along.
 
-## Connect deeper
-
-If you liked this article, please
-- hit on the like button,
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

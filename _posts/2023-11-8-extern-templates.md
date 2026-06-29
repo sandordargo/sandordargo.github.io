@@ -145,9 +145,4 @@ As a side note, I want to mention, that using `extern template`s prevents the co
 
 In this article, we learned about another tool we might consider using in order to decrease the binary footprint of our program and that is `extern template`. By default, each translation unit that uses a certain template specialization compiles that and stores it in the intermediary compiled file. But with `extern template`, we can tell the compiler that it shouldn't worry about compiling a certain specialization, because the definition will be provided later at link time. Depending on the complexity of the template and the number of its usages, you might gain both space and compilation time. Don't forget to measure before you blindly apply.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

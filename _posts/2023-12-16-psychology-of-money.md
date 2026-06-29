@@ -80,9 +80,4 @@ The author reminds us that money and wealth are not only about numbers but also 
 
 If you don't ace that part, you'll either end up burnt out (trying to always make more) or unhappy (you cannot buy everything you want) or in a financial collapse because of all the debt. That characterizes quite well the society today. [The Psychology of Money](https://www.amazon.com/Psychology-Money-Timeless-lessons-happiness/dp/0857197681?&_encoding=UTF8&tag=sandordargo-20&linkCode=ur2&linkId=4671f6f8058f58c86ad73480babf28d6&camp=1789&creative=9325) also gives quite a good explanation how we got there. A recommended read.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

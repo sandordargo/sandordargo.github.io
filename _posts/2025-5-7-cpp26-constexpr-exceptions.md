@@ -80,9 +80,4 @@ Here is the list of exception types becoming `constexpr`-friendly:
 
 C++26 is taking another big step forward in making compile-time programming more powerful and expressive. With the ability to `throw` and `catch` exceptions during constant evaluation — and with many standard exception types gaining `constexpr` support — developers will be able to write safer, more robust code that’s fully evaluable at compile time.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!  
+{% include connect-deeper.html %}

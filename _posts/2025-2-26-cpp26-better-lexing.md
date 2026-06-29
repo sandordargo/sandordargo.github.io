@@ -59,8 +59,4 @@ I'm still wondering who and why would write such code.
 
 In this article, we've reviewed the three kinds of undefined behaviour that [P2621R3](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2621r3.pdf) removes from lexing. Unterminated strings and characters are officially considered errors, and both sliced and concatenated universal character names are accepted now.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
+{% include connect-deeper.html %}

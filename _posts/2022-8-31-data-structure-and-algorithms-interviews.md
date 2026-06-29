@@ -74,9 +74,4 @@ What I found even more important is that you understand deeply the data structur
 
 Invest a few hours doing so and you'll significantly improve your chances to make good decisions to choose a data structure and nailing the complexity analysis at an interview.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

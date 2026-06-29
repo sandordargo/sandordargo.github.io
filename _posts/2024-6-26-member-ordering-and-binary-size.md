@@ -124,9 +124,4 @@ Today we discussed member ordering. We saw that in order to minimize padding, we
 
 At the same time, even an unoptimal ordering will not change the binary size, if you zero initialize members. So the best thing you can do for binary size is to use default values for members which are implicitly convertible to zero. The second best thing to do is pay attention to member ordering. But that's something to pay attention to anyway for cache friendliness.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

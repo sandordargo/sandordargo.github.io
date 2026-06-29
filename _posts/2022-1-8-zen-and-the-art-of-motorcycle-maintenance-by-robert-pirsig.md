@@ -53,9 +53,4 @@ But Pirsig is touching on other interesting topics in Lila, such as the critique
 
 If you like [*Zen*](https://www.amazon.com/gp/product/0060839872/ref=as_li_qf_asin_il_tl?ie=UTF8&tag=sandordargo-20&creative=9325&linkCode=as2&creativeASIN=0060839872&linkId=f622df262ff53a458f90e34d9fe8a919), after, you should definitely read [*Lila*](https://www.amazon.com/gp/product/0553299611/ref=as_li_qf_asin_il_tl?ie=UTF8&tag=sandordargo-20&creative=9325&linkCode=as2&creativeASIN=0553299611&linkId=5acaa4ee5c132a1dc71dbe2c18a0df48) too.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

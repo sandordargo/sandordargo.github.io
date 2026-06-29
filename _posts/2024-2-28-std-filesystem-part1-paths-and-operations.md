@@ -254,9 +254,4 @@ Today, I shared with you a part of what I learned about the `std::filesystem` li
 
 Next week, we are going to discuss how to iterate over a directory structure, a quite common operation when you have to apply some changes to a whole repository. Stay tuned!
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

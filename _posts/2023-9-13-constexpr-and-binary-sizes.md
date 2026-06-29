@@ -110,9 +110,4 @@ We also have to keep in mind that using `constexpr` is not only about limiting t
 
 Its potential help with binary sizes is only an addition. 
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

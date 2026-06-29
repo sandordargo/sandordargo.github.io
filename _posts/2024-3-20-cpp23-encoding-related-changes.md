@@ -151,9 +151,4 @@ With the acceptance of [P2419R2](https://www.open-std.org/jtc1/sc22/wg21/docs/pa
 
 In this article, we reviewed changes that are related to how the compiler encodes our code. We saw that there is less and less implementation-defined behaviour in that area. While the behaviour often doesn't change, it becomes standardized. We also saw that C++ has a growing Unicode support. It's nice to see how portability is getting better and better.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

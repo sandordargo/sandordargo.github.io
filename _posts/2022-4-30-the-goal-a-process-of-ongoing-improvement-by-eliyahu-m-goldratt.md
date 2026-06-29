@@ -98,9 +98,4 @@ I discuss more on this topic in Chapter 11 of [The Seniority Trap](https://leanp
 
 I'm happy that I finally read [The Goal](https://www.amazon.com/dp/B002LHRM2O?&_encoding=UTF8&tag=sandordargo-20&linkCode=ur2&linkId=f534d1875712b38f8f10c29ae1b00cda&camp=1789&creative=9325) and it also made to formalize my own goals.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

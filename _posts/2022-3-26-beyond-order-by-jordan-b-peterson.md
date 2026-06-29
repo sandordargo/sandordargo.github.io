@@ -116,9 +116,4 @@ And for most of the bad things too. They show us the way.
 
 [Beyond Order](https://www.amazon.com/Beyond-Order-More-Rules-Life-ebook/dp/B08NP6881K/?&_encoding=UTF8&tag=sandordargo-20&linkCode=ur2&linkId=d9275cf0e8dc877044bb960c1fb73460&camp=1789&creative=9325) is yet another great book by one of the most important thinkers of our age, Jordan Peterson. In this first book, he shared rules that help us remove excessive chaos from our lives and in this next one, he explains why keeping some chaos is useful and how we can preserve the amount of disorder in our life that is necessary to experiment, transform and grow.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

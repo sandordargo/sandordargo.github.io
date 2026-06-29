@@ -192,10 +192,4 @@ In the end, the best solution depends on your context. But the key takeaway is t
 
 That mindset — of expressing intent through types - is one of the most powerful tools in modern C++.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
-
+{% include connect-deeper.html %}

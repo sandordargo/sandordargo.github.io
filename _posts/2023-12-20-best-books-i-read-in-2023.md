@@ -42,9 +42,4 @@ The ideas revolve around *Evolution and politics*, *Climate and war*, *Identity 
 
 These are probably the best books I read this year, I hope you'll find interesting some of them. Oh, and don't forget to share what books you liked the most this year!
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

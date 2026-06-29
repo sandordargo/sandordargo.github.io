@@ -117,9 +117,4 @@ C++23 is introducing [the `<spanstream>` header](https://en.cppreference.com/w/c
 
 I hope you enjoyed this article and you also got excited by all these various `string`/`string_view` related features that C++23 is going to bring us. What are you waiting for the most?
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

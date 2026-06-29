@@ -96,8 +96,4 @@ After having discussed last week [language features removed from C++26](https://
 
 Deprecation is not always a one-way road. Next week, we'll cover a feature that is going to be underprecated in C++26. Stay tuned.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
+{% include connect-deeper.html %}

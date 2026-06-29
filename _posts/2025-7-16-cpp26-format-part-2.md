@@ -125,9 +125,4 @@ If you missed Part 1, check it out [here](https://www.sandordargo.com/blog/2025/
 
 As Harry Broeders highlighted in the comments (thank you, Harry!), [P3953R3](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2026/p3953r3.html) renamed `std::runtime_format` to `std::dynamic_format`. The rename was motivated by P3391 making `std::format` usable in constant evaluation contexts — calling something `runtime_format` when it can execute at compile time was misleading. The new name `std::dynamic_format` clarifies that it's about the format string being dynamically provided, not about runtime evaluation. As this landed before C++26 ships, there is no impact on existing standard code.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

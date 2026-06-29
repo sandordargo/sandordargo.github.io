@@ -46,9 +46,4 @@ Today we discussed that runtime performance is not always the most important, or
 
 In the next episode, we are going to discuss the structure of an executable file. Stay tuned.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

@@ -106,9 +106,4 @@ Today we discussed the different options we currently have in order to access it
 
 Starting from C++23, at least for new types, the subscript operator will take several arguments comma-separated thanks to [P2128R6](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2021/p2128r6.pdf).
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

@@ -59,9 +59,4 @@ Even better, people will bring their best practices to their new teams which wil
 
 Last but not least, more human connections between teams lead to less fingerpointing and more collaboration. It's the perfect tool to break down silos and a feeling of us vs them.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

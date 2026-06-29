@@ -97,9 +97,4 @@ If you're desperate to gain a few bytes, you might try this!
 
 In this article, we reviewed compiler and linker options that help us reduce the size of the binary. Just don't forget to measure the effects, because these are usually compromises between the space your executable needs and the time it requires to execute. Which ones you can take are always based on your constraints.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

@@ -117,9 +117,4 @@ Limiting the number of dependencies can happen in different ways. You have to be
 
 What are your best practices to limit the number of dependencies your library has or exposes?
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

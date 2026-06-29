@@ -100,9 +100,4 @@ Sometimes such a world might seem far away, but you can make it closer. Start us
 
 With such comments, you will not simply ask for a change, but you'll teach, probably also learn by reviewing why you ask for something and you'll even share some resources that later others can use.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

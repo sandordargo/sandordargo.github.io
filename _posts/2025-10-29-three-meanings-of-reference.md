@@ -126,11 +126,4 @@ Each use carries its own rules, intentions, and traps. Sometimes it's about effi
 
 So next time you see an `&`, take a moment to think: is it about *aliasing*, *ownership*, *construction*, or *invocation*? It's the same symbol, but each meaning tells a different story about how your program thinks about data and identity.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
-
-
+{% include connect-deeper.html %}

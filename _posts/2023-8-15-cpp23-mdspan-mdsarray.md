@@ -104,9 +104,4 @@ We also saw what an immense work it has been to create this new standardized vie
 
 Thanks for the work of the authors and thanks to you for reading this article!
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

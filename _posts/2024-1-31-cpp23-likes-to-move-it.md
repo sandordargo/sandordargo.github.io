@@ -112,9 +112,4 @@ Clang 17 and MSVC 19.34 already support this!
 
 In this article, we reviewed how C++23 relaxes many requirements. More and more operations that required copy-constructible objects now will only require move-constructible ones. These are quite logical changes that are also good for performance.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

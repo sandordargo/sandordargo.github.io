@@ -97,9 +97,4 @@ At the moment of publication, this change is already available on Clang 19 and G
 
 C++26 brings three focused improvements to the `string`/`string_view` ecosystem. `stringstream` and `bitset` both gain constructors that accept `string_view` directly, removing the need for unnecessary temporary strings. And `operator+` finally works between `std::string` and `std::string_view`, eliminating a long-standing ergonomic rough edge. None of these are headline features, but they all remove friction that you've probably run into before.
 
-## Connect deeper
-
-If you liked this article, please
-- hit on the like button,
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

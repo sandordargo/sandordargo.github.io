@@ -44,9 +44,4 @@ I think the case of a reorganization is the point where the sports team analogy 
 
 It's part of the professional sports team analogy that you are good and proven in your position. But big-scale reorganizations don't respect this fundamental requirement of the analogy, so it goes only as far.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

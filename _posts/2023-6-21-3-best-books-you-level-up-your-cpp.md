@@ -47,9 +47,4 @@ In the third and final part, Marius Bancila details several design and implement
 In this article, you could learn about 3 great books that will help you reach the next levels in C++. With [Beautiful C++](https://www.sandordargo.com/blog/2022/04/16/beautiful-cpp-by-kate-gregory-and-guy-davidson), you'll learn how to write more beautiful and more maintainable code than most of your fellow developers. [C++ Software Design by Klaus Iglberger](https://www.sandordargo.com/blog/2022/12/17/cpp-software-design-by-klaus-iglberger) will teach you about the most important design patterns in C++ and how their pointer and value-based implementations compare against each other. Last, but not least, by reading [Template Metaprogramming by Marius Bancila](https://www.amazon.com/dp/1803243457/?&_encoding=UTF8&tag=sandordargo-20&linkCode=ur2&linkId=3b52fe7dec703403826e4dab46d22da9&camp=1789&creative=9325), you'll learn the most important details of how to deal with templates, including modern features such as [concepts](https://leanpub.com/cppconcepts/). 
 
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

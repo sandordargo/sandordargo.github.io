@@ -95,9 +95,4 @@ There were tons of presentations aiming to give industry knowledge to less exper
 
 It was also the biggest conference in terms of attendance I've ever been part of. It was nice to see that there were so many young people keen to learn and I wish them the best in leading the growth of the IT Space in Cluj and in other cities.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

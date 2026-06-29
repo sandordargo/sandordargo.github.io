@@ -80,9 +80,4 @@ Keep these in mind if you are provoked.
 
 [The Evolution of Cooperation](https://www.amazon.com/Evolution-Cooperation-Revised-Robert-Axelrod/dp/0465005640/ref=sr_1_1?keywords=the+evolution+of+cooperation&amp;qid=1654895157&amp;sr=8-1&_encoding=UTF8&tag=sandordargo-20&linkCode=ur2&linkId=4bd52b92125425fea08264a1e7d27dc2&camp=1789&creative=9325) is a surprising book based on research about what works and what does not when people try to cooperate. The good news is that cooperation almost always trumps defecting the other. The difficult part of the good advice is to forget quite fast if you are defected. And the final one is to hit back if you're provoked. Don't even think. What do you think?
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

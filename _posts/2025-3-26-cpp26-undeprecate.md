@@ -33,8 +33,4 @@ As a result, `polymorphic_allocator::destroy` is undeprecated and kept as part o
 
 In this article, we saw that the deprecation of functionality in C++ doesn't necessarily mean a guaranteed removal. Sometimes, intentions and contracts change or people understand that deprecation is simply not the right direction. In C++26, as far as I found, there is one (library) feature undeprecated, and that's `polymorphic_allocator::destroy`. For further analysis, feel free to read [P2875R4](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2024/p2875r4.pdf).
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
+{% include connect-deeper.html %}

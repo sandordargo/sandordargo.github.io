@@ -348,9 +348,4 @@ Last, but not least, we reviewed the 6 brand new fold functions C++23 is going t
 - use the first or last value as the initial value and 
 - we can even get back the iterator pointing just past the last value that was taken into account from a range.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

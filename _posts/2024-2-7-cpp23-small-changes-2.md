@@ -82,9 +82,4 @@ With this simple proposed change, `pair`'s forwarding constructor would be chose
 
 In this post, we learned about some constructor-related changes introduced by C++23. We saw that now `std::stack` and `std::queue` can be initialized from iterator pairs; `std::string_view`s can be created from ranges and we can construct `std::pair` via a forwarding constructor more often than before.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

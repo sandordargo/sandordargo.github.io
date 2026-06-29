@@ -141,9 +141,4 @@ We saw that it's possible that one or two of them will be ignored in the short r
 
 Always negotiate for a position that respects all the three pillars if you want a long-lasting and win-win partnership with your management.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

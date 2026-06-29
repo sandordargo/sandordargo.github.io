@@ -155,9 +155,4 @@ This sequencing ensures that condition checking is well-defined and consistent w
 
 Structured bindings in conditions may look like a small syntax sugar, but they let us write much more expressive conditional logic. By allowing decomposition and condition checking to live side by side, C++26 reduces boilerplate, improves locality, and better supports modern result types that bundle status and data together. This is a pragmatic, well-integrated evolution of a feature that has already proven its value since C++17.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

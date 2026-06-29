@@ -68,9 +68,4 @@ In C++, labels can be attached to all statements, but they cannot be placed at t
 
 In this article, we reviewed two changes aiming for higher compatibility with C. The introduction of `<stdatomic.h>` header makes it easier to have shared headers between C anc C++ when atomics are used. The second change allows to have labels at the end of compound statements, so for example at the very of a function. But we also saw that it's not only C++ that introduces compatibility changes but also C when it started to allow having labels in front of variable declarations. By the way, who is using labels in new code?
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

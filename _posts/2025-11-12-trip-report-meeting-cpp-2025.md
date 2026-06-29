@@ -112,8 +112,4 @@ Personally, I'm coming home energized - I'm writing this from the airport. I hav
 
 Last but not least, a big thanks to [Jens Weller](https://meetingcpp.com/2024/Speaker/items/Jens_Weller.html), the founder and organizer of Meeting C++, and to all the staff for making it such a great experience. Hope to see you next time!
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
+{% include connect-deeper.html %}

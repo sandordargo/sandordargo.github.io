@@ -61,9 +61,4 @@ In the paper, you read further interesting considerations about alternative impl
 
 `auto` is one of the most useful features of modern C++ as it helps keep the code more concise and more maintainable. It evolved a lot since C++11, as we could use it in more and more different contexts. With C++23, we can use it to make a `prvalue` copy and we can use it to pass a copy to a function we want to call, without bothering to find a good name for the copy. Probably we won't use this feature that frequently, but when we'll need it, it'll be really useful.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

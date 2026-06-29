@@ -125,9 +125,4 @@ We were part of their good experience and that makes me happy. Our highest ratin
 
 I think if we still lived almost next door, I would be happy to continue on the terms we started this year. Obviously, that's not the case, so I just consider this a nice end and try to use as an engineer what I learned in communication, problem-solving and patience as a host.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!							
+{% include connect-deeper.html %}

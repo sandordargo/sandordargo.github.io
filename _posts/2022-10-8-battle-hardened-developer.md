@@ -60,9 +60,4 @@ It's an exciting technique to consider. If you work in an office, you can either
 
 [The Battle Hardened Developer]() is a useful book both to start and to push you further on the productivity journey. Whatever you do, the techniques presented in the book, will make you a better professional. Becoming dedicated to self-improvement, surrounding ourselves with positive messages and getting more focused on our tasks cannot help anyone, right? A recommended read!
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

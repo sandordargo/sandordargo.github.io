@@ -278,9 +278,4 @@ In this article, we discussed all the language and library features that are abo
 Then we checked how the standard library has been enriched during the years supporting an easier work with `enum`s. We also had a sneak peek into the future and checked what C++23 will bring for us.
 
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

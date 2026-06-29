@@ -66,9 +66,4 @@ template<class F, class Tuple>
 
 In this article, we reviewed how the standard defines its policies towards the `noexcept` specification and we also see that two standard library functions (`std::apply` and `std::exchange`) are becoming `noexcept`. 
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

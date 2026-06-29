@@ -327,9 +327,4 @@ I hope that C++ will keep evolving in this direction and also that we developers
 
 Do you use `if`/`switch`/range based `for` loops with initializers? What do you do when you need them but you are stuck on an earlier version?
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

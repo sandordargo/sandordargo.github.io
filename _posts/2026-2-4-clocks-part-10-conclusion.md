@@ -122,9 +122,4 @@ You don't need to memorize every type in `<chrono>`. What matters is knowing whi
 9. [Once More About Testing](https://www.sandordargo.com/blog/2026/01/28/clocks-part-9-once-more-about-testing)
 10. **Closing Thoughts (this article)**
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

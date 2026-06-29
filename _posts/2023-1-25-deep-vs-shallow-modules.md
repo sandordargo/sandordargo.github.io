@@ -80,9 +80,4 @@ If we follow his recommendations, we'll end up having entities that are barely s
 
 While I don't completely agree with all his points, there is definitely one to consider. We should design our public APIs in a way so that the most common functionalities, the most common ways of using those functionalities should be dead simple to use.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

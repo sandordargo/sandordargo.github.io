@@ -96,8 +96,4 @@ While it may seem useful at first glance, it doesn’t offer performance benefit
 
 We saw a concrete example where marking a mock class as `final` prevented its use with` NiceMock<T>` or `StrictMock<T>`, since they inherit from the mock class behind the scenes.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
+{% include connect-deeper.html %}

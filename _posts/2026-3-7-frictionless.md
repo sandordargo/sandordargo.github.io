@@ -41,9 +41,4 @@ If these topics interest you, [*Frictionless*](https://amzn.to/3ZFcz86) is a mus
 
 [*Frictionless*](https://amzn.to/3ZFcz86) is a practical book for anyone operating at the frontier of engineering and business. And that represents more of us than we'd probably like to admit.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

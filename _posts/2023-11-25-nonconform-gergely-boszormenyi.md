@@ -82,9 +82,4 @@ While local communities won't be created by politicians, decision-makers can sti
 
 Nonconformist is a great book to read about alternative ideas that are mostly ridiculed or not presented by mainstream media. It inspires thinking, debating and reading much more due to its extensive list of references. Probably the best book I read this year.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

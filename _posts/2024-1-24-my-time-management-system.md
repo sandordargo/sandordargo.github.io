@@ -99,10 +99,4 @@ I don't state that this is any kind of silver bullet. It just works for me quite
 
 Feel free to share the techniques you use to manage your time!
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
-
+{% include connect-deeper.html %}

@@ -90,9 +90,4 @@ Steve also mentions in the paper future proposals for free functions like `refer
 
 It's another step toward making code both more readable and less error-prone — two things I'm always happy to see in modern C++.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!  
+{% include connect-deeper.html %}

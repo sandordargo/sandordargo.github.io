@@ -174,9 +174,4 @@ GCC 11, Clang 13 and MSVC 19.31 already provide this fix!
 
 In this article, we reviewed the `constexpr` related changes in C++23. There are quite many of them, and our options for compile-time programming are growing! You can check on [C++ Reference](https://en.cppreference.com/w/cpp/23) whether they are implemented by your compiler of choice.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

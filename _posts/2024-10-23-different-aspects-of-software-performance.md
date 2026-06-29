@@ -35,9 +35,4 @@ We have to think in systems, we have to think about software performance as a wh
 
 Software performance is a non-functional requirement ensuring that the software meets its functional requirements and users get a good experience while the software remains relatively easy to operate. Response time, throughput, scalability, resource utilisation, stability and capacity are important aspects of software performance which are highly related, yet they provide different ways to analyse and improve software performance depending on the requirements.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

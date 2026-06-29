@@ -151,8 +151,4 @@ I still want to try it in a bigger example and I'll report back the results, but
 
 In this article, we covered how we can replace CRTP when we use it to have static interfaces for a family of classes. We saw that with C++20's concepts, we could replace CRTP and have less error-prone and more readable code. The only question is whether you can already use C++20.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
+{% include connect-deeper.html %}

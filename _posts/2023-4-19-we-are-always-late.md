@@ -95,9 +95,4 @@ My advice is that don't overwork and do not feel late or bad about the work line
 
 In your personal life, it's more difficult to set the right boundaries and not to feel bad, but try to remind yourself about your professional approach and maybe you find some help and reassurance in that.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

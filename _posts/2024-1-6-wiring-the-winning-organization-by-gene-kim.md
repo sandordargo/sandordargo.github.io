@@ -86,9 +86,4 @@ Something that was completely missed on these pages is about the three layers of
 
 If you are interested in these thoughts, I highly recommend reading [Wiring the Winning Organization](https://www.amazon.com/Wiring-Winning-Organization-Slowification-Simplification/dp/1950508420?&_encoding=UTF8&tag=sandordargo-20&linkCode=ur2&linkId=730123c5c0f89a4be67cacddffc5a7a2&camp=1789&creative=9325).
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

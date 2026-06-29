@@ -143,9 +143,4 @@ Even though what the OODA loop describes is a natural process, still learning ab
 - [The Tao of Boyd: How to Master the OODA Loop](https://www.artofmanliness.com/articles/ooda-loop/)
 - [The added value of the OODA loop to cyber security - part 2/3](https://www.linkedin.com/pulse/added-value-ooda-loop-cyber-security-part-23-rob-van-os/)
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

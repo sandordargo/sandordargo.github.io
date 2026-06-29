@@ -106,9 +106,4 @@ The `__const` section contains constant data that needs a relocation such as `ch
 
 Today we had a brief look at the evolution of executable formats, and a deeper look at the Mach-O format that is mostly used on macOS and iOS. Still, what we saw is mostly applicable to other formats too as modern formats are not that much different in their basic attributes. The most important characteristic we saw is that the TEXT segment is read-only and the data segment is read/write. The latter cannot be shared between processes so if you have multiple processes running the same program it's worth writing code that tries to minimize the usage of the data segment.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

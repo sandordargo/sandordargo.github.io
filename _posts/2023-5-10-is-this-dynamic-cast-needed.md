@@ -245,9 +245,4 @@ Today, we talked once again about when (not) to use `dynamic_cast`. We looked in
 
 Programming, just like life, is about tradeoffs. In this case, the solution with `dynamic_cast` has its merits, but you might go with another solution depending on your constraints.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

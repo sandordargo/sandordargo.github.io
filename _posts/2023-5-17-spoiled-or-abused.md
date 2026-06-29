@@ -72,9 +72,4 @@ On the other hand, there are many bad practices in the industry, in our manageme
 
 I think that no matter how much we earn we should be treated fairly and part of this fairness is that you don't handle a promotion in two different ways. Saying that now you have to do this and that in addition, but then claiming that your job is still the same, so you don't qualify for an increase is not what I call fair treatment.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

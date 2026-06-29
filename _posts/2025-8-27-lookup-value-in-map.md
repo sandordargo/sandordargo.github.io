@@ -132,9 +132,4 @@ Ultimately, pick the approach that fits your context — readability, performanc
 
 Which one do you use most often — and why?
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-
+{% include connect-deeper.html %}

@@ -265,9 +265,4 @@ In this article, we saw that run-time type information is needed in order to use
 
 In my opinion, it's totally worth it -  unless you have such a legacy that you cannot easily get rid of your dependence on RTTI.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

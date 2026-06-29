@@ -198,9 +198,4 @@ The best we can do is to spread the word so that maybe even more people join nex
 
 I hope to be back in Folkestone in 2025.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

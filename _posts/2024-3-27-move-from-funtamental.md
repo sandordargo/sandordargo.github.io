@@ -134,9 +134,4 @@ Notice that we deleted the copy operations and defaulted the move operations so 
 
 Today, we discussed whether it makes sense to use move semantics with fundamental types. The answer is that in general, no you should not. It will always be a copy instead of a move, so you don't gain anything in terms of performance, on the other hand, you might deceive the reader. It seems that the only valid use case to still use move semantics with fundamental types is when you really want to express that a value should be moved. Most probably, in that case, you should wrap that fundamental type into a well-named type with its move operations defined.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

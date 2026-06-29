@@ -117,9 +117,4 @@ But with all the parables, with all the stories, this book is a nice reminder of
 
 [Read it](https://www.amazon.com/gp/product/1939438632/ref=as_li_qf_asin_il_tl?ie=UTF8&tag=sandordargo-20&creative=9325&linkCode=as2&creativeASIN=1939438632&linkId=f075962475cbe35d1a89d6e11310dd09) if you haven't!
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

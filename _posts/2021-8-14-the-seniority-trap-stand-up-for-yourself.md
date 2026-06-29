@@ -182,6 +182,4 @@ You'll be seen more and more as a leader and not just a senior professional. Esp
 
 ***Are you interested? Check out [The Seniority Trap](https://leanpub.com/thesenioritytrap) on Leanpub!***
 
-## Connect deeper
-
-If you resonated with this chapter, if you want to get updates, please [subscribe to my personal blog](https://sandor-dargo.kit.com/e19f29b0a1) and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

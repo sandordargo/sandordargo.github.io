@@ -187,9 +187,4 @@ C++ might be considered legacy by those who were familiar only with the old patt
 
 Still, the language, the ecosystem is growing, the community is strong and C++ is everywhere, it's unavoidable. It's somehow part of almost every written software. I'm not saying that C++ is the hammer that should make everything a nail around you, but it's something still worth learning and mastering. Even in 2022 and onwards. 
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

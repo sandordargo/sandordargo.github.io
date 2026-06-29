@@ -335,10 +335,4 @@ There are many best practices to keep in mind when it comes to using namespaces 
 
 At the same time, we should not forget that namespaces are not the only way to organize code and we often use a physical separation as well by placing C++ code files into different directories. These different approaches should be used together in a coherent way to keep your codebase tidy both from a physical (file organization) and logical (namespace organization) standpoint.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
-
+{% include connect-deeper.html %}

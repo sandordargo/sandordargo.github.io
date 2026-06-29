@@ -133,9 +133,4 @@ Through their stories you'll also learn a lot about how they lived, suffered and
 
 Probably everyone should read the book, but I'm not sure if everyone could bear with all that sadness and depression.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

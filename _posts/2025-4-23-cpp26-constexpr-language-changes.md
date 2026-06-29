@@ -39,9 +39,4 @@ In practice, this means that you cannot have a `constexpr` reference in a lambda
 
 In this article, we reviewed how `constexpr` evolves in the C++26 core language. We are getting `constexpr` cast from `void*`, placement `new`, structured bindings and even exceptions (not discussed today). In the next article, we'll see how the standard library's constexpr support evolves.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!  
+{% include connect-deeper.html %}

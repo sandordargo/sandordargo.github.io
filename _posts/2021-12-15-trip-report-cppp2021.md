@@ -234,10 +234,4 @@ Till then, I encourage you to watch the videos - I'll update the article with th
 
 Thanks a lot, [Fred](https://twitter.com/FredTingaudDev), [Joël](https://github.com/jfalcou) and all the organizers for making this conference happen! 
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
-
+{% include connect-deeper.html %}

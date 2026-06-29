@@ -58,8 +58,4 @@ This change has already been implemented in GCC 15 and Clang 19.
 
 In this article, we learned about a simple but very practical change introduced by C++26. When using the `=delete` specification, we'll be able to provide a reason for the deletion. With the latest GCC and Clang versions, we can already increase the readability of our codebases.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
+{% include connect-deeper.html %}

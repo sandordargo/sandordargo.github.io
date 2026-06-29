@@ -106,8 +106,4 @@ C++26 is going to bring us an unnamed placeholder, `_`, that can be redeclared a
 
 You can already try this feature with a fresh version of GCC and Clang. 
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
+{% include connect-deeper.html %}

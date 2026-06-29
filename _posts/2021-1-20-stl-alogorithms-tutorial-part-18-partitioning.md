@@ -339,6 +339,4 @@ partitionResult == partitionPoint:true
 
 Today, we learned about partitioning algorithms. They allow us to separate elements of a container based on any predicate we might want to define. Next time we are going to discuss sorting algorithms. Stay tuned!
 
-## Connect deeper
-
-If you found interesting this article, please [subscribe to my personal blog](https://sandor-dargo.kit.com/e19f29b0a1) and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

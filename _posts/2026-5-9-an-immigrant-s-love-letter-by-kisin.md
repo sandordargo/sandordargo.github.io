@@ -56,9 +56,4 @@ The book is also enjoyable to read. Kisin writes the way he speaks on TRIGGERnom
 
 If you're already sympathetic to his views, you'll find your intuitions well-articulated. If you're not, it's still worth reading as a good-faith argument from the other side. A recommended read.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

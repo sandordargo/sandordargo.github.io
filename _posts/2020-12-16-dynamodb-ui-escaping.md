@@ -128,6 +128,4 @@ In my case, writing such a small and easy-to-use helper script even eased how I 
 
 Let me know what kind of strange bugs you encountered when you built your side-projects!
 
-## Connect deeper
-
-If you found interesting this article, please [subscribe to my personal blog](https://sandor-dargo.kit.com/e19f29b0a1) and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

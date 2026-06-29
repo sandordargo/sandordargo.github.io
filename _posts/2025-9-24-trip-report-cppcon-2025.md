@@ -203,9 +203,4 @@ I walked away with new insights into C++26 contracts, fresh perspectives on gene
 
 Most importantly, I came back energized. Conferences like CppCon are not just about what you learn during the week, but about how you take those lessons back home and put them into practice. I'm grateful to the organizers, the speakers, and everyone I had the chance to meet and talk to. And I'm already looking forward to the next opportunity to gather with this amazing community.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

@@ -80,9 +80,4 @@ Instead, be more empathic and talk about topics that help the team bond, and hel
 
 You can still and probably should talk about politics outside work with your friends and family as long as you can all stay respectful.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

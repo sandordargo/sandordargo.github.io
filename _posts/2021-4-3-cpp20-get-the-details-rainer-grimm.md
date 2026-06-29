@@ -38,6 +38,4 @@ I still think the book has an added value and not only because the contents are 
 
 [C++ 20: Get the details](https://leanpub.com/c20) is exactly the book you need right now if you want to immerse yourself in the latest version of C++. It's a complete guide, the author doesn't only discuss the flagship features of C++20, but also every minor addition to the language. Luckily, the book includes tons of example code, so even if you don't have direct access yet to the latest compilers, you will have a very good idea of what you can expect from the different features. A highly recommended read!
 
-## Connect deeper
-
-In case, you are also a bookworm and you're looking for some recommendations, let's connect on [Twitter](https://twitter.com/SandorDargo) and [sign up here](https://64b3a32b.sibforms.com/serve/MUIEAHUOtqTmzdwqwocS8j-v1GBf-LG8L94Zh7CKB89GGoS7Zb13a4faIsQlw9WZWkLQ1LeP4rwnsQLrg2QYp50V5Tb-ZJ1GjDJqSoC0JP4rAcBfy3M8L9QgwA_vWpvFr5F_gKeOUH0cbolRnAIbzp6xt3rqecFIcKmRCzolq4vv27teS-E-UNNZz51IcQc-wk5DsDr27dDmJVzj) for the monthly newsletter to get the best books for software developers (not only about software development).
+{% include connect-deeper.html %}

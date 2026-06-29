@@ -204,9 +204,4 @@ call    SomeClass::SomeClass(SomeClass&&) [base object constructor]
 
 Both C++ Insights and Compiler Explorer confirmed the same. By providing a destructor while not following the rule of five, our classes lose the ability to support move semantics. Yet, due to backward compatibility, they don't fail to compile, they silently fall back to copy semantics.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!  
+{% include connect-deeper.html %}

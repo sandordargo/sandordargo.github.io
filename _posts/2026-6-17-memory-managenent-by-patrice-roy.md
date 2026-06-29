@@ -46,9 +46,4 @@ I've seen this kind of advice before, but what I appreciate here is the nuance a
 
 As the author writes, *"With every step, C++ becomes a richer and more versatile language with which we can do more and express our ideas in more precise ways. C++ is a language that provides ever more significant control over the behavior of our programs."* This book helps you wield that control with confidence. A recommended read for any C++ developer who wants to truly understand what happens beneath the surface.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

@@ -135,6 +135,4 @@ Yet, as you should only pay for what you use, virtual inheritance should not be 
 Have you ever used multiple inheritance in your production code? If yes, what was the use-case?
 
 
-## Connect deeper
-
-If you found interesting this article, please [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

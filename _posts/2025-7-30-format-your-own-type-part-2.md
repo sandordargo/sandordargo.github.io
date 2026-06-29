@@ -188,9 +188,4 @@ A good follow-up would be deciding how to handle edge cases, such as when a patc
 
 We didn't add error handling yet — like how to deal with missing minor or patch versions — but what we've done is a solid foundation if you want to continue.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

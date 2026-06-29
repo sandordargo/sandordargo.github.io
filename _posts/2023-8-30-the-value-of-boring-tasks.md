@@ -122,10 +122,4 @@ But we also saw that as a senior engineer, there are many ways you can benefit f
 
 The point is getting a boring task is not something to complain about, you have many different ways to turn the situation around and use the situation to your own advantage.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
-
+{% include connect-deeper.html %}

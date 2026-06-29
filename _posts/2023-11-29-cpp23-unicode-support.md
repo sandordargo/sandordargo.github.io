@@ -96,9 +96,4 @@ If you want to know more, [read P2071R2](https://www.open-std.org/jtc1/sc22/wg21
 
 As we saw today, C++23 made some important steps towards supporting Unicode in a consistent way. We are not going to be able to use emojis in identifiers. From now on, non-encodable wide character literals and multicharacter wide character literals are ill-formed. Delimiter escape sequences will become more readable for octal, hexadecimal and Unicode sequences whose leading zeros might be omitted from now on. And still speaking about universal character escapes, instead of hexadecimal codes, from now on, we can also use the named versions. When I say from now on, of course, I mean C++23 and I assume compiler support that you can always check here on [C++ Reference](https://en.cppreference.com/w/cpp/compiler_support).
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

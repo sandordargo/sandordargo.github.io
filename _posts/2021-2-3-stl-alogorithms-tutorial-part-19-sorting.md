@@ -281,6 +281,4 @@ In the above example, by passing in `numbers.begin()+4` as the middle parameter 
 
 Today, we learned about sorting algorithms. Some are pretty straightforward (such as `sort`, `partial_sort` or `is_sorted`), while `nth_element` made us - at least me - think and `partial_sort_copy` gave us some surprises and inconsistencies. I hope you enjoyed today's discoveries, next time we'll move from sorting algorithms to binary searches.
 
-## Connect deeper
-
-If you found interesting this article, please [subscribe to my personal blog](https://sandor-dargo.kit.com/e19f29b0a1) and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

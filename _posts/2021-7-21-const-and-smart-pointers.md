@@ -267,9 +267,4 @@ Later we saw that by misunderstanding, by error, people might pass smart pointer
 
 If you are interested in more details, read [this article by Herb Sutter](https://herbsutter.com/2013/06/05/gotw-91-solution-smart-pointer-parameters/).
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

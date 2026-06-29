@@ -302,9 +302,4 @@ Types without a default constructor are sometimes hard to use with containers. O
 
 Of course, we could use (smart) pointers as well, but that's not an option we discussed, because dynamic memory allocation is clearly not something we need to solve the original problem.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

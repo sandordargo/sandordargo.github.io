@@ -148,9 +148,4 @@ To solve the second problem, the constructors for most standard containers (for 
 
 In this post, we saw two allocator-related changes in C++23. Thanks to the first change, the new interface of `std::allocator` gives a new way to allocate memory on the heap in order to limit spurious reallocations by returning size information about the allocated memory. The second discussed change fixes some CTAD issues that you can run into if you try to use `std::pmr` (or other custom allocators) with standard containers.
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
-- and let's connect on [Twitter](https://twitter.com/SandorDargo)!
+{% include connect-deeper.html %}

@@ -51,8 +51,4 @@ But maybe an alternative syntax like `T...[^1]` or `T...[$-1]` will be accepted 
 
 C++26 brings us pack indexing as a language feature. We'll be able to extract individual elements from a pack using the subscript operator: `T...[0]`. Thanks for the work of those who contributed to the proposal!
 
-## Connect deeper
-
-If you liked this article, please 
-- hit on the like button,  
-- [subscribe to my newsletter](https://sandor-dargo.kit.com/e19f29b0a1)
+{% include connect-deeper.html %}
