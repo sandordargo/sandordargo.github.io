@@ -27,3 +27,7 @@ The book covers topics such as:
 ***[Get the book on LeanPub](https://leanpub.com/cppinterview)***
 
 ***[Get the book on Amazon](https://www.amazon.com/Daily-Interview-yourself-interview-question-ebook/dp/B0C31ZD7XP)***
+
+## Targeting quant/trading firms?
+
+If you're preparing for interviews at places like Jane Street, Citadel, or Optiver, check out [GetCracked](https://www.getcracked.io?via=sandor) — real interview problems from top trading firms, with coding exercises, courses, and coaching.
