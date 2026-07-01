@@ -81,7 +81,7 @@ constexpr auto ch = Child{}; // error before C++26
 static_assert(&ch.Left::get_counter() == &ch.Right::get_counter());
 ```
 
-With P3533R2 accepted into C++26, this code just works. You can construct objects with virtual bases at compile time, and `constexpr` member functions in such hierarchies are perfectly fine.
+With P3533R2 accepted into C++26, this code just works. You can construct objects with virtual bases at compile time, and `constexpr` member functions in such hierarchies are perfectly fine. GCC 16 already implements the feature — Jakub Jelinek landed the support just a week after the paper was voted in. Thanks to Hana for pointing this out!
 
 ## Why this matters
 
