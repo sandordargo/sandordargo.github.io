@@ -94,7 +94,7 @@ It says: *there might or might not be a map yet — but once it exists, it canno
 That's a strong and useful semantic. You can still replace the entire map using `std::optional::emplace()`, but the underlying data remains immutable.
 
 ```cpp
-// https://godbolt.org/z/hcjsvKnGd
+// https://godbolt.org/z/j65rfqK5K
 class MyHardwareController {
    public:
     void init() { 
@@ -114,7 +114,7 @@ class MyHardwareController {
 
    private:
     bool _already_initialized {false};
-    std::optional<std::map<int, std::string>> _available_modules;
+    std::optional<const std::map<int, std::string>> _available_modules;
 };
 ```
 
