@@ -5,29 +5,10 @@ tags: [books]
 ---
 ![Daily C++ Interview cover]({{ site.baseurl }}/assets/img/cppinterview-cover.jpg){:height="66%" width="66%"}
 
-This book helps you prepare for your next C++ technical interview if you are looking for an entry- or intermediate level position.
+**This book has been superseded by [The C++ Interview Book]({{ site.baseurl }}/books/cpp_interview_book/) — a substantially rewritten and reorganised second edition with 173 questions, C++23/26 coverage, difficulty tags, and a 100-day study schedule.**
 
-The questions are mostly not about edge cases and brain teasers but they cover the realistic knowledge you'll need to get a developer position in the C++ world.
-
-The idea is that you take one question a day, you try to figure it out it on your own and then you check the answer in the book, plus the references.
-
-The book covers topics such as:
-
-- `auto` and type deduction
-- The different usages of `static`
-- Polymorphism, inheritance and virtual functions
-- Lambda functions
-- How to use the const qualifier
-- Some best practices in modern C++
-- References, universal references, a bit of a mixture
-- C++20
-- Special function and the rules of how many
-- The Standard Template Library
-
-***[Get the book on LeanPub](https://leanpub.com/cppinterview)***
-
-***[Get the book on Amazon](https://www.amazon.com/Daily-Interview-yourself-interview-question-ebook/dp/B0C31ZD7XP)***
+***[Get the new edition on LeanPub](https://leanpub.com/cppinterviewbook)***
 
 ## Targeting quant/trading firms?
 
-If you're preparing for interviews at places like Jane Street, Citadel, or Optiver, check out [GetCracked](https://www.getcracked.io?via=sandor) — real interview problems from top trading firms, with coding exercises, courses, and coaching.
+If you're preparing for interviews at places like Jane Street, Citadel, or Optiver, check out also [GetCracked](https://www.getcracked.io?via=sandor) — real interview problems from top trading firms, with coding exercises, courses, and coaching.
