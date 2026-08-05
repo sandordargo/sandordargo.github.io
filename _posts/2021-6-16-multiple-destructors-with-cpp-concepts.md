@@ -6,7 +6,7 @@ category: dev
 tags: [cpp, cpp20, concepts, templates]
 excerpt_separator: <!--more-->
 ---
-We probably all learnt that one cannot overload the destructor. Hence I write about ***"the"*** destructor and *a* destructor... After all, it has no return type and it doesn't take parameters. It's also not `const` as it destroys the underlying object.
+We probably all learnt that one cannot overload the destructor. Hence I write about ***"the"*** destructor and *a* destructor... After all, it has no return type and it doesn't take parameters. It's also not `const` as it destroys the underlying object. Since C++20, the picture is a bit more nuanced — the standard introduced the concept of *prospective destructors*, and that's what this article is about.
 <!--more-->
 
 Yet, there were techniques existing to have multiple destructors in a class and those techniques are getting simplified with C++20.
@@ -95,9 +95,9 @@ int main()
 Not trivial
 */
 ```
-We still have a class template, but instead of using the cumbersome to decipher `std::conditional`, we use the trailing `requires` clause to provide an overload for the destructor.
+We still have a class template, but instead of using the cumbersome to decipher `std::conditional`, we use the trailing `requires` clause to provide different destructor implementations.
 
-Remember, we learned earlier that in class templates we can provide function overloads using different constraints. This is true even for constructors and destructors.
+The standard calls these *prospective destructors*. A class can declare multiple prospective destructors with different constraints, but overload resolution runs at the end of the class definition and must select exactly one — the rest are discarded. So the class still ends up with a single destructor; the mechanism merely lets you pick which implementation to use based on template parameters. The standard deliberately avoids the term "overload" here, though the underlying mechanism is overload resolution.
 
 In the above example, first, we wrote a destructor with a `requires` clause. Then we also provided the default implementation without specifying any constraint.
 
@@ -178,8 +178,8 @@ We can draw the conclusion that clang doesn't support - yet - multiple destructo
 
 # Conclusion
 
-Today we learned that while in general, a class should always have one destructor, for class templates there have been ways to provide different implementations for that destructor based on the characteristics of template arguments.
+Today we learned that while in general, a class always ends up with one destructor, C++20 lets class templates declare multiple *prospective destructors* with different constraints. Overload resolution picks exactly one; the rest are discarded. The result is cleaner and more readable than the pre-C++20 `std::conditional` approach, with no run-time cost.
 
-The old way of doing this is using `std::conditional`, but it's not as readable as using C++20 concepts. With a new enough compiler you won't run into any troubles using C++20's concepts.
+All major compilers now support this feature correctly.
 
 **If you want to learn more details about C++ concepts, [check out my book on Leanpub](https://leanpub.com/cppconcepts)!**
