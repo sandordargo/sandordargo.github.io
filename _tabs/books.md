@@ -13,6 +13,7 @@ tags: [Books]
 Here is a list of books I wrote. Follow the links for more information.
 
 - [The Seniority Trap: Become a senior engineer without losing your soul]({{ site.baseurl }}/books/seniority_trap)
+- [The C++ Interview Book]({{ site.baseurl }}/books/cpp_interview_book)
 - [C++ Concepts: Validate your templates compile-time]({{ site.baseurl }}/books/cpp_concepts)
 - [Daily C++ Interview]({{ site.baseurl }}/books/cpp_interview)
 - [How to use const in C++: On the virtues of constness]({{ site.baseurl }}/books/cpp_const)
