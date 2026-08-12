@@ -61,6 +61,10 @@ Each section ends with reflection prompts and a short exercise. The workshop clo
 >
 > — **Simon**, Perception Engineer at Gravis Robotics
 
+> *"One of my favorite takeaways was Sandor's recommendation of designing a sustainable workday — 'you can't say yes to everything.' As a junior, it's easy to fall into the trap of taking on every task to prove your worth, but it does the opposite when you bite off more than you can chew. I also loved how interactive the workshop was — lots of discussion about 'what would a junior do in this scenario?', hearing different reactions from the group, and getting hindsight from a senior engineer. It wasn't just another slideshow. I had a great time and can easily recommend it."*
+>
+> — **Austin**, CS Student at UoPeople
+
 ---
 
 ## Where it's been delivered
