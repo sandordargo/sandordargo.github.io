@@ -91,6 +91,6 @@ The workshop distills what I've learned from my own path from junior to senior â
 
 ## Get in touch
 
-If you'd like to run this workshop for your team or at your conference, drop me a line at **[sandor.dargo@gmail.com](mailto:your.email@example.com?subject=Workshop%20inquiry%3A%20Stop%20Thinking%20Like%20a%20Junior)**.
+If you'd like to run this workshop for your team or at your conference, drop me a line at **[sandor.dargo@gmail.com](mailto:sandor.dargo@gmail.com?subject=Workshop%20inquiry%3A%20Stop%20Thinking%20Like%20a%20Junior)**.
 
 Tell me a bit about your audience, the format you're considering (half-day or full-day, in person or remote), and roughly when you're thinking. I'll get back to you within a few days.
