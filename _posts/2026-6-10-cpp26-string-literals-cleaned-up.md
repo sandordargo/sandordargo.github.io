@@ -84,7 +84,7 @@ const char8_t* greeting = u8"こんにちは";  // always valid, always UTF-8
 
 The paper also tightens the rules for multicharacter literals like `'abcd'`. These are already conditionally-supported and implementation-defined in their value, so the paper doesn't try to remove them. But it does address a visual ambiguity problem.
 
-Some Unicode characters are composed of multiple code points that form a single visible grapheme. For example, `'é'` written as `e` followed by `COMBINING ACUTE ACCENT` looks like a single character but is actually two code points. This means what *appears* to be a character literal is actually a multicharacter literal — with all the implementation-defined weirdness that implies.
+Some Unicode characters can be composed of multiple code points that form a single visible grapheme. For example, `'é'` can be written as `e` followed by `COMBINING ACUTE ACCENT` (U+0301) — two code points that look like a single character. (It can also be written as the single code point `U+00E9`, but the combining form is what causes trouble here — thanks to Johann Gerell for pointing out the distinction.) This means what *appears* to be a character literal is actually a multicharacter literal — with all the implementation-defined weirdness that implies.
 
 P1854R4 requires that each element in a multicharacter literal must be representable as a single code unit in the ordinary literal encoding. This excludes combining characters and multi-byte code points, which eliminates the visual ambiguity. You can still write `'abcd'` (each character fits in one code unit), but accidentally creating a multicharacter literal from what looks like a single character is now caught at compile time.
 
