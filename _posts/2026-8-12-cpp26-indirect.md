@@ -6,7 +6,7 @@ category: dev
 tags: [cpp, cpp26, valuesemantics, smartpointers]
 excerpt_separator: <!--more-->
 ---
-C++26 adds two new vocabulary types in `<memory>`, introduced by [P3019R14](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2025/p3019r14.html) (Coe, Peacock, Parent). From the abstract:
+C++26 adds two new vocabulary types in `<memory>`, introduced by [P3019R14](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2025/p3019r14.pdf) (Coe, Peacock, Parent). From the abstract:
 
 > *The class template `indirect` confers value-like semantics on a dynamically-allocated object. An `indirect` may hold an object of a class `T`. Copying the `indirect` will copy the object `T`. When an `indirect<T>` is accessed through a const access path, constness will propagate to the owned object.*
 >
