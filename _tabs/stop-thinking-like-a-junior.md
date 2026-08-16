@@ -13,7 +13,17 @@ Most engineers stall after a few years. Not because they stop learning the techn
 
 This workshop is about that other side.
 
-[**Run this for your team — get in touch →**](mailto:sandor.dargo@gmail.com?subject=Workshop%20inquiry%3A%20Stop%20Thinking%20Like%20a%20Junior)
+[**Register for the next session →**](mailto:sandor.dargo@gmail.com?subject=Workshop%20registration%3A%20Stop%20Thinking%20Like%20a%20Junior)
+
+---
+
+## Next session
+
+**Date:** 1 October 2026 | **Time:** 19:00 CET | **Format:** Half-day, online
+
+**Price:** €199 (€49 for students)
+
+Seats are limited to keep the workshop interactive. To register, send an email to **[sandor.dargo@gmail.com](mailto:sandor.dargo@gmail.com?subject=Workshop%20registration%3A%20Stop%20Thinking%20Like%20a%20Junior)** and I'll get back to you with the details.
 
 ---
 
@@ -95,6 +105,6 @@ The workshop distills what I've learned from my own path from junior to senior �
 
 ## Get in touch
 
-If you'd like to run this workshop for your team or at your conference, drop me a line at **[sandor.dargo@gmail.com](mailto:sandor.dargo@gmail.com?subject=Workshop%20inquiry%3A%20Stop%20Thinking%20Like%20a%20Junior)**.
+**Want to attend?** Send an email to **[sandor.dargo@gmail.com](mailto:sandor.dargo@gmail.com?subject=Workshop%20registration%3A%20Stop%20Thinking%20Like%20a%20Junior)** to register for the next session.
 
-Tell me a bit about your audience, the format you're considering (half-day or full-day, in person or remote), and roughly when you're thinking. I'll get back to you within a few days.
+**Want to run this for your team or at your conference?** Same address — tell me a bit about your audience, the format you're considering (half-day or full-day, in person or remote), and roughly when you're thinking. I'll get back to you within a few days.
