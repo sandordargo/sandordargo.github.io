@@ -19,11 +19,11 @@ This workshop is about that other side.
 
 ## Next session
 
-**Date:** 1 October 2026 | **Time:** 19:00 CET | **Format:** Half-day, online
+**Date:** 1 October 2026 | **Time:** 19:00–23:00 CEST | **Format:** Half-day, online
 
 **Price:** €199 (€49 for students)
 
-Seats are limited to keep the workshop interactive. To register, send an email to **[sandor.dargo@gmail.com](mailto:sandor.dargo@gmail.com?subject=Workshop%20registration%3A%20Stop%20Thinking%20Like%20a%20Junior)** and I'll get back to you with the details.
+Seats are limited to keep the workshop interactive. To register, send an email to **[sandor.dargo@gmail.com](mailto:sandor.dargo@gmail.com?subject=Workshop%20registration%3A%20Stop%20Thinking%20Like%20a%20Junior)** — payment details provided upon registration.
 
 ---
 
