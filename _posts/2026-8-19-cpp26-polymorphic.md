@@ -168,7 +168,7 @@ Now that we've seen both types, here's a quick summary of when to use which:
 | Open set of derived types, polymorphic collections | `std::polymorphic<T>` |
 | Closed set of known types | `std::variant<A, B, C>` |
 | Nullable indirection | `std::optional<indirect<T>>` or `std::optional<polymorphic<T>>` |
-| Non-owning, shared access | `std::shared_ptr<T>` (as before) |
+| Shared ownership | `std::shared_ptr<T>` (as before) |
 
 The simplest mental model: `indirect` is for when you know the exact type but need it on the heap. `polymorphic` is for when you don't.
 
