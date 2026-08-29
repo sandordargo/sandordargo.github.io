@@ -56,7 +56,7 @@ Hopefully not.
 
 ## Removing deprecated `std::shared_ptr` Atomic Access APIs
 
-C++11 introduced atomics and smart pointers. Among others, it also introduced a free function API for atomic access to `shared_ptr`. It was an easy-to-use API so it was deprecated by C++20, along with the introduction of its type-safe replacement `std::atomic<shared_ptr<T>>`. C++26 removes the deprecated API thanks to the acceptance of [P2869R4](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2024/p2869r4.pdf).
+C++11 introduced atomics and smart pointers. Among others, it also introduced a free function API for atomic access to `shared_ptr`. It was not an easy-to-use API so it was deprecated by C++20, along with the introduction of its type-safe replacement `std::atomic<shared_ptr<T>>`. C++26 removes the deprecated API thanks to the acceptance of [P2869R4](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2024/p2869r4.pdf).
 
 While the old API expected that the shared object is not used directly, the API made it possible which led to undefined behaviour, typically producing a data race.
 
