@@ -14,7 +14,7 @@ Those are just numbers, though. The human connections are what make a conference
 
 I didn't even have to reach the venue to start catching up with old friends. I planned to work during my layover at the Munich airport, but as I approached a table I bumped into a fellow presenter, [Alex Dathskovsky](https://cppcon2026.sched.com/speaker/calebxyz). We ended up taking the same flight to Denver — so much for my productivity plans.
 
-> ![Meeting Friends At The Airport And Having A Beer]({{ site.baseurl }}/assets/img/cppcon-2026-muc-airport-alex-and-me.jpg "Meeting Friends At The Airport And Having A Beer")
+![Meeting Friends At The Airport And Having A Beer]({{ site.baseurl }}/assets/img/cppcon-2026-muc-airport-alex-and-me.jpg "Meeting Friends At The Airport And Having A Beer")
 
 Enough gossip, let's talk about the conference!
 
@@ -50,8 +50,8 @@ Peter has already given some excellent talks over the last few years on engineer
 
 According to several different studies, it's not simply that quality is going down, but even our productivity is not as high as we tend to perceive it. True, we can have the AI generate code for us en masse, but what actually gets merged to master is a different question.
 
-> ![Peter Muldoon at CppCon 2026]({{ site.baseurl }}/assets/img/cppcon-2026-peter-titianc.jpg "Peter Muldoon at CppCon 2026")
-> 
+![Peter Muldoon at CppCon 2026]({{ site.baseurl }}/assets/img/cppcon-2026-peter-titianc.jpg "Peter Muldoon at CppCon 2026")
+
 The worst news is that AI is causing cognitive surrender. We are ready to accept faulty AI reasoning and while we do it we also become more confident.
 
 While juniors are shipping faster than ever and architects are architecting with less effort, the people in between are drowning. Those who have to catch security gaps, compliance risks, architectural conflicts are burning out.
@@ -80,7 +80,7 @@ What can it be?
 
 If I could only share one slide from the talk, it would be this:
 
-> ![Theory vs practice]({{ site.baseurl }}/assets/img/cppcon2026-alex-theory-practice.jpg "Theory vs practice")
+![Theory vs practice]({{ site.baseurl }}/assets/img/cppcon2026-alex-theory-practice.jpg "Theory vs practice")
 
 Yes, practice and theory differ in CS as well.
 
@@ -98,7 +98,7 @@ When Andrei jumped in to give the final keynote due to Herb Sutter's illness, I 
 
 Well, some people didn't really like his talk...
 
-> ![Andrei Alexandrescu at CppCon 2026]({{ site.baseurl }}/assets/img/cppcon2026-andrei-diarrhea.jpg "Andrei Alexandrescu at CppCon 2026")
+![Andrei Alexandrescu at CppCon 2026]({{ site.baseurl }}/assets/img/cppcon2026-andrei-diarrhea.jpg "Andrei Alexandrescu at CppCon 2026")
 
 But anyway, he changed the title to *Your Next 20 ~~Weeks~~ Days of Systems Engineering* and earned his place with a new talk. And no, he didn't only earn his place by quoting me twice(!!!), but by being entertaining and also relevant.
 
@@ -135,8 +135,8 @@ That doesn't mean we can't rely on these tools, we just have to be cautious. Bot
 
 Some very interesting thoughts and very nice slides by Andy Soffer.
 
-> ![AI and UB]({{ site.baseurl }}/assets/img/cppcon-2026-brontosource-nasal.JPG "AI and UB")
-> 
+![AI and UB]({{ site.baseurl }}/assets/img/cppcon-2026-brontosource-nasal.JPG "AI and UB")
+
 ### VTables generated with reflection (Ryan Keane)
 
 Ryan Keane brought the best surprise of this conference! His first appearance at CppCon — or at any C++ conference if I'm not mistaken — and he was honoured with a standing ovation. Something you rarely see.
