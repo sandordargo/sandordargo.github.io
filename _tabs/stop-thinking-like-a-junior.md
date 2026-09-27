@@ -19,7 +19,7 @@ This workshop is about that other side.
 
 ## Next session
 
-**Date:** 1 October 2026 | **Time:** 19:00–23:00 CEST | **Format:** Half-day, online
+**Date:** 2 October 2026 | **Time:** 19:00–23:00 CEST | **Format:** Half-day, online
 
 **Price:** €199 (€49 for students)
 
@@ -75,6 +75,9 @@ Each section ends with reflection prompts and a short exercise. The workshop clo
 >
 > — **Austin**, CS Student at UoPeople
 
+>*"To become a senior engineer, be a multiplier : scale the impact you have and think about how you can let others multiply their own impacts. Also don’t wait for permission to work on a solution to company problems. Something we all know but sometime forget is the importance of communication and listening skills to be a senior."
+>
+> - **PE**, QA Engineer
 ---
 
 ## Where it's been delivered
