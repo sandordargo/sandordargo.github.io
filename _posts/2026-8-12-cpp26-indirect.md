@@ -140,6 +140,12 @@ If you need nullable indirection, use `std::optional<std::indirect<T>>`.
 `std::indirect` is the right tool when you need heap allocation for structural reasons but want your class to behave like a value:
 
 - **PIMPL**: `indirect<Impl>` replaces the usual `unique_ptr<Impl>` — no more hand-written copy/move/destructor. Marius Bancila has a [detailed walkthrough](https://mariusbancila.ro/blog/2026/07/23/the-pimpl-idiom-and-the-cpp26-stdindirect-type/) of this.
+
+> **Update:**
+> But what about incomplete types, you might ask? `std::indirect` supports incomplete `T`s, much like `std::unique_ptr` does. However, `T` has to be complete when its special member functions are instantiated.
+>
+> Since `indirect` has no custom deleter parameter, you might worry that it can't work with a forward-declared `Impl` in your header — but it can. The usual PImpl technique applies: declare your class's relevant special member functions in the header and define them in the `.cpp` file where `Impl` is complete. That way, operations such as destroying or copying the `std::indirect<Impl>` are instantiated where `Impl` is a complete type.
+
 - **Recursive types**: a `struct Node { int value; std::indirect<Node> next; };` just works.
 - **Large members**: moving a big member to the heap to shrink `sizeof(YourClass)` while keeping value semantics.
 
