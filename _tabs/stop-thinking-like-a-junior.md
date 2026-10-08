@@ -19,7 +19,7 @@ This workshop is about that other side.
 
 ## Next session
 
-**Date:** 2 October 2026 | **Time:** 19:00–23:00 CEST | **Format:** Half-day, online
+**Date:** 6th November 2026 | **Time:** 19:00–23:00 CEST | **Format:** Half-day, online
 
 **Price:** €199 (€49 for students)
 
@@ -66,6 +66,11 @@ Each section ends with reflection prompts and a short exercise. The workshop clo
 ---
 
 ## What people are saying
+
+> *Last weekend I had a chance to participate in one of Sandor Dargo 's workshops. I'd already drawn much learning from his articles and books and was keen to see how his live teaching compared. Safe to say,  Sándor is just as good at live training as he is at technical writing. The workshop was packed with content and valuable insights for C++ developers, and any developer really. Despite the quantity of material covered, the workshop had great pacing: a mix of lectures, exercises, discussions, and questions. Through it all, Sándor remains approachable and genuine. Highly recommended.*
+>
+> - **Lewis Innes-Miller**, Backend Developer 
+
 
 > *"Is there a better way to learn how to think like a senior than learning it from a staff engineer who has mastered these skills in the field? Sandor created a really comfortable environment where all participants could freely share how they approach certain situations as juniors. This helped us gain insightful experiences from him on how to transition from simply 'doing what's asked' to 'seeing what is needed'. The workshop covered many different aspects and was a great catalyst for faster growth!"*
 >
