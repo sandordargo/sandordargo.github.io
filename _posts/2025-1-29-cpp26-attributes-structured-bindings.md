@@ -14,10 +14,10 @@ This means that the code below will become valid:
 
 ```cpp
 std::map<int, std::string> m{
-        {1, "one"}, {2, "two"} {3, "three"}};
+        {1, "one"}, {2, "two"}, {3, "three"}};
 
-for(const auto& [ [[maybe_unused]] k, v]: m) {
-        DEBUG(k) // only used in debug builds
+for(const auto& [k [[maybe_unused]], v]: m) {
+        DEBUG(k); // only used in debug builds
     std::cout << v << '\n';
 }
 ```
@@ -34,7 +34,7 @@ This change has already been implemented in GCC 15 and Clang 19.
 
 ## Conclusion
 
-Starting from C++26, we'll be able to mark individual structured bindings with attributes, meaning that `const ato& [ [[maybe_unused]] x, y ] = someVar;` will become valid code.
+Starting from C++26, we'll be able to mark individual structured bindings with attributes, meaning that `const auto& [x [[maybe_unused]], y] = someVar;` will become valid code.
 
 You can already try this feature with a fresh version of GCC and Clang. 
 
