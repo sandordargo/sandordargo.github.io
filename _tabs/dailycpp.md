@@ -1,6 +1,6 @@
 ---
-title: Daily C++
+title: C++ Interview Book
 icon: fas fa-link
-redirect_to: http://www.dailycppinterview.dev/
+redirect_to: https://cppinterview.com/
 order: 5
 ---
