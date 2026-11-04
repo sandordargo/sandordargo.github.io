@@ -122,6 +122,10 @@
     }
   }
 
+  #disqus_thread {
+    filter: invert(1) hue-rotate(180deg);
+  }
+
   #archives li:nth-child(odd) {
     background-image: linear-gradient(
       to left,
