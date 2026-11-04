@@ -12,6 +12,8 @@ C++26 adds `std::constant_wrapper` ([P2781R9](https://www.open-std.org/jtc1/sc22
 
 <!--more-->
 
+> **Update:** As Ivan Bobev pointed out in the comments section, `std::integral_constant` is *not* restricted to integral and enumeration types - its declaration is `template<class T, T v>` with no such constraint. `std::integral_constant<double, 2.5>` is valid C++20, and so are pointers and suitable structural class types.
+
 ## The problem
 
 Consider this:
@@ -65,7 +67,7 @@ constexpr int get_element(T) {
 get_element(std::integral_constant<int, 1>{}); // works, but verbose
 ```
 
-This approach has two problems. First, `std::integral_constant<int, 1>{}` is painful to write, especially when you need several. Second, it only works for integral and enumeration types. If you need to pass a `constexpr` floating-point value, a pointer, or a user-defined structural type, `integral_constant` can't help you.
+This works, but `std::integral_constant<int, 1>{}` is painful to write, especially when you need several. And while `integral_constant` technically accepts any type (including floating-point since C++20), it provides no arithmetic operators, no concise spelling, and no value-preserving composition - it's a bare wrapper.
 
 ## `std::constant_wrapper` and `std::cw`
 
@@ -113,7 +115,7 @@ The value survives the function boundary because it's baked into the type.
 
 ## Beyond integers
 
-`integral_constant` is limited to integral and enumeration types — you can't write `std::integral_constant<double, 3.14>{}`. `constant_wrapper` accepts any structural type: floating-point values, pointers, and user-defined class types that qualify as non-type template parameters.
+Despite its name, `integral_constant` does accept non-integral types - `std::integral_constant<double, 3.14>{}` is valid C++20. But it's a bare wrapper: no arithmetic operators, no concise alias, no value-preserving composition. `constant_wrapper` gives you all of that on top of accepting any structural type.
 
 Where this matters is the same scenario from the opening section: you need the value as a constant expression *inside* the function body, not just at the call site. Consider a function that dispatches to a type parameterized by a floating-point constant:
 
@@ -134,7 +136,7 @@ auto make_scaled_array(F) {
 auto arr = make_scaled_array(std::cw<2.5>); // ScaledArray<2.5>
 ```
 
-`ScaledArray` is parameterized on a `double` template argument — something only possible since C++20 allowed class-type and floating-point NTTPs. To construct a `ScaledArray<2.5>` from a function, the factor must be a constant expression inside the function body. A plain `double` parameter wouldn't work: `ScaledArray<factor>` would fail to compile. `integral_constant` can't carry a `double` at all. `constant_wrapper` bridges both gaps.
+`ScaledArray` is parameterized on a `double` template argument - something only possible since C++20 allowed class-type and floating-point NTTPs. To construct a `ScaledArray<2.5>` from a function, the factor must be a constant expression inside the function body. A plain `double` parameter wouldn't work: `ScaledArray<factor>` would fail to compile. You *could* use `integral_constant<double, 2.5>{}` here, but `constant_wrapper` gives you the same capability with a concise spelling (`std::cw<2.5>`) and operator support that `integral_constant` lacks.
 
 ## Arithmetic operators
 
