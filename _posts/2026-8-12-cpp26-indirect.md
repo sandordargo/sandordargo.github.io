@@ -44,7 +44,7 @@ const Player p;
 p.mute();  // const-correctness is broken
 ```
 
-**Second, it deletes copy operations.** If `Car` should be copyable, you must write all five special member functions yourself. This is the tedious [Rule of Five](https://www.sandordargo.com/blog/2024/07/31/rule-of-5-once-again) boilerplate that every C++ developer knows too well.
+**Second, it deletes copy operations.** If `Player` should be copyable, you must write all five special member functions yourself. This is the tedious [Rule of Five](https://www.sandordargo.com/blog/2024/07/31/rule-of-5-once-again) boilerplate that every C++ developer knows too well.
 
 ## `std::indirect` — value semantics for heap-allocated objects
 
