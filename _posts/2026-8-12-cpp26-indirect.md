@@ -146,7 +146,10 @@ If you need nullable indirection, use `std::optional<std::indirect<T>>`.
 >
 > Since `indirect` has no custom deleter parameter, you might worry that it can't work with a forward-declared `Impl` in your header — but it can. The usual PImpl technique applies: declare your class's relevant special member functions in the header and define them in the `.cpp` file where `Impl` is complete. That way, operations such as destroying or copying the `std::indirect<Impl>` are instantiated where `Impl` is a complete type.
 
-- **Recursive types**: a `struct Node { int value; std::indirect<Node> next; };` just works.
+- **Recursive types**: since `T` may be incomplete, a type can hold an `indirect` of itself.
+
+  > **Update:** In the original version of this article, I wrote that `struct Node { int value; std::indirect<Node> next; };` just works. It doesn't. As `std::indirect` is never empty (apart from the valueless state after a move), constructing such a `Node` constructs another `Node` and so on, until the stack overflows. You need something that can end the recursion, such as `std::optional<std::indirect<Node>> next;` for a list or `std::vector<std::indirect<Node>> children;` for a tree. *(Thanks to Mags who pointed this out!)*
+
 - **Large members**: moving a big member to the heap to shrink `sizeof(YourClass)` while keeping value semantics.
 
 ## Conclusion
