@@ -37,7 +37,7 @@ constexpr int get_element(int index) {
 }
 ```
 
-The parameter `index` is not a constant expression inside the function body, even though the caller passed a literal. First it might seem a compiler limitation — but it's by design. A `constexpr` function can also be called at runtime, so the compiler can't assume parameters are compile-time constants.
+The parameter `index` is not a constant expression inside the function body, even though the caller passed a literal. First it might seem a compiler limitation, but it's by design, and not only because a `constexpr` function can also be called at runtime. Even in a `consteval` function, parameters are not constant expressions. A function body is checked once, not once per argument value, so a parameter can't decide a template argument (which might even change the return type). Only template parameters can do that.
 
 The traditional workaround is to lift the value into the type system:
 
